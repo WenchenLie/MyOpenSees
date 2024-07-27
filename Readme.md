@@ -1,0 +1,31 @@
+# OpenSees个人二次开发
+## 1 双阶自复位材料（TSB）
+ModBoucWen $tag $Fy $uy $alpha $alpha $n $Q $b $A $beta $gamma <-failureCPD $failureCPD> <-MinMax MinMax>  
+*tag: 材料编号  
+*Fy: 屈服力  
+*uy: 屈服位移  
+*alpha: 屈服后刚度比  
+*n: 弹塑性过渡段平滑系数  
+*Q: 循环硬化系数(控制最大硬化程度, Q >= 0)  
+*b: 循环硬化系数(控制硬化速度, b >= 1)  
+*A: 滞回环形状参数(建议取1)  
+*beta: 滞回环形状参数(建议取0.5)  
+*gamma: 滞回环形状参数(建议取0.5)  
+*failureCPD: 失效CPD(累积塑性位移与屈服位移的比值超过该值则认为失效)  
+*MinMax: 失效位移(最大位移超过该值则认为失效)  
+## 2 改进BoucWen
+TSB $tag $Fslip $k $ugap $N $Fy $k1 $k2 $beta $ubear $kbear <$Fy_2 $k1_2 $k2_2 $beta_2 $ubear_2 $kbear_2 $Fy_3 $k1_3 ...>  
+*tag: 材料编号  
+*Fslip: 摩擦滑移力  
+*k: 第一阶段初始刚度  
+*ugap: 间隙大小  
+*N: 自复位模型的并联组数(N>=1)  
+*Fy: 自复位模型(第1组)的伪屈服力  
+*k1: 自复位模型(第1组)的初始刚度  
+*k2: 自复位模型(第1组)的屈服后刚度  
+*beta: 自复位模型(第1组)的能量耗散系数  
+*ubear: 自复位模型(第1组)的硬化起始位移  
+*kbear: 自复位模型(第1组)的硬化后刚度  
+*Fy_i: 自复位模型(第i组)的伪屈服力  
+*k1_i: 自复位模型(第i组)的初始刚度 
+... (i=2~10)
