@@ -1,5 +1,5 @@
 # OpenSees个人二次开发
-## 1 双阶自复位材料（TSB）
+## 1 改进BoucWen
 ModBoucWen $tag $Fy $uy $alpha $alpha $n $Q $b $A $beta $gamma <-failureCPD $failureCPD> <-MinMax MinMax>  
 *tag: 材料编号  
 *Fy: 屈服力  
@@ -13,7 +13,7 @@ ModBoucWen $tag $Fy $uy $alpha $alpha $n $Q $b $A $beta $gamma <-failureCPD $fai
 *gamma: 滞回环形状参数(建议取0.5)  
 *failureCPD: 失效CPD(累积塑性位移与屈服位移的比值超过该值则认为失效)  
 *MinMax: 失效位移(最大位移超过该值则认为失效)  
-## 2 改进BoucWen
+## 2 双阶自复位材料（TSB）
 TSB $tag $Fslip $k $ugap $N $Fy $k1 $k2 $beta $ubear $kbear <$Fy_2 $k1_2 $k2_2 $beta_2 $ubear_2 $kbear_2 $Fy_3 $k1_3 ...>  
 *tag: 材料编号  
 *Fslip: 摩擦滑移力  
