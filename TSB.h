@@ -28,6 +28,7 @@
 
 // Written: Wenchen Lie 
 // Created: July 26, 2024
+// Last update: July 28, 2024
 // Revision: A
 //
 // Description: This file contains the class definition for 

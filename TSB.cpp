@@ -20,6 +20,7 @@
                                                                         
 // Written: Wenchen Lie (666@e.gzhu.edu.cn)
 // Created: July 26, 2024
+// Last update: July 28, 2024
 // Revision: A
 //
 // Description: This file contains the implementation of the
@@ -215,13 +216,16 @@ void TSB::determineTrialState (double dStrain)
     }
     
     ua = ugap - Fslip / k_total;
-    if (abs(Cstrain) <= ugap && abs(Tstrain) <= ugap) {
+    if (ua < 0) {
+        ua = 0;
+    }
+    if (fabs(Cstrain) <= ugap && fabs(Tstrain) <= ugap) {
         // stage-1 -> stage-1
         Tstress = frictionModel(Cstrain, Cstress, dStrain);
         stage = 1;
         std::vector<double> F0_sc(N, 0.0);
     }
-    else if (abs(Cstrain) <= ugap && abs(Tstrain) > ugap) {
+    else if (fabs(Cstrain) <= ugap && fabs(Tstrain) > ugap) {
         // stage-1 -> stage-2
         if (dStrain > 0) {
             dStrain_f = ugap - Cstrain;
@@ -242,7 +246,7 @@ void TSB::determineTrialState (double dStrain)
         }
         stage = 2;
     }
-    else if (abs(Cstrain) > ugap && abs(Tstrain) > ugap) {
+    else if (fabs(Cstrain) > ugap && fabs(Tstrain) > ugap) {
         // stage-2 -> stage-2
         if (Cstrain >= 0) {
             usc0 = Cstrain - ua;
@@ -259,7 +263,7 @@ void TSB::determineTrialState (double dStrain)
         }
         stage = 2;
     }
-    else if (abs(Cstrain) > ugap && abs(Tstrain) <= ugap) {
+    else if (fabs(Cstrain) > ugap && fabs(Tstrain) <= ugap) {
         // stage-2 -> stage-1
         if (dStrain < 0) {
             dStrain_sc = -(Cstrain - ugap);
@@ -273,7 +277,8 @@ void TSB::determineTrialState (double dStrain)
         }
         FTstress = 0;
         for (int i = 0; i < N; ++i) {
-            F_sc = SCmodel(usc0, Cstress, dStrain_sc, Fy_ls[i], k1_ls[i], k2_ls[i], beta_ls[i], ubear_ls[i] - ua, kbear_ls[i]);
+            Tstress_sc_i = F0_sc[i];
+            F_sc = SCmodel(usc0, Tstress_sc_i, dStrain_sc, Fy_ls[i], k1_ls[i], k2_ls[i], beta_ls[i], ubear_ls[i] - ua, kbear_ls[i]);
             F0_sc[i] = F_sc;
             FTstress += F_sc;
         }
@@ -285,10 +290,11 @@ void TSB::determineTrialState (double dStrain)
 
 double TSB::frictionModel(double u0, double F0, double du)
 {
-    double u;
+    if (fabs(du) <= DBL_EPSILON) {
+        return F0;
+    }
     double F_;
     double F;
-    u = u0 + du;
     F_ = F0 + du * k;
     if (F_ > Fslip) {
         F = Fslip;
