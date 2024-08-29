@@ -1,12 +1,11 @@
-import math
 import sys
-import numpy as np
-import matplotlib.pyplot as plt
+from utils.uniaxialmaterial import UniaxialMaterial
 
 
-class TSSCBMaterial:
+class TSSCBMaterial(UniaxialMaterial):
     
     def __init__(self,
+        tag: int,
         F1: float,
         k0: float,
         ugap: float,
@@ -18,6 +17,7 @@ class TSSCBMaterial:
         """双阶自复位本构
 
         Args:
+            tag (int): 独立的材料编号
             F1 (float): 滑动摩擦力
             k0 (float): 摩擦初始刚度
             ugap (float): 间隙
@@ -75,7 +75,7 @@ class TSSCBMaterial:
         assert 0 <= self.beta <= 1
 
 
-    def setTrainStrain(self, strain):
+    def _setTrainStrain(self, strain):
         """传入当前步的应变值strain"""
         # Reset history variables to last converged state
         self.Tstrain = self.Cstrain
@@ -206,6 +206,13 @@ class TSSCBMaterial:
         return F
     
 
+    def _commitState(self):
+        self.Cstrain = self.Tstrain
+        self.Cstress = self.Tstress
+        self.Ctangent = self.Ttangent
+        self.Cstage = self.Tstage
+
+
     def getStrain(self):
         return self.Tstrain
 
@@ -217,11 +224,4 @@ class TSSCBMaterial:
     def getTangent(self):
         return self.Ttangent
     
-
-    def commitState(self):
-        self.Cstrain = self.Tstrain
-        self.Cstress = self.Tstress
-        self.Ctangent = self.Ttangent
-        self.Cstage = self.Tstage
-
 
