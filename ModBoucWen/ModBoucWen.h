@@ -39,25 +39,22 @@
 
 
 #include <UniaxialMaterial.h>
-
+#define MODBOUCWEN_DEFAULT_ITER 10
 
 class ModBoucWen : public UniaxialMaterial
 {
   public:
-    ModBoucWen(int tag, double Fy, double uy, double alpha, double n,
-        double Q, double b, double A, double beta, double gamma,
-        int gotFailureCPD, double failureCPD, int gotMinMax, double MinMax);
+    ModBoucWen(int tag, double Fy, double uy, double alpha, double n, double Q, double b, double A, double beta, double gamma, int iter = MODBOUCWEN_DEFAULT_ITER);
     ModBoucWen();
     ~ModBoucWen();
 
     const char *getClassType(void) const {return "ModBoucWen";};
 
     int setTrialStrain(double strain, double strainRate = 0.0); 
-    int setTrial (double strain, double &stress, double &tangent, double strainRate = 0.0);
     double getStrain(void);              
     double getStress(void);
     double getTangent(void);
-    double getInitialTangent(void) {return Fy/ uy;};
+    double getInitialTangent(void) {return Fy / uy;};
 
     int commitState(void);
     int revertToLastCommit(void);    
@@ -85,10 +82,7 @@ class ModBoucWen : public UniaxialMaterial
     double A;
     double beta;
     double gamma;
-    int gotFailureCPD;
-    int gotMinMax;
-    double failureCPD;
-    double MinMax;
+    int iter;
 
     /*** State variables ***/
     double Tstrain;   // strain at current step
@@ -96,15 +90,13 @@ class ModBoucWen : public UniaxialMaterial
     double Ttangent;  // tangent stiffness at current step
     double Cstrain;   // strain at previous step
     double Cstress;   // stress at previous step
+    double Ctangent;  // tangent stiffness at previous step
     double Tz;     // varialbe z
     double Twp;    // cumulative plastic displacement
     double Tface;  // yielding face
     double Cz;
     double Cwp;
     double Cface;
-    bool failure;  // whether PCD exceed limit
-
-    void determineTrialState(double dStrain);
 
 };
 

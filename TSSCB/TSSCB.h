@@ -45,18 +45,17 @@
 class TSSCB : public UniaxialMaterial
 {
   public:
-    TSSCB(int tag, double Fslip, double k, double ugap, int N, const Vector &sc_args);
+    TSSCB(int tag, double F1, double k0, double ugap, double F2, double k1, double k2, double beta);
     TSSCB();
     ~TSSCB();
 
     const char *getClassType(void) const {return "TSSCB";};
 
     int setTrialStrain(double strain, double strainRate = 0.0); 
-    int setTrial (double strain, double &stress, double &tangent, double strainRate = 0.0);
     double getStrain(void);              
     double getStress(void);
     double getTangent(void);
-    double getInitialTangent(void) {return k;};
+    double getInitialTangent(void);
 
     int commitState(void);
     int revertToLastCommit(void);    
@@ -75,25 +74,28 @@ class TSSCB : public UniaxialMaterial
     
  private:
 	/*** Material Properties ***/
-    double Fslip;     // Friction slipping force
-    double k;         // Initial stiffness
-    double ugap;      // Gap length
-    double N;         // Number of groups of parameters modeling self-centering behavior
-    Vector sc_args;   // Parameters for self-centering behavior
+    double F1;      // Friction slipping force
+    double k0;      // Initial stiffness
+    double ugap;    // Gap length
+    double F2;      // Self-centering force at stage-II
+    double k1;      // First stiffness at stage-II
+    double k2;      // Second stiffness at stage-II
+    double beta;    // Energy dissipation coeffience
 
     /*** State variables ***/
+    double ua;
     double Tstrain;   // strain at current step
     double Tstress;   // stress at current step
     double Ttangent;  // tangent stiffness at current step
+    double Tstage;    // working stage at current step
     double Cstrain;   // strain at previous step
     double Cstress;   // stress at previous step
-    bool fracture;    // whether self-centering components are fracture
-    int stage;        // stage (1 or 2)
-    Vector F0_sc;     // trial stree of each self-centering component
+    double Ctangent;  // tangent stiffness at previous step
+    double Cstage;    // working stage at previous step
 
     void determineTrialState(double dStrain);
-    double frictionModel(double u0, double F0, double du);
-    double SCmodel(double u0, double F0, double du, double Fy, double k1, double k2, double beta, double ubear, double kbear);
+    double frictionModel(double F0, double du);
+    double SCModel(double u0, double F0, double du);
 
 };
 

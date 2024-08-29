@@ -16,8 +16,15 @@ class UniaxialMaterial:
         self._setTrainStrain(strain)
         self._commitState()
 
-    def _getUniaxialMaterial(cls, tag: int):
+    @classmethod
+    def _getUniaxialMaterial(cls, tag: int) -> 'UniaxialMaterial':
         if tag not in cls.objs.keys():
             raise ValueError(f'Material with tag {tag} does not exist')
         return cls.objs[tag]
+    
+    def getStrain(self) -> float: ...
+
+    def getStress(self) -> float: ...
+
+    def getTangent(self) -> float: ...
     

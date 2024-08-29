@@ -57,49 +57,59 @@ OPS_TSSCB()
       numTSSCBMaterials++;
   }
 
-  int tag;
-  double friction_args[3];
-  int N = 0;
-  double sc_args[60];
+  int iData[1];
+  double dData[7];
   int numData = 1;
 
 
-  if (OPS_GetIntInput(&numData, &tag) != 0) {
-    opserr << "cannot get material tag of TSSCB material with tag " << tag << endln;
+  if (OPS_GetIntInput(&numData, iData) != 0) {
+    opserr << "WARNING invalid uniaxialMaterial TSSCB tag " << endln;
     return 0;
   }
 
-  int numArgs = OPS_GetNumRemainingInputArgs();
-  if ((numArgs - 4) % 6 != 0) {
-      opserr << "TSSCB material " << tag << " has a wrong number of args" << endln;
+  numData = OPS_GetNumRemainingInputArgs();
+  if (numData != 7) {
+      opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1? k0? ugap? F2? k1? k2? beta?" << endln;
       return 0;
   }
 
-  numData = 3;
-  if (OPS_GetDoubleInput(&numData, friction_args) != 0) {
-    opserr << "cannot get material arguments of TSSCB material with tag " << tag << endln;
-    return 0;
-  }
-
-  numData = 1;
-  if (OPS_GetIntInput(&numData, &N) != 0) {
-      opserr << "cannot get material arguments of TSSCB material " << tag << endln;
+  if (OPS_GetDoubleInput(&numData, dData) != 0) {
+      opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1? k0? ugap? F2? k1? k2? beta?" << endln;
       return 0;
   }
-  if (N == 0 || N > 10) {
-      opserr << "N of TSSCB material with tag " << tag << " should within 1-10 (" << N << ")" << endln;
-      return 0;
-  }
-
-  numData = N * 6;
-  if (OPS_GetDoubleInput(&numData, sc_args) != 0) {
-      opserr << "cannot get material arguments of TSSCB material " << tag << endln;
-      return 0;
-  }
-  Vector sc_args_(sc_args, numData);
 
   // Parsing was successful, allocate the material
-  theMaterial = new TSSCB(tag, friction_args[0], friction_args[1], friction_args[2], N, sc_args_);
+  double F1;  double k0;  double ugap;  double F2;  double k1;  double k2;  double beta;
+  F1 = dData[0];  k0 = dData[1];  ugap = dData[2];  F2 = dData[3];  k1 = dData[4];  k2 = dData[5];  beta = dData[6];
+  if (F1 <= 0) {
+      opserr << "WARNING Fy should lager than 0" << endln;
+      return 0;
+  }
+  if (k0 <= 0) {
+      opserr << "WARNING k0 should lager than 0" << endln;
+      return 0;
+  }
+  if (ugap < 0) {
+      opserr << "WARNING ugap should not less than 0" << endln;
+      return 0;
+  }
+  if (F2 <= 0) {
+      opserr << "WARNING F2 should larger than 0" << endln;
+      return 0;
+  }
+  if (k1 <= 0) {
+      opserr << "WARNING k1 should larger than 0" << endln;
+      return 0;
+  }
+  if (k2 <= 0) {
+      opserr << "WARNING k2 should larger than 0" << endln;
+      return 0;
+  }
+  if (beta < 0 || beta > 1) {
+      opserr << "WARNING beta should be within [0, 1]" << endln;
+      return 0;
+  }
+  theMaterial = new TSSCB(iData[0], F1, k0, ugap, F2, k1, k2, beta);
   if (theMaterial == 0) {
     opserr << "WARNING could not create uniaxialMaterial of type TSSCB Material" << endln;
     return 0;
@@ -110,24 +120,32 @@ OPS_TSSCB()
 
 
 
-TSSCB::TSSCB(int tag_, double Fslip_, double k_, double ugap_, int N_, const Vector &sc_args_)
-    :UniaxialMaterial(tag_, MAT_TAG_TSSCB),
-    Fslip(Fslip_), k(k_), ugap(ugap_), N(N_), sc_args(sc_args_),
-    Tstress(0.0), Ttangent(0.0), fracture(false), F0_sc(Vector (N_)),
-    stage(1)
+TSSCB::TSSCB(int tag_, double F1_, double k0_, double ugap_, double F2_, double k1_, double k2_, double beta_):
+    UniaxialMaterial(tag_, MAT_TAG_TSSCB),
+    F1(F1_), k0(k0_), ugap(ugap_), F2(F2_), k1(k1_), k2(k2_), beta(beta_)
 {
     Cstrain = 0.0;
     Cstress = 0.0;
+    Ctangent = 0.0;
+    Cstage = 1;
     Tstrain = 0.0;
     Tstress = 0.0;
-    Ttangent = k;
-
+    if (ugap != 0) {
+        Ttangent = k0;
+    }
+    else {
+        Ttangent = k1;
+        F1 = F2;
+    }
+    Tstage = 1;
+    ua = ugap - F1 / k0;
+    if (ua < 0) {
+        ua = 0;
+    }
 }
 
 TSSCB::TSSCB():UniaxialMaterial(0, MAT_TAG_TSSCB),
-    Fslip(0.0), k(0.0), ugap(0.0), N(1), sc_args(2),
-    Tstress(0.0), Ttangent(0.0), fracture(false), F0_sc(Vector(1)),
-    stage(1)
+    F1(0.0), k0(0.0), ugap(0.0), F2(0.0), k1(0.0), k2(0.0), beta(0.0)
 {
 
 }
@@ -139,114 +157,64 @@ TSSCB::~TSSCB ()
 
 int TSSCB::setTrialStrain (double strain, double strainRate)
 {
+    // Reset history variables to last converged state
+    Tstrain = Cstrain;
+    Tstress = Cstress;
+    Ttangent = Ctangent;
+    Tstage = Cstage;
+
    // Determine change in strain from last converged state
    double dStrain = strain - Cstrain;
 
    if (fabs(dStrain) > DBL_EPSILON) {
-     // Set trial strain
-     Tstrain = strain;
+        // Set trial strain
+        Tstrain = strain;
 
-     // Calculate the trial state given the trial strain
-     determineTrialState (dStrain);
-
+        // Calculate the trial state given the trial strain
+        determineTrialState (dStrain);
    }
-
    return 0;
 }
 
-int TSSCB::setTrial (double strain, double &stress, double &tangent, double strainRate)
-{
-   // Determine change in strain from last converged state
-   double dStrain = strain - Cstrain;
-
-   if (fabs(dStrain) > DBL_EPSILON) {
-     // Set trial strain
-     Tstrain = strain;
-
-     // Calculate the trial state given the trial strain
-     determineTrialState (dStrain);
-
-   }
-
-   stress = Tstress;
-   tangent = Ttangent;
-
-   return 0;
-}
 
 void TSSCB::determineTrialState (double dStrain)
 {
-    double k_total = 0.0;  // total stiffness of self-centering components
-    double ua;
-    double dStrain_f;
-    double dStrain_sc;
+    double F1_;
+    double F2_;
+    double du1;
+    double du2;
     double usc0;
-    double Fsc0;
-    double F_sc;
-    double Tstress_sc_i;
-    double FTstress;
 
-    std::vector<double> Fy_ls(N);
-    for (int i = 0; i < N; ++i) {
-        Fy_ls[i] = sc_args[6 * i];
+    // determine working stage
+    if (-ugap <= Tstrain && Tstrain <= ugap) {
+        Tstage = 1;
     }
-    std::vector<double> k1_ls(N);
-    for (int i = 0; i < N; ++i) {
-        k1_ls[i] = sc_args[6 * i + 1];
-    }
-    std::vector<double> k2_ls(N);
-    for (int i = 0; i < N; ++i) {
-        k2_ls[i] = sc_args[6 * i + 2];
-    }
-    std::vector<double> beta_ls(N);
-    for (int i = 0; i < N; ++i) {
-        beta_ls[i] = sc_args[6 * i + 3];
-    }
-    std::vector<double> ubear_ls(N);
-    for (int i = 0; i < N; ++i) {
-        ubear_ls[i] = sc_args[6 * i + 4];
-    }
-    std::vector<double> kbear_ls(N);
-    for (int i = 0; i < N; ++i) {
-        kbear_ls[i] = sc_args[6 * i + 5];
+    else {
+        Tstage = 2;
     }
 
-    for (int i = 0; i < k1_ls.size(); ++i) {
-        k_total += k1_ls[i];
-    }
-    
-    ua = ugap - Fslip / k_total;
-    if (ua < 0) {
-        ua = 0;
-    }
-    if (fabs(Cstrain) <= ugap && fabs(Tstrain) <= ugap) {
+    // updata Tstress
+    if (Cstage == 1 && Tstage == 1) {
         // stage-1 -> stage-1
-        Tstress = frictionModel(Cstrain, Cstress, dStrain);
-        stage = 1;
-        std::vector<double> F0_sc(N, 0.0);
+        Tstress = frictionModel(Cstress, dStrain);
     }
-    else if (fabs(Cstrain) <= ugap && fabs(Tstrain) > ugap) {
+    else if (Cstage == 1 && Tstage == 2) {
         // stage-1 -> stage-2
         if (dStrain > 0) {
-            dStrain_f = ugap - Cstrain;
-            dStrain_sc = Tstrain - ugap;
+            du1 = ugap - Cstrain;
+            du2 = dStrain - du1;
             usc0 = ugap - ua;
         }
         else {
-            dStrain_f = Cstrain - ugap;
-            dStrain_sc = Tstrain + ugap;
+            du1 = -ugap - Cstrain;
+            du2 = dStrain - du1;
             usc0 = ua - ugap;
         }
-        Fsc0 = frictionModel(Cstrain, Cstress, dStrain_f);
-        Tstress = 0.0;
-        for (int i = 0; i < N; ++i) {
-            F_sc = SCmodel(usc0, Fsc0, dStrain_sc, Fy_ls[i], k1_ls[i], k2_ls[i], beta_ls[i], ubear_ls[i] - ua, kbear_ls[i]);
-            F0_sc[i] = F_sc;
-            Tstress += F_sc;
-        }
-        stage = 2;
+        F1_ = frictionModel(Cstress, du1);
+        F2_ = SCModel(usc0, F1_, du2);
+        Tstress = F2_;
     }
-    else if (fabs(Cstrain) > ugap && fabs(Tstrain) > ugap) {
+    else if (Cstage == 2 && Tstage == 2) {
         // stage-2 -> stage-2
         if (Cstrain >= 0) {
             usc0 = Cstrain - ua;
@@ -254,59 +222,48 @@ void TSSCB::determineTrialState (double dStrain)
         else {
             usc0 = Cstrain + ua;
         }
-        Tstress = 0.0;
-        for (int i = 0; i < N; ++i) {
-            Tstress_sc_i = F0_sc[i];
-            F_sc = SCmodel(usc0, Tstress_sc_i, dStrain, Fy_ls[i], k1_ls[i], k2_ls[i], beta_ls[i], ubear_ls[i] - ua, kbear_ls[i]);
-            F0_sc[i] = F_sc;
-            Tstress += F_sc;
-        }
-        stage = 2;
+        Tstress = SCModel(usc0, Cstress, dStrain);
     }
-    else if (fabs(Cstrain) > ugap && fabs(Tstrain) <= ugap) {
+    else if (Cstage == 2 && Tstage == 1) {
         // stage-2 -> stage-1
         if (dStrain < 0) {
-            dStrain_sc = -(Cstrain - ugap);
-            dStrain_f = -(ugap - Tstrain);
+            du1 = -(Cstrain - ugap);
+            du2 = -(ugap - Tstrain);
             usc0 = Cstrain - ua;
         }
         else {
-            dStrain_sc = -ugap - Cstrain;
-            dStrain_f = Tstrain + ugap;
+            du1 = -ugap - Cstrain;
+            du2 = Tstrain + ugap;
             usc0 = Cstrain + ua;
         }
-        FTstress = 0;
-        for (int i = 0; i < N; ++i) {
-            Tstress_sc_i = F0_sc[i];
-            F_sc = SCmodel(usc0, Tstress_sc_i, dStrain_sc, Fy_ls[i], k1_ls[i], k2_ls[i], beta_ls[i], ubear_ls[i] - ua, kbear_ls[i]);
-            F0_sc[i] = F_sc;
-            FTstress += F_sc;
-        }
-        Tstress = frictionModel(ugap, FTstress, dStrain_f);
-        stage = 1;
-        std::vector<double> F0_sc(N, 0.0);
+        F1_ = SCModel(usc0, Cstress, du1);
+        F2_ = frictionModel(F1_, du2);
+        Tstress = F2_;
+    }
+    if (dStrain != 0) {
+        Ttangent = (Tstress - Cstress) / dStrain;
     }
 }
 
-double TSSCB::frictionModel(double u0, double F0, double du)
+double TSSCB::frictionModel(double F0, double du)
 {
-    if (fabs(du) <= DBL_EPSILON) {
+    if (du == 0.0) {
         return F0;
     }
     double F_;
     double F;
-    F_ = F0 + du * k;
-    if (F_ > Fslip) {
-        F = Fslip;
-    } else if (F_ < -Fslip) {
-        F = -Fslip;
+    F_ = F0 + du * k0;
+    if (F_ > F1) {
+        F = F1;
+    } else if (F_ < -F1) {
+        F = -F1;
     } else {
         F = F_;
     };
     return F;
 }
 
-double TSSCB::SCmodel(double u0, double F0, double du, double Fy, double k1, double k2, double beta, double ubear, double kbear)
+double TSSCB::SCModel(double u0, double F0, double du)
 {
     double F;
     double u;
@@ -317,41 +274,32 @@ double TSSCB::SCmodel(double u0, double F0, double du, double Fy, double k1, dou
         F = F0;
         return F;
     };
-
     u = u0 + du;
-    uy = Fy / k1;
+    uy = F2 / k1;
     F_ = F0 + du * k1;
-    if (u >= ubear) {
-        F = kbear * (u - ubear) + Fy + (ubear - uy) * k2;
-        return F;
-    }
-    else if (u <= -ubear) {
-        F = kbear * (u + ubear) - Fy - (ubear - uy) * k2;
-        return F;
-    }
     if (du > 0) {
-        if (u < -Fy * (1 - 2 * beta) / k1 && F_ > k2 * u - Fy * (1 - 2 * beta) * (1 - k2 / k1)) {
-            F = k2 * u - Fy * (1 - 2 * beta) * (1 - k2 / k1);
+        if (u < -F2 * (1 - 2 * beta) / k1 && F_ > k2 * u - F2 * (1 - 2 * beta) * (1 - k2 / k1)) {
+            F = k2 * u - F2 * (1 - 2 * beta) * (1 - k2 / k1);
         }
-        else if (-Fy * (1 - 2 * beta) / k1 <= u && u <= uy && F_ > k1 * u) {
+        else if (-F2 * (1 - 2 * beta) / k1 <= u && u <= uy && F_ > k1 * u) {
             F = k1 * u;
         }
-        else if (u > Fy * (1 - 2 * beta) / k1 && F_ > k2 * u + Fy - k2 * uy) {
-            F = k2 * u + Fy - k2 * uy;
+        else if (u > F2 * (1 - 2 * beta) / k1 && F_ > k2 * u + F2 - k2 * uy) {
+            F = k2 * u + F2 - k2 * uy;
         }
         else {
             F = F_;
         }
     }
     else {
-        if (u > Fy * (1 - 2 * beta) / k1 && F_ < k2 * u + Fy * (1 - 2 * beta) * (1 - k2 / k1)) {
-            F = k2 * u + Fy * (1 - 2 * beta) * (1 - k2 / k1);
+        if (u > F2 * (1 - 2 * beta) / k1 && F_ < k2 * u + F2 * (1 - 2 * beta) * (1 - k2 / k1)) {
+            F = k2 * u + F2 * (1 - 2 * beta) * (1 - k2 / k1);
         }
-        else if (-uy <= u && u <= Fy * (1 - 2 * beta) / k1 && F_ < k1 * u) {
+        else if (-uy <= u && u <= F2 * (1 - 2 * beta) / k1 && F_ < k1 * u) {
             F = k1 * u;
         }
-        else if (u < -Fy * (1 - 2 * beta) / k1 && F_ < k2 * u - (Fy - k2 * uy)) {
-            F = k2 * u - (Fy - k2 * uy);
+        else if (u < -F2 * (1 - 2 * beta) / k1 && F_ < k2 * u - (F2 - k2 * uy)) {
+            F = k2 * u - (F2 - k2 * uy);
         }
         else {
             F = F_;
@@ -359,7 +307,6 @@ double TSSCB::SCmodel(double u0, double F0, double du, double Fy, double k1, dou
     }
     return F;
 }
-
 
 
 double TSSCB::getStrain ()
@@ -374,9 +321,6 @@ double TSSCB::getStress ()
 
 double TSSCB::getTangent ()
 {
-    if (fabs(Tstrain - Cstrain) > DBL_EPSILON) {
-        Ttangent = (Tstress - Cstress) / (Tstrain - Cstrain);
-    }
     return Ttangent;
 }
 
@@ -384,8 +328,22 @@ int TSSCB::commitState ()
 {
    Cstrain = Tstrain;
    Cstress = Tstress;
+   Ctangent = Ttangent;
+   Cstage = Tstage;
    return 0;
 }
+
+double TSSCB::getInitialTangent()
+{
+    if (ugap == 0) {
+        return k1;
+    }
+    else {
+        return k0;
+    }
+}
+
+
 
 int TSSCB::revertToLastCommit ()
 {
@@ -398,15 +356,23 @@ int TSSCB::revertToStart ()
 {
    Cstrain = 0.0;
    Cstress = 0.0;
-   Ttangent = k;
+   Ctangent = 0.0;
+   Cstage = 1;
    Tstrain = 0.0;
    Tstress = 0.0;
+   if (ugap == 0) {
+       Ttangent = k1;
+   }
+   else {
+       Ttangent = k0;
+   }
+   Tstage = 1;
    return 0;
 }
 
 UniaxialMaterial* TSSCB::getCopy ()
 {
-   TSSCB* theCopy = new TSSCB(this->getTag(), Fslip, k, ugap, N, sc_args);
+   TSSCB* theCopy = new TSSCB(this->getTag(), F1, k0, ugap, F2, k1, k2, beta);
 
    return theCopy;
 }
@@ -429,21 +395,26 @@ void TSSCB::Print (OPS_Stream& s, int flag)
 {
   if (flag == OPS_PRINT_PRINTMODEL_MATERIAL) {    
     s << "TSSCB tag:   " << this->getTag() << endln;
-    s << "  Fslip:   " << Fslip << " ";
-    s << "  k:       " << k << " ";
+    s << "  F1:      " << F1 << " ";
+    s << "  k0:      " << k0 << " ";
     s << "  ugap:    " << ugap << " ";
-    s << "  N:       " << N << " ";
-    s << "  sc_args: " << sc_args << " ";
+    s << "  F2:      " << F2 << " ";
+    s << "  k1:      " << k1 << " ";
+    s << "  k2:      " << k2 << " ";
+    s << "  beta:    " << beta << " ";
   }
 
   if (flag == OPS_PRINT_PRINTMODEL_JSON) {
     s << "\t\t\t{";
 	s << "\"name\": \"" << this->getTag() << "\", ";
 	s << "\"type\": \"TSSCB\", ";
-	s << "\"Fslip\": " << Fslip << ", ";
-	s << "\"k\": " << k << ", ";
+	s << "\"F1\": " << F1 << ", ";
+	s << "\"k0\": " << k0 << ", ";
     s << "\"ugap\": " << ugap << ", ";
-    s << "\"sc_args\": " << sc_args << ", ";
+    s << "\"F2\": " << F2 << ", ";
+    s << "\"k1\": " << k1 << ", ";
+    s << "\"k2\": " << k2 << ", ";
+    s << "\"beta\": " << beta << ", ";
   }
   
 }

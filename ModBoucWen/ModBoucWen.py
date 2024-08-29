@@ -18,8 +18,9 @@ class ModBoucWen(UniaxialMaterial):
             A: float,
             beta: float,
             gamma: float,
-            iter: int=1
+            iter: int=10
         ):
+        self.tag = tag
         # Materail parameters
         self.Fy = Fy
         self.uy = uy
@@ -68,7 +69,7 @@ class ModBoucWen(UniaxialMaterial):
         self.Cface = self.uy
         self.Tface = self.uy
 
-    def _setTrainStrain(self, strain):
+    def _setTrainStrain(self, strain, strainRate=0):
         """传入当前步的应变值strain"""
         # Reset history variables to last converged state
         self.Tstrain = self.Cstrain
@@ -83,27 +84,36 @@ class ModBoucWen(UniaxialMaterial):
         else:
             self.Tstrain = strain
         # Calculate stress and tangent
-        if self.Tstrain > self.Cface:
-            # 正向屈服
-            self.Twp = self.Cwp + self.Tstrain - self.Cface
-            self.Tface = self.Tstrain
-        elif self.Tstrain < self.Cface - 2 * self.uy:
-            # 负向屈服
-            self.Twp = self.Cwp + self.Cface - 2 * self.uy - self.Tstrain
-            self.Tface = self.Tstrain + 2 * self.uy
-        if dStrain * self.Cz < 0.0:
-            sgn = -1.0
-        elif dStrain * self.Cz == 0.0:
-            sgn = 0.0
+        dStrain_ = dStrain / self.iter
+        z_ = self.Cz  # 临时的z值
+        for i in range(self.iter):
+            # 迭代iter个子步
+            strain_ = self.Cstrain + dStrain_ * i  # 每一步应变
+            if strain_ > self.Tface:
+                # 正向屈服
+                self.Twp += strain_ - self.Tface
+                self.Tface = strain_
+            elif strain_ < self.Tface - 2 * self.uy:
+                # 负向屈服
+                self.Twp += self.Tface - 2 * self.uy - strain_
+                self.Tface = strain_ + 2 * self.uy
+            if dStrain_ * z_ < 0.0:
+                sgn = -1.0
+            elif dStrain_ * z_ == 0.0:
+                sgn = 0.0
+            else:
+                sgn = 1.0
+            m = 1 + self.Q * (1 - pow(self.b, -self.Twp / self.uy))
+            S1 = 1.0 / self.uy * (self.A - (self.beta * sgn + self.gamma) * pow(abs(z_ / m), self.n))
+            S2 = 1.0 / self.uy * (self.A - (self.beta * sgn + self.gamma) * pow(abs(z_ / m + 0.5 * dStrain_ * S1), self.n))
+            S3 = 1.0 / self.uy * (self.A - (self.beta * sgn + self.gamma) * pow(abs(z_ / m + 0.5 * dStrain_ * S2), self.n))
+            S4 = 1.0 / self.uy * (self.A - (self.beta * sgn + self.gamma) * pow(abs(z_ / m + dStrain_ * S3), self.n))
+            z_ = z_ + 1.0 / 6.0 * dStrain_ * (S1 + S2 + S3 + S4)
+            self.Tstress = self.alpha * self.Fy / self.uy * strain_ + (1 - self.alpha) * self.Fy * z_
         else:
-            sgn = 1.0
-        m = 1 + self.Q * (1 - pow(self.b, -self.Twp / self.uy))
-        S1 = 1.0 / self.uy * (self.A - (self.beta * sgn + self.gamma) * pow(abs(self.Cz / m), self.n))
-        S2 = 1.0 / self.uy * (self.A - (self.beta * sgn + self.gamma) * pow(abs(self.Cz / m + 0.5 * dStrain * S1), self.n))
-        S3 = 1.0 / self.uy * (self.A - (self.beta * sgn + self.gamma) * pow(abs(self.Cz / m + 0.5 * dStrain * S2), self.n))
-        S4 = 1.0 / self.uy * (self.A - (self.beta * sgn + self.gamma) * pow(abs(self.Cz / m + dStrain * S3), self.n))
-        self.Tz = self.Cz + 1.0 / 6.0 * dStrain * (S1 + S2 + S3 + S4)
-        self.Tstress = self.alpha * self.Fy / self.uy * self.Tstrain + (1 - self.alpha) * self.Fy * self.Tz
+            # 将临时变量赋给实例变量
+            self.Tz = z_
+        self.Ttangent = (self.Tstress - self.Cstress) / dStrain
 
     def _commitState(self):
         self.Cstrain = self.Tstrain
