@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from utils.uniaxialmaterial import UniaxialMaterial
 
 
-class FailureCriterion(UniaxialMaterial):
+class Failure(UniaxialMaterial):
     
     def __init__(self,
             tag: int,
@@ -14,8 +14,8 @@ class FailureCriterion(UniaxialMaterial):
             maxStrain: float=None,
             minForce: float=None,
             maxForce: float=None,
-            CPD: float=None,
             uy: float=None,
+            maxCPD: float=None,
         ):
         self.tag = tag
         self.other_tag = other_tag
@@ -24,7 +24,7 @@ class FailureCriterion(UniaxialMaterial):
         self.maxStrain = maxStrain
         self.minForce = minForce
         self.maxForce = maxForce
-        self.CPD = CPD
+        self.maxCPD = maxCPD
         self.uy = uy
         # Response history
         self.Cfailure = False  # 是否破坏
@@ -44,17 +44,17 @@ class FailureCriterion(UniaxialMaterial):
             self.minForce = -sys.float_info.max
         if self.maxForce is None:
             self.maxForce = sys.float_info.max
-        if (self.CPD is None and self.uy is not None) or (self.CPD is not None and self.uy is None):
-            raise ValueError("CPD and uy must be both set or both None")
-        if self.CPD is None:
-            self.CPD = sys.float_info.max
+        if self.maxCPD is not None and self.uy is None:
+            raise ValueError("uy must be provided when maxCPD is provided")
+        if self.maxCPD is None:
+            self.maxCPD = sys.float_info.max
         if self.uy is None:
             self.uy = sys.float_info.max
         assert self.minStrain <= 0, "minStrain must be negative"
         assert self.maxStrain >= 0, "maxStrain must be positive"
         assert self.minForce <= 0, "minForce must be negative"
         assert self.maxForce >= 0, "maxForce must be positive"
-        assert self.CPD > 0, "CPD must be positive"
+        assert self.maxCPD > 0, "maxCPD must be positive"
         assert self.uy > 0, "uy must be positive"
 
     def _init_paras(self):
@@ -97,7 +97,7 @@ class FailureCriterion(UniaxialMaterial):
             # 正向破坏
             self.Tfailure = True
         # 2 判断是否累积塑性应变破坏
-        if self.Twp > self.CPD * self.uy:
+        if self.Twp > self.maxCPD * self.uy:
             self.Tfailure = True
         # 3 判断是否承载力破坏
         if self.material.getStress() < self.minForce:

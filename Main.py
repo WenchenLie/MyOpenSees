@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 from TSSCB.TSSCB import TSSCBMaterial
 from ModBoucWen.ModBoucWen import ModBoucWen
-from FailureCriterion.FailureCriterion import FailureCriterion
+from Failure.Failure import Failure
 from utils.utils import generate_path
 
 
@@ -22,13 +22,13 @@ mat = TSSCBMaterial(
 )
 
 #                tag Fy uy  alpha  n   Q    b    A  beta gamma
-mat2 = ModBoucWen(2, 50, 2, 0.01,  30 ,  0.5, 1.005, 1, 0.5, 0.5)
-mat3 = FailureCriterion(3, 2, CPD=100, uy=2)
+mat2 = ModBoucWen(2, 50, 2, 0.01,  3,  0.5, 1.005, 1, 0.5, 0.5)
+mat3 = Failure(3, 2, uy=2, CPD=100)
 
 F = []
 for ui in u:
-    mat2.setStrain(ui)
-    Fi = mat2.getStress()
+    mat3.setStrain(ui)
+    Fi = mat3.getStress()
     F.append(Fi)
 
 

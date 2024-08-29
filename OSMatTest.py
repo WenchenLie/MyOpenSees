@@ -37,17 +37,10 @@ if __name__ == "__main__":
     u = generate_path([0, 10, -10, 20, -20, 30, -30, 40, -40, 55, -55, 0])  # 目标位移幅值点
 
 
-    mat = 'TSB'
-    Fslip = 30
-    k = 300
-    ugap = 20
-    N = 1
-    Fy, k1, k2, beta, ubear, kbear = 40, 50, 2, 0.4, 50, 30
-    paras_a = [Fslip, k, ugap, N, Fy, k1, k2, beta, ubear, kbear]
+    mat = 'TSSCB'
+    paras_a = [200, 500, 20, 400, 400, 5, 0.3]
 
     F = material_test(u, mat, paras_a)
     F = np.array(F)
-    plt.plot(u, F, label='base')
-    plt.ylim(-150, 150)
-    plt.legend()
+    plt.plot(u, F)
     plt.show()
