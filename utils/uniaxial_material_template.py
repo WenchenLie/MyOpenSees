@@ -17,8 +17,11 @@ class MyMaterial(UniaxialMaterial):
         self.Tstress: float # 当前步的应力
         self.Ctangent: float  # 上一步的切线刚度
         self.Ttangent: float  # 当前步的切线刚度
-        self._init_paras()
         self._check_paras()
+        self._init_paras()
+
+    def _check_paras(self):
+        ...
 
     def _init_paras(self):
         self.Cstrain = 0
@@ -27,9 +30,6 @@ class MyMaterial(UniaxialMaterial):
         self.Tstress = 0
         self.Ctangent = 0
         self.Ttangent = 0
-        ...
-
-    def _check_paras(self):
         ...
 
     def _setTrainStrain(self, strain):
