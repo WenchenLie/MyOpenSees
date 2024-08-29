@@ -2,10 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from TSSCB.TSSCB import TSSCBMaterial
+from ModBoucWen.ModBoucWen import ModBoucWen
 from utils.utils import generate_path
 
 
-u = generate_path([0, 5, -5, 10, -10, 20, -20, 30, -30, 0])
+u = generate_path([0, 5, -5, 10, -10, 20, -20, 30, -30, 0], 500)
 PARA3 = {'F1': 100, 'k0': 300, 'ugap': 10, 'F2': 300, 'k1': 120, 'k2': 10, 'beta': 0.4}
 
 mat = TSSCBMaterial(
@@ -19,10 +20,13 @@ mat = TSSCBMaterial(
     PARA3['beta'],
 )
 
+#                tag Fy uy  alpha  n   Q    b    A  beta gamma
+mat2 = ModBoucWen(2, 50, 2, 0.01, 20,  0.5, 1.005, 1, 0.5, 0.5)
+
 F = []
 for ui in u:
-    mat.setStrain(ui)
-    Fi = mat.getStress()
+    mat2.setStrain(ui)
+    Fi = mat2.getStress()
     F.append(Fi)
 
 
