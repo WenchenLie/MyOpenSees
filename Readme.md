@@ -1,7 +1,7 @@
 # OpenSees个人二次开发
 ## 1 改进BoucWen模型
 ```tcl
-ModBoucWen $tag $Fy $uy $alpha $alpha $n $Q $b $A $beta $gamma <-failureCPD $failureCPD> <-MinMax $MinMax>
+ModBoucWen $tag $Fy $uy $alpha $alpha $n $Q $b $A $beta $gamma <$iter>
 ```
 *tag: 材料编号  
 *Fy: 屈服力  
@@ -13,8 +13,7 @@ ModBoucWen $tag $Fy $uy $alpha $alpha $n $Q $b $A $beta $gamma <-failureCPD $fai
 *A: 滞回环形状参数(建议取1)  
 *beta: 滞回环形状参数(建议取0.5)  
 *gamma: 滞回环形状参数(建议取0.5)  
-*failureCPD: 失效CPD(累积塑性位移与屈服位移的比值超过该值则认为失效)  
-*MinMax: 失效位移(最大位移超过该值则认为失效)  
+*iter: 迭代次数(默认10)  
 ## 2 双阶自复位模型（TSSCB）
 ```tcl
 TSSCB $tag $F1 $k0 $ugap $F2 $k1 $k2 $beta
