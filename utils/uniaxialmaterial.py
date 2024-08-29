@@ -1,17 +1,23 @@
 class UniaxialMaterial:
-    existent_tags = []
+    objs = {}
     
     def __new__(cls, tag: int, *args, **kwargs):
-        if tag in cls.existent_tags:
+        if tag in cls.objs.keys():
             raise ValueError(f'tag {tag} already exists')
         obj = super().__new__(cls)
-        cls.existent_tags.append(tag)
+        cls.objs[tag] = obj
         return obj
 
-    def _setTrainStrain(self, strain: float) -> None: ...
+    def _setTrainStrain(self, strain: float, strainRate: float=0) -> None: ...
 
     def _commitState(self) -> None: ...
 
     def setStrain(self, strain: float):
         self._setTrainStrain(strain)
         self._commitState()
+
+    def _getUniaxialMaterial(cls, tag: int):
+        if tag not in cls.objs.keys():
+            raise ValueError(f'Material with tag {tag} does not exist')
+        return cls.objs[tag]
+    

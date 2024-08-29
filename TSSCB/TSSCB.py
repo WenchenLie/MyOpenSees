@@ -26,6 +26,7 @@ class TSSCBMaterial(UniaxialMaterial):
             k2 (float): 第二阶段的第二刚度
             beta (float): 耗能系数
         """
+        self.tag = tag
         # Materail parameters
         self.F1 = F1
         self.k0 = k0
@@ -75,7 +76,7 @@ class TSSCBMaterial(UniaxialMaterial):
         assert 0 <= self.beta <= 1
 
 
-    def _setTrainStrain(self, strain):
+    def _setTrainStrain(self, strain, strainRate: float=0):
         """传入当前步的应变值strain"""
         # Reset history variables to last converged state
         self.Tstrain = self.Cstrain
@@ -204,14 +205,12 @@ class TSSCBMaterial(UniaxialMaterial):
             else:
                 F = F_
         return F
-    
 
     def _commitState(self):
         self.Cstrain = self.Tstrain
         self.Cstress = self.Tstress
         self.Ctangent = self.Ttangent
         self.Cstage = self.Tstage
-
 
     def getStrain(self):
         return self.Tstrain
