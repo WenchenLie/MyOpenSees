@@ -126,15 +126,17 @@ TSSCB::TSSCB(int tag_, double F1_, double k0_, double ugap_, double F2_, double 
 {
     Cstrain = 0.0;
     Cstress = 0.0;
-    Ctangent = 0.0;
+    
     Cstage = 1;
     Tstrain = 0.0;
     Tstress = 0.0;
     if (ugap != 0) {
         Ttangent = k0;
+        Ctangent = k0;
     }
     else {
         Ttangent = k1;
+        Ctangent = k1;
         F1 = F2;
     }
     Tstage = 1;
