@@ -53,7 +53,7 @@ OPS_TSSCB()
 
   // Print information
   if (numTSSCBMaterials == 0) {
-      opserr << "TSSCB unaxial material - Written by Wenchen Lie (July 26, 2024)\n";
+      opserr << "TSSCB unaxial material - Written by Wenchen Lie (Sep 13, 2024)\n";
       numTSSCBMaterials++;
   }
 
@@ -140,16 +140,17 @@ TSSCB::TSSCB(int tag_, double F1_, double k0_, double ugap_, double F2_, double 
         F1 = F2;
     }
     Tstage = 1;
-    ua = ugap - F1 / k0;
+    ua = ugap - F1 / k1;
     if (ua < 0) {
         ua = 0;
     }
 }
 
 TSSCB::TSSCB():UniaxialMaterial(0, MAT_TAG_TSSCB),
-    F1(0.0), k0(0.0), ugap(0.0), F2(0.0), k1(0.0), k2(0.0), beta(0.0)
+    F1(0.0), k0(0.0), ugap(0.0), F2(0.0), k1(0.0), k2(0.0), beta(0.0), ua(0.0),
+    Tstage(1), Cstage(1), Tstrain(0.0), Cstrain(0.0), Tstress(0.0), Cstress(0.0), Ttangent(0.0), Ctangent(0.0)
 {
-
+    
 }
 
 TSSCB::~TSSCB ()
@@ -358,17 +359,18 @@ int TSSCB::revertToStart ()
 {
    Cstrain = 0.0;
    Cstress = 0.0;
-   Ctangent = 0.0;
    Cstage = 1;
    Tstrain = 0.0;
    Tstress = 0.0;
+   Tstage = 1;
    if (ugap == 0) {
        Ttangent = k1;
+       Ctangent = k1;
    }
    else {
        Ttangent = k0;
+       Ctangent = k0;
    }
-   Tstage = 1;
    return 0;
 }
 
