@@ -16,7 +16,7 @@ ModBoucWen $tag $Fy $uy $alpha $alpha $n $Q $b $A $beta $gamma <$iter>
 *iter: 迭代次数(默认10)  
 ## 2 双阶自复位模型（TSSCB）
 ```tcl
-TSSCB $tag $F1 $k0 $ugap $F2 $k1 $k2 $beta
+TSSCB $tag $F1 $k0 $ugap $F2 $k1 $k2 $beta <-hardening $uh $r1 $r2 $r3> <-minmax $uf>
 ```
 *tag: 材料编号  
 *F1: 摩擦滑移力  
@@ -26,3 +26,8 @@ TSSCB $tag $F1 $k0 $ugap $F2 $k1 $k2 $beta
 *k1: 自复位模型(第1组)的初始刚度  
 *k2: 自复位模型(第1组)的屈服后刚度  
 *beta: 自复位模型(第1组)的耗能系数  
+*uh: 硬化开始位移
+*r1: 控制第二阶段的起始阶段的承载力退化
+*r2: 控制第二阶段的后续承载力退化
+*r3: 控制硬化位移后承载力硬化的程度
+*uf: SMA线缆断裂位移
