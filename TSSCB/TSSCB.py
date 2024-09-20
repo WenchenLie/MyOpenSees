@@ -159,10 +159,8 @@ class TSSCBMaterial(UniaxialMaterial):
         if abs(dStrain) > sys.float_info.epsilon:
             self.Tstrain = strain
             # Determine whether to start hardening
-            if abs(self.Tstrain) > self.uh:
+            if abs(self.Tstrain) > self.uh or self.Chardening:
                 self.Thardening = True
-            if self.Thardening and abs(self.Tstrain) > self.ugap:
-                self.TCDD = self.CCDD + abs(dStrain) / self.uh
             if abs(self.Tstrain) > self.uf:
                 self.Tfracture = True
             # Update Tstress
@@ -223,6 +221,8 @@ class TSSCBMaterial(UniaxialMaterial):
                 du1 = -self.ugap - self.Cstrain  # Strain increment in stage-1
                 du2 = dStrain - du1  # Strain increment in stage-2
                 usc0 = self.ua - self.ugap
+            if self.Thardening:
+                self.TCDD = self.CCDD + abs(du2) / (self.uh - self.ugap)
             F1_ = self._frictionModel(self.Cstress_ideal, du1)
             F2_ = self._SCModel(usc0, F1_, du2)
             self.Tstress_ideal = F2_
@@ -240,6 +240,8 @@ class TSSCBMaterial(UniaxialMaterial):
                 self.Tstress = -self.F1
         elif self.Cstage == 2 and self.Tstage == 2:
             # NOTE: stage-2 -> stage-2
+            if self.Thardening:
+                self.TCDD = self.CCDD + abs(dStrain) / (self.uh - self.ugap)
             if self.Tstrain >= 0:
                 usc0 = self.Cstrain - self.ua
             else:
@@ -271,6 +273,8 @@ class TSSCBMaterial(UniaxialMaterial):
                 du1 = -self.ugap - self.Cstrain
                 du2 = self.Tstrain + self.ugap
                 usc0 = self.Cstrain + self.ua
+            if self.Thardening:
+                self.TCDD = self.CCDD + abs(du1) / (self.uh - self.ugap)
             F1_ = self._SCModel(usc0, self.Cstress_ideal, du1)
             # Apply degradation
             F1_ideal1 = F1_
@@ -292,10 +296,6 @@ class TSSCBMaterial(UniaxialMaterial):
             self.Tstress_ideal = F2_
             self.Tstress_ideal1 = self.Tstress_ideal
             self.Tstress = self.Tstress_ideal
-            # if dStrain < 0 and self.Tstress < 0:
-            #     self.Tstress = 0
-            # elif dStrain > 0 and self.Tstress > 0:
-            #     self.Tstress = 0
         else:
             assert False, f"Invalid state transition, Cstage={self.Cstage}, Tstage={self.Tstage}"
         F_hardening = max(abs(self.Tstrain) - self.uh, 0) * self.k2 * self.r3  # Strength enhancement due to hardening
