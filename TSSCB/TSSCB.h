@@ -28,7 +28,7 @@
 
 // Written: Wenchen Lie 
 // Created: July 26, 2024
-// Last update: Sep 20, 2024
+// Last update: Sep 22, 2024
 // Revision: A
 //
 // Description: This file contains the class definition for 
@@ -90,24 +90,26 @@ class TSSCB : public UniaxialMaterial
     /*** State variables ***/
     double ua;
     double Tstrain;   // strain
-    double Tstress;   // stress
     double Ttangent;  // tangent stiffness
     double Tstage;    // working stage
     bool Thardening;  // whether hardening is triggered
-    double Tstress_ideal;  // Stress without degradation and modification
-    double Tstress_ideal1;  // Stress without modification but with degradation
+    double Tstress1;  // Stress without degradation and modification
+    double Tstress2;  // Stress without modification but with degradation
+    double Tstress3;  // stress with degradation and modification but without strength enhancement due to hardening
+    double Tstress4;  // Stress with strength enhancement due to hardening
     double TCDD;  // Cumulative damage deformation
     bool Tfracture;  // Whether SMA cables fracture
     double Tplate1;  // Position of left end plate
     double Tplate2;  // Position of right end plate
 
     double Cstrain;
-    double Cstress;
     double Ctangent;
     double Cstage;
     bool Chardening;
-    double Cstress_ideal;
-    double Cstress_ideal1;
+    double Cstress1;
+    double Cstress2;
+    double Cstress3;
+    double Cstress4;
     double CCDD;
     bool Cfracture;
     double Cplate1;

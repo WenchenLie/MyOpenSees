@@ -157,18 +157,18 @@ OPS_TSSCB()
       opserr << "WARNING uf should be larger than 0" << endln;
       return 0;
   }
-  opserr << "F1 = " << F1 << endln;
-  opserr << "k0 = " << k0 << endln;
-  opserr << "ugap = " << ugap << endln;
-  opserr << "F2 = " << F2 << endln;
-  opserr << "k1 = " << k1 << endln;
-  opserr << "k2 = " << k2 << endln;
-  opserr << "beta = " << beta << endln;
-  opserr << "uh = " << uh << endln;
-  opserr << "r1 = " << r1 << endln;
-  opserr << "r2 = " << r2 << endln;
-  opserr << "r3 = " << r3 << endln;
-  opserr << "uf = " << uf << endln;
+  //opserr << "F1 = " << F1 << endln;
+  //opserr << "k0 = " << k0 << endln;
+  //opserr << "ugap = " << ugap << endln;
+  //opserr << "F2 = " << F2 << endln;
+  //opserr << "k1 = " << k1 << endln;
+  //opserr << "k2 = " << k2 << endln;
+  //opserr << "beta = " << beta << endln;
+  //opserr << "uh = " << uh << endln;
+  //opserr << "r1 = " << r1 << endln;
+  //opserr << "r2 = " << r2 << endln;
+  //opserr << "r3 = " << r3 << endln;
+  //opserr << "uf = " << uf << endln;
   theMaterial = new TSSCB(iData[0], F1, k0, ugap, F2, k1, k2, beta, uh, r1, r2, r3, uf);
   if (theMaterial == 0) {
     opserr << "WARNING could not create uniaxialMaterial of type TSSCB Material" << endln;
@@ -186,8 +186,8 @@ TSSCB::TSSCB(int tag_, double F1_, double k0_, double ugap_, double F2_, double 
 {
     Cstrain = 0.0;
     Tstrain = 0.0;
-    Cstress = 0.0;
-    Tstress = 0.0;
+    Cstress3 = 0.0;
+    Tstress3 = 0.0;
     Cstage = 1;
     Tstage = 1;
     if (ugap == 0) {
@@ -203,12 +203,14 @@ TSSCB::TSSCB(int tag_, double F1_, double k0_, double ugap_, double F2_, double 
     }
     Chardening = false;
     Thardening = false;
-    Cstress_ideal = 0;
-    Tstress_ideal = 0;
-    Cstress_ideal1 = 0;
-    Tstress_ideal1 = 0;
-    CCDD = 0;
-    TCDD = 0;
+    Cstress1 = 0.0;
+    Tstress1 = 0.0;
+    Cstress2 = 0.0;
+    Tstress2 = 0.0;
+    Cstress4 = 0.0;
+    Tstress4 = 0.0;
+    CCDD = 0.0;
+    TCDD = 0.0;
     Cfracture = false;
     Tfracture = false;
     Cplate1 = ugap;
@@ -217,15 +219,16 @@ TSSCB::TSSCB(int tag_, double F1_, double k0_, double ugap_, double F2_, double 
     Tplate2 = -ugap;
     ua = ugap - F1 / k1;
     if (ua < 0) {
-        ua = 0;
+        ua = 0.0;
     }
 }
 
 TSSCB::TSSCB() :UniaxialMaterial(0, MAT_TAG_TSSCB),
     F1(0.0), k0(0.0), ugap(0.0), F2(0.0), k1(0.0), k2(0.0), beta(0.0), ua(0.0),
     uh(1.0e16), r1(0.0), r2(0.0), r3(0.0), uf(1.0e16),
-    Tstage(1), Cstage(1), Tstrain(0.0), Cstrain(0.0), Tstress(0.0), Cstress(0.0), Ttangent(0.0), Ctangent(0.0),
-    Chardening(false), Thardening(false), Cstress_ideal(0.0), Tstress_ideal(0.0), Cstress_ideal1(0.0), Tstress_ideal1(0.0),
+    Tstage(1), Cstage(1), Tstrain(0.0), Cstrain(0.0), Tstress3(0.0), Cstress3(0.0), Ttangent(0.0), Ctangent(0.0),
+    Chardening(false), Thardening(false), Cstress1(0.0), Tstress1(0.0), Cstress2(0.0), Tstress2(0.0),
+    Cstress4(0.0), Tstress4(0.0),
     CCDD(0.0), TCDD(0.0), Cfracture(false), Tfracture(false), Cplate1(ugap), Tplate1(ugap), Cplate2(-ugap), Tplate2(-ugap)
 {
     
@@ -240,13 +243,14 @@ int TSSCB::setTrialStrain (double strain, double strainRate)
 {
     // Reset history variables to last converged state
     Tstrain = Cstrain;
-    Tstress = Cstress;
+    Tstress3 = Cstress3;
     Ttangent = Ctangent;
     Tstage = Cstage;
     Tstage = Cstage;
     Thardening = Chardening;
-    Tstress_ideal = Cstress_ideal;
-    Tstress_ideal1 = Cstress_ideal1;
+    Tstress1 = Cstress1;
+    Tstress2 = Cstress2;
+    Tstress4 = Cstress4;
     TCDD = CCDD;
     Tfracture = Cfracture;
     Tplate1 = Cplate1;
@@ -255,11 +259,8 @@ int TSSCB::setTrialStrain (double strain, double strainRate)
     if (fabs(dStrain) > DBL_EPSILON) {
         Tstrain = strain;
         // Determine whether to start hardening
-        if (fabs(Tstrain) > uh) {
+        if (fabs(Tstrain) > uh || Chardening) {
             Thardening = true;
-        }
-        if (Thardening && fabs(Tstrain) > ugap) {
-            TCDD = CCDD + fabs(dStrain) / uh;
         }
         if (fabs(Tstrain) > uf) {
             Tfracture = true;
@@ -286,7 +287,7 @@ int TSSCB::setTrialStrain (double strain, double strainRate)
             Tplate2 = -ugap;
         }
         // Calculate tangent stiffness
-        Ttangent = (Tstress - Cstress) / dStrain;
+        Ttangent = (Tstress4 - Cstress4) / dStrain;
    }
    return 0;
 }
@@ -313,20 +314,20 @@ void TSSCB::determineTrialState (double dStrain)
     }
     if (Tfracture) {
         if (Tplate2 <= Tstrain && Tstrain <= Tplate1) {
-            Tstress = 0;
+            Tstress4 = 0.0;
         }
         else {
             if (dStrain > 0 && Tstrain > 0) {
-                Tstress = F1;
+                Tstress4 = F1;
             }
             else if (dStrain < 0 && Tstrain > 0) {
-                Tstress = 0;
+                Tstress4 = 0.0;
             }
             else if (dStrain > 0 && Tstrain < 0) {
-                Tstress = 0;
+                Tstress4 = 0.0;
             }
             else {
-                Tstress = -F1;
+                Tstress4 = -F1;
             }
         }
         return;
@@ -334,9 +335,9 @@ void TSSCB::determineTrialState (double dStrain)
     // updata Tstress
     if (Cstage == 1 && Tstage == 1) {
         // stage-1 -> stage-1
-        Tstress_ideal = frictionModel(Cstress, dStrain);
-        Tstress_ideal1 = Tstress_ideal;
-        Tstress = Tstress_ideal;
+        Tstress1 = frictionModel(Cstress3, dStrain);
+        Tstress2 = Tstress1;
+        Tstress3 = Tstress1;
     }
     else if (Cstage == 1 && Tstage == 2) {
         // stage-1 -> stage-2
@@ -350,56 +351,62 @@ void TSSCB::determineTrialState (double dStrain)
             du2 = dStrain - du1;
             usc0 = ua - ugap;
         }
-        F1_ = frictionModel(Cstress_ideal, du1);
+        if (Thardening) {
+            TCDD = CCDD + fabs(du2) / (uh - ugap);
+        }
+        F1_ = frictionModel(Cstress1, du1);
         F2_ = SCModel(usc0, F1_, du2);
-        Tstress = F2_;
+        Tstress3 = F2_;
         // Apply degradation
-        Tstress_ideal1 = Tstress_ideal;
+        Tstress2 = Tstress1;
         if (Thardening && Tstrain > 0) {
-            Tstress_ideal1 = Tstress_ideal - F2 * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / uh);
+            Tstress2 = Tstress1 - (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
         }
         else if (Thardening && Tstrain < 0) {
-            Tstress_ideal1 = Tstress_ideal + F2 * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / uh);
+            Tstress2 = Tstress1 + (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
         }
         // Apply modifiction
-        Tstress = Tstress_ideal1;
-        if (dStrain > 0 && Tstress_ideal1 < F1) {
-            Tstress = F1;
+        Tstress3 = Tstress2;
+        if (dStrain > 0 && Tstress2 < F1) {
+            Tstress3 = F1;
         }
-        else if (dStrain < 0 && Tstress_ideal1 > -F1) {
-            Tstress = -F1;
+        else if (dStrain < 0 && Tstress2 > -F1) {
+            Tstress3 = -F1;
         }
     }
     else if (Cstage == 2 && Tstage == 2) {
         // stage-2 -> stage-2
+        if (Thardening) {
+            TCDD = CCDD + fabs(dStrain) / (uh - ugap);
+        }
         if (Tstrain >= 0) {
             usc0 = Cstrain - ua;
         }
         else {
             usc0 = Cstrain + ua;
         }
-        Tstress_ideal = SCModel(usc0, Cstress_ideal, dStrain);
+        Tstress1 = SCModel(usc0, Cstress1, dStrain);
         // Apply degradation
-        Tstress_ideal1 = Tstress_ideal;
+        Tstress2 = Tstress1;
         if (Thardening && Tstrain > 0) {
-            Tstress_ideal1 = Tstress_ideal - F2 * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / uh);
+            Tstress2 = Tstress1 - (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
         }
         else if (Thardening && Tstrain < 0) {
-            Tstress_ideal1 = Tstress_ideal + F2 * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / uh);
+            Tstress2 = Tstress1 + (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
         }
         // Apply modifiction
-        Tstress = Tstress_ideal1;
-        if (dStrain > 0 && Tstrain > 0 && Tstress_ideal1 < F1 && ugap > 0 && Cstress == F1) {
-            Tstress = F1;
+        Tstress3 = Tstress2;
+        if (dStrain > 0 && Tstrain > 0 && Tstress2 < F1 && ugap > 0 && Cstress3 == F1) {
+            Tstress3 = F1;
         }
-        else if (dStrain < 0 && Tstrain < 0 && Tstress_ideal1 > -F1 && ugap > 0 && Cstress == -F1) {
-            Tstress = -F1;
+        else if (dStrain < 0 && Tstrain < 0 && Tstress2 > -F1 && ugap > 0 && Cstress3 == -F1) {
+            Tstress3 = -F1;
         }
-        else if (Tstrain > 0 && Tstress_ideal1 < 0) {
-            Tstress = 0;  // Prevent positive compressive stress in SMA cables
+        else if (Tstrain > 0 && Tstress2 < 0) {
+            Tstress3 = 0;  // Prevent positive compressive stress in SMA cables
         }
-        else if (Tstrain < 0 && Tstress_ideal1 > 0) {
-            Tstress = 0;  // Prevent negative compressive stress in SMA cables;
+        else if (Tstrain < 0 && Tstress2 > 0) {
+            Tstress3 = 0;  // Prevent negative compressive stress in SMA cables;
         }
     }
     else if (Cstage == 2 && Tstage == 1) {
@@ -414,21 +421,24 @@ void TSSCB::determineTrialState (double dStrain)
             du2 = Tstrain + ugap;
             usc0 = Cstrain + ua;
         }
-        F1_ = SCModel(usc0, Cstress_ideal, du1);
+        if (Thardening) {
+            TCDD = CCDD + fabs(du1) / (uh - ugap);
+        }
+        F1_ = SCModel(usc0, Cstress1, du1);
         // Apply degradation
         F1_ideal1 = F1_;
         if (Thardening && Tstrain > 0) {
-            F1_ideal1 = F1_ - F2 * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / uh);
+            F1_ideal1 = F1_ - (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
         }
         else if (Thardening && Tstrain < 0) {
-            F1_ideal1 = F1_ + F2 * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / uh);
+            F1_ideal1 = F1_ + (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
         }
         // Apply modifiction
         F1_ = F1_ideal1;
-        if (dStrain > 0 && Tstrain > 0 && F1_ideal1 < F1 && ugap > 0 && Cstress == F1) {
+        if (dStrain > 0 && Tstrain > 0 && F1_ideal1 < F1 && ugap > 0 && Cstress3 == F1) {
             F1_ = F1;
         }
-        else if (dStrain < 0 && Tstrain < 0 && F1_ideal1 > -F1 && ugap > 0 && Cstress == -F1) {
+        else if (dStrain < 0 && Tstrain < 0 && F1_ideal1 > -F1 && ugap > 0 && Cstress3 == -F1) {
             F1_ = -F1;
         }
         else if (Tstrain > 0 && F1_ideal1 < 0) {
@@ -438,16 +448,17 @@ void TSSCB::determineTrialState (double dStrain)
             F1_ = 0;  // Prevent negative compressive stress in SMA cables
         }
         F2_ = frictionModel(F1_, du2);
-        Tstress_ideal = F2_;
-        Tstress_ideal1 = Tstress_ideal;
-        Tstress = Tstress_ideal;
+        Tstress1 = F2_;
+        Tstress2 = Tstress1;
+        Tstress3 = Tstress1;
     }
     double F_hardening = fmax(fabs(Tstrain) - uh, 0) * k2 * r3;  // Strength enhancement due to hardening
+    Tstress4 = Tstress3;
     if (Tstrain > 0) {
-        Tstress += F_hardening;
+        Tstress4 += F_hardening;
     }
     else {
-        Tstress -= F_hardening;
+        Tstress4 -= F_hardening;
     }
 }
 
@@ -525,7 +536,7 @@ double TSSCB::getStrain ()
 
 double TSSCB::getStress ()
 {
-   return Tstress;
+   return Tstress4;
 }
 
 double TSSCB::getTangent ()
@@ -536,12 +547,13 @@ double TSSCB::getTangent ()
 int TSSCB::commitState ()
 {
    Cstrain = Tstrain;
-   Cstress = Tstress;
+   Cstress3 = Tstress3;
    Ctangent = Ttangent;
    Cstage = Tstage;
    Chardening = Thardening;
-   Cstress_ideal = Tstress_ideal;
-   Cstress_ideal1 = Tstress_ideal1;
+   Cstress1 = Tstress1;
+   Cstress2 = Tstress2;
+   Cstress4 = Tstress4;
    CCDD = TCDD;
    Cfracture = Tfracture;
    Cplate1 = Tplate1;
@@ -564,13 +576,14 @@ double TSSCB::getInitialTangent()
 int TSSCB::revertToLastCommit ()
 {
     Tstrain = Cstrain;
-    Tstress = Cstress;
+    Tstress3 = Cstress3;
     Ttangent = Ctangent;
     Tstage = Cstage;
     Tstage = Cstage;
     Thardening = Chardening;
-    Tstress_ideal = Cstress_ideal;
-    Tstress_ideal1 = Cstress_ideal1;
+    Tstress1 = Cstress1;
+    Tstress2 = Cstress2;
+    Tstress4 = Cstress4;
     TCDD = CCDD;
     Tfracture = Cfracture;
     Tplate1 = Cplate1;
@@ -581,10 +594,10 @@ int TSSCB::revertToLastCommit ()
 int TSSCB::revertToStart ()
 {
    Cstrain = 0.0;
-   Cstress = 0.0;
+   Cstress3 = 0.0;
    Cstage = 1;
    Tstrain = 0.0;
-   Tstress = 0.0;
+   Tstress3 = 0.0;
    Tstage = 1;
    if (ugap == 0) {
        Ttangent = k1;
@@ -598,10 +611,12 @@ int TSSCB::revertToStart ()
    }
    Chardening = false;
    Thardening = false;
-   Cstress_ideal = 0;
-   Tstress_ideal = 0;
-   Cstress_ideal1 = 0;
-   Tstress_ideal1 = 0;
+   Cstress1 = 0.0;
+   Tstress1 = 0.0;
+   Cstress2 = 0.0;
+   Tstress2 = 0.0;
+   Cstress4 = 0.0;
+   Tstress4 = 0.0;
    CCDD = 0;  // Dimensionless cumulative damage deformation
    TCDD = 0;
    Cfracture = false;  // Whether the cable is fractured
