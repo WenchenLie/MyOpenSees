@@ -360,20 +360,20 @@ class TSSCBMaterial(UniaxialMaterial):
         uy = self.F2 / self.k1
         F_ = F0 + du * self.k1
         if du > 0:
-            if u < -self.F2 * (1 - 2 * self.beta) / self.k1 and F_ > self.k2 * u - self.F2 * (1 - 2 * self.beta) * (1 - self.k2 / self.k1):
-                F = self.k2 * u - self.F2 * (1 - 2 * self.beta) * (1 - self.k2 / self.k1)
-            elif -self.F2 * (1 - 2 * self.beta) / self.k1 <= u <= uy and F_ > self.k1 * u:
+            if u < -self.F2 * (1 - self.beta) / self.k1 and F_ > self.k2 * u - self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1):
+                F = self.k2 * u - self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1)
+            elif -self.F2 * (1 - self.beta) / self.k1 <= u <= uy and F_ > self.k1 * u:
                 F = self.k1 * u
-            elif u > self.F2 * (1 - 2 * self.beta) / self.k1 and F_ > self.k2 * u + self.F2 - self.k2 * uy:
+            elif u > self.F2 * (1 - self.beta) / self.k1 and F_ > self.k2 * u + self.F2 - self.k2 * uy:
                 F = self.k2 * u + self.F2 - self.k2 * uy
             else:
                 F = F_
         else:
-            if u > self.F2 * (1 - 2 * self.beta) / self.k1 and F_ < self.k2 * u + self.F2 * (1 - 2 * self.beta) * (1 - self.k2 / self.k1):
-                F = self.k2 * u + self.F2 * (1 - 2 * self.beta) * (1 - self.k2 / self.k1)
-            elif -uy <= u <= self.F2 * (1 - 2 * self.beta) / self.k1 and F_ < self.k1 * u:
+            if u > self.F2 * (1 - self.beta) / self.k1 and F_ < self.k2 * u + self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1):
+                F = self.k2 * u + self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1)
+            elif -uy <= u <= self.F2 * (1 - self.beta) / self.k1 and F_ < self.k1 * u:
                 F = self.k1 * u
-            elif u < -self.F2 * (1 - 2 * self.beta) / self.k1 and F_ < self.k2 * u - (self.F2 - self.k2 * uy):
+            elif u < -self.F2 * (1 - self.beta) / self.k1 and F_ < self.k2 * u - (self.F2 - self.k2 * uy):
                 F = self.k2 * u - (self.F2 - self.k2 * uy)
             else:
                 F = F_

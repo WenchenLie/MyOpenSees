@@ -20,7 +20,7 @@
                                                                         
 // Written: Wenchen Lie (666@e.gzhu.edu.cn)
 // Created: July 26, 2024
-// Last update: Sep 20, 2024
+// Last update: Oct 10, 2024
 // Revision: A
 //
 // Description: This file contains the implementation of the
@@ -53,7 +53,7 @@ OPS_TSSCB()
 
   // Print information
   if (numTSSCBMaterials == 0) {
-      opserr << "TSSCB unaxial material - Written by Wenchen Lie (Sep 13, 2024)\n";
+      opserr << "TSSCB unaxial material - Written by Wenchen Lie (Oct 10, 2024)\n";
       numTSSCBMaterials++;
   }
 
@@ -498,13 +498,13 @@ double TSSCB::SCModel(double u0, double F0, double du)
     uy = F2 / k1;
     F_ = F0 + du * k1;
     if (du > 0) {
-        if (u < -F2 * (1 - 2 * beta) / k1 && F_ > k2 * u - F2 * (1 - 2 * beta) * (1 - k2 / k1)) {
-            F = k2 * u - F2 * (1 - 2 * beta) * (1 - k2 / k1);
+        if (u < -F2 * (1 - beta) / k1 && F_ > k2 * u - F2 * (1 - beta) * (1 - k2 / k1)) {
+            F = k2 * u - F2 * (1 - beta) * (1 - k2 / k1);
         }
-        else if (-F2 * (1 - 2 * beta) / k1 <= u && u <= uy && F_ > k1 * u) {
+        else if (-F2 * (1 - beta) / k1 <= u && u <= uy && F_ > k1 * u) {
             F = k1 * u;
         }
-        else if (u > F2 * (1 - 2 * beta) / k1 && F_ > k2 * u + F2 - k2 * uy) {
+        else if (u > F2 * (1 - beta) / k1 && F_ > k2 * u + F2 - k2 * uy) {
             F = k2 * u + F2 - k2 * uy;
         }
         else {
@@ -512,13 +512,13 @@ double TSSCB::SCModel(double u0, double F0, double du)
         }
     }
     else {
-        if (u > F2 * (1 - 2 * beta) / k1 && F_ < k2 * u + F2 * (1 - 2 * beta) * (1 - k2 / k1)) {
-            F = k2 * u + F2 * (1 - 2 * beta) * (1 - k2 / k1);
+        if (u > F2 * (1 - beta) / k1 && F_ < k2 * u + F2 * (1 - beta) * (1 - k2 / k1)) {
+            F = k2 * u + F2 * (1 - beta) * (1 - k2 / k1);
         }
-        else if (-uy <= u && u <= F2 * (1 - 2 * beta) / k1 && F_ < k1 * u) {
+        else if (-uy <= u && u <= F2 * (1 - beta) / k1 && F_ < k1 * u) {
             F = k1 * u;
         }
-        else if (u < -F2 * (1 - 2 * beta) / k1 && F_ < k2 * u - (F2 - k2 * uy)) {
+        else if (u < -F2 * (1 - beta) / k1 && F_ < k2 * u - (F2 - k2 * uy)) {
             F = k2 * u - (F2 - k2 * uy);
         }
         else {
@@ -547,12 +547,12 @@ double TSSCB::getTangent ()
 int TSSCB::commitState ()
 {
    Cstrain = Tstrain;
-   Cstress3 = Tstress3;
    Ctangent = Ttangent;
    Cstage = Tstage;
    Chardening = Thardening;
    Cstress1 = Tstress1;
    Cstress2 = Tstress2;
+   Cstress3 = Tstress3;
    Cstress4 = Tstress4;
    CCDD = TCDD;
    Cfracture = Tfracture;
