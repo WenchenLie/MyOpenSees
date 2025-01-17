@@ -20,7 +20,9 @@ class TSSCBMaterial(UniaxialMaterial):
         r2: float=1,
         r3: float=0,
         minmax: Literal['-minmax', None]=None,
-        uf: float=1e16
+        uf: float=1e16,
+        configType: Literal['-configType', None]=None,
+        configTypeVal: Literal[1, 2]=1
     ):
         """双阶自复位本构
 
@@ -40,6 +42,8 @@ class TSSCBMaterial(UniaxialMaterial):
             r3 (float): 硬化系数，控制硬化后的硬化刚度
             minmax (Literal['-minmax', None]): 是否SMA断裂
             uf (float): SMA线缆断裂时的位移
+            configType (Literal['-configType', None]): 退化类型，默认1
+            configTypeVal (Literal[1, 2]): 退化类型, 1: 第二阶段只有一半摩擦片滑动, 2: 第二阶段所有摩擦片均滑动
         """
         self.tag = tag
         # Materail parameters
@@ -59,11 +63,15 @@ class TSSCBMaterial(UniaxialMaterial):
         if minmax is not None:
             if minmax != '-minmax':
                 raise ValueError('`minmax` should be `-minmax` if it is given')
+        if configType is not None:
+            if configType != '-configType':
+                raise ValueError('`configType` should be `-configType` if it is given')
         self.uh = uh
         self.r1 = r1
         self.r2 = r2
         self.r3 = r3
         self.uf = uf
+        self.configTypeVal = configTypeVal
         # Calculated parameters
         self.ua = self.ugap - self.F1 / self.k1
         self.ua = max(0, self.ua)  # 第一阶段进入第二阶段时自复位分量的初始应变
@@ -199,17 +207,19 @@ class TSSCBMaterial(UniaxialMaterial):
         if self.ugap == 0:
             self.Tstage = 2  # If ugap is zero, always in stage-2
         if self.Tfracture:
-            if self.Tplate2 <= self.Tstrain3 <= self.Tplate1:
-                self.Tstress4 = 0
-            else:
-                if dStrain > 0 and self.Tstrain3 > 0:
-                    self.Tstress4 = self.F1
-                elif dStrain < 0 and self.Tstrain3 > 0:
-                    self.Tstress4 = 0
-                elif dStrain > 0 and self.Tstrain3 < 0:
+            # SMA cable fracture
+            if self.configTypeVal == 1:
+                uy = self.F1 / self.k0
+                if self.Tplate2 + uy <= self.Tstrain3 <= self.Tplate1 - uy:
                     self.Tstress4 = 0
                 else:
-                    self.Tstress = -self.F1
+                    self.Tstress4 = self._frictionModel(self.Cstress4, dStrain)
+                    if dStrain < 0 and self.Tstrain3 > 0 and self.Tstress4 <= 0:
+                        self.Tstress4 = 0
+                    elif dStrain > 0 and self.Tstrain3 < 0 and self.Tstress4 >= 0:
+                        self.Tstress4 = 0
+            elif self.configTypeVal == 2:
+                self.Tstress4 = self._frictionModel(self.Cstress4, dStrain)
             return
         if self.Cstage == 1 and self.Tstage == 1:
             # NOTE: stage-1 -> stage-1
@@ -259,15 +269,19 @@ class TSSCBMaterial(UniaxialMaterial):
             elif self.Thardening and self.Tstrain3 < 0:
                 self.Tstress2 = self.Tstress1 + (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain3) - self.ugap) / (self.uh - self.ugap))
             # Apply modifiction
+            if self.configTypeVal == 1:
+                F_bound = 0  # Only half of the friction pads are sliding at stage-2
+            else:
+                F_bound = self.F1  # All friction pads are sliding at stage-2
             self.Tstress = self.Tstress2
             if dStrain > 0 and self.Tstrain3 > 0 and self.Tstress2 < self.F1 and self.ugap > 0 and self.Cstress == self.F1:
                 self.Tstress = self.F1
             elif dStrain < 0 and self.Tstrain3 < 0 and self.Tstress2 > -self.F1 and self.ugap > 0 and self.Cstress == -self.F1:
                 self.Tstress = -self.F1
-            elif self.Tstrain3 > 0 and self.Tstress2 < 0:
-                self.Tstress = 0  # Prevent positive compressive stress in SMA cables
-            elif self.Tstrain3 < 0 and self.Tstress2 > 0:
-                self.Tstress = 0  # Prevent negative compressive stress in SMA cables
+            elif self.Tstrain3 > 0 and self.Tstress2 < -F_bound:
+                self.Tstress = -F_bound  # Prevent positive compressive stress in SMA cables
+            elif self.Tstrain3 < 0 and self.Tstress2 > F_bound:
+                self.Tstress = F_bound  # Prevent negative compressive stress in SMA cables
         elif self.Cstage == 2 and self.Tstage == 1:
             # NOTE: stage-2 -> stage-1
             if dStrain < 0:
@@ -288,15 +302,19 @@ class TSSCBMaterial(UniaxialMaterial):
             elif self.Thardening and self.Tstrain3 < 0:
                 F1_ideal1 = F1_ + (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain3) - self.ugap) / (self.uh - self.ugap))
             # Apply modifiction
+            if self.configTypeVal == 1:
+                F_bound = 0  # Only half of the friction pads are sliding at stage-2
+            else:
+                F_bound = self.F1  # All friction pads are sliding at stage-2
             F1_ = F1_ideal1
             if dStrain > 0 and self.Tstrain3 > 0 and F1_ideal1 < self.F1 and self.ugap > 0 and self.Cstress == self.F1:
                 F1_ = self.F1
             elif dStrain < 0 and self.Tstrain3 < 0 and F1_ideal1 > -self.F1 and self.ugap > 0 and self.Cstress == -self.F1:
                 F1_ = -self.F1
-            elif self.Tstrain3 > 0 and F1_ideal1 < 0:
-                F1_ = 0  # Prevent positive compressive stress in SMA cables
-            elif self.Tstrain3 < 0 and F1_ideal1 > 0:
-                F1_ = 0  # Prevent negative compressive stress in SMA cables
+            elif self.Tstrain3 > 0 and F1_ideal1 < -F_bound:
+                F1_ = -F_bound  # Prevent positive compressive stress in SMA cables
+            elif self.Tstrain3 < 0 and F1_ideal1 > F_bound:
+                F1_ = F_bound  # Prevent negative compressive stress in SMA cables
             F2_ = self._frictionModel(F1_, du2)
             self.Tstress1 = F2_
             self.Tstress2 = self.Tstress1

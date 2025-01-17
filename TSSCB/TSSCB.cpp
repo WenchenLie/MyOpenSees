@@ -68,33 +68,41 @@ OPS_TSSCB()
   }
 
   numData = OPS_GetNumRemainingInputArgs();
-  if (numData != 7 && numData != 9 && numData != 12 && numData != 14) {
-      opserr << "Invalid #args, want 7, 9, 12, or 14 arguments but got " << numData << " (F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf>)" << endln;
+  if (numData != 7 && numData != 9 && numData != 11 && numData != 12 && numData != 14 && numData != 16) {
+      opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf> <-configType configType>" << endln;
       return 0;
   }
 
   numData = 7;
   if (OPS_GetDoubleInput(&numData, dData) != 0) {
-      opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf>" << endln;
+      opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf> <-configType configType>" << endln;
       return 0;
   }
 
   double hardening_paras[4] = { 1.0e16, 1.0, 1.0, 0.0 };
   double uf = 1.0e16;
+  int configType = 1;
   int argc = OPS_GetNumRemainingInputArgs();
   while (argc > 1) {
       const char* argvLoc = OPS_GetString();
       if (strcmp(argvLoc, "-hardening") == 0) {
           numData = 4;
           if (OPS_GetDouble(&numData, hardening_paras) != 0) {
-              opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf>" << endln;
+              opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf> <-configType configType>" << endln;
               return 0;
           }
       }
       else if (strcmp(argvLoc, "-minmax") == 0) {
           numData = 1;
           if (OPS_GetDouble(&numData, &uf) != 0) {
-              opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf>" << endln;
+              opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf> <-configType configType>" << endln;
+              return 0;
+          }
+      }
+      else if (strcmp(argvLoc, "-configType") == 0) {
+          numData = 1;
+          if (OPS_GetInt(&numData, &configType) != 0) {
+              opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf> <-configType configType>" << endln;
               return 0;
           }
       }
@@ -157,6 +165,10 @@ OPS_TSSCB()
       opserr << "WARNING uf should be larger than 0" << endln;
       return 0;
   }
+  if (configType != 1 && configType != 2) {
+      opserr << "WARNING configType should be 1 or 2" << endln;
+      return 0;
+  }
   //opserr << "F1 = " << F1 << endln;
   //opserr << "k0 = " << k0 << endln;
   //opserr << "ugap = " << ugap << endln;
@@ -169,7 +181,8 @@ OPS_TSSCB()
   //opserr << "r2 = " << r2 << endln;
   //opserr << "r3 = " << r3 << endln;
   //opserr << "uf = " << uf << endln;
-  theMaterial = new TSSCB(iData[0], F1, k0, ugap, F2, k1, k2, beta, uh, r1, r2, r3, uf);
+  //opserr << "configType = " << configType << endln;
+  theMaterial = new TSSCB(iData[0], F1, k0, ugap, F2, k1, k2, beta, uh, r1, r2, r3, uf, configType);
   if (theMaterial == 0) {
     opserr << "WARNING could not create uniaxialMaterial of type TSSCB Material" << endln;
     return 0;
@@ -180,9 +193,9 @@ OPS_TSSCB()
 
 
 TSSCB::TSSCB(int tag_, double F1_, double k0_, double ugap_, double F2_, double k1_, double k2_, double beta_,
-    double uh_, double r1_, double r2_, double r3_, double uf_) :
+    double uh_, double r1_, double r2_, double r3_, double uf_, int configType_) :
     UniaxialMaterial(tag_, MAT_TAG_TSSCB),
-    F1(F1_), k0(k0_), ugap(ugap_), F2(F2_), k1(k1_), k2(k2_), beta(beta_), uh(uh_), r1(r1_), r2(r2_), r3(r3_), uf(uf_)
+    F1(F1_), k0(k0_), ugap(ugap_), F2(F2_), k1(k1_), k2(k2_), beta(beta_), uh(uh_), r1(r1_), r2(r2_), r3(r3_), uf(uf_), configType(configType_)
 {
     Cstrain = 0.0;
     Tstrain = 0.0;
@@ -225,7 +238,7 @@ TSSCB::TSSCB(int tag_, double F1_, double k0_, double ugap_, double F2_, double 
 
 TSSCB::TSSCB() :UniaxialMaterial(0, MAT_TAG_TSSCB),
     F1(0.0), k0(0.0), ugap(0.0), F2(0.0), k1(0.0), k2(0.0), beta(0.0), ua(0.0),
-    uh(1.0e16), r1(0.0), r2(0.0), r3(0.0), uf(1.0e16),
+    uh(1.0e16), r1(0.0), r2(0.0), r3(0.0), uf(1.0e16), configType(1),
     Tstage(1), Cstage(1), Tstrain(0.0), Cstrain(0.0), Tstress3(0.0), Cstress3(0.0), Ttangent(0.0), Ctangent(0.0),
     Chardening(false), Thardening(false), Cstress1(0.0), Tstress1(0.0), Cstress2(0.0), Tstress2(0.0),
     Cstress4(0.0), Tstress4(0.0),
@@ -301,6 +314,8 @@ void TSSCB::determineTrialState (double dStrain)
     double du1;
     double du2;
     double usc0;
+    double uy;
+    double F_bound;
 
     // determine working stage
     if (-ugap <= Tstrain && Tstrain <= ugap) {
@@ -313,22 +328,24 @@ void TSSCB::determineTrialState (double dStrain)
         Tstage = 2;  // If ugap is zero, always in stage-2
     }
     if (Tfracture) {
-        if (Tplate2 <= Tstrain && Tstrain <= Tplate1) {
-            Tstress4 = 0.0;
-        }
-        else {
-            if (dStrain > 0 && Tstrain > 0) {
-                Tstress4 = F1;
-            }
-            else if (dStrain < 0 && Tstrain > 0) {
-                Tstress4 = 0.0;
-            }
-            else if (dStrain > 0 && Tstrain < 0) {
+        // SMA cable fracture
+        if (configType == 1) {
+            uy = F1 / k0;
+            if (Tplate2 + uy <= Tstrain && Tstrain <= Tplate1 - uy) {
                 Tstress4 = 0.0;
             }
             else {
-                Tstress4 = -F1;
+                Tstress4 = frictionModel(Cstress4, dStrain);
+                if (dStrain < 0 && Tstrain > 0 && Tstress4 <= 0) {
+                    Tstress4 = 0.0;
+                }
+                else if (dStrain > 0 && Tstrain < 0 && Tstress4 >= 0) {
+                    Tstress4 = 0.0;
+                }
             }
+        }
+        else if (configType == 2) {
+            Tstress4 = frictionModel(Cstress4, dStrain);
         }
         return;
     }
@@ -395,6 +412,12 @@ void TSSCB::determineTrialState (double dStrain)
             Tstress2 = Tstress1 + (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
         }
         // Apply modifiction
+        if (configType == 1) {
+            F_bound = 0.0;  // Only half of the friction pads are sliding at stage-2
+        }
+        else {
+            F_bound = F1;  // All friction pads are sliding at stage-2
+        }
         Tstress3 = Tstress2;
         if (dStrain > 0 && Tstrain > 0 && Tstress2 < F1 && ugap > 0 && Cstress3 == F1) {
             Tstress3 = F1;
@@ -402,11 +425,11 @@ void TSSCB::determineTrialState (double dStrain)
         else if (dStrain < 0 && Tstrain < 0 && Tstress2 > -F1 && ugap > 0 && Cstress3 == -F1) {
             Tstress3 = -F1;
         }
-        else if (Tstrain > 0 && Tstress2 < 0) {
-            Tstress3 = 0;  // Prevent positive compressive stress in SMA cables
+        else if (Tstrain > 0 && Tstress2 < -F_bound) {
+            Tstress3 = -F_bound;  // Prevent positive compressive stress in SMA cables
         }
-        else if (Tstrain < 0 && Tstress2 > 0) {
-            Tstress3 = 0;  // Prevent negative compressive stress in SMA cables;
+        else if (Tstrain < 0 && Tstress2 > F_bound) {
+            Tstress3 = F_bound;  // Prevent negative compressive stress in SMA cables;
         }
     }
     else if (Cstage == 2 && Tstage == 1) {
@@ -434,6 +457,12 @@ void TSSCB::determineTrialState (double dStrain)
             F1_ideal1 = F1_ + (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
         }
         // Apply modifiction
+        if (configType == 1) {
+            F_bound = 0;  // Only half of the friction pads are sliding at stage-2
+        }
+        else {
+            F_bound = F1; // All friction pads are sliding at stage-2
+        }
         F1_ = F1_ideal1;
         if (dStrain > 0 && Tstrain > 0 && F1_ideal1 < F1 && ugap > 0 && Cstress3 == F1) {
             F1_ = F1;
@@ -441,11 +470,11 @@ void TSSCB::determineTrialState (double dStrain)
         else if (dStrain < 0 && Tstrain < 0 && F1_ideal1 > -F1 && ugap > 0 && Cstress3 == -F1) {
             F1_ = -F1;
         }
-        else if (Tstrain > 0 && F1_ideal1 < 0) {
-            F1_ = 0;  // Prevent positive compressive stress in SMA cables
+        else if (Tstrain > 0 && F1_ideal1 < -F_bound) {
+            F1_ = -F_bound;  // Prevent positive compressive stress in SMA cables
         }
-        else if (Tstrain < 0 && F1_ideal1 > 0) {
-            F1_ = 0;  // Prevent negative compressive stress in SMA cables
+        else if (Tstrain < 0 && F1_ideal1 > F_bound) {
+            F1_ = F_bound;  // Prevent negative compressive stress in SMA cables
         }
         F2_ = frictionModel(F1_, du2);
         Tstress1 = F2_;
@@ -630,7 +659,7 @@ int TSSCB::revertToStart ()
 
 UniaxialMaterial* TSSCB::getCopy ()
 {
-   TSSCB* theCopy = new TSSCB(this->getTag(), F1, k0, ugap, F2, k1, k2, beta, uh, r1, r2, r3, uf);
+   TSSCB* theCopy = new TSSCB(this->getTag(), F1, k0, ugap, F2, k1, k2, beta, uh, r1, r2, r3, uf, configType);
 
    return theCopy;
 }
@@ -652,20 +681,20 @@ int TSSCB::recvSelf (int commitTag, Channel& theChannel,
 void TSSCB::Print (OPS_Stream& s, int flag)
 {
   if (flag == OPS_PRINT_PRINTMODEL_MATERIAL) {    
-    s << "TSSCB tag:   " << this->getTag() << endln;
-    s << "  F1:      " << F1 << " ";
-    s << "  k0:      " << k0 << " ";
-    s << "  ugap:    " << ugap << " ";
-    s << "  F2:      " << F2 << " ";
-    s << "  k1:      " << k1 << " ";
-    s << "  k2:      " << k2 << " ";
-    s << "  beta:    " << beta << " ";
-    s << "  uh:      " << uh << " ";
-    s << "  r1:      " << r1 << " ";
-    s << "  r2:      " << r2 << " ";
-    s << "  r3:      " << r3 << " ";
-    s << "  uf:      " << uf << " ";
-
+    s << "TSSCB tag:    " << this->getTag() << endln;
+    s << "  F1:         " << F1 << " ";
+    s << "  k0:         " << k0 << " ";
+    s << "  ugap:       " << ugap << " ";
+    s << "  F2:         " << F2 << " ";
+    s << "  k1:         " << k1 << " ";
+    s << "  k2:         " << k2 << " ";
+    s << "  beta:       " << beta << " ";
+    s << "  uh:         " << uh << " ";
+    s << "  r1:         " << r1 << " ";
+    s << "  r2:         " << r2 << " ";
+    s << "  r3:         " << r3 << " ";
+    s << "  uf:         " << uf << " ";
+    s << "  congifType: " << configType << " ";
   }
 
   if (flag == OPS_PRINT_PRINTMODEL_JSON) {
@@ -684,6 +713,7 @@ void TSSCB::Print (OPS_Stream& s, int flag)
     s << "\"r2\": " << r2 << ", ";
     s << "\"r3\": " << r3 << ", ";
     s << "\"uf\": " << uf << ", ";
+    s << "\"configType\": " << configType << ", ";
   }
   
 }

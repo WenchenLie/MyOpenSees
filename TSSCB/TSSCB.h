@@ -45,7 +45,7 @@
 class TSSCB : public UniaxialMaterial
 {
   public:
-    TSSCB(int tag, double F1, double k0, double ugap, double F2, double k1, double k2, double beta, double uh, double r1, double r2, double r3, double uf);
+    TSSCB(int tag, double F1, double k0, double ugap, double F2, double k1, double k2, double beta, double uh, double r1, double r2, double r3, double uf, int configType);
     TSSCB();
     ~TSSCB();
 
@@ -86,6 +86,7 @@ class TSSCB : public UniaxialMaterial
     double r2;      // Coeffience to control strength degradation at the end of stage-2
     double r3;      // Coeffience to control stiffness enhancement due to hardening
     double uf;      // Fracture deformation
+    int configType;  // Configuration type (1: Half of friction pads work at stage-2, 2: All friction pads work at stage-2)
 
     /*** State variables ***/
     double ua;
