@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from TSSCB.TSSCB import TSSCBMaterial
+from TSSCB1.TSSCB1 import TSSCBMaterial1
 from ModBoucWen.ModBoucWen import ModBoucWen
 from Failure.Failure import Failure
 from utils.utils import generate_path
@@ -28,7 +28,7 @@ u = generate_path([0,
 # data = np.loadtxt('data/2完整.txt')
 # u, F_exp = data[:, 0], data[:, 1]
 # u = np.loadtxt('in.txt')
-paras  = [20, 100, 20, 35, 50, 2, 1, '-hardening', 50, 0.0, 0, 0.4, '-minmax', 80]
+paras  = [20, 100, 20, 35, 50, 2, 1, '-hardening', 50, 0.05, 0.02, 0.4, '-minmax', 80]
 # paras1 = [20, 100, 20, 35, 50, 2, 0.3, '-hardening', 50, 0.0, 0, 0.4, '-minmax', 63]
 # paras2 = [20, 100, 20, 35, 50, 2, 0.3, '-hardening', 50, 0.0, 0, 0.4, '-minmax', 53]
 # PARA1 = {'F1': 20.24, 'k0': 138.58, 'ugap': 20, 'F2': 50.67, 'k1': 64.20, 'k2': 2.34, 'beta': 0.281, 'uh': 41.3, 'r1': 0.013, 'r2': 0.007, 'r3': 0.47, 'minmax': 1000}  # TSSCB-1
@@ -54,14 +54,14 @@ paras  = [20, 100, 20, 35, 50, 2, 1, '-hardening', 50, 0.0, 0, 0.4, '-minmax', 8
 #     PARA['minmax']
 # )
 
-# mat = TSSCBMaterial(1, *paras)
-# F = []
-# for ui in u:
-#     mat.setStrain(ui)
-#     Fi = mat.getStress()
-#     F.append(Fi)
+mat = TSSCBMaterial1(1, *paras)
+F = []
+for ui in u:
+    mat.setStrain(ui)
+    Fi = mat.getStress()
+    F.append(Fi)
 
-F, _ = np.array(material_test(u, 'TSSCB', paras))
+# F, _ = np.array(material_test(u, 'TSSCB', paras))
 # F1, _ = np.array(material_test(u, 'TSSCB', paras1))
 # F2, _ = np.array(material_test(u, 'TSSCB', paras2))
 
