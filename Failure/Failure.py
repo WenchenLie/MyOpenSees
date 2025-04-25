@@ -62,8 +62,8 @@ class Failure(UniaxialMaterial):
         self.Tstrain = 0
         self.Cfailure = False
         self.Tfailure = False
-        self.Cface = self.uy
-        self.Tface = self.uy
+        self.Cyieldface = self.uy
+        self.Tyieldface = self.uy
         self.Cwp = 0
         self.Twp = 0
         self.material: UniaxialMaterial = UniaxialMaterial._getUniaxialMaterial(self.other_tag)
@@ -73,7 +73,7 @@ class Failure(UniaxialMaterial):
         # Reset history variables to last converged state
         self.Tstrain = self.Cstrain
         self.Tfailure = self.Cfailure
-        self.Tface = self.Cface
+        self.Tyieldface = self.Cyieldface
         self.Twp = self.Cwp
         dStrain = strain - self.Cstrain
         if dStrain == 0:
@@ -81,14 +81,14 @@ class Failure(UniaxialMaterial):
         else:
             self.Tstrain = strain
         self.material._setTrainStrain(strain, strainRate)
-        if self.Tstrain > self.Cface:
+        if self.Tstrain > self.Cyieldface:
             # 正向屈服
-            self.Twp = self.Cwp + self.Tstrain - self.Cface
-            self.Tface = self.Tstrain
-        elif self.Tstrain < self.Cface - 2 * self.uy:
+            self.Twp = self.Cwp + self.Tstrain - self.Cyieldface
+            self.Tyieldface = self.Tstrain
+        elif self.Tstrain < self.Cyieldface - 2 * self.uy:
             # 负向屈服
-            self.Twp = self.Cwp + self.Cface - 2 * self.uy - self.Tstrain
-            self.Tface = self.Tstrain + 2 * self.uy
+            self.Twp = self.Cwp + self.Cyieldface - 2 * self.uy - self.Tstrain
+            self.Tyieldface = self.Tstrain + 2 * self.uy
         # 1 判断是否延性破坏
         if self.Tstrain < self.minStrain:
             # 负向破坏
@@ -108,7 +108,7 @@ class Failure(UniaxialMaterial):
     def _commitState(self):
         self.Cstrain = self.Tstrain
         self.Cfailure = self.Tfailure
-        self.Cface = self.Tface
+        self.Cyieldface = self.Tyieldface
         self.Cwp = self.Twp
         self.material._commitState()
 
