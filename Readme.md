@@ -3,7 +3,7 @@
 在传统BoucWen模型的基础上增加了循环硬化特性，通过参数`Q`和`b`进行控制，
 其中`Q`控制最大硬化的程度`(Q >= 0)`，`b`控制硬化的速率`(b >= 1)`。
 ```tcl
-ModBoucWen $tag $Fy $uy $alpha $alpha $n $Q $b $A $beta $gamma <$iter>
+ModBoucWen $tag $Fy $uy $alpha $n $Q $b $A $beta $gamma <$iter>
 ```
 * tag: 材料编号  
 * Fy: 屈服力  
