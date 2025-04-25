@@ -28,8 +28,7 @@
 
 // Written: Wenchen Lie 
 // Created: July 26, 2024
-// Last update: Oct 10, 2024
-// Revision: A
+// Last update: Apr 25, 2025
 //
 // Description: This file contains the class definition for 
 // TSSCB.h

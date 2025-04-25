@@ -44,6 +44,21 @@ class TSSCBMaterial(UniaxialMaterial):
             uf (float): SMA线缆断裂时的位移
             configType (Literal['-configType', None]): 退化类型，默认1
             configTypeVal (Literal[1, 2]): 退化类型, 1: 第二阶段只有一半摩擦片滑动, 2: 第二阶段所有摩擦片均滑动
+
+        注:
+        ----
+        部分变量名的命名与c++源码不一样，以下是对应关系:  
+        Python           C++  
+        self.Cstress     Cstress3  
+        self.Tstress     Tstress3  
+        self.Cstress1    一样  
+        self.Tstress1    一样  
+        self.Cstress2    一样  
+        self.Tstress2    一样  
+        self.Cstrain3    Cstrain  
+        self.Tstrain3    Tstrain  
+        self.Cstress4    一样  
+        self.Tstress4    一样  
         """
         self.tag = tag
         # Materail parameters
@@ -282,6 +297,10 @@ class TSSCBMaterial(UniaxialMaterial):
                 self.Tstress = -F_bound  # Prevent positive compressive stress in SMA cables
             elif self.Tstrain3 < 0 and self.Tstress2 > F_bound:
                 self.Tstress = F_bound  # Prevent negative compressive stress in SMA cables
+            if dStrain > 0 and self.Tstress <= self.Cstress:
+                self.Tstress = self.Cstress4
+            elif dStrain < 0 and self.Tstress >= self.Cstress:
+                self.Tstress = self.Cstress4
         elif self.Cstage == 2 and self.Tstage == 1:
             # NOTE: stage-2 -> stage-1
             if dStrain < 0:

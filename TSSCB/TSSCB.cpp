@@ -20,8 +20,7 @@
                                                                         
 // Written: Wenchen Lie (666@e.gzhu.edu.cn)
 // Created: July 26, 2024
-// Last update: Oct 10, 2024
-// Revision: A
+// Last update: Apr 25, 2025
 //
 // Description: This file contains the implementation of the
 // TSSCB class.
@@ -53,7 +52,7 @@ OPS_TSSCB()
 
   // Print information
   if (numTSSCBMaterials == 0) {
-      opserr << "TSSCB unaxial material - Written by Wenchen Lie (Oct 10, 2024)\n";
+      opserr << "TSSCB unaxial material - Written by Wenchen Lie (July 26, 2024)\n";
       numTSSCBMaterials++;
   }
 
@@ -430,6 +429,12 @@ void TSSCB::determineTrialState (double dStrain)
         }
         else if (Tstrain < 0 && Tstress2 > F_bound) {
             Tstress3 = F_bound;  // Prevent negative compressive stress in SMA cables;
+        }
+        if (dStrain > 0 && Tstress3 <= Cstress3) {
+            Tstress3 = Cstress3;
+        }
+        else if (dStrain < 0 && Tstress3 >= Cstress3) {
+            Tstress3 = Cstress3;
         }
     }
     else if (Cstage == 2 && Tstage == 1) {
