@@ -32,13 +32,13 @@ u = generate_path([0,
 #                    ])
 # u = generate_path([0, 100, 80, 120])
 # u = generate_path([0, 60], 10)
-data = np.loadtxt('data/1完整.txt')
+data = np.loadtxt('data/3完整.txt')
 u, F_exp = data[:, 0], data[:, 1]
 # u = np.loadtxt('in.txt')
 # paras  = [20, 50, 0, 35, 50, 2, 1, '-hardening', 50, 0.05, 0.02, 0.4, '-minmax', 80, '-configType', 2]
-paras  = [20.24, 138.58, 0, 50.67, 64.20, 2.34, 0.3, '-hardening', 41.3, 0.022, 0.01, 0.47, '-minmax', 800, '-configType', 1]
+# paras  = [20.24, 138.58, 0, 50.67, 64.20, 2.34, 0.3, '-hardening', 41.3, 0.022, 0.01, 0.47, '-minmax', 800, '-configType', 1]
 # paras1 = [20, 100, 20, 35, 50, 2, 0.3, '-hardening', 50, 0.0, 0, 0.4, '-minmax', 63]
-# paras2 = [20, 100, 20, 35, 50, 2, 0.3, '-hardening', 50, 0.0, 0, 0.4, '-minmax', 53]
+paras3 = [20.94, 68.24, 0, 50.22, 68.24, 2.33, 0.566, '-hardening', 27.4807, 0.0164, 0.0011, 0.7771, '-minmax', 51.6, '-configType', 1]
 # PARA1 = {'F1': 20.24, 'k0': 138.58, 'ugap': 20, 'F2': 50.67, 'k1': 64.20, 'k2': 2.34, 'beta': 0.281, 'uh': 41.3, 'r1': 0.013, 'r2': 0.007, 'r3': 0.47, 'minmax': 1000}  # TSSCB-1
 # mat1 = [20.24, 138.58, 20, 50.67, 64.20, 2.34, 0.281, '-hardening', 50.45, 0.0306, 0.0157, 0.5586]
 # mat2 = [19.29, 145.04, 10, 50.61, 60.89, 2.32, 0.278, '-hardening', 40.88, 0.0289, 0.0113, 0.6707, '-minmax', 63.01]
@@ -62,14 +62,14 @@ paras  = [20.24, 138.58, 0, 50.67, 64.20, 2.34, 0.3, '-hardening', 41.3, 0.022, 
 #     PARA['minmax']
 # )
 
-mat = TSSCBMaterial(1, *paras)
-F = []
-for ui in u:
-    mat.setStrain(ui)
-    Fi = mat.getStress()
-    F.append(Fi)
+# mat = TSSCBMaterial(1, *paras3)  # 用python代码计算本构
+# F = []
+# for ui in u:
+#     mat.setStrain(ui)
+#     Fi = mat.getStress()
+#     F.append(Fi)
 
-# F, _ = np.array(material_test(u, 'TSSCB', paras))
+F, _ = np.array(material_test(u, 'TSSCB', paras3))  # 用openseespy计算本构
 # F1, _ = np.array(material_test(u, 'TSSCB', paras1))
 # F2, _ = np.array(material_test(u, 'TSSCB', paras2))
 

@@ -20,7 +20,7 @@
                                                                         
 // Written: Wenchen Lie (666@e.gzhu.edu.cn)
 // Created: July 26, 2024
-// Last update: Apr 25, 2025
+// Last update: May 6, 2025
 //
 // Description: This file contains the implementation of the
 // TSSCB class.
@@ -315,6 +315,7 @@ void TSSCB::determineTrialState (double dStrain)
     double usc0;
     double uy;
     double F_bound;
+    double Fd;
 
     // determine working stage
     if (-ugap <= Tstrain && Tstrain <= ugap) {
@@ -375,11 +376,12 @@ void TSSCB::determineTrialState (double dStrain)
         Tstress3 = F2_;
         // Apply degradation
         Tstress2 = Tstress1;
+        Fd = (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
         if (Thardening && Tstrain > 0) {
-            Tstress2 = Tstress1 - (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
+            Tstress2 = Tstress1 - Fd;
         }
         else if (Thardening && Tstrain < 0) {
-            Tstress2 = Tstress1 + (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
+            Tstress2 = Tstress1 + Fd;
         }
         // Apply modifiction
         Tstress3 = Tstress2;
@@ -404,11 +406,12 @@ void TSSCB::determineTrialState (double dStrain)
         Tstress1 = SCModel(usc0, Cstress1, dStrain);
         // Apply degradation
         Tstress2 = Tstress1;
+        Fd = (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
         if (Thardening && Tstrain > 0) {
-            Tstress2 = Tstress1 - (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
+            Tstress2 = Tstress1 - Fd;
         }
         else if (Thardening && Tstrain < 0) {
-            Tstress2 = Tstress1 + (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
+            Tstress2 = Tstress1 + Fd;
         }
         // Apply modifiction
         if (configType == 1) {
@@ -435,6 +438,12 @@ void TSSCB::determineTrialState (double dStrain)
         }
         else if (dStrain < 0 && Tstress3 >= Cstress3) {
             Tstress3 = Cstress3;
+        }
+        if (configType == 1 && Tstrain >= 0 && dStrain > 0 && Cstress3 == 0 && Thardening && Tstress2 < F1) {
+            Tstress3 = fmax(Tstress3, F1);
+        }
+        else if (configType == 1 && Tstrain <= 0 && dStrain < 0 && Cstress3 == 0 && Thardening && Tstress2 > F1) {
+            Tstress3 = fmin(Tstress3, -F1);
         }
     }
     else if (Cstage == 2 && Tstage == 1) {
