@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 from TSSCB.TSSCB import TSSCBMaterial
 from ModBoucWen.ModBoucWen import ModBoucWen
 from Failure.Failure import Failure
-from utils.utils import generate_path
 from utils.openseespy_test import generate_path, material_test
 
 
@@ -24,7 +23,7 @@ u = generate_path([0,
                    65, -65, 65, -65, 65, -65,
                    70, -70, 70, -70, 70, -70,
                    90, -90, 100, -100, 110, -110,
-                   0])
+                   0], sf=2)
 # u = generate_path([0,
 #                    70, -70,
 #                 #    70, -70,
@@ -32,9 +31,25 @@ u = generate_path([0,
 #                    ])
 # u = generate_path([0, 100, 80, 120])
 # u = generate_path([0, 60], 10)
-data = np.loadtxt('data/3完整.txt')
-u, F_exp = data[:, 0], data[:, 1]
+data = np.loadtxt('data/SCB3_4.out')
+# u, F_exp = data[:, 0], data[:, 1]
+# u, F_exp = data[:, 1], data[:, 0]
 # u = np.loadtxt('in.txt')
+cable_length = 2000.0  # Cable length in the numerical model
+cable_length_test = 450.0  # Cable length in the experimental test
+F1 = 20e3
+k0 = cable_length_test / cable_length * 65.18e3
+ugap = 0.0
+F2 = 47.97e3
+k1 = cable_length_test / cable_length * 65.18e3
+k2 = cable_length_test / cable_length * 2.23e3
+beta = 0.566
+uh = cable_length / cable_length_test * 32.0564
+r1 = 0.0293
+r2 = 0.0112
+r3 = 0.8037
+uf = cable_length / cable_length_test * 51.6
+SCB_paras = [F1, k0, ugap, F2, k1, k2, beta, '-hardening', uh, r1, r2, r3, '-minmax', uf, '-configType', 1]
 # paras  = [20, 50, 0, 35, 50, 2, 1, '-hardening', 50, 0.05, 0.02, 0.4, '-minmax', 80, '-configType', 2]
 # paras  = [20.24, 138.58, 0, 50.67, 64.20, 2.34, 0.3, '-hardening', 41.3, 0.022, 0.01, 0.47, '-minmax', 800, '-configType', 1]
 # paras1 = [20, 100, 20, 35, 50, 2, 0.3, '-hardening', 50, 0.0, 0, 0.4, '-minmax', 63]
@@ -62,14 +77,14 @@ paras3 = [20.94, 68.24, 0, 50.22, 68.24, 2.33, 0.566, '-hardening', 27.4807, 0.0
 #     PARA['minmax']
 # )
 
-# mat = TSSCBMaterial(1, *paras3)  # 用python代码计算本构
-# F = []
-# for ui in u:
-#     mat.setStrain(ui)
-#     Fi = mat.getStress()
-#     F.append(Fi)
+mat = TSSCBMaterial(1, *SCB_paras)  # 用python代码计算本构
+F = []
+for ui in u:
+    mat.setStrain(ui)
+    Fi = mat.getStress()
+    F.append(Fi)
 
-F, _ = np.array(material_test(u, 'TSSCB', paras3))  # 用openseespy计算本构
+# F, _ = np.array(material_test(u, 'TSSCB', SCB_paras))  # 用openseespy计算本构
 # F1, _ = np.array(material_test(u, 'TSSCB', paras1))
 # F2, _ = np.array(material_test(u, 'TSSCB', paras2))
 
@@ -79,7 +94,8 @@ plt.plot(u, F, label='F')
 # plt.plot(u, F2, label='F2')
 plt.legend()
 plt.show()
-
+plt.plot(F)
+plt.show()
 np.savetxt('data/data.out', np.array([u, F]).T)
 # np.savetxt('data1.out', np.array(F1))
 # np.savetxt('data2.out', np.array(F2))

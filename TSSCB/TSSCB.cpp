@@ -52,7 +52,7 @@ OPS_TSSCB()
 
   // Print information
   if (numTSSCBMaterials == 0) {
-      opserr << "TSSCB unaxial material - Written by Wenchen Lie (July 26, 2024)\n";
+      opserr << "TSSCB unaxial material - Written by Wenchen Lie (July 26, 2024, last update: May 8, 2025)\n";
       numTSSCBMaterials++;
   }
 
@@ -440,10 +440,10 @@ void TSSCB::determineTrialState (double dStrain)
             Tstress3 = Cstress3;
         }
         if (configType == 1 && Tstrain >= 0 && dStrain > 0 && Cstress3 == 0 && Thardening && Tstress2 < F1) {
-            Tstress3 = fmax(Tstress3, F1);
+            Tstress3 = frictionModel(Cstress3, dStrain);
         }
         else if (configType == 1 && Tstrain <= 0 && dStrain < 0 && Cstress3 == 0 && Thardening && Tstress2 > F1) {
-            Tstress3 = fmin(Tstress3, -F1);
+            Tstress3 = frictionModel(Cstress3, dStrain);
         }
     }
     else if (Cstage == 2 && Tstage == 1) {

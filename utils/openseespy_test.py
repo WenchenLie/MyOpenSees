@@ -21,13 +21,13 @@ def material_test(
     return stess, tangent
 
 
-def generate_path(disp_level: list, n: int=200):
+def generate_path(disp_level: list, n: int=200, sf: float=1):
     u = []
     for i, disp in enumerate(disp_level[1:]):
         for j in range(n):
             ui = disp_level[i] + (disp_level[i + 1] - disp_level[i]) * j / n
-            u.append(ui)
+            u.append(ui * sf)
     else:
-        u.append(disp_level[-1])
+        u.append(disp_level[-1] * sf)
     return u
 
