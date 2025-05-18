@@ -20,7 +20,7 @@
                                                                         
 // Written: Wenchen Lie (666@e.gzhu.edu.cn)
 // Created: July 26, 2024
-// Last update: May 6, 2025
+// Last update: May 18, 2025
 //
 // Description: This file contains the implementation of the
 // TSSCB class.
@@ -52,7 +52,7 @@ OPS_TSSCB()
 
   // Print information
   if (numTSSCBMaterials == 0) {
-      opserr << "TSSCB unaxial material - Written by Wenchen Lie (July 26, 2024, last update: May 8, 2025)\n";
+      opserr << "TSSCB unaxial material - Written by Wenchen Lie (July 26, 2024, last update: May 18, 2025)\n";
       numTSSCBMaterials++;
   }
 
@@ -373,7 +373,7 @@ void TSSCB::determineTrialState (double dStrain)
         }
         F1_ = frictionModel(Cstress1, du1);
         F2_ = SCModel(usc0, F1_, du2);
-        Tstress3 = F2_;
+        Tstress1 = F2_;
         // Apply degradation
         Tstress2 = Tstress1;
         Fd = (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));

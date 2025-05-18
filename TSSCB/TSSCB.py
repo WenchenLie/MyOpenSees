@@ -44,21 +44,6 @@ class TSSCBMaterial(UniaxialMaterial):
             uf (float): SMA线缆断裂时的位移
             configType (Literal['-configType', None]): 退化类型，默认1
             configTypeVal (Literal[1, 2]): 退化类型, 1: 第二阶段只有一半摩擦片滑动, 2: 第二阶段所有摩擦片均滑动
-
-        注:
-        ----
-        部分变量名的命名与c++源码不一样，以下是对应关系:  
-        Python           C++  
-        self.Cstress     Cstress3  
-        self.Tstress     Tstress3  
-        self.Cstress1    一样  
-        self.Tstress1    一样  
-        self.Cstress2    一样  
-        self.Tstress2    一样  
-        self.Cstrain3    Cstrain  
-        self.Tstrain3    Tstrain  
-        self.Cstress4    一样  
-        self.Tstress4    一样  
         """
         self.tag = tag
         # Materail parameters
@@ -93,8 +78,8 @@ class TSSCBMaterial(UniaxialMaterial):
         # Response history
         self.Cstage: int  # 上一步所处阶段
         self.Tstage: int  # 当前步所处阶段
-        self.Cstress: float  # 上一步的应力
-        self.Tstress: float # 当前步的应力
+        self.Cstrain: float  # 应变
+        self.Tstrain: float
         self.Ctangent: float  # 上一步的切线刚度
         self.Ttangent: float  # 当前步的切线刚度
         self.Chardening: bool  # 是否开始硬化
@@ -103,9 +88,9 @@ class TSSCBMaterial(UniaxialMaterial):
         self.Tstress1: float
         self.Cstress2: float  # 有退化，无修正应力
         self.Tstress2: float
-        self.Cstrain3: float  # 考虑退化及修正后应力，无硬化强度提升
-        self.Tstrain3: float
-        self.Tstress4: float  # 考虑硬化提升的强度(最终返回的应力)
+        self.Cstress3: float  # 有退化，有修正后应力
+        self.Tstress3: float
+        self.Tstress4: float  # 考虑硬化提升的强度，最终返回的应力
         self.Cstress4: float
         self.CCDD: float
         self.TCDD: float
@@ -117,15 +102,14 @@ class TSSCBMaterial(UniaxialMaterial):
         self.Tplate2: float
         self._check_paras()
         self._init_paras()
-
     
     def _init_paras(self):
         self.Cstage = 1
         self.Tstage = 1
-        self.Cstrain3 = 0
-        self.Tstrain3 = 0
-        self.Cstress = 0
-        self.Tstress = 0
+        self.Cstrain = 0
+        self.Tstrain = 0
+        self.Cstress3 = 0
+        self.Tstress3 = 0
         if self.ugap == 0:
             self.Ctangent = self.k1
             self.Ttangent = self.k1
@@ -152,7 +136,6 @@ class TSSCBMaterial(UniaxialMaterial):
         self.Tplate2 = -self.ugap
         self.i = 0  # For test
 
-
     def _check_paras(self):
         assert self.F1 >= 0
         assert self.k0 > 0
@@ -167,12 +150,11 @@ class TSSCBMaterial(UniaxialMaterial):
         assert self.r3 >= 0
         assert self.uf > 0
 
-
     def _setTrainStrain(self, strain, strainRate: float=0):
         """传入当前步的应变值strain"""
         # Reset history variables to last converged state
-        self.Tstrain3 = self.Cstrain3
-        self.Tstress = self.Cstress
+        self.Tstrain = self.Cstrain
+        self.Tstress3 = self.Cstress3
         self.Ttangent = self.Ctangent
         self.Tstage = self.Cstage
         self.Thardening = self.Chardening
@@ -183,23 +165,23 @@ class TSSCBMaterial(UniaxialMaterial):
         self.Tfracture = self.Cfracture
         self.Tplate1 = self.Cplate1
         self.Tplate2 = self.Cplate2
-        dStrain = strain - self.Cstrain3
+        dStrain = strain - self.Cstrain
         if abs(dStrain) > sys.float_info.epsilon:
-            self.Tstrain3 = strain
+            self.Tstrain = strain
             # Determine whether to start hardening
-            if abs(self.Tstrain3) > self.uh or self.Chardening:
+            if abs(self.Tstrain) > self.uh or self.Chardening:
                 self.Thardening = True
-            if abs(self.Tstrain3) > self.uf:
+            if abs(self.Tstrain) > self.uf:
                 self.Tfracture = True
             # Update Tstress
             self._determineTrialState(dStrain)
             # Update endplate position
             if dStrain > 0:
-                self.Tplate1 = max(self.Tplate1, self.Tstrain3)
+                self.Tplate1 = max(self.Tplate1, self.Tstrain)
                 if not self.Tfracture:
                     self.Tplate2 += dStrain
             else:
-                self.Tplate2 = min(self.Tplate2, self.Tstrain3)
+                self.Tplate2 = min(self.Tplate2, self.Tstrain)
                 if not self.Tfracture:
                     self.Tplate1 += dStrain
             if self.Tplate1 < self.ugap:
@@ -211,11 +193,10 @@ class TSSCBMaterial(UniaxialMaterial):
         else:
             pass
 
-
     def _determineTrialState(self, dStrain: float):
         """Determine the trial state based on the current strain increment"""
         # Determine stage
-        if -self.ugap <= self.Tstrain3 <= self.ugap:
+        if -self.ugap <= self.Tstrain <= self.ugap:
             self.Tstage = 1  # stage-1
         else:
             self.Tstage = 2  # stage-2
@@ -225,30 +206,30 @@ class TSSCBMaterial(UniaxialMaterial):
             # SMA cable fracture
             if self.configTypeVal == 1:
                 uy = self.F1 / self.k0
-                if self.Tplate2 + uy <= self.Tstrain3 <= self.Tplate1 - uy:
+                if self.Tplate2 + uy <= self.Tstrain <= self.Tplate1 - uy:
                     self.Tstress4 = 0
                 else:
                     self.Tstress4 = self._frictionModel(self.Cstress4, dStrain)
-                    if dStrain < 0 and self.Tstrain3 > 0 and self.Tstress4 <= 0:
+                    if dStrain < 0 and self.Tstrain > 0 and self.Tstress4 <= 0:
                         self.Tstress4 = 0
-                    elif dStrain > 0 and self.Tstrain3 < 0 and self.Tstress4 >= 0:
+                    elif dStrain > 0 and self.Tstrain < 0 and self.Tstress4 >= 0:
                         self.Tstress4 = 0
             elif self.configTypeVal == 2:
                 self.Tstress4 = self._frictionModel(self.Cstress4, dStrain)
             return
         if self.Cstage == 1 and self.Tstage == 1:
             # NOTE: stage-1 -> stage-1
-            self.Tstress1 = self._frictionModel(self.Cstress, dStrain)
+            self.Tstress1 = self._frictionModel(self.Cstress3, dStrain)
             self.Tstress2 = self.Tstress1
-            self.Tstress = self.Tstress1
+            self.Tstress3 = self.Tstress1
         elif self.Cstage == 1 and self.Tstage == 2:
             # NOTE: stage-1 -> stage-2
             if dStrain > 0:
-                du1 = self.ugap - self.Cstrain3  # Strain increment in stage-1
+                du1 = self.ugap - self.Cstrain  # Strain increment in stage-1
                 du2 = dStrain - du1  # Strain increment in stage-2
                 usc0 = self.ugap - self.ua
             else:
-                du1 = -self.ugap - self.Cstrain3  # Strain increment in stage-1
+                du1 = -self.ugap - self.Cstrain  # Strain increment in stage-1
                 du2 = dStrain - du1  # Strain increment in stage-2
                 usc0 = self.ua - self.ugap
             if self.Thardening:
@@ -258,101 +239,100 @@ class TSSCBMaterial(UniaxialMaterial):
             self.Tstress1 = F2_
             # Apply degradation
             self.Tstress2 = self.Tstress1
-            Fd = (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain3) - self.ugap) / (self.uh - self.ugap))
-            if self.Thardening and self.Tstrain3 > 0:
+            Fd = (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+            if self.Thardening and self.Tstrain > 0:
                 self.Tstress2 = self.Tstress1 - Fd
-            elif self.Thardening and self.Tstrain3 < 0:
+            elif self.Thardening and self.Tstrain < 0:
                 self.Tstress2 = self.Tstress1 + Fd
             # Apply modifiction
-            self.Tstress = self.Tstress2
+            self.Tstress3 = self.Tstress2
             if dStrain > 0 and self.Tstress2 < self.F1:
-                self.Tstress = self.F1
+                self.Tstress3 = self.F1
             elif dStrain < 0 and self.Tstress2 > -self.F1:
-                self.Tstress = -self.F1
+                self.Tstress3 = -self.F1
         elif self.Cstage == 2 and self.Tstage == 2:
             # NOTE: stage-2 -> stage-2
             if self.Thardening:
                 self.TCDD = self.CCDD + abs(dStrain) / (self.uh - self.ugap)
-            if self.Tstrain3 >= 0:
-                usc0 = self.Cstrain3 - self.ua
+            if self.Tstrain >= 0:
+                usc0 = self.Cstrain - self.ua
             else:
-                usc0 = self.Cstrain3 + self.ua
+                usc0 = self.Cstrain + self.ua
             self.Tstress1 = self._SCModel(usc0, self.Cstress1, dStrain)
             # Apply degradation
             self.Tstress2 = self.Tstress1
-            Fd = (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain3) - self.ugap) / (self.uh - self.ugap))
-            if self.Thardening and self.Tstrain3 > 0:
+            Fd = (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+            if self.Thardening and self.Tstrain > 0:
                 self.Tstress2 = self.Tstress1 - Fd
-            elif self.Thardening and self.Tstrain3 < 0:
+            elif self.Thardening and self.Tstrain < 0:
                 self.Tstress2 = self.Tstress1 + Fd
             # Apply modifiction
             if self.configTypeVal == 1:
                 F_bound = 0  # Only half of the friction pads are sliding at stage-2
             else:
                 F_bound = self.F1  # All friction pads are sliding at stage-2
-            self.Tstress = self.Tstress2
-            if dStrain > 0 and self.Tstrain3 > 0 and self.Tstress2 < self.F1 and self.ugap > 0 and self.Cstress == self.F1:
-                self.Tstress = self.F1
-            elif dStrain < 0 and self.Tstrain3 < 0 and self.Tstress2 > -self.F1 and self.ugap > 0 and self.Cstress == -self.F1:
-                self.Tstress = -self.F1
-            elif self.Tstrain3 > 0 and self.Tstress2 < -F_bound:
-                self.Tstress = -F_bound  # Prevent positive compressive stress in SMA cables
-            elif self.Tstrain3 < 0 and self.Tstress2 > F_bound:
-                self.Tstress = F_bound  # Prevent negative compressive stress in SMA cables
-            if dStrain > 0 and self.Tstress <= self.Cstress:
-                self.Tstress = self.Cstress4
-            elif dStrain < 0 and self.Tstress >= self.Cstress:
-                self.Tstress = self.Cstress4
-            if self.configTypeVal == 1 and self.Tstrain3 >= 0 and dStrain > 0 and self.Cstress == 0 and self.Thardening and self.Tstress2 < self.F1:
-                self.Tstress = self._frictionModel(self.Cstress, dStrain)
-            elif self.configTypeVal == 1 and self.Tstrain3 <= 0 and dStrain < 0 and self.Cstress == 0 and self.Thardening and self.Tstress2 > self.F1:
-                self.Tstress = self._frictionModel(self.Cstress, dStrain)
+            self.Tstress3 = self.Tstress2
+            if dStrain > 0 and self.Tstrain > 0 and self.Tstress2 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:
+                self.Tstress3 = self.F1
+            elif dStrain < 0 and self.Tstrain < 0 and self.Tstress2 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:
+                self.Tstress3 = -self.F1
+            elif self.Tstrain > 0 and self.Tstress2 < -F_bound:
+                self.Tstress3 = -F_bound  # Prevent positive compressive stress in SMA cables
+            elif self.Tstrain < 0 and self.Tstress2 > F_bound:
+                self.Tstress3 = F_bound  # Prevent negative compressive stress in SMA cables
+            if dStrain > 0 and self.Tstress3 <= self.Cstress3:
+                self.Tstress3 = self.Cstress4
+            elif dStrain < 0 and self.Tstress3 >= self.Cstress3:
+                self.Tstress3 = self.Cstress4
+            if self.configTypeVal == 1 and self.Tstrain >= 0 and dStrain > 0 and self.Cstress3 == 0 and self.Thardening and self.Tstress2 < self.F1:
+                self.Tstress3 = self._frictionModel(self.Cstress3, dStrain)
+            elif self.configTypeVal == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Cstress3 == 0 and self.Thardening and self.Tstress2 > self.F1:
+                self.Tstress3 = self._frictionModel(self.Cstress3, dStrain)
         elif self.Cstage == 2 and self.Tstage == 1:
             # NOTE: stage-2 -> stage-1
             if dStrain < 0:
-                du1 = -(self.Cstrain3 - self.ugap)
-                du2 = -(self.ugap - self.Tstrain3)
-                usc0 = self.Cstrain3 - self.ua
+                du1 = -(self.Cstrain - self.ugap)
+                du2 = -(self.ugap - self.Tstrain)
+                usc0 = self.Cstrain - self.ua
             else:
-                du1 = -self.ugap - self.Cstrain3
-                du2 = self.Tstrain3 + self.ugap
-                usc0 = self.Cstrain3 + self.ua
+                du1 = -self.ugap - self.Cstrain
+                du2 = self.Tstrain + self.ugap
+                usc0 = self.Cstrain + self.ua
             if self.Thardening:
                 self.TCDD = self.CCDD + abs(du1) / (self.uh - self.ugap)
             F1_ = self._SCModel(usc0, self.Cstress1, du1)
             # Apply degradation
             F1_ideal1 = F1_
-            if self.Thardening and self.Tstrain3 > 0:
-                F1_ideal1 = F1_ - (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain3) - self.ugap) / (self.uh - self.ugap))
-            elif self.Thardening and self.Tstrain3 < 0:
-                F1_ideal1 = F1_ + (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain3) - self.ugap) / (self.uh - self.ugap))
+            if self.Thardening and self.Tstrain > 0:
+                F1_ideal1 = F1_ - (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+            elif self.Thardening and self.Tstrain < 0:
+                F1_ideal1 = F1_ + (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
             # Apply modifiction
             if self.configTypeVal == 1:
                 F_bound = 0  # Only half of the friction pads are sliding at stage-2
             else:
                 F_bound = self.F1  # All friction pads are sliding at stage-2
             F1_ = F1_ideal1
-            if dStrain > 0 and self.Tstrain3 > 0 and F1_ideal1 < self.F1 and self.ugap > 0 and self.Cstress == self.F1:
+            if dStrain > 0 and self.Tstrain > 0 and F1_ideal1 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:
                 F1_ = self.F1
-            elif dStrain < 0 and self.Tstrain3 < 0 and F1_ideal1 > -self.F1 and self.ugap > 0 and self.Cstress == -self.F1:
+            elif dStrain < 0 and self.Tstrain < 0 and F1_ideal1 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:
                 F1_ = -self.F1
-            elif self.Tstrain3 > 0 and F1_ideal1 < -F_bound:
+            elif self.Tstrain > 0 and F1_ideal1 < -F_bound:
                 F1_ = -F_bound  # Prevent positive compressive stress in SMA cables
-            elif self.Tstrain3 < 0 and F1_ideal1 > F_bound:
+            elif self.Tstrain < 0 and F1_ideal1 > F_bound:
                 F1_ = F_bound  # Prevent negative compressive stress in SMA cables
             F2_ = self._frictionModel(F1_, du2)
             self.Tstress1 = F2_
             self.Tstress2 = self.Tstress1
-            self.Tstress = self.Tstress1
+            self.Tstress3 = self.Tstress1
         else:
             assert False, f"Invalid state transition, Cstage={self.Cstage}, Tstage={self.Tstage}"
-        F_hardening = max(abs(self.Tstrain3) - self.uh, 0) * self.k2 * self.r3  # Strength enhancement due to hardening
-        self.Tstress4 = self.Tstress
-        if self.Tstrain3 > 0:
+        F_hardening = max(abs(self.Tstrain) - self.uh, 0) * self.k2 * self.r3  # Strength enhancement due to hardening
+        self.Tstress4 = self.Tstress3
+        if self.Tstrain > 0:
             self.Tstress4 += F_hardening
         else:
             self.Tstress4 -= F_hardening
-    
 
     def _frictionModel(self,
             F0: float,
@@ -377,7 +357,6 @@ class TSSCBMaterial(UniaxialMaterial):
         else:
             F = F_
         return F
-
 
     def _SCModel(self,
             u0: float,
@@ -423,8 +402,8 @@ class TSSCBMaterial(UniaxialMaterial):
         return F
 
     def _commitState(self):
-        self.Cstrain3 = self.Tstrain3
-        self.Cstress = self.Tstress
+        self.Cstrain = self.Tstrain
+        self.Cstress3 = self.Tstress3
         self.Ctangent = self.Ttangent
         self.Cstage = self.Tstage
         self.Chardening = self.Thardening
@@ -437,14 +416,11 @@ class TSSCBMaterial(UniaxialMaterial):
         self.Cplate2 = self.Tplate2
         self.i += 1
 
-
     def getStrain(self):
-        return self.Tstrain3
-
+        return self.Tstrain
 
     def getStress(self):
         return self.Tstress4
-
 
     def getTangent(self):
         return self.Ttangent
