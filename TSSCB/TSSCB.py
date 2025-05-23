@@ -21,8 +21,10 @@ class TSSCBMaterial(UniaxialMaterial):
         r3: float=0,
         minmax: Literal['-minmax', None]=None,
         uf: float=1e16,
-        configType: Literal['-configType', None]=None,
-        configTypeVal: Literal[1, 2]=1
+        _configType: Literal['-configType', None]=None,
+        configType: Literal[1, 2]=1,
+        _up: Literal['-up', None]=None,
+        up: float=0
     ):
         """双阶自复位本构
 
@@ -42,8 +44,12 @@ class TSSCBMaterial(UniaxialMaterial):
             r3 (float): 硬化系数，控制硬化后的硬化刚度
             minmax (Literal['-minmax', None]): 是否SMA断裂
             uf (float): SMA线缆断裂时的位移
-            configType (Literal['-configType', None]): 退化类型，默认1
-            configTypeVal (Literal[1, 2]): 退化类型, 1: 第二阶段只有一半摩擦片滑动, 2: 第二阶段所有摩擦片均滑动
+            _configType (Literal['-configType', None]): 退化类型，默认1
+            configType (Literal[1, 2]): 退化类型, 1: 第二阶段只有一半摩擦片滑动, 
+                2: 第二阶段所有摩擦片均滑动
+            _up (Literal['-up', None]): 是否允许断裂起始到完全断裂间平滑过渡(可改善收敛性)
+            up (float): 断裂起始到完全断裂间允许的位移量，默认0，即断裂瞬间承载力会突降，
+                当`up`不为0时，断裂开始后，在累积变形达到`up`时承载力才会完全下降
         """
         self.tag = tag
         # Materail parameters
@@ -63,15 +69,19 @@ class TSSCBMaterial(UniaxialMaterial):
         if minmax is not None:
             if minmax != '-minmax':
                 raise ValueError('`minmax` should be `-minmax` if it is given')
-        if configType is not None:
-            if configType != '-configType':
-                raise ValueError('`configType` should be `-configType` if it is given')
+        if _configType is not None:
+            if _configType != '-configType':
+                raise ValueError('`_configType` should be `-configType` if it is given')
+        if _up is not None:
+            if _up != '-up':
+                raise ValueError('`_up` should be `-up` if it is given')
         self.uh = uh
         self.r1 = r1
         self.r2 = r2
         self.r3 = r3
         self.uf = uf
-        self.configTypeVal = configTypeVal
+        self.configType = configType
+        self.up = up
         # Calculated parameters
         self.ua = self.ugap - self.F1 / self.k1
         self.ua = max(0, self.ua)  # 第一阶段进入第二阶段时自复位分量的初始应变
@@ -94,12 +104,18 @@ class TSSCBMaterial(UniaxialMaterial):
         self.Cstress4: float
         self.CCDD: float
         self.TCDD: float
-        self.Cfracture: bool  # 是否断裂
+        self.Cfracture: bool  # 是否已经断裂
         self.Tfracture: bool
         self.Cplate1: float  # 左端板位置
         self.Tplate1: float
         self.Cplate2: float  # 右端板位置
         self.Tplate2: float
+        self.Cfracturing: bool  # 是否正处于断裂过程中
+        self.Tfracturing: bool
+        self.CfractureFore: float  # 断裂起始时的强度
+        self.TfractureFore: float
+        self.Crp: float  # 断裂进度(0-1，0代表断裂起始，1代表完全断裂)
+        self.Trp: float
         self._check_paras()
         self._init_paras()
     
@@ -134,6 +150,12 @@ class TSSCBMaterial(UniaxialMaterial):
         self.Tplate1 = self.ugap
         self.Cplate2 = -self.ugap  # Position of right end plate
         self.Tplate2 = -self.ugap
+        self.Cfracturing = False
+        self.Tfracturing = False
+        self.CfractureFore = 0
+        self.TfractureFore = 0
+        self.Crp = 0
+        self.Trp = 0
         self.i = 0  # For test
 
     def _check_paras(self):
@@ -149,6 +171,7 @@ class TSSCBMaterial(UniaxialMaterial):
         assert self.r2 >= 0
         assert self.r3 >= 0
         assert self.uf > 0
+        assert self.up >= 0
 
     def _setTrainStrain(self, strain, strainRate: float=0):
         """传入当前步的应变值strain"""
@@ -172,7 +195,17 @@ class TSSCBMaterial(UniaxialMaterial):
             if abs(self.Tstrain) > self.uh or self.Chardening:
                 self.Thardening = True
             if abs(self.Tstrain) > self.uf:
-                self.Tfracture = True
+                if self.up == 0:
+                    self.Tfracture = True
+                else:
+                    self.Tfracturing = True
+            if self.Tfracturing:
+                self.Trp = self.Crp + abs(dStrain) / self.up
+                if self.Trp >= 1:
+                    self.Tfracture = True
+                    self.Trp = 1
+                if self.Crp == 0:
+                    self.TfractureFore = self.Cstress4  # 记录首次进入断裂状态时的力
             # Update Tstress
             self._determineTrialState(dStrain)
             # Update endplate position
@@ -203,8 +236,8 @@ class TSSCBMaterial(UniaxialMaterial):
         if self.ugap == 0:
             self.Tstage = 2  # If ugap is zero, always in stage-2
         if self.Tfracture:
-            # SMA cable fracture
-            if self.configTypeVal == 1:
+            # SMA cable fracture completed
+            if self.configType == 1:
                 uy = self.F1 / self.k0
                 if self.Tplate2 + uy <= self.Tstrain <= self.Tplate1 - uy:
                     self.Tstress4 = 0
@@ -214,8 +247,15 @@ class TSSCBMaterial(UniaxialMaterial):
                         self.Tstress4 = 0
                     elif dStrain > 0 and self.Tstrain < 0 and self.Tstress4 >= 0:
                         self.Tstress4 = 0
-            elif self.configTypeVal == 2:
+            elif self.configType == 2:
                 self.Tstress4 = self._frictionModel(self.Cstress4, dStrain)
+            return
+        if self.Tfracturing:
+            # SMA cable fracture starts
+            if self.Cstress4 >= 0:
+                self.Tstress4 = self.TfractureFore - (self.TfractureFore - self.F1) * self.Trp
+            else:
+                self.Tstress4 = self.TfractureFore + (-self.F1 - self.TfractureFore) * self.Trp
             return
         if self.Cstage == 1 and self.Tstage == 1:
             # NOTE: stage-1 -> stage-1
@@ -267,7 +307,7 @@ class TSSCBMaterial(UniaxialMaterial):
             elif self.Thardening and self.Tstrain < 0:
                 self.Tstress2 = self.Tstress1 + Fd
             # Apply modifiction
-            if self.configTypeVal == 1:
+            if self.configType == 1:
                 F_bound = 0  # Only half of the friction pads are sliding at stage-2
             else:
                 F_bound = self.F1  # All friction pads are sliding at stage-2
@@ -284,9 +324,9 @@ class TSSCBMaterial(UniaxialMaterial):
                 self.Tstress3 = self.Cstress4
             elif dStrain < 0 and self.Tstress3 >= self.Cstress3:
                 self.Tstress3 = self.Cstress4
-            if self.configTypeVal == 1 and self.Tstrain >= 0 and dStrain > 0 and self.Cstress3 == 0 and self.Thardening and self.Tstress2 < self.F1:
+            if self.configType == 1 and self.Tstrain >= 0 and dStrain > 0 and self.Cstress3 == 0 and self.Thardening and self.Tstress2 < self.F1:
                 self.Tstress3 = self._frictionModel(self.Cstress3, dStrain)
-            elif self.configTypeVal == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Cstress3 == 0 and self.Thardening and self.Tstress2 > self.F1:
+            elif self.configType == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Cstress3 == 0 and self.Thardening and self.Tstress2 > self.F1:
                 self.Tstress3 = self._frictionModel(self.Cstress3, dStrain)
         elif self.Cstage == 2 and self.Tstage == 1:
             # NOTE: stage-2 -> stage-1
@@ -308,7 +348,7 @@ class TSSCBMaterial(UniaxialMaterial):
             elif self.Thardening and self.Tstrain < 0:
                 F1_ideal1 = F1_ + (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
             # Apply modifiction
-            if self.configTypeVal == 1:
+            if self.configType == 1:
                 F_bound = 0  # Only half of the friction pads are sliding at stage-2
             else:
                 F_bound = self.F1  # All friction pads are sliding at stage-2
@@ -399,7 +439,10 @@ class TSSCBMaterial(UniaxialMaterial):
                 F = self.k2 * u - (self.F2 - self.k2 * uy)
             else:
                 F = F_
-        return F
+        if self.Tfracturing:
+            return F * self.Trp
+        else:
+            return F
 
     def _commitState(self):
         self.Cstrain = self.Tstrain
@@ -414,6 +457,9 @@ class TSSCBMaterial(UniaxialMaterial):
         self.Cfracture = self.Tfracture
         self.Cplate1 = self.Tplate1
         self.Cplate2 = self.Tplate2
+        self.Cfracturing = self.Tfracturing
+        self.CfractureFore = self.TfractureFore
+        self.Crp = self.Trp
         self.i += 1
 
     def getStrain(self):

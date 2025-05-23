@@ -28,7 +28,7 @@
 
 // Written: Wenchen Lie 
 // Created: July 26, 2024
-// Last update: May 18, 2025
+// Last update: May 23, 2025
 //
 // Description: This file contains the class definition for 
 // TSSCB.h
@@ -44,7 +44,7 @@
 class TSSCB : public UniaxialMaterial
 {
   public:
-    TSSCB(int tag, double F1, double k0, double ugap, double F2, double k1, double k2, double beta, double uh, double r1, double r2, double r3, double uf, int configType);
+    TSSCB(int tag, double F1, double k0, double ugap, double F2, double k1, double k2, double beta, double uh, double r1, double r2, double r3, double uf, int configType, double up);
     TSSCB();
     ~TSSCB();
 
@@ -85,7 +85,8 @@ class TSSCB : public UniaxialMaterial
     double r2;      // Coeffience to control strength degradation at the end of stage-2
     double r3;      // Coeffience to control stiffness enhancement due to hardening
     double uf;      // Fracture deformation
-    int configType;  // Configuration type (1: Half of friction pads work at stage-2, 2: All friction pads work at stage-2)
+    int configType; // Configuration type (1: Half of friction pads work at stage-2, 2: All friction pads work at stage-2)
+    double up;      // Allowed deformation during fracturing 
 
     /*** State variables ***/
     double ua;
@@ -101,6 +102,9 @@ class TSSCB : public UniaxialMaterial
     bool Tfracture;  // Whether SMA cables fracture
     double Tplate1;  // Position of left end plate
     double Tplate2;  // Position of right end plate
+    bool Tfracturing;  // Whether the material is in the process of fracturing
+    double TfractureFore; // Force when fracture is started
+    double Trp;  // Progress of fracture (0-1)
 
     double Cstrain;
     double Ctangent;
@@ -114,6 +118,9 @@ class TSSCB : public UniaxialMaterial
     bool Cfracture;
     double Cplate1;
     double Cplate2;
+    bool Cfracturing;
+    double CfractureFore;
+    double Crp;
 
     void determineTrialState(double dStrain);
     double frictionModel(double F0, double du);

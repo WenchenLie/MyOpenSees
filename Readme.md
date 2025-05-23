@@ -26,7 +26,7 @@ ModBoucWen $tag $Fy $uy $alpha $n $Q $b $A $beta $gamma <$iter>
 SMA材料失效后，由于耗能元件还可继续变形并耗能，因为模型的失效后行为也应纳入考虑。
 通过参数`congifType`控制两种不同构造的支撑的失效后行为。
 ```tcl
-TSSCB $tag $F1 $k0 $ugap $F2 $k1 $k2 $beta <-hardening $uh $r1 $r2 $r3> <-minmax $uf> <-configType $configType>
+TSSCB $tag $F1 $k0 $ugap $F2 $k1 $k2 $beta <-hardening $uh $r1 $r2 $r3> <-minmax $uf> <-configType $configType> <-up $up>
 ```
 * tag: 材料编号  
 * F1: 摩擦滑移力  
@@ -42,6 +42,7 @@ TSSCB $tag $F1 $k0 $ugap $F2 $k1 $k2 $beta <-hardening $uh $r1 $r2 $r3> <-minmax
 * r3: 控制硬化位移后承载力硬化的程度  
 * uf: SMA线缆断裂位移
 * configType: 构造类型参数(默认为1)。1: 第二阶段中仅一半数量的耗能元件参与工作；2: 任意时刻中所有耗能元件均参与工作。
+* up: SMA线缆开始断裂至完全断裂间的可滑动距离，避免断裂后承载力的瞬间下降
 
 注：当`ugap`取为0时（即无间隙），建议将`F1`取为装置的实际摩擦力大小（影响SMA线缆断裂后行为），`k0`取为与`k1`相同值。
 ## 3 失效准则（Failure）

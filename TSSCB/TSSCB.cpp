@@ -20,7 +20,7 @@
                                                                         
 // Written: Wenchen Lie (666@e.gzhu.edu.cn)
 // Created: July 26, 2024
-// Last update: May 18, 2025
+// Last update: May 23, 2025
 //
 // Description: This file contains the implementation of the
 // TSSCB class.
@@ -52,14 +52,15 @@ OPS_TSSCB()
 
   // Print information
   if (numTSSCBMaterials == 0) {
-      opserr << "TSSCB unaxial material - Written by Wenchen Lie (July 26, 2024, last update: May 18, 2025)\n";
+      opserr << "TSSCB unaxial material - Written by Wenchen Lie (July 26, 2024, last update: May 23, 2025)\n";
       numTSSCBMaterials++;
   }
 
   int iData[1];
-  double dData[7];
+  double dData[7]; // Basic parameters to define the heysteretic shape prior to hardening
   int numData = 1;
-
+  const char* error_msg1 = "Invalid #args, want: uniaxialMaterial TSSCB ";
+  const char* error_msg2 = " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf> <-configType configType> <-up up>";
 
   if (OPS_GetIntInput(&numData, iData) != 0) {
     opserr << "WARNING invalid uniaxialMaterial TSSCB tag " << endln;
@@ -67,19 +68,20 @@ OPS_TSSCB()
   }
 
   numData = OPS_GetNumRemainingInputArgs();
-  if (numData != 7 && numData != 9 && numData != 11 && numData != 12 && numData != 14 && numData != 16) {
-      opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf> <-configType configType>" << endln;
+  if (numData != 7 && numData != 9 && numData != 11 && numData != 12 && numData != 14 && numData != 16 && numData != 18) {
+      opserr << error_msg1 << iData[0] << error_msg2 << endln;
       return 0;
   }
 
   numData = 7;
   if (OPS_GetDoubleInput(&numData, dData) != 0) {
-      opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf> <-configType configType>" << endln;
+      opserr << error_msg1 << iData[0] << error_msg2 << endln;
       return 0;
   }
 
   double hardening_paras[4] = { 1.0e16, 1.0, 1.0, 0.0 };
   double uf = 1.0e16;
+  double up = 0.0;
   int configType = 1;
   int argc = OPS_GetNumRemainingInputArgs();
   while (argc > 1) {
@@ -87,26 +89,33 @@ OPS_TSSCB()
       if (strcmp(argvLoc, "-hardening") == 0) {
           numData = 4;
           if (OPS_GetDouble(&numData, hardening_paras) != 0) {
-              opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf> <-configType configType>" << endln;
+              opserr << error_msg1 << iData[0] << error_msg2 << endln;
               return 0;
           }
       }
       else if (strcmp(argvLoc, "-minmax") == 0) {
           numData = 1;
           if (OPS_GetDouble(&numData, &uf) != 0) {
-              opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf> <-configType configType>" << endln;
+              opserr << error_msg1 << iData[0] << error_msg2 << endln;
               return 0;
           }
       }
       else if (strcmp(argvLoc, "-configType") == 0) {
           numData = 1;
           if (OPS_GetInt(&numData, &configType) != 0) {
-              opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf> <-configType configType>" << endln;
+              opserr << error_msg1 << iData[0] << error_msg2 << endln;
+              return 0;
+          }
+      }
+      else if (strcmp(argvLoc, "-up") == 0) {
+          numData = 1;
+          if (OPS_GetDouble(&numData, &up) != 0) {
+              opserr << error_msg1 << iData[0] << error_msg2 << endln;
               return 0;
           }
       }
       else {
-          opserr << "Invalid #args, want: uniaxialMaterial TSSCB " << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf>" << endln;
+          opserr << error_msg1 << iData[0] << " F1 k0 ugap F2 k1 k2 beta <-hardening uh r1 r2 r3> <-minmax uf> <-up up>" << endln;
           return 0;
       }
       argc = OPS_GetNumRemainingInputArgs();
@@ -168,6 +177,10 @@ OPS_TSSCB()
       opserr << "WARNING configType should be 1 or 2" << endln;
       return 0;
   }
+  if (up < 0) {
+      opserr << "WARNING up should not less than 0" << endln;
+      return 0;
+  }
   //opserr << "F1 = " << F1 << endln;
   //opserr << "k0 = " << k0 << endln;
   //opserr << "ugap = " << ugap << endln;
@@ -181,7 +194,8 @@ OPS_TSSCB()
   //opserr << "r3 = " << r3 << endln;
   //opserr << "uf = " << uf << endln;
   //opserr << "configType = " << configType << endln;
-  theMaterial = new TSSCB(iData[0], F1, k0, ugap, F2, k1, k2, beta, uh, r1, r2, r3, uf, configType);
+  //opserr << "up = " << up << endln;
+  theMaterial = new TSSCB(iData[0], F1, k0, ugap, F2, k1, k2, beta, uh, r1, r2, r3, uf, configType, up);
   if (theMaterial == 0) {
     opserr << "WARNING could not create uniaxialMaterial of type TSSCB Material" << endln;
     return 0;
@@ -192,9 +206,9 @@ OPS_TSSCB()
 
 
 TSSCB::TSSCB(int tag_, double F1_, double k0_, double ugap_, double F2_, double k1_, double k2_, double beta_,
-    double uh_, double r1_, double r2_, double r3_, double uf_, int configType_) :
+    double uh_, double r1_, double r2_, double r3_, double uf_, int configType_, double up_) :
     UniaxialMaterial(tag_, MAT_TAG_TSSCB),
-    F1(F1_), k0(k0_), ugap(ugap_), F2(F2_), k1(k1_), k2(k2_), beta(beta_), uh(uh_), r1(r1_), r2(r2_), r3(r3_), uf(uf_), configType(configType_)
+    F1(F1_), k0(k0_), ugap(ugap_), F2(F2_), k1(k1_), k2(k2_), beta(beta_), uh(uh_), r1(r1_), r2(r2_), r3(r3_), uf(uf_), configType(configType_), up(up_)
 {
     Cstrain = 0.0;
     Tstrain = 0.0;
@@ -233,15 +247,22 @@ TSSCB::TSSCB(int tag_, double F1_, double k0_, double ugap_, double F2_, double 
     if (ua < 0) {
         ua = 0.0;
     }
+    Cfracturing = false;
+    Tfracturing = false;
+    CfractureFore = 0;
+    TfractureFore = 0;
+    Crp = 0.0;
+    Trp = 0.0;
 }
 
 TSSCB::TSSCB() :UniaxialMaterial(0, MAT_TAG_TSSCB),
     F1(0.0), k0(0.0), ugap(0.0), F2(0.0), k1(0.0), k2(0.0), beta(0.0), ua(0.0),
-    uh(1.0e16), r1(0.0), r2(0.0), r3(0.0), uf(1.0e16), configType(1),
+    uh(1.0e16), r1(0.0), r2(0.0), r3(0.0), uf(1.0e16), configType(1), up(0.0),
     Tstage(1), Cstage(1), Tstrain(0.0), Cstrain(0.0), Tstress3(0.0), Cstress3(0.0), Ttangent(0.0), Ctangent(0.0),
     Chardening(false), Thardening(false), Cstress1(0.0), Tstress1(0.0), Cstress2(0.0), Tstress2(0.0),
     Cstress4(0.0), Tstress4(0.0),
-    CCDD(0.0), TCDD(0.0), Cfracture(false), Tfracture(false), Cplate1(ugap), Tplate1(ugap), Cplate2(-ugap), Tplate2(-ugap)
+    CCDD(0.0), TCDD(0.0), Cfracture(false), Tfracture(false), Cplate1(ugap), Tplate1(ugap), Cplate2(-ugap), Tplate2(-ugap),
+    Cfracturing(false), Tfracturing(false), CfractureFore(false), TfractureFore(false), Crp(false), Trp(false)
 {
     
 }
@@ -275,7 +296,22 @@ int TSSCB::setTrialStrain (double strain, double strainRate)
             Thardening = true;
         }
         if (fabs(Tstrain) > uf) {
-            Tfracture = true;
+            if (up == 0.0) {
+                Tfracture = true;
+            }
+            else {
+                Tfracturing = true;
+            }
+        }
+        if (Tfracturing) {
+            Trp = Crp + fabs(dStrain) / up;
+            if (Trp >= 1) {
+                Tfracture = true;
+                Trp = 1;
+            }
+            if (Crp == 0) {
+                TfractureFore = Cstress4;
+            }
         }
         // Update Tstress
         determineTrialState(dStrain);
@@ -328,7 +364,7 @@ void TSSCB::determineTrialState (double dStrain)
         Tstage = 2;  // If ugap is zero, always in stage-2
     }
     if (Tfracture) {
-        // SMA cable fracture
+        // SMA cable fracture completed
         if (configType == 1) {
             uy = F1 / k0;
             if (Tplate2 + uy <= Tstrain && Tstrain <= Tplate1 - uy) {
@@ -346,6 +382,16 @@ void TSSCB::determineTrialState (double dStrain)
         }
         else if (configType == 2) {
             Tstress4 = frictionModel(Cstress4, dStrain);
+        }
+        return;
+    }
+    if (Tfracturing) {
+        // SMA cable fracture starts
+        if (Cstress4 >= 0) {
+            Tstress4 = TfractureFore - (TfractureFore - F1) * Trp;
+        }
+        else {
+            Tstress4 = TfractureFore + (-F1 - TfractureFore) * Trp;
         }
         return;
     }
@@ -568,7 +614,12 @@ double TSSCB::SCModel(double u0, double F0, double du)
             F = F_;
         }
     }
-    return F;
+    if (Tfracturing) {
+        return F * Trp;
+    }
+    else {
+        return F;
+    }
 }
 
 
@@ -601,6 +652,9 @@ int TSSCB::commitState ()
    Cfracture = Tfracture;
    Cplate1 = Tplate1;
    Cplate2 = Tplate2;
+   Cfracturing = Tfracturing;
+   CfractureFore = TfractureFore;
+   Crp = Trp;
    return 0;
 }
 
@@ -673,7 +727,7 @@ int TSSCB::revertToStart ()
 
 UniaxialMaterial* TSSCB::getCopy ()
 {
-   TSSCB* theCopy = new TSSCB(this->getTag(), F1, k0, ugap, F2, k1, k2, beta, uh, r1, r2, r3, uf, configType);
+   TSSCB* theCopy = new TSSCB(this->getTag(), F1, k0, ugap, F2, k1, k2, beta, uh, r1, r2, r3, uf, configType, up);
 
    return theCopy;
 }
@@ -709,6 +763,7 @@ void TSSCB::Print (OPS_Stream& s, int flag)
     s << "  r3:         " << r3 << " ";
     s << "  uf:         " << uf << " ";
     s << "  congifType: " << configType << " ";
+    s << "  up:         " << up << " ";
   }
 
   if (flag == OPS_PRINT_PRINTMODEL_JSON) {
@@ -728,6 +783,7 @@ void TSSCB::Print (OPS_Stream& s, int flag)
     s << "\"r3\": " << r3 << ", ";
     s << "\"uf\": " << uf << ", ";
     s << "\"configType\": " << configType << ", ";
+    s << "\"up\": " << up << ", ";
   }
   
 }
