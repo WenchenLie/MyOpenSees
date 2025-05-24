@@ -164,3 +164,4 @@ cython_debug/
 test*.py
 !opensees.pyd
 data/
+main_test.py
