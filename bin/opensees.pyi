@@ -1242,6 +1242,9 @@ def version() -> str:
     """
     pass
 
+def testUniaxialMaterial(tag: int) -> None:
+    """Test the uniaxial material"""
+
 def setStrain(strain: float, strainRate: float = 0.0) -> None:
     """
     """
@@ -1250,6 +1253,14 @@ def setStrain(strain: float, strainRate: float = 0.0) -> None:
 def getStrain() -> float:
     """
     """
+    pass
+
+def setTrialStrain(strain: float, strainRate: float = 0.0) -> None:
+    """只有我编译的opensees.pyd有这个函数"""
+    pass
+
+def commitState() -> None:
+    """只有我编译的opensees.pyd有这个函数"""
     pass
 
 def getStress() -> float:

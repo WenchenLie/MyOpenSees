@@ -165,3 +165,5 @@ test*.py
 !opensees.pyd
 data/
 main_test.py
+test/
+

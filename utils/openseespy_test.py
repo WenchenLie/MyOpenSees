@@ -15,9 +15,11 @@ def material_test(
     stess = []
     tangent = []
     for val in strain:
-        ops.setStrain(val)
+        # ops.setStrain(val)
+        ops.setTrialStrain(val)  # 只有我编译的oponseespy有setTrailStrain和commitState函数
         stess.append(ops.getStress())
         tangent.append(ops.getTangent())
+        ops.commitState()
     return stess, tangent
 
 
