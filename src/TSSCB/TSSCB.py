@@ -242,7 +242,7 @@ class TSSCBMaterial(UniaxialMaterial):
                 if self.Tplate2 + uy <= self.Tstrain <= self.Tplate1 - uy:
                     self.Tstress4 = 0
                 else:
-                    self.Tstress4 = self._frictionModel(self.Cstress4, dStrain)
+                    self.Tstress4 = self._frictionModel(self.Cstress4, dStrain, 0.5)
                     if dStrain < 0 and self.Tstrain > 0 and self.Tstress4 <= 0:
                         self.Tstress4 = 0
                     elif dStrain > 0 and self.Tstrain < 0 and self.Tstress4 >= 0:
@@ -377,12 +377,14 @@ class TSSCBMaterial(UniaxialMaterial):
     def _frictionModel(self,
             F0: float,
             du: float,
+            half: float=1.0
         ) -> float:
         """滑动摩擦力模型
 
         Args:
             F0 (float): 上一步摩擦力
             du (float): 位移增量
+            half (float, optional): `F1`乘以`half`作为最终使用的摩擦力值
 
         Returns:
             float: 当前步摩擦力
@@ -390,10 +392,10 @@ class TSSCBMaterial(UniaxialMaterial):
         if du == 0:
             return F0
         F_ = F0 + du * self.k0
-        if F_ > self.F1:
-            F = self.F1
-        elif F_ < -self.F1:
-            F = -self.F1
+        if F_ > self.F1 * half:
+            F = self.F1 * half
+        elif F_ < -self.F1 * half:
+            F = -self.F1 * half
         else:
             F = F_
         return F

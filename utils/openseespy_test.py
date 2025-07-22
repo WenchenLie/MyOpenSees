@@ -8,6 +8,16 @@ def material_test(
         mat_type: str,
         para: list,
     ) -> tuple[list, list]:
+    """基于openseespy的材料测试
+
+    Args:
+        strain (list[float]): 应变序列
+        mat_type (str): 材料名称
+        para (list): 参数
+
+    Returns:
+        tuple[list, list]: 应力、切线刚度
+    """
     ops.wipe()
     ops.uniaxialMaterial(mat_type, 1, *para)
     ops.testUniaxialMaterial(1)

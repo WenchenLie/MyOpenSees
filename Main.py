@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from TSSCB.TSSCB import TSSCBMaterial
-from ModBoucWen.ModBoucWen import ModBoucWen
-from Failure.Failure import Failure
+from src.TSSCB.TSSCB import TSSCBMaterial
+from src.ModBoucWen.ModBoucWen import ModBoucWen
+from src.Failure.Failure import Failure
 from utils.openseespy_test import generate_path, material_test
 
 
