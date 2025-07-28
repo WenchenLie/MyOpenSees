@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from src.TSSCB.TSSCB import TSSCBMaterial
 from src.ModBoucWen.ModBoucWen import ModBoucWen
 from src.Failure.Failure import Failure
-from utils.openseespy_test import generate_path, material_test
+from utils.material_test import generate_path, material_test
 
 
 u = generate_path([0, 

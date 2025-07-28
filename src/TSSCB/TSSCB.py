@@ -324,9 +324,9 @@ class TSSCBMaterial(UniaxialMaterial):
                 self.Tstress3 = self.Cstress4
             elif dStrain < 0 and self.Tstress3 >= self.Cstress3:
                 self.Tstress3 = self.Cstress4
-            if self.configType == 1 and self.Tstrain >= 0 and dStrain > 0 and self.Cstress3 == 0 and self.Thardening and self.Tstress2 < self.F1:
+            if self.configType == 1 and self.Tstrain >= 0 and dStrain > 0 and self.Thardening and self.Tstress2 < self.F1:
                 self.Tstress3 = self._frictionModel(self.Cstress3, dStrain)
-            elif self.configType == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Cstress3 == 0 and self.Thardening and self.Tstress2 > self.F1:
+            elif self.configType == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Thardening and self.Tstress2 > self.F1:
                 self.Tstress3 = self._frictionModel(self.Cstress3, dStrain)
         elif self.Cstage == 2 and self.Tstage == 1:
             # NOTE: stage-2 -> stage-1
