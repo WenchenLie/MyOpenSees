@@ -62,19 +62,19 @@ class TSSCBMaterial(UniaxialMaterial):
         self.beta = beta
         if hardening is not None:
             if hardening != '-hardening':
-                raise ValueError('`hardening` should be `-hardening` if it is given')
+                raise ValueError('`hardening` should be `-hardening` if given')
             self.hasHardening = True  # Whether to consider hardening
         else:
             self.hasHardening = False
         if minmax is not None:
             if minmax != '-minmax':
-                raise ValueError('`minmax` should be `-minmax` if it is given')
+                raise ValueError('`minmax` should be `-minmax` if given')
         if _configType is not None:
             if _configType != '-configType':
-                raise ValueError('`_configType` should be `-configType` if it is given')
+                raise ValueError('`_configType` should be `-configType` if given')
         if _up is not None:
             if _up != '-up':
-                raise ValueError('`_up` should be `-up` if it is given')
+                raise ValueError('`_up` should be `-up` if given')
         self.uh = uh
         self.r1 = r1
         self.r2 = r2

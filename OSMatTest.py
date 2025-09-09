@@ -33,14 +33,16 @@ def generate_path(disp_level: list, n: int=200):
 
 if __name__ == "__main__":
 
-    # data = np.loadtxt('SMA6.txt')
-    u = generate_path([0, 10, -10, 20, -20, 30, -30, 40, -40, 55, -55, 0])  # 目标位移幅值点
+    # u = np.loadtxt('data/u.txt')
+    u = np.array([0, 10, -10, 20, -20, 30, -30, 40, -40, 55, -55, 0]) / 10
+    # u = np.array([0, 55]) / 10
+    u = generate_path(u)  # 目标位移幅值点
 
 
     mat = 'TSSCB'
-    paras_a = [200, 500, 20, 400, 400, 5, 0.3]
+    paras = (48.085369617556054, 2526.6187266788756, 0.190315100216019, 240.42684808778026, 57.63129379564053, 2.074726576643059, 0.38270000000000004)
 
-    F = material_test(u, mat, paras_a)
+    F = material_test(u, mat, paras)
     F = np.array(F)
     plt.plot(u, F)
     plt.show()

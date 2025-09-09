@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.tcl": "opensees",
+        "cmath": "cpp",
+        "random": "cpp"
+    }
+}

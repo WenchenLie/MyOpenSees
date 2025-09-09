@@ -1,6 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
+*.py[co]
 *$py.class
 
 # C extensions
@@ -166,4 +166,5 @@ test*.py
 data/
 main_test.py
 test/
-
+setup.py
+compile.bat
