@@ -1496,17 +1496,17 @@ static const char* const __pyx_f[] = {
 
 /*--- Type declarations ---*/
 struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial;
-struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain;
+struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain;
 struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel;
 
 /* "src/TSSCB/TSSCB.pyx":95
  *         self.i = 0
  * 
- *     cpdef setTrainStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
+ *     cpdef setTrialStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
  *         cdef double dStrain
  *         #
 */
-struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain {
+struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain {
   int __pyx_n;
   double strainRate;
 };
@@ -1588,7 +1588,7 @@ struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial {
 struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial {
   void (*_check_paras)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *);
   void (*_init_paras)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *);
-  PyObject *(*setTrainStrain)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain *__pyx_optional_args);
+  PyObject *(*setTrialStrain)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain *__pyx_optional_args);
   void (*_determineTrialState)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double);
   double (*_frictionModel)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, double, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel *__pyx_optional_args);
   double (*_SCModel)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, double, double);
@@ -2286,7 +2286,7 @@ static int __Pyx_State_RemoveModule(void*);
 
 static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__check_paras(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self); /* proto*/
 static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__init_paras(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self); /* proto*/
-static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain *__pyx_optional_args); /* proto*/
+static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain *__pyx_optional_args); /* proto*/
 static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_dStrain); /* proto*/
 static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_F0, double __pyx_v_du, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel *__pyx_optional_args); /* proto*/
 static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__SCModel(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_u0, double __pyx_v_F0, double __pyx_v_du); /* proto*/
@@ -2372,7 +2372,7 @@ static const char __pyx_k_stringsource[] = "<stringsource>";
 static const char __pyx_k_TSSCBMaterial[] = "TSSCBMaterial";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_AssertionError[] = "AssertionError";
-static const char __pyx_k_setTrainStrain[] = "setTrainStrain";
+static const char __pyx_k_setTrialStrain[] = "setTrialStrain";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_src_TSSCB_TSSCB[] = "src.TSSCB.TSSCB";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
@@ -2383,7 +2383,7 @@ static const char __pyx_k_TSSCBMaterial_setStrain[] = "TSSCBMaterial.setStrain";
 static const char __pyx_k_TSSCBMaterial_getTangent[] = "TSSCBMaterial.getTangent";
 static const char __pyx_k_up_should_be_up_if_given[] = "`_up` should be `-up` if given";
 static const char __pyx_k_TSSCBMaterial_commitState[] = "TSSCBMaterial.commitState";
-static const char __pyx_k_TSSCBMaterial_setTrainStrain[] = "TSSCBMaterial.setTrainStrain";
+static const char __pyx_k_TSSCBMaterial_setTrialStrain[] = "TSSCBMaterial.setTrialStrain";
 static const char __pyx_k_TSSCBMaterial___reduce_cython[] = "TSSCBMaterial.__reduce_cython__";
 static const char __pyx_k_Kt1_L_A_L_A_Jd_N_a_L_A_L_A_L_A[] = "\320\004@\300\001\360\006\000\t\r\210K\220t\2301\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210J\220d\230!\330\010\014\210N\230$\230a\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210H\220D\230\001\330\010\014\210M\230\024\230Q\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\340\010\022\220'\230\022\2304\230q\330\010\013\2104\210q\220\t\230\022\2301\330\014\020\220\013\2301\340\014\017\210t\2201\220D\230\n\240\"\240D\250\004\250C\250t\2601\330\020\024\220N\240!\330\014\017\210t\2201\220D\230\n\240\"\240D\250\001\330\020\023\2204\220t\2303\230a\330\024\030\230\r\240Q\340\024\030\230\017\240q\330\014\017\210t\2201\330\020\024\220G\2304\230u\240B\240d\250!\2509\260B\260d\270!\330\020\023\2204\220u\230C\230q\330\024\030\230\r\240Q\330\024\030\230\007\230q\330\020\023\2204\220u\230C\230q\330\024\030\320\030)\250\024\250Q\340\014\020\320\020%\240Q\240a\340\014\017\210x\220r\230\021\330\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\330\020\023\2204\220t\2301\330\024\030\230\014\240A\340\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\330\020\023\2204\220t\2301\330\024\030\230\014\240A\330\014\017\210t\2209\230B\230d\240!\330\020\024\220K\230t\2401\330\014\017\210t\2209\230B\230a\230t\2401\330\020\024\220K\230q\240\004\240A\340\014\020\220\r\230T\240\032\2502\250T\260\033\270B\270a";
 static const char __pyx_k_configType_should_be_configTyp[] = "`_configType` should be `-configType` if given";
@@ -2396,7 +2396,7 @@ static const char __pyx_k_Invalid_parameters_for_TSSCBMate[] = "Invalid paramete
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 /* #### Code section: decls ### */
 static int __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial___cinit__(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, int __pyx_v_tag, double __pyx_v_F1, double __pyx_v_k0, double __pyx_v_ugap, double __pyx_v_F2, double __pyx_v_k1, double __pyx_v_k2, double __pyx_v_beta, PyObject *__pyx_v_hardening, double __pyx_v_uh, double __pyx_v_r1, double __pyx_v_r2, double __pyx_v_r3, PyObject *__pyx_v_minmax, double __pyx_v_uf, PyObject *__pyx_v__configType, int __pyx_v_configType, PyObject *__pyx_v__up, double __pyx_v_up); /* proto */
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_2setTrainStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain, double __pyx_v_strainRate); /* proto */
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_2setTrialStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain, double __pyx_v_strainRate); /* proto */
 static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_4commitState(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_6getStress(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_8getTangent(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self); /* proto */
@@ -2498,7 +2498,7 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_TSSCBMaterial_getStress __pyx_string_tab[10]
 #define __pyx_n_u_TSSCBMaterial_getTangent __pyx_string_tab[11]
 #define __pyx_n_u_TSSCBMaterial_setStrain __pyx_string_tab[12]
-#define __pyx_n_u_TSSCBMaterial_setTrainStrain __pyx_string_tab[13]
+#define __pyx_n_u_TSSCBMaterial_setTrialStrain __pyx_string_tab[13]
 #define __pyx_kp_u_Tstage __pyx_string_tab[14]
 #define __pyx_n_u_TypeError __pyx_string_tab[15]
 #define __pyx_n_u_ValueError __pyx_string_tab[16]
@@ -2547,7 +2547,7 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_reduce_ex __pyx_string_tab[59]
 #define __pyx_n_u_self __pyx_string_tab[60]
 #define __pyx_n_u_setStrain __pyx_string_tab[61]
-#define __pyx_n_u_setTrainStrain __pyx_string_tab[62]
+#define __pyx_n_u_setTrialStrain __pyx_string_tab[62]
 #define __pyx_n_u_set_name __pyx_string_tab[63]
 #define __pyx_n_u_setstate __pyx_string_tab[64]
 #define __pyx_n_u_setstate_cython __pyx_string_tab[65]
@@ -3458,7 +3458,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__check_paras(struct __pyx
  *     cdef void _check_paras(self):
  *         if not (self.F1 >= 0 and self.k0 > 0 and self.ugap >= 0 and             # <<<<<<<<<<<<<<
  *                 self.F2 > 0 and self.k1 > 0 and self.k2 > 0 and
- *                 0 <= self.beta <= 1 and self.uh > 0 and
+ *                 0 <= self.beta <= 2 and self.uh > 0 and
 */
   __pyx_t_2 = (__pyx_v_self->F1 >= 0.0);
   if (__pyx_t_2) {
@@ -3483,7 +3483,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__check_paras(struct __pyx
  *     cdef void _check_paras(self):
  *         if not (self.F1 >= 0 and self.k0 > 0 and self.ugap >= 0 and
  *                 self.F2 > 0 and self.k1 > 0 and self.k2 > 0 and             # <<<<<<<<<<<<<<
- *                 0 <= self.beta <= 1 and self.uh > 0 and
+ *                 0 <= self.beta <= 2 and self.uh > 0 and
  *                 self.r1 >= 0 and self.r2 >= 0 and self.r3 >= 0 and
 */
   __pyx_t_2 = (__pyx_v_self->F2 > 0.0);
@@ -3508,13 +3508,13 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__check_paras(struct __pyx
   /* "src/TSSCB/TSSCB.pyx":67
  *         if not (self.F1 >= 0 and self.k0 > 0 and self.ugap >= 0 and
  *                 self.F2 > 0 and self.k1 > 0 and self.k2 > 0 and
- *                 0 <= self.beta <= 1 and self.uh > 0 and             # <<<<<<<<<<<<<<
+ *                 0 <= self.beta <= 2 and self.uh > 0 and             # <<<<<<<<<<<<<<
  *                 self.r1 >= 0 and self.r2 >= 0 and self.r3 >= 0 and
  *                 self.uf > 0 and self.up >= 0):
 */
   __pyx_t_2 = (0.0 <= __pyx_v_self->beta);
   if (__pyx_t_2) {
-    __pyx_t_2 = (__pyx_v_self->beta <= 1.0);
+    __pyx_t_2 = (__pyx_v_self->beta <= 2.0);
   }
   if (__pyx_t_2) {
   } else {
@@ -3530,7 +3530,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__check_paras(struct __pyx
 
   /* "src/TSSCB/TSSCB.pyx":68
  *                 self.F2 > 0 and self.k1 > 0 and self.k2 > 0 and
- *                 0 <= self.beta <= 1 and self.uh > 0 and
+ *                 0 <= self.beta <= 2 and self.uh > 0 and
  *                 self.r1 >= 0 and self.r2 >= 0 and self.r3 >= 0 and             # <<<<<<<<<<<<<<
  *                 self.uf > 0 and self.up >= 0):
  *             raise ValueError("Invalid parameters for TSSCBMaterial")
@@ -3555,7 +3555,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__check_paras(struct __pyx
   }
 
   /* "src/TSSCB/TSSCB.pyx":69
- *                 0 <= self.beta <= 1 and self.uh > 0 and
+ *                 0 <= self.beta <= 2 and self.uh > 0 and
  *                 self.r1 >= 0 and self.r2 >= 0 and self.r3 >= 0 and
  *                 self.uf > 0 and self.up >= 0):             # <<<<<<<<<<<<<<
  *             raise ValueError("Invalid parameters for TSSCBMaterial")
@@ -3576,7 +3576,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__check_paras(struct __pyx
  *     cdef void _check_paras(self):
  *         if not (self.F1 >= 0 and self.k0 > 0 and self.ugap >= 0 and             # <<<<<<<<<<<<<<
  *                 self.F2 > 0 and self.k1 > 0 and self.k2 > 0 and
- *                 0 <= self.beta <= 1 and self.uh > 0 and
+ *                 0 <= self.beta <= 2 and self.uh > 0 and
 */
   __pyx_t_2 = (!__pyx_t_1);
   if (unlikely(__pyx_t_2)) {
@@ -3609,7 +3609,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__check_paras(struct __pyx
  *     cdef void _check_paras(self):
  *         if not (self.F1 >= 0 and self.k0 > 0 and self.ugap >= 0 and             # <<<<<<<<<<<<<<
  *                 self.F2 > 0 and self.k1 > 0 and self.k2 > 0 and
- *                 0 <= self.beta <= 1 and self.uh > 0 and
+ *                 0 <= self.beta <= 2 and self.uh > 0 and
 */
   }
 
@@ -3848,7 +3848,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__init_paras(struct __pyx_
  *         self.Crp = 0.0; self.Trp = 0.0
  *         self.i = 0             # <<<<<<<<<<<<<<
  * 
- *     cpdef setTrainStrain(self, double strain, double strainRate=0):
+ *     cpdef setTrialStrain(self, double strain, double strainRate=0):
 */
   __pyx_v_self->i = 0;
 
@@ -3866,19 +3866,19 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__init_paras(struct __pyx_
 /* "src/TSSCB/TSSCB.pyx":95
  *         self.i = 0
  * 
- *     cpdef setTrainStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
+ *     cpdef setTrialStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
  *         cdef double dStrain
  *         #
 */
 
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrainStrain(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrialStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain *__pyx_optional_args) {
+static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain *__pyx_optional_args) {
   double __pyx_v_strainRate = ((double)0.0);
   double __pyx_v_dStrain;
   PyObject *__pyx_r = NULL;
@@ -3897,7 +3897,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain(struc
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("setTrainStrain", 0);
+  __Pyx_RefNannySetupContext("setTrialStrain", 0);
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_strainRate = __pyx_optional_args->strainRate;
@@ -3919,9 +3919,9 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain(struc
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_setTrainStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_setTrialStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrainStrain)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrialStrain)) {
         __Pyx_XDECREF(__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
@@ -4552,7 +4552,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain(struc
   /* "src/TSSCB/TSSCB.pyx":95
  *         self.i = 0
  * 
- *     cpdef setTrainStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
+ *     cpdef setTrialStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
  *         cdef double dStrain
  *         #
 */
@@ -4567,7 +4567,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain(struc
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.setTrainStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.setTrialStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4576,15 +4576,15 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain(struc
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrainStrain(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrialStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrainStrain = {"setTrainStrain", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrainStrain, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrainStrain(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrialStrain = {"setTrialStrain", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrialStrain, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrialStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4603,7 +4603,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("setTrainStrain (wrapper)", 0);
+  __Pyx_RefNannySetupContext("setTrialStrain (wrapper)", 0);
   #if !CYTHON_METH_FASTCALL
   #if CYTHON_ASSUME_SAFE_SIZE
   __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
@@ -4630,9 +4630,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setTrainStrain", 0) < 0) __PYX_ERR(0, 95, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setTrialStrain", 0) < 0) __PYX_ERR(0, 95, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setTrainStrain", 0, 1, 2, i); __PYX_ERR(0, 95, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setTrialStrain", 0, 1, 2, i); __PYX_ERR(0, 95, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
@@ -4656,18 +4656,18 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setTrainStrain", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 95, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setTrialStrain", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 95, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.setTrainStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.setTrialStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_2setTrainStrain(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self), __pyx_v_strain, __pyx_v_strainRate);
+  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_2setTrialStrain(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self), __pyx_v_strain, __pyx_v_strainRate);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -4677,19 +4677,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_2setTrainStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain, double __pyx_v_strainRate) {
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_2setTrialStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain, double __pyx_v_strainRate) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain __pyx_t_2;
+  struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain __pyx_t_2;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("setTrainStrain", 0);
+  __Pyx_RefNannySetupContext("setTrialStrain", 0);
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2.strainRate = __pyx_v_strainRate;
-  __pyx_t_1 = __pyx_vtabptr_3src_5TSSCB_5TSSCB_TSSCBMaterial->setTrainStrain(__pyx_v_self, __pyx_v_strain, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_t_1 = __pyx_vtabptr_3src_5TSSCB_5TSSCB_TSSCBMaterial->setTrialStrain(__pyx_v_self, __pyx_v_strain, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4698,7 +4698,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_2setTrainStrain(str
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.setTrainStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.setTrialStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -8178,7 +8178,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_8getTangent(struct 
  *         return self.Ttangent
  * 
  *     cpdef setStrain(self, double strain):             # <<<<<<<<<<<<<<
- *         self.setTrainStrain(strain)
+ *         self.setTrialStrain(strain)
  *         self.commitState()
 */
 
@@ -8269,16 +8269,16 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setStrain(struct __p
   /* "src/TSSCB/TSSCB.pyx":370
  * 
  *     cpdef setStrain(self, double strain):
- *         self.setTrainStrain(strain)             # <<<<<<<<<<<<<<
+ *         self.setTrialStrain(strain)             # <<<<<<<<<<<<<<
  *         self.commitState()
 */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->setTrainStrain(__pyx_v_self, __pyx_v_strain, 0, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 370, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->setTrialStrain(__pyx_v_self, __pyx_v_strain, 0, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 370, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "src/TSSCB/TSSCB.pyx":371
  *     cpdef setStrain(self, double strain):
- *         self.setTrainStrain(strain)
+ *         self.setTrialStrain(strain)
  *         self.commitState()             # <<<<<<<<<<<<<<
 */
   __pyx_t_1 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->commitState(__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
@@ -8289,7 +8289,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setStrain(struct __p
  *         return self.Ttangent
  * 
  *     cpdef setStrain(self, double strain):             # <<<<<<<<<<<<<<
- *         self.setTrainStrain(strain)
+ *         self.setTrialStrain(strain)
  *         self.commitState()
 */
 
@@ -8926,7 +8926,7 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __pyx_vtabptr_3src_5TSSCB_5TSSCB_TSSCBMaterial = &__pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial;
   __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial._check_paras = (void (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__check_paras;
   __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial._init_paras = (void (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__init_paras;
-  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial.setTrainStrain = (PyObject *(*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain *__pyx_optional_args))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrainStrain;
+  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial.setTrialStrain = (PyObject *(*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain *__pyx_optional_args))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain;
   __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial._determineTrialState = (void (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState;
   __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial._frictionModel = (double (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, double, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel *__pyx_optional_args))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel;
   __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial._SCModel = (double (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, double, double))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__SCModel;
@@ -9270,14 +9270,14 @@ __Pyx_RefNannySetupContext("PyInit_TSSCB", 0);
   /* "src/TSSCB/TSSCB.pyx":95
  *         self.i = 0
  * 
- *     cpdef setTrainStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
+ *     cpdef setTrialStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
  *         cdef double dStrain
  *         #
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrainStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCBMaterial_setTrainStrain, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrialStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCBMaterial_setTrialStrain, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_mstate_global->__pyx_tuple[0]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial, __pyx_mstate_global->__pyx_n_u_setTrainStrain, __pyx_t_2) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial, __pyx_mstate_global->__pyx_n_u_setTrialStrain, __pyx_t_2) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "src/TSSCB/TSSCB.pyx":344
@@ -9320,7 +9320,7 @@ __Pyx_RefNannySetupContext("PyInit_TSSCB", 0);
  *         return self.Ttangent
  * 
  *     cpdef setStrain(self, double strain):             # <<<<<<<<<<<<<<
- *         self.setTrainStrain(strain)
+ *         self.setTrialStrain(strain)
  *         self.commitState()
 */
   __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_11setStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCBMaterial_setStrain, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
@@ -9430,7 +9430,7 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_TSSCBMaterial_getStress, sizeof(__pyx_k_TSSCBMaterial_getStress), 0, 1, 1}, /* PyObject cname: __pyx_n_u_TSSCBMaterial_getStress */
   {__pyx_k_TSSCBMaterial_getTangent, sizeof(__pyx_k_TSSCBMaterial_getTangent), 0, 1, 1}, /* PyObject cname: __pyx_n_u_TSSCBMaterial_getTangent */
   {__pyx_k_TSSCBMaterial_setStrain, sizeof(__pyx_k_TSSCBMaterial_setStrain), 0, 1, 1}, /* PyObject cname: __pyx_n_u_TSSCBMaterial_setStrain */
-  {__pyx_k_TSSCBMaterial_setTrainStrain, sizeof(__pyx_k_TSSCBMaterial_setTrainStrain), 0, 1, 1}, /* PyObject cname: __pyx_n_u_TSSCBMaterial_setTrainStrain */
+  {__pyx_k_TSSCBMaterial_setTrialStrain, sizeof(__pyx_k_TSSCBMaterial_setTrialStrain), 0, 1, 1}, /* PyObject cname: __pyx_n_u_TSSCBMaterial_setTrialStrain */
   {__pyx_k_Tstage, sizeof(__pyx_k_Tstage), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Tstage */
   {__pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_TypeError */
   {__pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_ValueError */
@@ -9479,7 +9479,7 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 1, 1}, /* PyObject cname: __pyx_n_u_reduce_ex */
   {__pyx_k_self, sizeof(__pyx_k_self), 0, 1, 1}, /* PyObject cname: __pyx_n_u_self */
   {__pyx_k_setStrain, sizeof(__pyx_k_setStrain), 0, 1, 1}, /* PyObject cname: __pyx_n_u_setStrain */
-  {__pyx_k_setTrainStrain, sizeof(__pyx_k_setTrainStrain), 0, 1, 1}, /* PyObject cname: __pyx_n_u_setTrainStrain */
+  {__pyx_k_setTrialStrain, sizeof(__pyx_k_setTrialStrain), 0, 1, 1}, /* PyObject cname: __pyx_n_u_setTrialStrain */
   {__pyx_k_set_name, sizeof(__pyx_k_set_name), 0, 1, 1}, /* PyObject cname: __pyx_n_u_set_name */
   {__pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 1, 1}, /* PyObject cname: __pyx_n_u_setstate */
   {__pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 1, 1}, /* PyObject cname: __pyx_n_u_setstate_cython */
@@ -9524,7 +9524,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   /* "src/TSSCB/TSSCB.pyx":95
  *         self.i = 0
  * 
- *     cpdef setTrainStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
+ *     cpdef setTrialStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
  *         cdef double dStrain
  *         #
 */
@@ -9577,7 +9577,7 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 95, 456};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_strain, __pyx_mstate->__pyx_n_u_strainRate};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_TSSCB_TSSCB_pyx, __pyx_mstate->__pyx_n_u_setTrainStrain, __pyx_k_Kt1_L_A_L_A_Jd_N_a_L_A_L_A_L_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_TSSCB_TSSCB_pyx, __pyx_mstate->__pyx_n_u_setTrialStrain, __pyx_k_Kt1_L_A_L_A_Jd_N_a_L_A_L_A_L_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 344, 145};

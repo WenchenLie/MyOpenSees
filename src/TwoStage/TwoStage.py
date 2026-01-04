@@ -65,7 +65,7 @@ class TwoStage(UniaxialMaterial):
         self.Cu_neg = -self.ua
         self.Tu_neg = -self.ua
 
-    def setTrainStrain(self, strain, strainRate=0):
+    def setTrialStrain(self, strain, strainRate=0):
         """传入当前步的应变值strain"""
         dStrain = strain - self.Cstrain
         self.Tstrain = strain

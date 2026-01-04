@@ -64,7 +64,7 @@ cdef class TSSCBMaterial:
     cdef void _check_paras(self):
         if not (self.F1 >= 0 and self.k0 > 0 and self.ugap >= 0 and
                 self.F2 > 0 and self.k1 > 0 and self.k2 > 0 and
-                0 <= self.beta <= 1 and self.uh > 0 and
+                0 <= self.beta <= 2 and self.uh > 0 and
                 self.r1 >= 0 and self.r2 >= 0 and self.r3 >= 0 and
                 self.uf > 0 and self.up >= 0):
             raise ValueError("Invalid parameters for TSSCBMaterial")
@@ -92,7 +92,7 @@ cdef class TSSCBMaterial:
         self.Crp = 0.0; self.Trp = 0.0
         self.i = 0
 
-    cpdef setTrainStrain(self, double strain, double strainRate=0):
+    cpdef setTrialStrain(self, double strain, double strainRate=0):
         cdef double dStrain
         # 将试验态变量设为上一步的收敛态
         self.Tstrain = self.Cstrain
@@ -367,5 +367,5 @@ cdef class TSSCBMaterial:
         return self.Ttangent
 
     cpdef setStrain(self, double strain):
-        self.setTrainStrain(strain)
+        self.setTrialStrain(strain)
         self.commitState()

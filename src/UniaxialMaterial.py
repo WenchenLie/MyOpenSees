@@ -12,13 +12,13 @@ class UniaxialMaterial(ABC):
         return obj
 
     @abstractmethod
-    def setTrainStrain(self, strain: float, strainRate: float=0) -> None: ...
+    def setTrialStrain(self, strain: float, strainRate: float=0) -> None: ...
 
     @abstractmethod
     def commitState(self) -> None: ...
 
     def setStrain(self, strain: float):
-        self.setTrainStrain(strain)
+        self.setTrialStrain(strain)
         self.commitState()
 
     @classmethod

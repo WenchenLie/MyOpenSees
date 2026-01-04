@@ -33,7 +33,7 @@ class MyMaterial(UniaxialMaterial):
         self.Ttangent = 0
         ...
 
-    def setTrainStrain(self, strain, strainRate=0):
+    def setTrialStrain(self, strain, strainRate=0):
         """传入当前步的应变值strain"""
         # Reset history variables to last converged state
         self.Tstrain = strain

@@ -165,7 +165,7 @@ class TSSCBMaterial(UniaxialMaterial):
         assert self.F2 > 0
         assert self.k1 > 0
         assert self.k2 > 0
-        assert 0 <= self.beta <= 1
+        assert 0 <= self.beta <= 2  # When configType = 1 and beta > 1, unloading forces have been modified to be not less than zero.
         assert self.uh > 0
         assert self.r1 >= 0
         assert self.r2 >= 0
@@ -173,7 +173,7 @@ class TSSCBMaterial(UniaxialMaterial):
         assert self.uf > 0
         assert self.up >= 0
 
-    def setTrainStrain(self, strain, strainRate: float=0):
+    def setTrialStrain(self, strain, strainRate: float=0):
         """传入当前步的应变值strain"""
         # Reset history variables to last converged state
         self.Tstrain = self.Cstrain
