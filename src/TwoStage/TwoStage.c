@@ -1499,7 +1499,7 @@ struct __pyx_obj_8TwoStage_TwoStage;
 struct __pyx_opt_args_8TwoStage_8TwoStage_setTrialStrain;
 struct __pyx_opt_args_8TwoStage_8TwoStage_setStrain;
 
-/* "TwoStage.pyx":84
+/* "TwoStage.pyx":80
  *         return F_next
  * 
  *     cpdef void setTrialStrain(self, double strain, double strainRate=0.0):             # <<<<<<<<<<<<<<
@@ -1511,7 +1511,7 @@ struct __pyx_opt_args_8TwoStage_8TwoStage_setTrialStrain {
   double strainRate;
 };
 
-/* "TwoStage.pyx":158
+/* "TwoStage.pyx":154
  *         return self.Ttangent
  * 
  *     cpdef double setStrain(self, double strain, double strainRate=0.0):             # <<<<<<<<<<<<<<
@@ -2409,18 +2409,12 @@ static const char __pyx_k_TwoStage_getStress[] = "TwoStage.getStress";
 static const char __pyx_k_TwoStage_setStrain[] = "TwoStage.setStrain";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_F2_must_be_positive[] = "F2 must be positive";
-static const char __pyx_k_Fy_must_be_positive[] = "Fy must be positive";
 static const char __pyx_k_TwoStage_getTangent[] = "TwoStage.getTangent";
-static const char __pyx_k_k1_must_be_positive[] = "k1 must be positive";
-static const char __pyx_k_k2_must_be_positive[] = "k2 must be positive";
 static const char __pyx_k_TwoStage_commitState[] = "TwoStage.commitState";
 static const char __pyx_k_pyx_unpickle_TwoStage[] = "__pyx_unpickle_TwoStage";
 static const char __pyx_k_TwoStage_setTrialStrain[] = "TwoStage.setTrialStrain";
 static const char __pyx_k_ua_must_be_non_negative[] = "ua must be non-negative";
 static const char __pyx_k_TwoStage___reduce_cython[] = "TwoStage.__reduce_cython__";
-static const char __pyx_k_kp1_must_be_non_negative[] = "kp1 must be non-negative";
-static const char __pyx_k_kp2_must_be_non_negative[] = "kp2 must be non-negative";
 static const char __pyx_k_src_TwoStage_TwoStage_pyx[] = "src/TwoStage/TwoStage.pyx";
 static const char __pyx_k_TwoStage___setstate_cython[] = "TwoStage.__setstate_cython__";
 static const char __pyx_k_hk_A_1_U_U_W_W_X_881A_7_nA_1[] = "\200\001\360\006\000\005\010\200\220h\230k\250\033\260A\330\010\r\210^\2301\330\010\016\320\016!\360\000\000\"U\004\360\000\000U\004W\004\360\000\000W\004X\004\330\004\023\2208\2308\2401\240A\330\004\007\200|\2207\230!\330\010*\250!\250;\260n\300A\330\004\013\2101";
@@ -2486,7 +2480,7 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   PyObject *__pyx_tuple[3];
   PyObject *__pyx_codeobj_tab[9];
-  PyObject *__pyx_string_tab[79];
+  PyObject *__pyx_string_tab[73];
   PyObject *__pyx_float_0_0;
   PyObject *__pyx_int_167799405;
   PyObject *__pyx_int_238679189;
@@ -2529,81 +2523,75 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_AssertionError __pyx_string_tab[1]
 #define __pyx_n_u_F1 __pyx_string_tab[2]
 #define __pyx_n_u_F2 __pyx_string_tab[3]
-#define __pyx_kp_u_F2_must_be_positive __pyx_string_tab[4]
-#define __pyx_kp_u_Fy_must_be_positive __pyx_string_tab[5]
-#define __pyx_kp_u_Incompatible_checksums_0x_x_vs_0 __pyx_string_tab[6]
-#define __pyx_n_u_PickleError __pyx_string_tab[7]
-#define __pyx_kp_u_Should_not_reach_here_Thookgap __pyx_string_tab[8]
-#define __pyx_n_u_TwoStage __pyx_string_tab[9]
-#define __pyx_n_u_TwoStage___reduce_cython __pyx_string_tab[10]
-#define __pyx_n_u_TwoStage___setstate_cython __pyx_string_tab[11]
-#define __pyx_n_u_TwoStage_commitState __pyx_string_tab[12]
-#define __pyx_n_u_TwoStage_getStrain __pyx_string_tab[13]
-#define __pyx_n_u_TwoStage_getStress __pyx_string_tab[14]
-#define __pyx_n_u_TwoStage_getTangent __pyx_string_tab[15]
-#define __pyx_n_u_TwoStage_setStrain __pyx_string_tab[16]
-#define __pyx_n_u_TwoStage_setTrialStrain __pyx_string_tab[17]
-#define __pyx_n_u_ValueError __pyx_string_tab[18]
-#define __pyx_kp_u__2 __pyx_string_tab[19]
-#define __pyx_kp_u__3 __pyx_string_tab[20]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[21]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[22]
-#define __pyx_n_u_commitState __pyx_string_tab[23]
-#define __pyx_n_u_dict __pyx_string_tab[24]
-#define __pyx_n_u_dict_2 __pyx_string_tab[25]
-#define __pyx_kp_u_disable __pyx_string_tab[26]
-#define __pyx_kp_u_enable __pyx_string_tab[27]
-#define __pyx_n_u_func __pyx_string_tab[28]
-#define __pyx_kp_u_gc __pyx_string_tab[29]
-#define __pyx_n_u_getStrain __pyx_string_tab[30]
-#define __pyx_n_u_getStress __pyx_string_tab[31]
-#define __pyx_n_u_getTangent __pyx_string_tab[32]
-#define __pyx_n_u_getstate __pyx_string_tab[33]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[34]
-#define __pyx_kp_u_isenabled __pyx_string_tab[35]
-#define __pyx_n_u_k1 __pyx_string_tab[36]
-#define __pyx_kp_u_k1_must_be_positive __pyx_string_tab[37]
-#define __pyx_n_u_k2 __pyx_string_tab[38]
-#define __pyx_kp_u_k2_must_be_positive __pyx_string_tab[39]
-#define __pyx_n_u_kp1 __pyx_string_tab[40]
-#define __pyx_kp_u_kp1_must_be_non_negative __pyx_string_tab[41]
-#define __pyx_n_u_kp2 __pyx_string_tab[42]
-#define __pyx_kp_u_kp2_must_be_non_negative __pyx_string_tab[43]
-#define __pyx_n_u_main __pyx_string_tab[44]
-#define __pyx_n_u_module __pyx_string_tab[45]
-#define __pyx_n_u_name __pyx_string_tab[46]
-#define __pyx_n_u_new __pyx_string_tab[47]
-#define __pyx_n_u_pickle __pyx_string_tab[48]
-#define __pyx_n_u_pop __pyx_string_tab[49]
-#define __pyx_n_u_pyx_PickleError __pyx_string_tab[50]
-#define __pyx_n_u_pyx_checksum __pyx_string_tab[51]
-#define __pyx_n_u_pyx_result __pyx_string_tab[52]
-#define __pyx_n_u_pyx_state __pyx_string_tab[53]
-#define __pyx_n_u_pyx_type __pyx_string_tab[54]
-#define __pyx_n_u_pyx_unpickle_TwoStage __pyx_string_tab[55]
-#define __pyx_n_u_pyx_vtable __pyx_string_tab[56]
-#define __pyx_n_u_qualname __pyx_string_tab[57]
-#define __pyx_n_u_reduce __pyx_string_tab[58]
-#define __pyx_n_u_reduce_cython __pyx_string_tab[59]
-#define __pyx_n_u_reduce_ex __pyx_string_tab[60]
-#define __pyx_n_u_self __pyx_string_tab[61]
-#define __pyx_n_u_setStrain __pyx_string_tab[62]
-#define __pyx_n_u_setTrialStrain __pyx_string_tab[63]
-#define __pyx_n_u_set_name __pyx_string_tab[64]
-#define __pyx_n_u_setstate __pyx_string_tab[65]
-#define __pyx_n_u_setstate_cython __pyx_string_tab[66]
-#define __pyx_kp_u_src_TwoStage_TwoStage_pyx __pyx_string_tab[67]
-#define __pyx_n_u_state __pyx_string_tab[68]
-#define __pyx_n_u_strain __pyx_string_tab[69]
-#define __pyx_n_u_strainRate __pyx_string_tab[70]
-#define __pyx_kp_u_stringsource __pyx_string_tab[71]
-#define __pyx_n_u_tag __pyx_string_tab[72]
-#define __pyx_n_u_test __pyx_string_tab[73]
-#define __pyx_n_u_ua __pyx_string_tab[74]
-#define __pyx_kp_u_ua_2 __pyx_string_tab[75]
-#define __pyx_kp_u_ua_must_be_non_negative __pyx_string_tab[76]
-#define __pyx_n_u_update __pyx_string_tab[77]
-#define __pyx_n_u_use_setstate __pyx_string_tab[78]
+#define __pyx_kp_u_Incompatible_checksums_0x_x_vs_0 __pyx_string_tab[4]
+#define __pyx_n_u_PickleError __pyx_string_tab[5]
+#define __pyx_kp_u_Should_not_reach_here_Thookgap __pyx_string_tab[6]
+#define __pyx_n_u_TwoStage __pyx_string_tab[7]
+#define __pyx_n_u_TwoStage___reduce_cython __pyx_string_tab[8]
+#define __pyx_n_u_TwoStage___setstate_cython __pyx_string_tab[9]
+#define __pyx_n_u_TwoStage_commitState __pyx_string_tab[10]
+#define __pyx_n_u_TwoStage_getStrain __pyx_string_tab[11]
+#define __pyx_n_u_TwoStage_getStress __pyx_string_tab[12]
+#define __pyx_n_u_TwoStage_getTangent __pyx_string_tab[13]
+#define __pyx_n_u_TwoStage_setStrain __pyx_string_tab[14]
+#define __pyx_n_u_TwoStage_setTrialStrain __pyx_string_tab[15]
+#define __pyx_n_u_ValueError __pyx_string_tab[16]
+#define __pyx_kp_u__2 __pyx_string_tab[17]
+#define __pyx_kp_u__3 __pyx_string_tab[18]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[19]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[20]
+#define __pyx_n_u_commitState __pyx_string_tab[21]
+#define __pyx_n_u_dict __pyx_string_tab[22]
+#define __pyx_n_u_dict_2 __pyx_string_tab[23]
+#define __pyx_kp_u_disable __pyx_string_tab[24]
+#define __pyx_kp_u_enable __pyx_string_tab[25]
+#define __pyx_n_u_func __pyx_string_tab[26]
+#define __pyx_kp_u_gc __pyx_string_tab[27]
+#define __pyx_n_u_getStrain __pyx_string_tab[28]
+#define __pyx_n_u_getStress __pyx_string_tab[29]
+#define __pyx_n_u_getTangent __pyx_string_tab[30]
+#define __pyx_n_u_getstate __pyx_string_tab[31]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[32]
+#define __pyx_kp_u_isenabled __pyx_string_tab[33]
+#define __pyx_n_u_k1 __pyx_string_tab[34]
+#define __pyx_n_u_k2 __pyx_string_tab[35]
+#define __pyx_n_u_kp1 __pyx_string_tab[36]
+#define __pyx_n_u_kp2 __pyx_string_tab[37]
+#define __pyx_n_u_main __pyx_string_tab[38]
+#define __pyx_n_u_module __pyx_string_tab[39]
+#define __pyx_n_u_name __pyx_string_tab[40]
+#define __pyx_n_u_new __pyx_string_tab[41]
+#define __pyx_n_u_pickle __pyx_string_tab[42]
+#define __pyx_n_u_pop __pyx_string_tab[43]
+#define __pyx_n_u_pyx_PickleError __pyx_string_tab[44]
+#define __pyx_n_u_pyx_checksum __pyx_string_tab[45]
+#define __pyx_n_u_pyx_result __pyx_string_tab[46]
+#define __pyx_n_u_pyx_state __pyx_string_tab[47]
+#define __pyx_n_u_pyx_type __pyx_string_tab[48]
+#define __pyx_n_u_pyx_unpickle_TwoStage __pyx_string_tab[49]
+#define __pyx_n_u_pyx_vtable __pyx_string_tab[50]
+#define __pyx_n_u_qualname __pyx_string_tab[51]
+#define __pyx_n_u_reduce __pyx_string_tab[52]
+#define __pyx_n_u_reduce_cython __pyx_string_tab[53]
+#define __pyx_n_u_reduce_ex __pyx_string_tab[54]
+#define __pyx_n_u_self __pyx_string_tab[55]
+#define __pyx_n_u_setStrain __pyx_string_tab[56]
+#define __pyx_n_u_setTrialStrain __pyx_string_tab[57]
+#define __pyx_n_u_set_name __pyx_string_tab[58]
+#define __pyx_n_u_setstate __pyx_string_tab[59]
+#define __pyx_n_u_setstate_cython __pyx_string_tab[60]
+#define __pyx_kp_u_src_TwoStage_TwoStage_pyx __pyx_string_tab[61]
+#define __pyx_n_u_state __pyx_string_tab[62]
+#define __pyx_n_u_strain __pyx_string_tab[63]
+#define __pyx_n_u_strainRate __pyx_string_tab[64]
+#define __pyx_kp_u_stringsource __pyx_string_tab[65]
+#define __pyx_n_u_tag __pyx_string_tab[66]
+#define __pyx_n_u_test __pyx_string_tab[67]
+#define __pyx_n_u_ua __pyx_string_tab[68]
+#define __pyx_kp_u_ua_2 __pyx_string_tab[69]
+#define __pyx_kp_u_ua_must_be_non_negative __pyx_string_tab[70]
+#define __pyx_n_u_update __pyx_string_tab[71]
+#define __pyx_n_u_use_setstate __pyx_string_tab[72]
 /* #### Code section: module_state_clear ### */
 #if CYTHON_USE_MODULE_STATE
 static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
@@ -2628,7 +2616,7 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_type_8TwoStage_TwoStage);
   for (int i=0; i<3; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<9; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<79; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<73; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   Py_CLEAR(clear_module_state->__pyx_float_0_0);
   Py_CLEAR(clear_module_state->__pyx_int_167799405);
   Py_CLEAR(clear_module_state->__pyx_int_238679189);
@@ -2657,7 +2645,7 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_type_8TwoStage_TwoStage);
   for (int i=0; i<3; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<9; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<79; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<73; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_float_0_0);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_167799405);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_int_238679189);
@@ -3001,8 +2989,8 @@ static int __pyx_pf_8TwoStage_8TwoStage___init__(struct __pyx_obj_8TwoStage_TwoS
  *         self._init_paras()
  * 
  *     cdef void _check_paras(self) except *:             # <<<<<<<<<<<<<<
- *         if self.F1 <= 0.0: raise ValueError("Fy must be positive")
- *         if self.k1 <= 0.0: raise ValueError("k1 must be positive")
+ *         if self.ua < 0.0: raise ValueError("ua must be non-negative")
+ * 
 */
 
 static void __pyx_f_8TwoStage_8TwoStage__check_paras(struct __pyx_obj_8TwoStage_TwoStage *__pyx_v_self) {
@@ -3020,162 +3008,6 @@ static void __pyx_f_8TwoStage_8TwoStage__check_paras(struct __pyx_obj_8TwoStage_
   /* "TwoStage.pyx":47
  * 
  *     cdef void _check_paras(self) except *:
- *         if self.F1 <= 0.0: raise ValueError("Fy must be positive")             # <<<<<<<<<<<<<<
- *         if self.k1 <= 0.0: raise ValueError("k1 must be positive")
- *         if self.kp1 < 0.0: raise ValueError("kp1 must be non-negative")
-*/
-  __pyx_t_1 = (__pyx_v_self->F1 <= 0.0);
-  if (unlikely(__pyx_t_1)) {
-    __pyx_t_3 = NULL;
-    __Pyx_INCREF(__pyx_builtin_ValueError);
-    __pyx_t_4 = __pyx_builtin_ValueError; 
-    __pyx_t_5 = 1;
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_Fy_must_be_positive};
-      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 47, __pyx_L1_error)
-  }
-
-  /* "TwoStage.pyx":48
- *     cdef void _check_paras(self) except *:
- *         if self.F1 <= 0.0: raise ValueError("Fy must be positive")
- *         if self.k1 <= 0.0: raise ValueError("k1 must be positive")             # <<<<<<<<<<<<<<
- *         if self.kp1 < 0.0: raise ValueError("kp1 must be non-negative")
- *         if self.F2 <= 0.0: raise ValueError("F2 must be positive")
-*/
-  __pyx_t_1 = (__pyx_v_self->k1 <= 0.0);
-  if (unlikely(__pyx_t_1)) {
-    __pyx_t_4 = NULL;
-    __Pyx_INCREF(__pyx_builtin_ValueError);
-    __pyx_t_3 = __pyx_builtin_ValueError; 
-    __pyx_t_5 = 1;
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_k1_must_be_positive};
-      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 48, __pyx_L1_error)
-  }
-
-  /* "TwoStage.pyx":49
- *         if self.F1 <= 0.0: raise ValueError("Fy must be positive")
- *         if self.k1 <= 0.0: raise ValueError("k1 must be positive")
- *         if self.kp1 < 0.0: raise ValueError("kp1 must be non-negative")             # <<<<<<<<<<<<<<
- *         if self.F2 <= 0.0: raise ValueError("F2 must be positive")
- *         if self.k2 <= 0.0: raise ValueError("k2 must be positive")
-*/
-  __pyx_t_1 = (__pyx_v_self->kp1 < 0.0);
-  if (unlikely(__pyx_t_1)) {
-    __pyx_t_3 = NULL;
-    __Pyx_INCREF(__pyx_builtin_ValueError);
-    __pyx_t_4 = __pyx_builtin_ValueError; 
-    __pyx_t_5 = 1;
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_kp1_must_be_non_negative};
-      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 49, __pyx_L1_error)
-  }
-
-  /* "TwoStage.pyx":50
- *         if self.k1 <= 0.0: raise ValueError("k1 must be positive")
- *         if self.kp1 < 0.0: raise ValueError("kp1 must be non-negative")
- *         if self.F2 <= 0.0: raise ValueError("F2 must be positive")             # <<<<<<<<<<<<<<
- *         if self.k2 <= 0.0: raise ValueError("k2 must be positive")
- *         if self.kp2 < 0.0: raise ValueError("kp2 must be non-negative")
-*/
-  __pyx_t_1 = (__pyx_v_self->F2 <= 0.0);
-  if (unlikely(__pyx_t_1)) {
-    __pyx_t_4 = NULL;
-    __Pyx_INCREF(__pyx_builtin_ValueError);
-    __pyx_t_3 = __pyx_builtin_ValueError; 
-    __pyx_t_5 = 1;
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_F2_must_be_positive};
-      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 50, __pyx_L1_error)
-  }
-
-  /* "TwoStage.pyx":51
- *         if self.kp1 < 0.0: raise ValueError("kp1 must be non-negative")
- *         if self.F2 <= 0.0: raise ValueError("F2 must be positive")
- *         if self.k2 <= 0.0: raise ValueError("k2 must be positive")             # <<<<<<<<<<<<<<
- *         if self.kp2 < 0.0: raise ValueError("kp2 must be non-negative")
- *         if self.ua < 0.0: raise ValueError("ua must be non-negative")
-*/
-  __pyx_t_1 = (__pyx_v_self->k2 <= 0.0);
-  if (unlikely(__pyx_t_1)) {
-    __pyx_t_3 = NULL;
-    __Pyx_INCREF(__pyx_builtin_ValueError);
-    __pyx_t_4 = __pyx_builtin_ValueError; 
-    __pyx_t_5 = 1;
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_k2_must_be_positive};
-      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 51, __pyx_L1_error)
-  }
-
-  /* "TwoStage.pyx":52
- *         if self.F2 <= 0.0: raise ValueError("F2 must be positive")
- *         if self.k2 <= 0.0: raise ValueError("k2 must be positive")
- *         if self.kp2 < 0.0: raise ValueError("kp2 must be non-negative")             # <<<<<<<<<<<<<<
- *         if self.ua < 0.0: raise ValueError("ua must be non-negative")
- * 
-*/
-  __pyx_t_1 = (__pyx_v_self->kp2 < 0.0);
-  if (unlikely(__pyx_t_1)) {
-    __pyx_t_4 = NULL;
-    __Pyx_INCREF(__pyx_builtin_ValueError);
-    __pyx_t_3 = __pyx_builtin_ValueError; 
-    __pyx_t_5 = 1;
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_kp2_must_be_non_negative};
-      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-    }
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 52, __pyx_L1_error)
-  }
-
-  /* "TwoStage.pyx":53
- *         if self.k2 <= 0.0: raise ValueError("k2 must be positive")
- *         if self.kp2 < 0.0: raise ValueError("kp2 must be non-negative")
  *         if self.ua < 0.0: raise ValueError("ua must be non-negative")             # <<<<<<<<<<<<<<
  * 
  *     cdef void _init_paras(self):
@@ -3191,20 +3023,20 @@ static void __pyx_f_8TwoStage_8TwoStage__check_paras(struct __pyx_obj_8TwoStage_
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 53, __pyx_L1_error)
+    __PYX_ERR(0, 47, __pyx_L1_error)
   }
 
   /* "TwoStage.pyx":46
  *         self._init_paras()
  * 
  *     cdef void _check_paras(self) except *:             # <<<<<<<<<<<<<<
- *         if self.F1 <= 0.0: raise ValueError("Fy must be positive")
- *         if self.k1 <= 0.0: raise ValueError("k1 must be positive")
+ *         if self.ua < 0.0: raise ValueError("ua must be non-negative")
+ * 
 */
 
   /* function exit code */
@@ -3218,7 +3050,7 @@ static void __pyx_f_8TwoStage_8TwoStage__check_paras(struct __pyx_obj_8TwoStage_
   __Pyx_RefNannyFinishContext();
 }
 
-/* "TwoStage.pyx":55
+/* "TwoStage.pyx":49
  *         if self.ua < 0.0: raise ValueError("ua must be non-negative")
  * 
  *     cdef void _init_paras(self):             # <<<<<<<<<<<<<<
@@ -3229,7 +3061,7 @@ static void __pyx_f_8TwoStage_8TwoStage__check_paras(struct __pyx_obj_8TwoStage_
 static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_TwoStage *__pyx_v_self) {
   double __pyx_t_1;
 
-  /* "TwoStage.pyx":56
+  /* "TwoStage.pyx":50
  * 
  *     cdef void _init_paras(self):
  *         self.Cstrain = 0.0             # <<<<<<<<<<<<<<
@@ -3238,7 +3070,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
 */
   __pyx_v_self->Cstrain = 0.0;
 
-  /* "TwoStage.pyx":57
+  /* "TwoStage.pyx":51
  *     cdef void _init_paras(self):
  *         self.Cstrain = 0.0
  *         self.Tstrain = 0.0             # <<<<<<<<<<<<<<
@@ -3247,7 +3079,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
 */
   __pyx_v_self->Tstrain = 0.0;
 
-  /* "TwoStage.pyx":58
+  /* "TwoStage.pyx":52
  *         self.Cstrain = 0.0
  *         self.Tstrain = 0.0
  *         self.Cstrain2 = 0.0             # <<<<<<<<<<<<<<
@@ -3256,7 +3088,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
 */
   __pyx_v_self->Cstrain2 = 0.0;
 
-  /* "TwoStage.pyx":59
+  /* "TwoStage.pyx":53
  *         self.Tstrain = 0.0
  *         self.Cstrain2 = 0.0
  *         self.Tstrain2 = 0.0             # <<<<<<<<<<<<<<
@@ -3265,7 +3097,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
 */
   __pyx_v_self->Tstrain2 = 0.0;
 
-  /* "TwoStage.pyx":60
+  /* "TwoStage.pyx":54
  *         self.Cstrain2 = 0.0
  *         self.Tstrain2 = 0.0
  *         self.Cstress = 0.0             # <<<<<<<<<<<<<<
@@ -3274,7 +3106,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
 */
   __pyx_v_self->Cstress = 0.0;
 
-  /* "TwoStage.pyx":61
+  /* "TwoStage.pyx":55
  *         self.Tstrain2 = 0.0
  *         self.Cstress = 0.0
  *         self.Tstress = 0.0             # <<<<<<<<<<<<<<
@@ -3283,7 +3115,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
 */
   __pyx_v_self->Tstress = 0.0;
 
-  /* "TwoStage.pyx":62
+  /* "TwoStage.pyx":56
  *         self.Cstress = 0.0
  *         self.Tstress = 0.0
  *         self.Cstress1 = 0.0             # <<<<<<<<<<<<<<
@@ -3292,7 +3124,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
 */
   __pyx_v_self->Cstress1 = 0.0;
 
-  /* "TwoStage.pyx":63
+  /* "TwoStage.pyx":57
  *         self.Tstress = 0.0
  *         self.Cstress1 = 0.0
  *         self.Tstress1 = 0.0             # <<<<<<<<<<<<<<
@@ -3301,7 +3133,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
 */
   __pyx_v_self->Tstress1 = 0.0;
 
-  /* "TwoStage.pyx":64
+  /* "TwoStage.pyx":58
  *         self.Cstress1 = 0.0
  *         self.Tstress1 = 0.0
  *         self.Cstress2 = 0.0             # <<<<<<<<<<<<<<
@@ -3310,7 +3142,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
 */
   __pyx_v_self->Cstress2 = 0.0;
 
-  /* "TwoStage.pyx":65
+  /* "TwoStage.pyx":59
  *         self.Tstress1 = 0.0
  *         self.Cstress2 = 0.0
  *         self.Tstress2 = 0.0             # <<<<<<<<<<<<<<
@@ -3319,7 +3151,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
 */
   __pyx_v_self->Tstress2 = 0.0;
 
-  /* "TwoStage.pyx":66
+  /* "TwoStage.pyx":60
  *         self.Cstress2 = 0.0
  *         self.Tstress2 = 0.0
  *         self.Ctangent = self.k1             # <<<<<<<<<<<<<<
@@ -3329,7 +3161,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
   __pyx_t_1 = __pyx_v_self->k1;
   __pyx_v_self->Ctangent = __pyx_t_1;
 
-  /* "TwoStage.pyx":67
+  /* "TwoStage.pyx":61
  *         self.Tstress2 = 0.0
  *         self.Ctangent = self.k1
  *         self.Ttangent = self.k1             # <<<<<<<<<<<<<<
@@ -3339,7 +3171,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
   __pyx_t_1 = __pyx_v_self->k1;
   __pyx_v_self->Ttangent = __pyx_t_1;
 
-  /* "TwoStage.pyx":68
+  /* "TwoStage.pyx":62
  *         self.Ctangent = self.k1
  *         self.Ttangent = self.k1
  *         self.Chookgap = 0.0             # <<<<<<<<<<<<<<
@@ -3348,7 +3180,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
 */
   __pyx_v_self->Chookgap = 0.0;
 
-  /* "TwoStage.pyx":69
+  /* "TwoStage.pyx":63
  *         self.Ttangent = self.k1
  *         self.Chookgap = 0.0
  *         self.Thookgap = 0.0             # <<<<<<<<<<<<<<
@@ -3357,7 +3189,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
 */
   __pyx_v_self->Thookgap = 0.0;
 
-  /* "TwoStage.pyx":55
+  /* "TwoStage.pyx":49
  *         if self.ua < 0.0: raise ValueError("ua must be non-negative")
  * 
  *     cdef void _init_paras(self):             # <<<<<<<<<<<<<<
@@ -3368,7 +3200,7 @@ static void __pyx_f_8TwoStage_8TwoStage__init_paras(struct __pyx_obj_8TwoStage_T
   /* function exit code */
 }
 
-/* "TwoStage.pyx":71
+/* "TwoStage.pyx":65
  *         self.Thookgap = 0.0
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
@@ -3381,17 +3213,46 @@ static CYTHON_INLINE double __pyx_f_8TwoStage_8TwoStage_bilinear(double __pyx_v_
   double __pyx_r;
   int __pyx_t_1;
 
-  /* "TwoStage.pyx":75
+  /* "TwoStage.pyx":69
  *                                 double Fy, double k, double kp) noexcept:
  *         cdef double F_next
+ *         if Fy == 0.0:             # <<<<<<<<<<<<<<
+ *             return 0.0
+ *         F_next = F_prev + du * k
+*/
+  __pyx_t_1 = (__pyx_v_Fy == 0.0);
+  if (__pyx_t_1) {
+
+    /* "TwoStage.pyx":70
+ *         cdef double F_next
+ *         if Fy == 0.0:
+ *             return 0.0             # <<<<<<<<<<<<<<
+ *         F_next = F_prev + du * k
+ *         if du > 0.0:
+*/
+    __pyx_r = 0.0;
+    goto __pyx_L0;
+
+    /* "TwoStage.pyx":69
+ *                                 double Fy, double k, double kp) noexcept:
+ *         cdef double F_next
+ *         if Fy == 0.0:             # <<<<<<<<<<<<<<
+ *             return 0.0
+ *         F_next = F_prev + du * k
+*/
+  }
+
+  /* "TwoStage.pyx":71
+ *         if Fy == 0.0:
+ *             return 0.0
  *         F_next = F_prev + du * k             # <<<<<<<<<<<<<<
  *         if du > 0.0:
  *             if F_next > kp * (u_prev + du) + (1.0 - kp / k) * Fy:
 */
   __pyx_v_F_next = (__pyx_v_F_prev + (__pyx_v_du * __pyx_v_k));
 
-  /* "TwoStage.pyx":76
- *         cdef double F_next
+  /* "TwoStage.pyx":72
+ *             return 0.0
  *         F_next = F_prev + du * k
  *         if du > 0.0:             # <<<<<<<<<<<<<<
  *             if F_next > kp * (u_prev + du) + (1.0 - kp / k) * Fy:
@@ -3400,7 +3261,7 @@ static CYTHON_INLINE double __pyx_f_8TwoStage_8TwoStage_bilinear(double __pyx_v_
   __pyx_t_1 = (__pyx_v_du > 0.0);
   if (__pyx_t_1) {
 
-    /* "TwoStage.pyx":77
+    /* "TwoStage.pyx":73
  *         F_next = F_prev + du * k
  *         if du > 0.0:
  *             if F_next > kp * (u_prev + du) + (1.0 - kp / k) * Fy:             # <<<<<<<<<<<<<<
@@ -3410,7 +3271,7 @@ static CYTHON_INLINE double __pyx_f_8TwoStage_8TwoStage_bilinear(double __pyx_v_
     __pyx_t_1 = (__pyx_v_F_next > ((__pyx_v_kp * (__pyx_v_u_prev + __pyx_v_du)) + ((1.0 - (__pyx_v_kp / __pyx_v_k)) * __pyx_v_Fy)));
     if (__pyx_t_1) {
 
-      /* "TwoStage.pyx":78
+      /* "TwoStage.pyx":74
  *         if du > 0.0:
  *             if F_next > kp * (u_prev + du) + (1.0 - kp / k) * Fy:
  *                 F_next = kp * (u_prev + du) + (1.0 - kp / k) * Fy             # <<<<<<<<<<<<<<
@@ -3419,7 +3280,7 @@ static CYTHON_INLINE double __pyx_f_8TwoStage_8TwoStage_bilinear(double __pyx_v_
 */
       __pyx_v_F_next = ((__pyx_v_kp * (__pyx_v_u_prev + __pyx_v_du)) + ((1.0 - (__pyx_v_kp / __pyx_v_k)) * __pyx_v_Fy));
 
-      /* "TwoStage.pyx":77
+      /* "TwoStage.pyx":73
  *         F_next = F_prev + du * k
  *         if du > 0.0:
  *             if F_next > kp * (u_prev + du) + (1.0 - kp / k) * Fy:             # <<<<<<<<<<<<<<
@@ -3428,17 +3289,17 @@ static CYTHON_INLINE double __pyx_f_8TwoStage_8TwoStage_bilinear(double __pyx_v_
 */
     }
 
-    /* "TwoStage.pyx":76
- *         cdef double F_next
+    /* "TwoStage.pyx":72
+ *             return 0.0
  *         F_next = F_prev + du * k
  *         if du > 0.0:             # <<<<<<<<<<<<<<
  *             if F_next > kp * (u_prev + du) + (1.0 - kp / k) * Fy:
  *                 F_next = kp * (u_prev + du) + (1.0 - kp / k) * Fy
 */
-    goto __pyx_L3;
+    goto __pyx_L4;
   }
 
-  /* "TwoStage.pyx":79
+  /* "TwoStage.pyx":75
  *             if F_next > kp * (u_prev + du) + (1.0 - kp / k) * Fy:
  *                 F_next = kp * (u_prev + du) + (1.0 - kp / k) * Fy
  *         elif du < 0.0:             # <<<<<<<<<<<<<<
@@ -3448,7 +3309,7 @@ static CYTHON_INLINE double __pyx_f_8TwoStage_8TwoStage_bilinear(double __pyx_v_
   __pyx_t_1 = (__pyx_v_du < 0.0);
   if (__pyx_t_1) {
 
-    /* "TwoStage.pyx":80
+    /* "TwoStage.pyx":76
  *                 F_next = kp * (u_prev + du) + (1.0 - kp / k) * Fy
  *         elif du < 0.0:
  *             if F_next < kp * (u_prev + du) - (1.0 - kp / k) * Fy:             # <<<<<<<<<<<<<<
@@ -3458,7 +3319,7 @@ static CYTHON_INLINE double __pyx_f_8TwoStage_8TwoStage_bilinear(double __pyx_v_
     __pyx_t_1 = (__pyx_v_F_next < ((__pyx_v_kp * (__pyx_v_u_prev + __pyx_v_du)) - ((1.0 - (__pyx_v_kp / __pyx_v_k)) * __pyx_v_Fy)));
     if (__pyx_t_1) {
 
-      /* "TwoStage.pyx":81
+      /* "TwoStage.pyx":77
  *         elif du < 0.0:
  *             if F_next < kp * (u_prev + du) - (1.0 - kp / k) * Fy:
  *                 F_next = kp * (u_prev + du) - (1.0 - kp / k) * Fy             # <<<<<<<<<<<<<<
@@ -3467,7 +3328,7 @@ static CYTHON_INLINE double __pyx_f_8TwoStage_8TwoStage_bilinear(double __pyx_v_
 */
       __pyx_v_F_next = ((__pyx_v_kp * (__pyx_v_u_prev + __pyx_v_du)) - ((1.0 - (__pyx_v_kp / __pyx_v_k)) * __pyx_v_Fy));
 
-      /* "TwoStage.pyx":80
+      /* "TwoStage.pyx":76
  *                 F_next = kp * (u_prev + du) + (1.0 - kp / k) * Fy
  *         elif du < 0.0:
  *             if F_next < kp * (u_prev + du) - (1.0 - kp / k) * Fy:             # <<<<<<<<<<<<<<
@@ -3476,7 +3337,7 @@ static CYTHON_INLINE double __pyx_f_8TwoStage_8TwoStage_bilinear(double __pyx_v_
 */
     }
 
-    /* "TwoStage.pyx":79
+    /* "TwoStage.pyx":75
  *             if F_next > kp * (u_prev + du) + (1.0 - kp / k) * Fy:
  *                 F_next = kp * (u_prev + du) + (1.0 - kp / k) * Fy
  *         elif du < 0.0:             # <<<<<<<<<<<<<<
@@ -3484,9 +3345,9 @@ static CYTHON_INLINE double __pyx_f_8TwoStage_8TwoStage_bilinear(double __pyx_v_
  *                 F_next = kp * (u_prev + du) - (1.0 - kp / k) * Fy
 */
   }
-  __pyx_L3:;
+  __pyx_L4:;
 
-  /* "TwoStage.pyx":82
+  /* "TwoStage.pyx":78
  *             if F_next < kp * (u_prev + du) - (1.0 - kp / k) * Fy:
  *                 F_next = kp * (u_prev + du) - (1.0 - kp / k) * Fy
  *         return F_next             # <<<<<<<<<<<<<<
@@ -3496,7 +3357,7 @@ static CYTHON_INLINE double __pyx_f_8TwoStage_8TwoStage_bilinear(double __pyx_v_
   __pyx_r = __pyx_v_F_next;
   goto __pyx_L0;
 
-  /* "TwoStage.pyx":71
+  /* "TwoStage.pyx":65
  *         self.Thookgap = 0.0
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
@@ -3509,7 +3370,7 @@ static CYTHON_INLINE double __pyx_f_8TwoStage_8TwoStage_bilinear(double __pyx_v_
   return __pyx_r;
 }
 
-/* "TwoStage.pyx":84
+/* "TwoStage.pyx":80
  *         return F_next
  * 
  *     cpdef void setTrialStrain(self, double strain, double strainRate=0.0):             # <<<<<<<<<<<<<<
@@ -3567,15 +3428,15 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_setTrialStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_setTrialStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_8TwoStage_8TwoStage_3setTrialStrain)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
-        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_strain); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 84, __pyx_L1_error)
+        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_strain); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 80, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = PyFloat_FromDouble(__pyx_v_strainRate); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 84, __pyx_L1_error)
+        __pyx_t_6 = PyFloat_FromDouble(__pyx_v_strainRate); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 80, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_7 = 1;
         #if CYTHON_UNPACK_METHODS
@@ -3596,7 +3457,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3616,7 +3477,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
     #endif
   }
 
-  /* "TwoStage.pyx":89
+  /* "TwoStage.pyx":85
  *         cdef double tmp, denom
  * 
  *         dStrain = strain - self.Cstrain             # <<<<<<<<<<<<<<
@@ -3625,7 +3486,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
   __pyx_v_dStrain = (__pyx_v_strain - __pyx_v_self->Cstrain);
 
-  /* "TwoStage.pyx":90
+  /* "TwoStage.pyx":86
  * 
  *         dStrain = strain - self.Cstrain
  *         self.Tstrain = strain             # <<<<<<<<<<<<<<
@@ -3634,7 +3495,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
   __pyx_v_self->Tstrain = __pyx_v_strain;
 
-  /* "TwoStage.pyx":91
+  /* "TwoStage.pyx":87
  *         dStrain = strain - self.Cstrain
  *         self.Tstrain = strain
  *         if fabs(dStrain) <= DBL_EPSILON:             # <<<<<<<<<<<<<<
@@ -3644,7 +3505,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
   __pyx_t_8 = (fabs(__pyx_v_dStrain) <= DBL_EPSILON);
   if (__pyx_t_8) {
 
-    /* "TwoStage.pyx":92
+    /* "TwoStage.pyx":88
  *         self.Tstrain = strain
  *         if fabs(dStrain) <= DBL_EPSILON:
  *             return             # <<<<<<<<<<<<<<
@@ -3653,7 +3514,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
     goto __pyx_L0;
 
-    /* "TwoStage.pyx":91
+    /* "TwoStage.pyx":87
  *         dStrain = strain - self.Cstrain
  *         self.Tstrain = strain
  *         if fabs(dStrain) <= DBL_EPSILON:             # <<<<<<<<<<<<<<
@@ -3662,7 +3523,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
   }
 
-  /* "TwoStage.pyx":95
+  /* "TwoStage.pyx":91
  * 
  *         #
  *         self.Tstress1 = TwoStage.bilinear(self.Cstress1, self.Cstrain, dStrain,             # <<<<<<<<<<<<<<
@@ -3671,7 +3532,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
   __pyx_v_self->Tstress1 = __pyx_f_8TwoStage_8TwoStage_bilinear(__pyx_v_self->Cstress1, __pyx_v_self->Cstrain, __pyx_v_dStrain, __pyx_v_self->F1, __pyx_v_self->k1, __pyx_v_self->kp1);
 
-  /* "TwoStage.pyx":98
+  /* "TwoStage.pyx":94
  *                                           self.F1, self.k1, self.kp1)
  *         #
  *         if (-self.ua < self.Thookgap) and (self.Thookgap < self.ua):             # <<<<<<<<<<<<<<
@@ -3689,7 +3550,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
   __pyx_L5_bool_binop_done:;
   if (__pyx_t_8) {
 
-    /* "TwoStage.pyx":99
+    /* "TwoStage.pyx":95
  *         #
  *         if (-self.ua < self.Thookgap) and (self.Thookgap < self.ua):
  *             if dStrain > 0.0:             # <<<<<<<<<<<<<<
@@ -3699,7 +3560,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
     __pyx_t_8 = (__pyx_v_dStrain > 0.0);
     if (__pyx_t_8) {
 
-      /* "TwoStage.pyx":100
+      /* "TwoStage.pyx":96
  *         if (-self.ua < self.Thookgap) and (self.Thookgap < self.ua):
  *             if dStrain > 0.0:
  *                 tmp = self.Thookgap + dStrain - self.ua             # <<<<<<<<<<<<<<
@@ -3708,7 +3569,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
       __pyx_v_tmp = ((__pyx_v_self->Thookgap + __pyx_v_dStrain) - __pyx_v_self->ua);
 
-      /* "TwoStage.pyx":101
+      /* "TwoStage.pyx":97
  *             if dStrain > 0.0:
  *                 tmp = self.Thookgap + dStrain - self.ua
  *                 dstrain2 = tmp if tmp > 0.0 else 0.0             # <<<<<<<<<<<<<<
@@ -3723,7 +3584,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
       }
       __pyx_v_dstrain2 = __pyx_t_10;
 
-      /* "TwoStage.pyx":102
+      /* "TwoStage.pyx":98
  *                 tmp = self.Thookgap + dStrain - self.ua
  *                 dstrain2 = tmp if tmp > 0.0 else 0.0
  *                 self.Thookgap = dmin(self.Thookgap + dStrain, self.ua)             # <<<<<<<<<<<<<<
@@ -3732,7 +3593,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
       __pyx_v_self->Thookgap = __pyx_f_8TwoStage_dmin((__pyx_v_self->Thookgap + __pyx_v_dStrain), __pyx_v_self->ua);
 
-      /* "TwoStage.pyx":99
+      /* "TwoStage.pyx":95
  *         #
  *         if (-self.ua < self.Thookgap) and (self.Thookgap < self.ua):
  *             if dStrain > 0.0:             # <<<<<<<<<<<<<<
@@ -3742,7 +3603,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
       goto __pyx_L7;
     }
 
-    /* "TwoStage.pyx":104
+    /* "TwoStage.pyx":100
  *                 self.Thookgap = dmin(self.Thookgap + dStrain, self.ua)
  *             else:
  *                 tmp = self.Thookgap + dStrain + self.ua             # <<<<<<<<<<<<<<
@@ -3752,7 +3613,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
     /*else*/ {
       __pyx_v_tmp = ((__pyx_v_self->Thookgap + __pyx_v_dStrain) + __pyx_v_self->ua);
 
-      /* "TwoStage.pyx":105
+      /* "TwoStage.pyx":101
  *             else:
  *                 tmp = self.Thookgap + dStrain + self.ua
  *                 dstrain2 = tmp if tmp < 0.0 else 0.0             # <<<<<<<<<<<<<<
@@ -3767,7 +3628,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
       }
       __pyx_v_dstrain2 = __pyx_t_10;
 
-      /* "TwoStage.pyx":106
+      /* "TwoStage.pyx":102
  *                 tmp = self.Thookgap + dStrain + self.ua
  *                 dstrain2 = tmp if tmp < 0.0 else 0.0
  *                 self.Thookgap = dmax(self.Thookgap + dStrain, -self.ua)             # <<<<<<<<<<<<<<
@@ -3778,7 +3639,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
     }
     __pyx_L7:;
 
-    /* "TwoStage.pyx":107
+    /* "TwoStage.pyx":103
  *                 dstrain2 = tmp if tmp < 0.0 else 0.0
  *                 self.Thookgap = dmax(self.Thookgap + dStrain, -self.ua)
  *             self.Tstress2 = TwoStage.bilinear(self.Cstress2, self.Cstrain2, dstrain2,             # <<<<<<<<<<<<<<
@@ -3787,7 +3648,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
     __pyx_v_self->Tstress2 = __pyx_f_8TwoStage_8TwoStage_bilinear(__pyx_v_self->Cstress2, __pyx_v_self->Cstrain2, __pyx_v_dstrain2, __pyx_v_self->F2, __pyx_v_self->k2, __pyx_v_self->kp2);
 
-    /* "TwoStage.pyx":109
+    /* "TwoStage.pyx":105
  *             self.Tstress2 = TwoStage.bilinear(self.Cstress2, self.Cstrain2, dstrain2,
  *                                               self.F2, self.k2, self.kp2)
  *             self.Tstrain2 = self.Cstrain2 + dstrain2             # <<<<<<<<<<<<<<
@@ -3796,7 +3657,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
     __pyx_v_self->Tstrain2 = (__pyx_v_self->Cstrain2 + __pyx_v_dstrain2);
 
-    /* "TwoStage.pyx":98
+    /* "TwoStage.pyx":94
  *                                           self.F1, self.k1, self.kp1)
  *         #
  *         if (-self.ua < self.Thookgap) and (self.Thookgap < self.ua):             # <<<<<<<<<<<<<<
@@ -3806,7 +3667,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
     goto __pyx_L4;
   }
 
-  /* "TwoStage.pyx":110
+  /* "TwoStage.pyx":106
  *                                               self.F2, self.k2, self.kp2)
  *             self.Tstrain2 = self.Cstrain2 + dstrain2
  *         elif self.Thookgap == self.ua:             # <<<<<<<<<<<<<<
@@ -3816,7 +3677,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
   __pyx_t_8 = (__pyx_v_self->Thookgap == __pyx_v_self->ua);
   if (__pyx_t_8) {
 
-    /* "TwoStage.pyx":111
+    /* "TwoStage.pyx":107
  *             self.Tstrain2 = self.Cstrain2 + dstrain2
  *         elif self.Thookgap == self.ua:
  *             self.Tstress2 = TwoStage.bilinear(self.Cstress2, self.Cstrain2, dStrain,             # <<<<<<<<<<<<<<
@@ -3825,7 +3686,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
     __pyx_v_self->Tstress2 = __pyx_f_8TwoStage_8TwoStage_bilinear(__pyx_v_self->Cstress2, __pyx_v_self->Cstrain2, __pyx_v_dStrain, __pyx_v_self->F2, __pyx_v_self->k2, __pyx_v_self->kp2);
 
-    /* "TwoStage.pyx":113
+    /* "TwoStage.pyx":109
  *             self.Tstress2 = TwoStage.bilinear(self.Cstress2, self.Cstrain2, dStrain,
  *                                               self.F2, self.k2, self.kp2)
  *             self.Tstrain2 = self.Cstrain2 + dStrain             # <<<<<<<<<<<<<<
@@ -3834,7 +3695,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
     __pyx_v_self->Tstrain2 = (__pyx_v_self->Cstrain2 + __pyx_v_dStrain);
 
-    /* "TwoStage.pyx":114
+    /* "TwoStage.pyx":110
  *                                               self.F2, self.k2, self.kp2)
  *             self.Tstrain2 = self.Cstrain2 + dStrain
  *             if dStrain <= 0.0 and self.Tstress2 < 0.0:             # <<<<<<<<<<<<<<
@@ -3852,7 +3713,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
     __pyx_L9_bool_binop_done:;
     if (__pyx_t_8) {
 
-      /* "TwoStage.pyx":115
+      /* "TwoStage.pyx":111
  *             self.Tstrain2 = self.Cstrain2 + dStrain
  *             if dStrain <= 0.0 and self.Tstress2 < 0.0:
  *                 denom = fabs(self.Tstress2) + fabs(self.Cstress2)             # <<<<<<<<<<<<<<
@@ -3861,7 +3722,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
       __pyx_v_denom = (fabs(__pyx_v_self->Tstress2) + fabs(__pyx_v_self->Cstress2));
 
-      /* "TwoStage.pyx":116
+      /* "TwoStage.pyx":112
  *             if dStrain <= 0.0 and self.Tstress2 < 0.0:
  *                 denom = fabs(self.Tstress2) + fabs(self.Cstress2)
  *                 if denom > DBL_EPSILON:             # <<<<<<<<<<<<<<
@@ -3871,7 +3732,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
       __pyx_t_8 = (__pyx_v_denom > DBL_EPSILON);
       if (__pyx_t_8) {
 
-        /* "TwoStage.pyx":117
+        /* "TwoStage.pyx":113
  *                 denom = fabs(self.Tstress2) + fabs(self.Cstress2)
  *                 if denom > DBL_EPSILON:
  *                     dstrain2 = dStrain * fabs(self.Cstress2) / denom             # <<<<<<<<<<<<<<
@@ -3880,7 +3741,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
         __pyx_v_dstrain2 = ((__pyx_v_dStrain * fabs(__pyx_v_self->Cstress2)) / __pyx_v_denom);
 
-        /* "TwoStage.pyx":118
+        /* "TwoStage.pyx":114
  *                 if denom > DBL_EPSILON:
  *                     dstrain2 = dStrain * fabs(self.Cstress2) / denom
  *                     self.Thookgap = self.ua + (dStrain - dstrain2)             # <<<<<<<<<<<<<<
@@ -3889,7 +3750,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
         __pyx_v_self->Thookgap = (__pyx_v_self->ua + (__pyx_v_dStrain - __pyx_v_dstrain2));
 
-        /* "TwoStage.pyx":119
+        /* "TwoStage.pyx":115
  *                     dstrain2 = dStrain * fabs(self.Cstress2) / denom
  *                     self.Thookgap = self.ua + (dStrain - dstrain2)
  *                     if self.Thookgap < -self.ua:             # <<<<<<<<<<<<<<
@@ -3899,7 +3760,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
         __pyx_t_8 = (__pyx_v_self->Thookgap < (-__pyx_v_self->ua));
         if (__pyx_t_8) {
 
-          /* "TwoStage.pyx":120
+          /* "TwoStage.pyx":116
  *                     self.Thookgap = self.ua + (dStrain - dstrain2)
  *                     if self.Thookgap < -self.ua:
  *                         self.Thookgap = -self.ua             # <<<<<<<<<<<<<<
@@ -3908,7 +3769,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
           __pyx_v_self->Thookgap = (-__pyx_v_self->ua);
 
-          /* "TwoStage.pyx":119
+          /* "TwoStage.pyx":115
  *                     dstrain2 = dStrain * fabs(self.Cstress2) / denom
  *                     self.Thookgap = self.ua + (dStrain - dstrain2)
  *                     if self.Thookgap < -self.ua:             # <<<<<<<<<<<<<<
@@ -3917,7 +3778,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
         }
 
-        /* "TwoStage.pyx":116
+        /* "TwoStage.pyx":112
  *             if dStrain <= 0.0 and self.Tstress2 < 0.0:
  *                 denom = fabs(self.Tstress2) + fabs(self.Cstress2)
  *                 if denom > DBL_EPSILON:             # <<<<<<<<<<<<<<
@@ -3926,7 +3787,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
       }
 
-      /* "TwoStage.pyx":121
+      /* "TwoStage.pyx":117
  *                     if self.Thookgap < -self.ua:
  *                         self.Thookgap = -self.ua
  *                 self.Tstress2 = 0.0             # <<<<<<<<<<<<<<
@@ -3935,7 +3796,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
       __pyx_v_self->Tstress2 = 0.0;
 
-      /* "TwoStage.pyx":114
+      /* "TwoStage.pyx":110
  *                                               self.F2, self.k2, self.kp2)
  *             self.Tstrain2 = self.Cstrain2 + dStrain
  *             if dStrain <= 0.0 and self.Tstress2 < 0.0:             # <<<<<<<<<<<<<<
@@ -3944,7 +3805,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
     }
 
-    /* "TwoStage.pyx":110
+    /* "TwoStage.pyx":106
  *                                               self.F2, self.k2, self.kp2)
  *             self.Tstrain2 = self.Cstrain2 + dstrain2
  *         elif self.Thookgap == self.ua:             # <<<<<<<<<<<<<<
@@ -3954,7 +3815,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
     goto __pyx_L4;
   }
 
-  /* "TwoStage.pyx":122
+  /* "TwoStage.pyx":118
  *                         self.Thookgap = -self.ua
  *                 self.Tstress2 = 0.0
  *         elif self.Thookgap == -self.ua:             # <<<<<<<<<<<<<<
@@ -3964,7 +3825,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
   __pyx_t_8 = (__pyx_v_self->Thookgap == (-__pyx_v_self->ua));
   if (likely(__pyx_t_8)) {
 
-    /* "TwoStage.pyx":123
+    /* "TwoStage.pyx":119
  *                 self.Tstress2 = 0.0
  *         elif self.Thookgap == -self.ua:
  *             self.Tstress2 = TwoStage.bilinear(self.Cstress2, self.Cstrain2, dStrain,             # <<<<<<<<<<<<<<
@@ -3973,7 +3834,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
     __pyx_v_self->Tstress2 = __pyx_f_8TwoStage_8TwoStage_bilinear(__pyx_v_self->Cstress2, __pyx_v_self->Cstrain2, __pyx_v_dStrain, __pyx_v_self->F2, __pyx_v_self->k2, __pyx_v_self->kp2);
 
-    /* "TwoStage.pyx":125
+    /* "TwoStage.pyx":121
  *             self.Tstress2 = TwoStage.bilinear(self.Cstress2, self.Cstrain2, dStrain,
  *                                               self.F2, self.k2, self.kp2)
  *             self.Tstrain2 = self.Cstrain2 + dStrain             # <<<<<<<<<<<<<<
@@ -3982,7 +3843,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
     __pyx_v_self->Tstrain2 = (__pyx_v_self->Cstrain2 + __pyx_v_dStrain);
 
-    /* "TwoStage.pyx":126
+    /* "TwoStage.pyx":122
  *                                               self.F2, self.k2, self.kp2)
  *             self.Tstrain2 = self.Cstrain2 + dStrain
  *             if dStrain >= 0.0 and self.Tstress2 > 0.0:             # <<<<<<<<<<<<<<
@@ -4000,7 +3861,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
     __pyx_L14_bool_binop_done:;
     if (__pyx_t_8) {
 
-      /* "TwoStage.pyx":127
+      /* "TwoStage.pyx":123
  *             self.Tstrain2 = self.Cstrain2 + dStrain
  *             if dStrain >= 0.0 and self.Tstress2 > 0.0:
  *                 denom = fabs(self.Tstress2) + fabs(self.Cstress2)             # <<<<<<<<<<<<<<
@@ -4009,7 +3870,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
       __pyx_v_denom = (fabs(__pyx_v_self->Tstress2) + fabs(__pyx_v_self->Cstress2));
 
-      /* "TwoStage.pyx":128
+      /* "TwoStage.pyx":124
  *             if dStrain >= 0.0 and self.Tstress2 > 0.0:
  *                 denom = fabs(self.Tstress2) + fabs(self.Cstress2)
  *                 if denom > DBL_EPSILON:             # <<<<<<<<<<<<<<
@@ -4019,7 +3880,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
       __pyx_t_8 = (__pyx_v_denom > DBL_EPSILON);
       if (__pyx_t_8) {
 
-        /* "TwoStage.pyx":129
+        /* "TwoStage.pyx":125
  *                 denom = fabs(self.Tstress2) + fabs(self.Cstress2)
  *                 if denom > DBL_EPSILON:
  *                     dstrain2 = dStrain * fabs(self.Cstress2) / denom             # <<<<<<<<<<<<<<
@@ -4028,7 +3889,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
         __pyx_v_dstrain2 = ((__pyx_v_dStrain * fabs(__pyx_v_self->Cstress2)) / __pyx_v_denom);
 
-        /* "TwoStage.pyx":130
+        /* "TwoStage.pyx":126
  *                 if denom > DBL_EPSILON:
  *                     dstrain2 = dStrain * fabs(self.Cstress2) / denom
  *                     self.Thookgap = -self.ua + (dStrain - dstrain2)             # <<<<<<<<<<<<<<
@@ -4037,7 +3898,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
         __pyx_v_self->Thookgap = ((-__pyx_v_self->ua) + (__pyx_v_dStrain - __pyx_v_dstrain2));
 
-        /* "TwoStage.pyx":131
+        /* "TwoStage.pyx":127
  *                     dstrain2 = dStrain * fabs(self.Cstress2) / denom
  *                     self.Thookgap = -self.ua + (dStrain - dstrain2)
  *                     if self.Thookgap > self.ua:             # <<<<<<<<<<<<<<
@@ -4047,7 +3908,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
         __pyx_t_8 = (__pyx_v_self->Thookgap > __pyx_v_self->ua);
         if (__pyx_t_8) {
 
-          /* "TwoStage.pyx":132
+          /* "TwoStage.pyx":128
  *                     self.Thookgap = -self.ua + (dStrain - dstrain2)
  *                     if self.Thookgap > self.ua:
  *                         self.Thookgap = self.ua             # <<<<<<<<<<<<<<
@@ -4057,7 +3918,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
           __pyx_t_10 = __pyx_v_self->ua;
           __pyx_v_self->Thookgap = __pyx_t_10;
 
-          /* "TwoStage.pyx":131
+          /* "TwoStage.pyx":127
  *                     dstrain2 = dStrain * fabs(self.Cstress2) / denom
  *                     self.Thookgap = -self.ua + (dStrain - dstrain2)
  *                     if self.Thookgap > self.ua:             # <<<<<<<<<<<<<<
@@ -4066,7 +3927,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
         }
 
-        /* "TwoStage.pyx":128
+        /* "TwoStage.pyx":124
  *             if dStrain >= 0.0 and self.Tstress2 > 0.0:
  *                 denom = fabs(self.Tstress2) + fabs(self.Cstress2)
  *                 if denom > DBL_EPSILON:             # <<<<<<<<<<<<<<
@@ -4075,7 +3936,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
       }
 
-      /* "TwoStage.pyx":133
+      /* "TwoStage.pyx":129
  *                     if self.Thookgap > self.ua:
  *                         self.Thookgap = self.ua
  *                 self.Tstress2 = 0.0             # <<<<<<<<<<<<<<
@@ -4084,7 +3945,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
       __pyx_v_self->Tstress2 = 0.0;
 
-      /* "TwoStage.pyx":126
+      /* "TwoStage.pyx":122
  *                                               self.F2, self.k2, self.kp2)
  *             self.Tstrain2 = self.Cstrain2 + dStrain
  *             if dStrain >= 0.0 and self.Tstress2 > 0.0:             # <<<<<<<<<<<<<<
@@ -4093,7 +3954,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
     }
 
-    /* "TwoStage.pyx":122
+    /* "TwoStage.pyx":118
  *                         self.Thookgap = -self.ua
  *                 self.Tstress2 = 0.0
  *         elif self.Thookgap == -self.ua:             # <<<<<<<<<<<<<<
@@ -4103,7 +3964,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
     goto __pyx_L4;
   }
 
-  /* "TwoStage.pyx":135
+  /* "TwoStage.pyx":131
  *                 self.Tstress2 = 0.0
  *         else:
  *             raise AssertionError(f"Should not reach here (Thookgap = {self.Thookgap}, ua = {self.ua})")             # <<<<<<<<<<<<<<
@@ -4114,14 +3975,14 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
     __pyx_t_2 = NULL;
     __Pyx_INCREF(__pyx_builtin_AssertionError);
     __pyx_t_4 = __pyx_builtin_AssertionError; 
-    __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->Thookgap); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->Thookgap); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_6, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_6, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->ua); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->ua); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_6, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_6, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_11[0] = __pyx_mstate_global->__pyx_kp_u_Should_not_reach_here_Thookgap;
@@ -4130,7 +3991,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
     __pyx_t_11[3] = __pyx_t_3;
     __pyx_t_11[4] = __pyx_mstate_global->__pyx_kp_u_;
     __pyx_t_6 = __Pyx_PyUnicode_Join(__pyx_t_11, 5, 34 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_5) + 7 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_3) + 1, 127 | __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) | __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3));
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 135, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4141,16 +4002,16 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 135, __pyx_L1_error)
+    __PYX_ERR(0, 131, __pyx_L1_error)
   }
   __pyx_L4:;
 
-  /* "TwoStage.pyx":137
+  /* "TwoStage.pyx":133
  *             raise AssertionError(f"Should not reach here (Thookgap = {self.Thookgap}, ua = {self.ua})")
  *         #
  *         self.Tstress = self.Tstress1 + self.Tstress2             # <<<<<<<<<<<<<<
@@ -4159,7 +4020,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
   __pyx_v_self->Tstress = (__pyx_v_self->Tstress1 + __pyx_v_self->Tstress2);
 
-  /* "TwoStage.pyx":138
+  /* "TwoStage.pyx":134
  *         #
  *         self.Tstress = self.Tstress1 + self.Tstress2
  *         self.Ttangent = (self.Tstress - self.Cstress) / dStrain             # <<<<<<<<<<<<<<
@@ -4168,7 +4029,7 @@ static void __pyx_f_8TwoStage_8TwoStage_setTrialStrain(struct __pyx_obj_8TwoStag
 */
   __pyx_v_self->Ttangent = ((__pyx_v_self->Tstress - __pyx_v_self->Cstress) / __pyx_v_dStrain);
 
-  /* "TwoStage.pyx":84
+  /* "TwoStage.pyx":80
  *         return F_next
  * 
  *     cpdef void setTrialStrain(self, double strain, double strainRate=0.0):             # <<<<<<<<<<<<<<
@@ -4231,48 +4092,48 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_strain,&__pyx_mstate_global->__pyx_n_u_strainRate,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 84, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 80, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 84, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 80, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 84, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 80, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setTrialStrain", 0) < 0) __PYX_ERR(0, 84, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setTrialStrain", 0) < 0) __PYX_ERR(0, 80, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setTrialStrain", 0, 1, 2, i); __PYX_ERR(0, 84, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setTrialStrain", 0, 1, 2, i); __PYX_ERR(0, 80, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 84, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 80, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 84, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 80, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_strain = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_strain == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 84, __pyx_L3_error)
+    __pyx_v_strain = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_strain == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 80, __pyx_L3_error)
     if (values[1]) {
-      __pyx_v_strainRate = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_strainRate == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 84, __pyx_L3_error)
+      __pyx_v_strainRate = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_strainRate == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 80, __pyx_L3_error)
     } else {
       __pyx_v_strainRate = ((double)0.0);
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setTrialStrain", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 84, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setTrialStrain", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 80, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4305,8 +4166,8 @@ static PyObject *__pyx_pf_8TwoStage_8TwoStage_2setTrialStrain(struct __pyx_obj_8
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1.__pyx_n = 1;
   __pyx_t_1.strainRate = __pyx_v_strainRate;
-  __pyx_vtabptr_8TwoStage_TwoStage->setTrialStrain(__pyx_v_self, __pyx_v_strain, 1, &__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 84, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_vtabptr_8TwoStage_TwoStage->setTrialStrain(__pyx_v_self, __pyx_v_strain, 1, &__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -4323,7 +4184,7 @@ static PyObject *__pyx_pf_8TwoStage_8TwoStage_2setTrialStrain(struct __pyx_obj_8
   return __pyx_r;
 }
 
-/* "TwoStage.pyx":140
+/* "TwoStage.pyx":136
  *         self.Ttangent = (self.Tstress - self.Cstress) / dStrain
  * 
  *     cpdef void commitState(self):             # <<<<<<<<<<<<<<
@@ -4366,7 +4227,7 @@ static void __pyx_f_8TwoStage_8TwoStage_commitState(struct __pyx_obj_8TwoStage_T
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_commitState); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_commitState); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_8TwoStage_8TwoStage_5commitState)) {
         __pyx_t_3 = NULL;
@@ -4389,7 +4250,7 @@ static void __pyx_f_8TwoStage_8TwoStage_commitState(struct __pyx_obj_8TwoStage_T
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4409,7 +4270,7 @@ static void __pyx_f_8TwoStage_8TwoStage_commitState(struct __pyx_obj_8TwoStage_T
     #endif
   }
 
-  /* "TwoStage.pyx":141
+  /* "TwoStage.pyx":137
  * 
  *     cpdef void commitState(self):
  *         self.Cstrain = self.Tstrain             # <<<<<<<<<<<<<<
@@ -4419,7 +4280,7 @@ static void __pyx_f_8TwoStage_8TwoStage_commitState(struct __pyx_obj_8TwoStage_T
   __pyx_t_6 = __pyx_v_self->Tstrain;
   __pyx_v_self->Cstrain = __pyx_t_6;
 
-  /* "TwoStage.pyx":142
+  /* "TwoStage.pyx":138
  *     cpdef void commitState(self):
  *         self.Cstrain = self.Tstrain
  *         self.Cstrain2 = self.Tstrain2             # <<<<<<<<<<<<<<
@@ -4429,7 +4290,7 @@ static void __pyx_f_8TwoStage_8TwoStage_commitState(struct __pyx_obj_8TwoStage_T
   __pyx_t_6 = __pyx_v_self->Tstrain2;
   __pyx_v_self->Cstrain2 = __pyx_t_6;
 
-  /* "TwoStage.pyx":143
+  /* "TwoStage.pyx":139
  *         self.Cstrain = self.Tstrain
  *         self.Cstrain2 = self.Tstrain2
  *         self.Cstress = self.Tstress             # <<<<<<<<<<<<<<
@@ -4439,7 +4300,7 @@ static void __pyx_f_8TwoStage_8TwoStage_commitState(struct __pyx_obj_8TwoStage_T
   __pyx_t_6 = __pyx_v_self->Tstress;
   __pyx_v_self->Cstress = __pyx_t_6;
 
-  /* "TwoStage.pyx":144
+  /* "TwoStage.pyx":140
  *         self.Cstrain2 = self.Tstrain2
  *         self.Cstress = self.Tstress
  *         self.Cstress1 = self.Tstress1             # <<<<<<<<<<<<<<
@@ -4449,7 +4310,7 @@ static void __pyx_f_8TwoStage_8TwoStage_commitState(struct __pyx_obj_8TwoStage_T
   __pyx_t_6 = __pyx_v_self->Tstress1;
   __pyx_v_self->Cstress1 = __pyx_t_6;
 
-  /* "TwoStage.pyx":145
+  /* "TwoStage.pyx":141
  *         self.Cstress = self.Tstress
  *         self.Cstress1 = self.Tstress1
  *         self.Cstress2 = self.Tstress2             # <<<<<<<<<<<<<<
@@ -4459,7 +4320,7 @@ static void __pyx_f_8TwoStage_8TwoStage_commitState(struct __pyx_obj_8TwoStage_T
   __pyx_t_6 = __pyx_v_self->Tstress2;
   __pyx_v_self->Cstress2 = __pyx_t_6;
 
-  /* "TwoStage.pyx":146
+  /* "TwoStage.pyx":142
  *         self.Cstress1 = self.Tstress1
  *         self.Cstress2 = self.Tstress2
  *         self.Ctangent = self.Ttangent             # <<<<<<<<<<<<<<
@@ -4469,7 +4330,7 @@ static void __pyx_f_8TwoStage_8TwoStage_commitState(struct __pyx_obj_8TwoStage_T
   __pyx_t_6 = __pyx_v_self->Ttangent;
   __pyx_v_self->Ctangent = __pyx_t_6;
 
-  /* "TwoStage.pyx":147
+  /* "TwoStage.pyx":143
  *         self.Cstress2 = self.Tstress2
  *         self.Ctangent = self.Ttangent
  *         self.Chookgap = self.Thookgap             # <<<<<<<<<<<<<<
@@ -4479,7 +4340,7 @@ static void __pyx_f_8TwoStage_8TwoStage_commitState(struct __pyx_obj_8TwoStage_T
   __pyx_t_6 = __pyx_v_self->Thookgap;
   __pyx_v_self->Chookgap = __pyx_t_6;
 
-  /* "TwoStage.pyx":140
+  /* "TwoStage.pyx":136
  *         self.Ttangent = (self.Tstress - self.Cstress) / dStrain
  * 
  *     cpdef void commitState(self):             # <<<<<<<<<<<<<<
@@ -4550,8 +4411,8 @@ static PyObject *__pyx_pf_8TwoStage_8TwoStage_4commitState(struct __pyx_obj_8Two
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("commitState", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_8TwoStage_8TwoStage_commitState(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 140, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_f_8TwoStage_8TwoStage_commitState(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4568,7 +4429,7 @@ static PyObject *__pyx_pf_8TwoStage_8TwoStage_4commitState(struct __pyx_obj_8Two
   return __pyx_r;
 }
 
-/* "TwoStage.pyx":149
+/* "TwoStage.pyx":145
  *         self.Chookgap = self.Thookgap
  * 
  *     cpdef double getStrain(self):             # <<<<<<<<<<<<<<
@@ -4612,7 +4473,7 @@ static double __pyx_f_8TwoStage_8TwoStage_getStrain(struct __pyx_obj_8TwoStage_T
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_8TwoStage_8TwoStage_7getStrain)) {
         __pyx_t_3 = NULL;
@@ -4635,10 +4496,10 @@ static double __pyx_f_8TwoStage_8TwoStage_getStrain(struct __pyx_obj_8TwoStage_T
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 149, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 145, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_6;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4657,7 +4518,7 @@ static double __pyx_f_8TwoStage_8TwoStage_getStrain(struct __pyx_obj_8TwoStage_T
     #endif
   }
 
-  /* "TwoStage.pyx":150
+  /* "TwoStage.pyx":146
  * 
  *     cpdef double getStrain(self):
  *         return self.Tstrain             # <<<<<<<<<<<<<<
@@ -4667,7 +4528,7 @@ static double __pyx_f_8TwoStage_8TwoStage_getStrain(struct __pyx_obj_8TwoStage_T
   __pyx_r = __pyx_v_self->Tstrain;
   goto __pyx_L0;
 
-  /* "TwoStage.pyx":149
+  /* "TwoStage.pyx":145
  *         self.Chookgap = self.Thookgap
  * 
  *     cpdef double getStrain(self):             # <<<<<<<<<<<<<<
@@ -4740,8 +4601,8 @@ static PyObject *__pyx_pf_8TwoStage_8TwoStage_6getStrain(struct __pyx_obj_8TwoSt
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getStrain", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8TwoStage_8TwoStage_getStrain(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 149, __pyx_L1_error)
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8TwoStage_8TwoStage_getStrain(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -4758,7 +4619,7 @@ static PyObject *__pyx_pf_8TwoStage_8TwoStage_6getStrain(struct __pyx_obj_8TwoSt
   return __pyx_r;
 }
 
-/* "TwoStage.pyx":152
+/* "TwoStage.pyx":148
  *         return self.Tstrain
  * 
  *     cpdef double getStress(self):             # <<<<<<<<<<<<<<
@@ -4802,7 +4663,7 @@ static double __pyx_f_8TwoStage_8TwoStage_getStress(struct __pyx_obj_8TwoStage_T
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getStress); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getStress); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_8TwoStage_8TwoStage_9getStress)) {
         __pyx_t_3 = NULL;
@@ -4825,10 +4686,10 @@ static double __pyx_f_8TwoStage_8TwoStage_getStress(struct __pyx_obj_8TwoStage_T
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 152, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 148, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_6;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4847,7 +4708,7 @@ static double __pyx_f_8TwoStage_8TwoStage_getStress(struct __pyx_obj_8TwoStage_T
     #endif
   }
 
-  /* "TwoStage.pyx":153
+  /* "TwoStage.pyx":149
  * 
  *     cpdef double getStress(self):
  *         return self.Tstress             # <<<<<<<<<<<<<<
@@ -4857,7 +4718,7 @@ static double __pyx_f_8TwoStage_8TwoStage_getStress(struct __pyx_obj_8TwoStage_T
   __pyx_r = __pyx_v_self->Tstress;
   goto __pyx_L0;
 
-  /* "TwoStage.pyx":152
+  /* "TwoStage.pyx":148
  *         return self.Tstrain
  * 
  *     cpdef double getStress(self):             # <<<<<<<<<<<<<<
@@ -4930,8 +4791,8 @@ static PyObject *__pyx_pf_8TwoStage_8TwoStage_8getStress(struct __pyx_obj_8TwoSt
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getStress", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8TwoStage_8TwoStage_getStress(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 152, __pyx_L1_error)
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8TwoStage_8TwoStage_getStress(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -4948,7 +4809,7 @@ static PyObject *__pyx_pf_8TwoStage_8TwoStage_8getStress(struct __pyx_obj_8TwoSt
   return __pyx_r;
 }
 
-/* "TwoStage.pyx":155
+/* "TwoStage.pyx":151
  *         return self.Tstress
  * 
  *     cpdef double getTangent(self):             # <<<<<<<<<<<<<<
@@ -4992,7 +4853,7 @@ static double __pyx_f_8TwoStage_8TwoStage_getTangent(struct __pyx_obj_8TwoStage_
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getTangent); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getTangent); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_8TwoStage_8TwoStage_11getTangent)) {
         __pyx_t_3 = NULL;
@@ -5015,10 +4876,10 @@ static double __pyx_f_8TwoStage_8TwoStage_getTangent(struct __pyx_obj_8TwoStage_
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 155, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 151, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_6;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5037,7 +4898,7 @@ static double __pyx_f_8TwoStage_8TwoStage_getTangent(struct __pyx_obj_8TwoStage_
     #endif
   }
 
-  /* "TwoStage.pyx":156
+  /* "TwoStage.pyx":152
  * 
  *     cpdef double getTangent(self):
  *         return self.Ttangent             # <<<<<<<<<<<<<<
@@ -5047,7 +4908,7 @@ static double __pyx_f_8TwoStage_8TwoStage_getTangent(struct __pyx_obj_8TwoStage_
   __pyx_r = __pyx_v_self->Ttangent;
   goto __pyx_L0;
 
-  /* "TwoStage.pyx":155
+  /* "TwoStage.pyx":151
  *         return self.Tstress
  * 
  *     cpdef double getTangent(self):             # <<<<<<<<<<<<<<
@@ -5120,8 +4981,8 @@ static PyObject *__pyx_pf_8TwoStage_8TwoStage_10getTangent(struct __pyx_obj_8Two
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getTangent", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8TwoStage_8TwoStage_getTangent(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L1_error)
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8TwoStage_8TwoStage_getTangent(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -5138,7 +4999,7 @@ static PyObject *__pyx_pf_8TwoStage_8TwoStage_10getTangent(struct __pyx_obj_8Two
   return __pyx_r;
 }
 
-/* "TwoStage.pyx":158
+/* "TwoStage.pyx":154
  *         return self.Ttangent
  * 
  *     cpdef double setStrain(self, double strain, double strainRate=0.0):             # <<<<<<<<<<<<<<
@@ -5191,15 +5052,15 @@ static double __pyx_f_8TwoStage_8TwoStage_setStrain(struct __pyx_obj_8TwoStage_T
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_setStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_setStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_8TwoStage_8TwoStage_13setStrain)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
-        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_strain); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 158, __pyx_L1_error)
+        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_strain); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 154, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = PyFloat_FromDouble(__pyx_v_strainRate); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 158, __pyx_L1_error)
+        __pyx_t_6 = PyFloat_FromDouble(__pyx_v_strainRate); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 154, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_7 = 1;
         #if CYTHON_UNPACK_METHODS
@@ -5220,10 +5081,10 @@ static double __pyx_f_8TwoStage_8TwoStage_setStrain(struct __pyx_obj_8TwoStage_T
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 154, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_8 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 158, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_8;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5242,7 +5103,7 @@ static double __pyx_f_8TwoStage_8TwoStage_setStrain(struct __pyx_obj_8TwoStage_T
     #endif
   }
 
-  /* "TwoStage.pyx":159
+  /* "TwoStage.pyx":155
  * 
  *     cpdef double setStrain(self, double strain, double strainRate=0.0):
  *         self.setTrialStrain(strain, strainRate)             # <<<<<<<<<<<<<<
@@ -5250,16 +5111,16 @@ static double __pyx_f_8TwoStage_8TwoStage_setStrain(struct __pyx_obj_8TwoStage_T
 */
   __pyx_t_9.__pyx_n = 1;
   __pyx_t_9.strainRate = __pyx_v_strainRate;
-  ((struct __pyx_vtabstruct_8TwoStage_TwoStage *)__pyx_v_self->__pyx_vtab)->setTrialStrain(__pyx_v_self, __pyx_v_strain, 0, &__pyx_t_9); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 159, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_8TwoStage_TwoStage *)__pyx_v_self->__pyx_vtab)->setTrialStrain(__pyx_v_self, __pyx_v_strain, 0, &__pyx_t_9); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L1_error)
 
-  /* "TwoStage.pyx":160
+  /* "TwoStage.pyx":156
  *     cpdef double setStrain(self, double strain, double strainRate=0.0):
  *         self.setTrialStrain(strain, strainRate)
  *         self.commitState()             # <<<<<<<<<<<<<<
 */
-  ((struct __pyx_vtabstruct_8TwoStage_TwoStage *)__pyx_v_self->__pyx_vtab)->commitState(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 160, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_8TwoStage_TwoStage *)__pyx_v_self->__pyx_vtab)->commitState(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 156, __pyx_L1_error)
 
-  /* "TwoStage.pyx":158
+  /* "TwoStage.pyx":154
  *         return self.Ttangent
  * 
  *     cpdef double setStrain(self, double strain, double strainRate=0.0):             # <<<<<<<<<<<<<<
@@ -5324,48 +5185,48 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_strain,&__pyx_mstate_global->__pyx_n_u_strainRate,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 158, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 154, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 158, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 154, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 158, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 154, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setStrain", 0) < 0) __PYX_ERR(0, 158, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setStrain", 0) < 0) __PYX_ERR(0, 154, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setStrain", 0, 1, 2, i); __PYX_ERR(0, 158, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setStrain", 0, 1, 2, i); __PYX_ERR(0, 154, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 158, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 154, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 158, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 154, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_strain = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_strain == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 158, __pyx_L3_error)
+    __pyx_v_strain = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_strain == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L3_error)
     if (values[1]) {
-      __pyx_v_strainRate = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_strainRate == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 158, __pyx_L3_error)
+      __pyx_v_strainRate = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_strainRate == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L3_error)
     } else {
       __pyx_v_strainRate = ((double)0.0);
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setStrain", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 158, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setStrain", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 154, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5399,8 +5260,8 @@ static PyObject *__pyx_pf_8TwoStage_8TwoStage_12setStrain(struct __pyx_obj_8TwoS
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2.strainRate = __pyx_v_strainRate;
-  __pyx_t_1 = __pyx_vtabptr_8TwoStage_TwoStage->setStrain(__pyx_v_self, __pyx_v_strain, 1, &__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 158, __pyx_L1_error)
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_1 = __pyx_vtabptr_8TwoStage_TwoStage->setStrain(__pyx_v_self, __pyx_v_strain, 1, &__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
@@ -7098,78 +6959,78 @@ __Pyx_RefNannySetupContext("PyInit_TwoStage", 0);
   (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
-  /* "TwoStage.pyx":84
+  /* "TwoStage.pyx":80
  *         return F_next
  * 
  *     cpdef void setTrialStrain(self, double strain, double strainRate=0.0):             # <<<<<<<<<<<<<<
  *         """ strain"""
  *         cdef double dStrain, dstrain2
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8TwoStage_8TwoStage_3setTrialStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TwoStage_setTrialStrain, NULL, __pyx_mstate_global->__pyx_n_u_TwoStage, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8TwoStage_8TwoStage_3setTrialStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TwoStage_setTrialStrain, NULL, __pyx_mstate_global->__pyx_n_u_TwoStage, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_mstate_global->__pyx_tuple[1]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_8TwoStage_TwoStage, __pyx_mstate_global->__pyx_n_u_setTrialStrain, __pyx_t_2) < 0) __PYX_ERR(0, 84, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_8TwoStage_TwoStage, __pyx_mstate_global->__pyx_n_u_setTrialStrain, __pyx_t_2) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "TwoStage.pyx":140
+  /* "TwoStage.pyx":136
  *         self.Ttangent = (self.Tstress - self.Cstress) / dStrain
  * 
  *     cpdef void commitState(self):             # <<<<<<<<<<<<<<
  *         self.Cstrain = self.Tstrain
  *         self.Cstrain2 = self.Tstrain2
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8TwoStage_8TwoStage_5commitState, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TwoStage_commitState, NULL, __pyx_mstate_global->__pyx_n_u_TwoStage, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8TwoStage_8TwoStage_5commitState, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TwoStage_commitState, NULL, __pyx_mstate_global->__pyx_n_u_TwoStage, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_8TwoStage_TwoStage, __pyx_mstate_global->__pyx_n_u_commitState, __pyx_t_2) < 0) __PYX_ERR(0, 140, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_8TwoStage_TwoStage, __pyx_mstate_global->__pyx_n_u_commitState, __pyx_t_2) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "TwoStage.pyx":149
+  /* "TwoStage.pyx":145
  *         self.Chookgap = self.Thookgap
  * 
  *     cpdef double getStrain(self):             # <<<<<<<<<<<<<<
  *         return self.Tstrain
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8TwoStage_8TwoStage_7getStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TwoStage_getStrain, NULL, __pyx_mstate_global->__pyx_n_u_TwoStage, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8TwoStage_8TwoStage_7getStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TwoStage_getStrain, NULL, __pyx_mstate_global->__pyx_n_u_TwoStage, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_8TwoStage_TwoStage, __pyx_mstate_global->__pyx_n_u_getStrain, __pyx_t_2) < 0) __PYX_ERR(0, 149, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_8TwoStage_TwoStage, __pyx_mstate_global->__pyx_n_u_getStrain, __pyx_t_2) < 0) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "TwoStage.pyx":152
+  /* "TwoStage.pyx":148
  *         return self.Tstrain
  * 
  *     cpdef double getStress(self):             # <<<<<<<<<<<<<<
  *         return self.Tstress
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8TwoStage_8TwoStage_9getStress, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TwoStage_getStress, NULL, __pyx_mstate_global->__pyx_n_u_TwoStage, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8TwoStage_8TwoStage_9getStress, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TwoStage_getStress, NULL, __pyx_mstate_global->__pyx_n_u_TwoStage, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_8TwoStage_TwoStage, __pyx_mstate_global->__pyx_n_u_getStress, __pyx_t_2) < 0) __PYX_ERR(0, 152, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_8TwoStage_TwoStage, __pyx_mstate_global->__pyx_n_u_getStress, __pyx_t_2) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "TwoStage.pyx":155
+  /* "TwoStage.pyx":151
  *         return self.Tstress
  * 
  *     cpdef double getTangent(self):             # <<<<<<<<<<<<<<
  *         return self.Ttangent
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8TwoStage_8TwoStage_11getTangent, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TwoStage_getTangent, NULL, __pyx_mstate_global->__pyx_n_u_TwoStage, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8TwoStage_8TwoStage_11getTangent, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TwoStage_getTangent, NULL, __pyx_mstate_global->__pyx_n_u_TwoStage, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_8TwoStage_TwoStage, __pyx_mstate_global->__pyx_n_u_getTangent, __pyx_t_2) < 0) __PYX_ERR(0, 155, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_8TwoStage_TwoStage, __pyx_mstate_global->__pyx_n_u_getTangent, __pyx_t_2) < 0) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "TwoStage.pyx":158
+  /* "TwoStage.pyx":154
  *         return self.Ttangent
  * 
  *     cpdef double setStrain(self, double strain, double strainRate=0.0):             # <<<<<<<<<<<<<<
  *         self.setTrialStrain(strain, strainRate)
  *         self.commitState()
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8TwoStage_8TwoStage_13setStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TwoStage_setStrain, NULL, __pyx_mstate_global->__pyx_n_u_TwoStage, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8TwoStage_8TwoStage_13setStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TwoStage_setStrain, NULL, __pyx_mstate_global->__pyx_n_u_TwoStage, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_mstate_global->__pyx_tuple[2]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_8TwoStage_TwoStage, __pyx_mstate_global->__pyx_n_u_setStrain, __pyx_t_2) < 0) __PYX_ERR(0, 158, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_8TwoStage_TwoStage, __pyx_mstate_global->__pyx_n_u_setStrain, __pyx_t_2) < 0) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":1
@@ -7275,8 +7136,6 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_AssertionError, sizeof(__pyx_k_AssertionError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_AssertionError */
   {__pyx_k_F1, sizeof(__pyx_k_F1), 0, 1, 1}, /* PyObject cname: __pyx_n_u_F1 */
   {__pyx_k_F2, sizeof(__pyx_k_F2), 0, 1, 1}, /* PyObject cname: __pyx_n_u_F2 */
-  {__pyx_k_F2_must_be_positive, sizeof(__pyx_k_F2_must_be_positive), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_F2_must_be_positive */
-  {__pyx_k_Fy_must_be_positive, sizeof(__pyx_k_Fy_must_be_positive), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Fy_must_be_positive */
   {__pyx_k_Incompatible_checksums_0x_x_vs_0, sizeof(__pyx_k_Incompatible_checksums_0x_x_vs_0), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Incompatible_checksums_0x_x_vs_0 */
   {__pyx_k_PickleError, sizeof(__pyx_k_PickleError), 0, 1, 1}, /* PyObject cname: __pyx_n_u_PickleError */
   {__pyx_k_Should_not_reach_here_Thookgap, sizeof(__pyx_k_Should_not_reach_here_Thookgap), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Should_not_reach_here_Thookgap */
@@ -7308,13 +7167,9 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_is_coroutine, sizeof(__pyx_k_is_coroutine), 0, 1, 1}, /* PyObject cname: __pyx_n_u_is_coroutine */
   {__pyx_k_isenabled, sizeof(__pyx_k_isenabled), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_isenabled */
   {__pyx_k_k1, sizeof(__pyx_k_k1), 0, 1, 1}, /* PyObject cname: __pyx_n_u_k1 */
-  {__pyx_k_k1_must_be_positive, sizeof(__pyx_k_k1_must_be_positive), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_k1_must_be_positive */
   {__pyx_k_k2, sizeof(__pyx_k_k2), 0, 1, 1}, /* PyObject cname: __pyx_n_u_k2 */
-  {__pyx_k_k2_must_be_positive, sizeof(__pyx_k_k2_must_be_positive), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_k2_must_be_positive */
   {__pyx_k_kp1, sizeof(__pyx_k_kp1), 0, 1, 1}, /* PyObject cname: __pyx_n_u_kp1 */
-  {__pyx_k_kp1_must_be_non_negative, sizeof(__pyx_k_kp1_must_be_non_negative), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_kp1_must_be_non_negative */
   {__pyx_k_kp2, sizeof(__pyx_k_kp2), 0, 1, 1}, /* PyObject cname: __pyx_n_u_kp2 */
-  {__pyx_k_kp2_must_be_non_negative, sizeof(__pyx_k_kp2_must_be_non_negative), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_kp2_must_be_non_negative */
   {__pyx_k_main, sizeof(__pyx_k_main), 0, 1, 1}, /* PyObject cname: __pyx_n_u_main */
   {__pyx_k_module, sizeof(__pyx_k_module), 0, 1, 1}, /* PyObject cname: __pyx_n_u_module */
   {__pyx_k_name, sizeof(__pyx_k_name), 0, 1, 1}, /* PyObject cname: __pyx_n_u_name */
@@ -7360,7 +7215,7 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry const *t, PyObject **target, c
 static int __Pyx_InitCachedBuiltins(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 47, __pyx_L1_error)
-  __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(0, 131, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -7383,25 +7238,25 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[0]);
 
-  /* "TwoStage.pyx":84
+  /* "TwoStage.pyx":80
  *         return F_next
  * 
  *     cpdef void setTrialStrain(self, double strain, double strainRate=0.0):             # <<<<<<<<<<<<<<
  *         """ strain"""
  *         cdef double dStrain, dstrain2
 */
-  __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(1, __pyx_mstate_global->__pyx_float_0_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(1, __pyx_mstate_global->__pyx_float_0_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[1]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[1]);
 
-  /* "TwoStage.pyx":158
+  /* "TwoStage.pyx":154
  *         return self.Ttangent
  * 
  *     cpdef double setStrain(self, double strain, double strainRate=0.0):             # <<<<<<<<<<<<<<
  *         self.setTrialStrain(strain, strainRate)
  *         self.commitState()
 */
-  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(1, __pyx_mstate_global->__pyx_float_0_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(1, __pyx_mstate_global->__pyx_float_0_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[2]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[2]);
   __Pyx_RefNannyFinishContext();
@@ -7451,32 +7306,32 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 84, 669};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 80, 669};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_strain, __pyx_mstate->__pyx_n_u_strainRate};
     __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_TwoStage_TwoStage_pyx, __pyx_mstate->__pyx_n_u_setTrialStrain, __pyx_k_EQ_4q_Kq_4q_A_k_Zq_e4uD_AT_Rt_e, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 140, 65};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 136, 65};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_TwoStage_TwoStage_pyx, __pyx_mstate->__pyx_n_u_commitState, __pyx_k_A_Kt1_L_A_Kt1_L_A_L_A_L_A_L_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 149, 9};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 145, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_TwoStage_TwoStage_pyx, __pyx_mstate->__pyx_n_u_getStrain, __pyx_k_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 152, 9};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 148, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_TwoStage_TwoStage_pyx, __pyx_mstate->__pyx_n_u_getStress, __pyx_k_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 155, 9};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 151, 9};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_TwoStage_TwoStage_pyx, __pyx_mstate->__pyx_n_u_getTangent, __pyx_k_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 158, 23};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 154, 23};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_strain, __pyx_mstate->__pyx_n_u_strainRate};
     __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_TwoStage_TwoStage_pyx, __pyx_mstate->__pyx_n_u_setStrain, __pyx_k_B_O1HA_L, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
   }

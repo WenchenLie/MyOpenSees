@@ -44,12 +44,6 @@ cdef class TwoStage:
         self._init_paras()
 
     cdef void _check_paras(self) except *:
-        if self.F1 <= 0.0: raise ValueError("Fy must be positive")
-        if self.k1 <= 0.0: raise ValueError("k1 must be positive")
-        if self.kp1 < 0.0: raise ValueError("kp1 must be non-negative")
-        if self.F2 <= 0.0: raise ValueError("F2 must be positive")
-        if self.k2 <= 0.0: raise ValueError("k2 must be positive")
-        if self.kp2 < 0.0: raise ValueError("kp2 must be non-negative")
         if self.ua < 0.0: raise ValueError("ua must be non-negative")
 
     cdef void _init_paras(self):
@@ -72,6 +66,8 @@ cdef class TwoStage:
     cdef inline double bilinear(double F_prev, double u_prev, double du,
                                 double Fy, double k, double kp) noexcept:
         cdef double F_next
+        if Fy == 0.0:
+            return 0.0
         F_next = F_prev + du * k
         if du > 0.0:
             if F_next > kp * (u_prev + du) + (1.0 - kp / k) * Fy:

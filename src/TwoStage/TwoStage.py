@@ -42,12 +42,6 @@ class TwoStage(UniaxialMaterial):
         self._init_paras()
 
     def _check_paras(self):
-        assert self.F1 > 0, "Fy must be positive"
-        assert self.k1 > 0, "k1 must be positive"
-        assert self.kp1 >= 0, "kp1 must be non-negative"
-        assert self.F2 > 0, "F2 must be positive"
-        assert self.k2 > 0, "k2 must be positive"
-        assert self.kp2 >= 0, "kp2 must be non-negative"
         assert self.ua >= 0, "ua must be non-negative"
 
     def _init_paras(self):
@@ -143,6 +137,8 @@ class TwoStage(UniaxialMaterial):
         Returns:
             float: 当前步应力
         """
+        if Fy == 0:
+            return 0
         F_next = F_prev + du * k
         if F_next > kp * (u_prev + du) + (1 - kp / k) * Fy and du > 0:
             F_next = kp * (u_prev + du) + (1 - kp / k) * Fy
