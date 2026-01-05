@@ -1,7 +1,4 @@
-import math
 import sys
-import numpy as np
-import matplotlib.pyplot as plt
 from ..UniaxialMaterial import UniaxialMaterial
 
 
@@ -29,16 +26,18 @@ class TwoStage(UniaxialMaterial):
         # Response history
         self.Cstrain: float  # 应变
         self.Tstrain: float
-        self.Cstress: float  # 应力
+        self.Cstrain2: float  # 二阶单元应变
+        self.Tstrain2: float
+        self.Cstress: float  # 总应力
         self.Tstress: float
+        self.Cstress1: float  # 一阶单元应力(总是变形)
+        self.Tstress1: float
+        self.Cstress2: float  # 二阶单元应力(触发变形)
+        self.Tstress2: float
         self.Ctangent: float  # 切线刚度
         self.Ttangent: float
-        self.Cstage: int  # 阶段(1 or 2)
-        self.Tstage: int
-        self.Cu_pos: float  # 正向转换面位移
-        self.Tu_pos: float
-        self.Cu_neg: float  # 负向转换面位移
-        self.Tu_neg: float
+        self.Chookgap: float  # 钩距(始终处于[-ua, ua]范围内)
+        self.Thookgap: float
         self._check_paras()
         self._init_paras()
 
@@ -54,67 +53,71 @@ class TwoStage(UniaxialMaterial):
     def _init_paras(self):
         self.Cstrain = 0
         self.Tstrain = 0
+        self.Cstrain2 = 0
+        self.Tstrain2 = 0
         self.Cstress = 0
         self.Tstress = 0
+        self.Cstress1 = 0
+        self.Tstress1 = 0
+        self.Cstress2 = 0
+        self.Tstress2 = 0
         self.Ctangent = self.k1
         self.Ttangent = self.k1
-        self.Cstage = 1
-        self.Tstage = 1
-        self.Cu_pos = self.ua
-        self.Tu_pos = self.ua
-        self.Cu_neg = -self.ua
-        self.Tu_neg = -self.ua
+        self.Chookgap = 0
+        self.Thookgap = 0
 
     def setTrialStrain(self, strain, strainRate=0):
         """传入当前步的应变值strain"""
+        dstrain2: float
         dStrain = strain - self.Cstrain
         self.Tstrain = strain
         if abs(dStrain) <= sys.float_info.epsilon:
             return
-        # Determine stage
-        if self.Tstrain > self.Cu_pos:
-            self.Tstage = 2
-            self.Tu_pos = self.Tstrain
-            self.Tu_neg = self.Tu_pos - 2 * self.ua
-        elif self.Tstrain < self.Cu_neg:
-            self.Tstage = 2
-            self.Tu_neg = self.Tstrain
-            self.Tu_pos = self.Tu_neg + 2 * self.ua
-        else:
-            self.Tstage = 1
-        # Calculate stress and tangent
-        if self.Cstage == 1 and self.Tstage == 1:
-            # Remain stage-1
-            self.Tstress = self.bilinear(self.Cstress, self.Cstrain, dStrain, self.F1, self.k1, self.kp1)
-        elif self.Cstage == 2 and self.Tstage == 2:
-            # Remain stage-2
-            self.Tstress = self.bilinear(self.Cstress, self.Cstrain, dStrain, self.F2, self.k2, self.kp2)
-        elif self.Cstage == 1 and self.Tstage == 2:
-            # Transition stage-1 to stage-2
-            du1: float  # Strain component in stage-1
-            du2: float  # Strain component in stage-2
-            F_trans: float
+        # 计算一阶单元应力
+        self.Tstress1 = self.bilinear(self.Cstress1, self.Cstrain, dStrain, self.F1, self.k1, self.kp1)
+        # 计算二阶单元应力
+        if -self.ua < self.Thookgap < self.ua:
+            # 原本在钩距内
             if dStrain > 0:
-                du2 = self.Tstrain - self.Cu_pos
+                dstrain2 = max(self.Thookgap + dStrain - self.ua, 0)
+                self.Thookgap = min(self.Thookgap + dStrain, self.ua)
             else:
-                du2 = self.Tstrain - self.Cu_neg
-            du1 = dStrain - du2
-            F_trans = self.bilinear(self.Cstress, self.Cstrain, du1, self.F1, self.k1, self.kp1)
-            self.Tstress = self.bilinear(F_trans, self.Cstrain + du1, du2, self.F2, self.k2, self.kp2)
-        elif self.Cstage == 2 and self.Tstage == 1:
-            # Transition stage-2 to stage-1
-            du2: float  # Strain component in stage-2
-            du1: float  # Strain component in stage-1
-            F_trans: float
+                dstrain2 = min(self.Thookgap + dStrain + self.ua, 0)
+                self.Thookgap = max(self.Thookgap + dStrain, -self.ua)
+            self.Tstress2 = self.bilinear(self.Cstress2, self.Cstrain2, dstrain2, self.F2, self.k2, self.kp2)
+            self.Tstrain2 = self.Cstrain2 + dstrain2
+        elif self.Thookgap == self.ua:
+            # 钩距已经到达最大值
+            if dStrain > 0:
+                self.Tstress2 = self.bilinear(self.Cstress2, self.Cstrain2, dStrain, self.F2, self.k2, self.kp2)
+                self.Tstrain2 = self.Cstrain2 + dStrain
+            else:
+                self.Tstress2 = self.bilinear(self.Cstress2, self.Cstrain2, dStrain, self.F2, self.k2, self.kp2)
+                self.Tstrain2 = self.Cstrain2 + dStrain
+                if self.Tstress2 < 0:
+                    dstrain2 = dStrain * abs(self.Cstress2) / (abs(self.Tstress2) + abs(self.Cstress2))
+                    self.Thookgap = self.ua + (dStrain - dstrain2)
+                    if self.Thookgap < -self.ua:
+                        self.Thookgap = -self.ua
+                    self.Tstress2 = 0
+        elif self.Thookgap == -self.ua:
+            # 钩距已经到达最小值
             if dStrain < 0:
-                du1 = self.Tstrain - self.Cu_pos
+                self.Tstress2 = self.bilinear(self.Cstress2, self.Cstrain2, dStrain, self.F2, self.k2, self.kp2)
+                self.Tstrain2 = self.Cstrain2 + dStrain
             else:
-                du1 = self.Tstrain - self.Cu_neg
-            du2 = dStrain - du1
-            F_trans = self.bilinear(self.Cstress, self.Cstrain, du2, self.F2, self.k2, self.kp2)
-            self.Tstress = self.bilinear(F_trans, self.Cstrain + du2, du1, self.F1, self.k1, self.kp1)
+                self.Tstress2 = self.bilinear(self.Cstress2, self.Cstrain2, dStrain, self.F2, self.k2, self.kp2)
+                self.Tstrain2 = self.Cstrain2 + dStrain
+                if self.Tstress2 > 0:
+                    dstrain2 = dStrain * abs(self.Cstress2) / (abs(self.Tstress2) + abs(self.Cstress2))
+                    self.Thookgap = -self.ua + (dStrain - dstrain2)
+                    if self.Thookgap > self.ua:
+                        self.Thookgap = self.ua
+                    self.Tstress2 = 0
         else:
-            assert False, "Invalid stage"
+            assert False, f"Should not reach here (Thookgap = {self.Thookgap}, ua = {self.ua})"
+        # 总应力
+        self.Tstress = self.Tstress1 + self.Tstress2
         self.Ttangent = (self.Tstress - self.Cstress) / dStrain
 
     @staticmethod
@@ -131,6 +134,7 @@ class TwoStage(UniaxialMaterial):
         Args:
             F_prev (float): 上一步应力
             u_prev (float): 上一步应变
+            u (float): 下一步位移位移
             du (float): 位移增量
             Fy (float): 屈服力
             k (float): 弹性刚度
@@ -148,11 +152,12 @@ class TwoStage(UniaxialMaterial):
     
     def commitState(self):
         self.Cstrain = self.Tstrain
+        self.Cstrain2 = self.Tstrain2
         self.Cstress = self.Tstress
+        self.Cstress1 = self.Tstress1
+        self.Cstress2 = self.Tstress2
         self.Ctangent = self.Ttangent
-        self.Cu_pos = self.Tu_pos
-        self.Cu_neg = self.Tu_neg
-        self.Cstage = self.Tstage
+        self.Chookgap = self.Thookgap
 
     def getStrain(self):
         return self.Tstrain
