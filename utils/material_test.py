@@ -1,5 +1,4 @@
 from typing import Type, TypeVar
-import bin.opensees as ops
 from src.UniaxialMaterial import UniaxialMaterial
 
 
@@ -20,6 +19,7 @@ def test_opspy(
     Returns:
         tuple[list, list]: 应力、切线刚度
     """
+    import bin.opensees as ops
     ops.wipe()
     ops.uniaxialMaterial(mat_type, 1, *para)
     ops.testUniaxialMaterial(1)
