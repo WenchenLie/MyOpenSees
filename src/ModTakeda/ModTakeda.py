@@ -60,6 +60,7 @@ class ModTakeda(UniaxialMaterial):
         self.TFm_pos = self.Fy
         self.CFm_neg = -self.Fy
         self.TFm_neg = -self.Fy
+        self.step = 1
 
     def setTrialStrain(self, strain, strainRate=0):
         """传入当前步的应变值strain"""
@@ -76,7 +77,10 @@ class ModTakeda(UniaxialMaterial):
                         dStrain1 = -self.Cstress / ku
                         dStrain2 = dStrain - dStrain1
                         u0 = self.Cstrain + dStrain1  # 滞回曲线与x轴交点横坐标
-                        kr = F_flag / (u_flag - u0)  # 再加载刚度
+                        if strain < u_flag:
+                            kr = F_flag / (u_flag - u0)  # 再加载刚度
+                        else:
+                            kr = self.k0
                         self.Tstress = kr * dStrain2
                     else:
                         self.Tstress = self.Cstress + ku * dStrain
@@ -85,7 +89,9 @@ class ModTakeda(UniaxialMaterial):
                         kr = (F_flag - self.Cstress) / (u_flag - self.Cstrain)  # 再加载刚度
                         self.Tstress = self.Cstress + kr * dStrain
                     else:
-                        self.Tstress = self.Fy + (strain - self.uy) * self.r * self.k0
+                        self.Tstress = self.Cstress + dStrain * self.k0
+                if self.Tstress > self.r * self.k0 * (strain - self.uy) + self.Fy:
+                    self.Tstress = self.r * self.k0 * (strain - self.uy) + self.Fy
             else:
                 u_flag = min(-self.uy, self.Cdm_neg - self.beta * (self.Cdm_neg + self.uy))
                 F_flag = min(-self.Fy, self.CFm_neg - self.beta * (self.Cdm_neg + self.uy) * self.r * self.k0)
@@ -95,7 +101,10 @@ class ModTakeda(UniaxialMaterial):
                         dStrain1 = -self.Cstress / ku
                         dStrain2 = dStrain - dStrain1
                         u0 = self.Cstrain + dStrain1  # 滞回曲线与x轴交点横坐标
-                        kr = F_flag / (u_flag - u0)  # 再加载刚度
+                        if strain > u_flag:
+                            kr = F_flag / (u_flag - u0)  # 再加载刚度
+                        else:
+                            kr = self.k0
                         self.Tstress = kr * dStrain2
                     else:
                         self.Tstress = self.Cstress + ku * dStrain
@@ -104,7 +113,9 @@ class ModTakeda(UniaxialMaterial):
                         kr = (F_flag - self.Cstress) / (u_flag - self.Cstrain)  # 再加载刚度
                         self.Tstress = self.Cstress + kr * dStrain
                     else:
-                        self.Tstress = -self.Fy + (strain + self.uy) * self.r * self.k0
+                        self.Tstress = self.Cstress + dStrain * self.k0
+                if self.Tstress < self.r * self.k0 * (strain + self.uy) - self.Fy:
+                    self.Tstress = self.r * self.k0 * (strain + self.uy) - self.Fy
             # 更新Flag点
             if dStrain > 0:
                 self.Tdm_pos = max(self.Tdm_pos, self.Tstrain)
@@ -126,6 +137,7 @@ class ModTakeda(UniaxialMaterial):
         self.Cdm_neg = self.Tdm_neg
         self.CFm_pos = self.TFm_pos
         self.CFm_neg = self.TFm_neg
+        self.step += 1
 
     def getStrain(self):
         return self.Tstrain

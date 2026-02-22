@@ -41,7 +41,7 @@ def test_py(
     strain: list[float],
     mat_cls: Type[T],
     para: list,
-) -> list[float]:
+) -> tuple[list[float], list[float]]:
     """基于Python的材料测试
 
     Args:
@@ -50,7 +50,7 @@ def test_py(
         para (list): 参数
 
     Returns:
-        tuple[list, list]: 应力、切线刚度
+        tuple[list[float], list[float]]: 应力、切线刚度
     """
     mat = mat_cls(1, *para)
     stress = []
