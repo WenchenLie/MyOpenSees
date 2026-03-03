@@ -66,6 +66,8 @@ cdef class ModTakeda:
                 F_flag = max(self.Fy, self.CFm_pos - self.beta * (self.Cdm_pos - self.uy) * self.r * self.k0)
                 if self.Cstress < 0:
                     ku = self.k0 * abs(self.uy / self.Cdm_pos) ** self.alpha  # 卸载刚度
+                    if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):
+                        ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))
                     if self.Cstress + ku * dStrain > 0:
                         dStrain1 = -self.Cstress / ku
                         dStrain2 = dStrain - dStrain1
@@ -90,6 +92,8 @@ cdef class ModTakeda:
                 F_flag = min(-self.Fy, self.CFm_neg - self.beta * (self.Cdm_neg + self.uy) * self.r * self.k0)
                 if self.Cstress > 0:
                     ku = self.k0 * abs(self.uy / self.Cdm_neg) ** self.alpha  # 卸载刚度
+                    if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):
+                        ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))
                     if self.Cstress + ku * dStrain < 0:
                         dStrain1 = -self.Cstress / ku
                         dStrain2 = dStrain - dStrain1

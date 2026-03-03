@@ -1573,7 +1573,7 @@ struct __pyx_opt_args_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain {
   double strainRate;
 };
 
-/* "src/ModTakeda/ModTakeda.pyx":141
+/* "src/ModTakeda/ModTakeda.pyx":145
  *         self.CFm_neg = self.TFm_neg
  * 
  *     cpdef void setStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
@@ -2075,6 +2075,17 @@ static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
 
 /* SoftComplexToDouble.proto */
 static double __Pyx_SoftComplexToDouble(__pyx_t_double_complex value, int have_nogil);
+
+/* py_abs.proto */
+#if CYTHON_USE_PYLONG_INTERNALS
+static PyObject *__Pyx_PyLong_AbsNeg(PyObject *num);
+#define __Pyx_PyNumber_Absolute(x)\
+    ((likely(PyLong_CheckExact(x))) ?\
+         (likely(__Pyx_PyLong_IsNonNeg(x)) ? __Pyx_NewRef(x) : __Pyx_PyLong_AbsNeg(x)) :\
+         PyNumber_Absolute(x))
+#else
+#define __Pyx_PyNumber_Absolute(x)  PyNumber_Absolute(x)
+#endif
 
 /* RejectKeywords.export */
 static void __Pyx_RejectKeywords(const char* function_name, PyObject *kwds);
@@ -3557,7 +3568,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
  *                 F_flag = max(self.Fy, self.CFm_pos - self.beta * (self.Cdm_pos - self.uy) * self.r * self.k0)
  *                 if self.Cstress < 0:             # <<<<<<<<<<<<<<
  *                     ku = self.k0 * abs(self.uy / self.Cdm_pos) ** self.alpha  #
- *                     if self.Cstress + ku * dStrain > 0:
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):
 */
       __pyx_t_9 = (__pyx_v_self->Cstress < 0.0);
       if (__pyx_t_9) {
@@ -3566,8 +3577,8 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
  *                 F_flag = max(self.Fy, self.CFm_pos - self.beta * (self.Cdm_pos - self.uy) * self.r * self.k0)
  *                 if self.Cstress < 0:
  *                     ku = self.k0 * abs(self.uy / self.Cdm_pos) ** self.alpha  #             # <<<<<<<<<<<<<<
- *                     if self.Cstress + ku * dStrain > 0:
- *                         dStrain1 = -self.Cstress / ku
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):
+ *                         ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))
 */
         if (unlikely(__pyx_v_self->Cdm_pos == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
@@ -3580,6 +3591,112 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
         /* "src/ModTakeda/ModTakeda.pyx":69
  *                 if self.Cstress < 0:
  *                     ku = self.k0 * abs(self.uy / self.Cdm_pos) ** self.alpha  #
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):             # <<<<<<<<<<<<<<
+ *                         ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))
+ *                     if self.Cstress + ku * dStrain > 0:
+*/
+        __pyx_t_4 = PyFloat_FromDouble(__pyx_v_ku); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->Cstress); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_sys); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_float_info); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_epsilon); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+        __pyx_t_6 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->Cstrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_sys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_float_info); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_epsilon); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_5 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_5 = __Pyx_PyNumber_Absolute(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_t_2 = PyObject_RichCompare(__pyx_t_4, __pyx_t_5, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 69, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        if (__pyx_t_9) {
+
+          /* "src/ModTakeda/ModTakeda.pyx":70
+ *                     ku = self.k0 * abs(self.uy / self.Cdm_pos) ** self.alpha  #
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):
+ *                         ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))             # <<<<<<<<<<<<<<
+ *                     if self.Cstress + ku * dStrain > 0:
+ *                         dStrain1 = -self.Cstress / ku
+*/
+          __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->Cstress); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_sys); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_float_info); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_epsilon); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __pyx_t_5 = PyFloat_FromDouble(__pyx_v_self->Cstrain); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_sys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_float_info); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_6);
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_epsilon); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+          __pyx_t_6 = PyNumber_Add(__pyx_t_5, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_6);
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+          __pyx_t_6 = __Pyx_PyNumber_Absolute(__pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 70, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_6);
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __pyx_t_11 = __Pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 70, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+          __pyx_v_ku = __pyx_t_11;
+
+          /* "src/ModTakeda/ModTakeda.pyx":69
+ *                 if self.Cstress < 0:
+ *                     ku = self.k0 * abs(self.uy / self.Cdm_pos) ** self.alpha  #
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):             # <<<<<<<<<<<<<<
+ *                         ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))
+ *                     if self.Cstress + ku * dStrain > 0:
+*/
+        }
+
+        /* "src/ModTakeda/ModTakeda.pyx":71
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):
+ *                         ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))
  *                     if self.Cstress + ku * dStrain > 0:             # <<<<<<<<<<<<<<
  *                         dStrain1 = -self.Cstress / ku
  *                         dStrain2 = dStrain - dStrain1
@@ -3587,8 +3704,8 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
         __pyx_t_9 = ((__pyx_v_self->Cstress + (__pyx_v_ku * __pyx_v_dStrain)) > 0.0);
         if (__pyx_t_9) {
 
-          /* "src/ModTakeda/ModTakeda.pyx":70
- *                     ku = self.k0 * abs(self.uy / self.Cdm_pos) ** self.alpha  #
+          /* "src/ModTakeda/ModTakeda.pyx":72
+ *                         ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))
  *                     if self.Cstress + ku * dStrain > 0:
  *                         dStrain1 = -self.Cstress / ku             # <<<<<<<<<<<<<<
  *                         dStrain2 = dStrain - dStrain1
@@ -3597,11 +3714,11 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
           __pyx_t_11 = (-__pyx_v_self->Cstress);
           if (unlikely(__pyx_v_ku == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 70, __pyx_L1_error)
+            __PYX_ERR(0, 72, __pyx_L1_error)
           }
           __pyx_v_dStrain1 = (__pyx_t_11 / __pyx_v_ku);
 
-          /* "src/ModTakeda/ModTakeda.pyx":71
+          /* "src/ModTakeda/ModTakeda.pyx":73
  *                     if self.Cstress + ku * dStrain > 0:
  *                         dStrain1 = -self.Cstress / ku
  *                         dStrain2 = dStrain - dStrain1             # <<<<<<<<<<<<<<
@@ -3610,7 +3727,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
 */
           __pyx_v_dStrain2 = (__pyx_v_dStrain - __pyx_v_dStrain1);
 
-          /* "src/ModTakeda/ModTakeda.pyx":72
+          /* "src/ModTakeda/ModTakeda.pyx":74
  *                         dStrain1 = -self.Cstress / ku
  *                         dStrain2 = dStrain - dStrain1
  *                         u0 = self.Cstrain + dStrain1  # x             # <<<<<<<<<<<<<<
@@ -3619,7 +3736,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
 */
           __pyx_v_u0 = (__pyx_v_self->Cstrain + __pyx_v_dStrain1);
 
-          /* "src/ModTakeda/ModTakeda.pyx":73
+          /* "src/ModTakeda/ModTakeda.pyx":75
  *                         dStrain2 = dStrain - dStrain1
  *                         u0 = self.Cstrain + dStrain1  # x
  *                         if strain < u_flag:             # <<<<<<<<<<<<<<
@@ -3629,7 +3746,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
           __pyx_t_9 = (__pyx_v_strain < __pyx_v_u_flag);
           if (__pyx_t_9) {
 
-            /* "src/ModTakeda/ModTakeda.pyx":74
+            /* "src/ModTakeda/ModTakeda.pyx":76
  *                         u0 = self.Cstrain + dStrain1  # x
  *                         if strain < u_flag:
  *                             kr = F_flag / (u_flag - u0)  #             # <<<<<<<<<<<<<<
@@ -3639,21 +3756,21 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
             __pyx_t_11 = (__pyx_v_u_flag - __pyx_v_u0);
             if (unlikely(__pyx_t_11 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 74, __pyx_L1_error)
+              __PYX_ERR(0, 76, __pyx_L1_error)
             }
             __pyx_v_kr = (__pyx_v_F_flag / __pyx_t_11);
 
-            /* "src/ModTakeda/ModTakeda.pyx":73
+            /* "src/ModTakeda/ModTakeda.pyx":75
  *                         dStrain2 = dStrain - dStrain1
  *                         u0 = self.Cstrain + dStrain1  # x
  *                         if strain < u_flag:             # <<<<<<<<<<<<<<
  *                             kr = F_flag / (u_flag - u0)  #
  *                         else:
 */
-            goto __pyx_L7;
+            goto __pyx_L8;
           }
 
-          /* "src/ModTakeda/ModTakeda.pyx":76
+          /* "src/ModTakeda/ModTakeda.pyx":78
  *                             kr = F_flag / (u_flag - u0)  #
  *                         else:
  *                             kr = self.k0             # <<<<<<<<<<<<<<
@@ -3664,9 +3781,9 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
             __pyx_t_11 = __pyx_v_self->k0;
             __pyx_v_kr = __pyx_t_11;
           }
-          __pyx_L7:;
+          __pyx_L8:;
 
-          /* "src/ModTakeda/ModTakeda.pyx":77
+          /* "src/ModTakeda/ModTakeda.pyx":79
  *                         else:
  *                             kr = self.k0
  *                         self.Tstress = kr * dStrain2             # <<<<<<<<<<<<<<
@@ -3675,17 +3792,17 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
 */
           __pyx_v_self->Tstress = (__pyx_v_kr * __pyx_v_dStrain2);
 
-          /* "src/ModTakeda/ModTakeda.pyx":69
- *                 if self.Cstress < 0:
- *                     ku = self.k0 * abs(self.uy / self.Cdm_pos) ** self.alpha  #
+          /* "src/ModTakeda/ModTakeda.pyx":71
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):
+ *                         ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))
  *                     if self.Cstress + ku * dStrain > 0:             # <<<<<<<<<<<<<<
  *                         dStrain1 = -self.Cstress / ku
  *                         dStrain2 = dStrain - dStrain1
 */
-          goto __pyx_L6;
+          goto __pyx_L7;
         }
 
-        /* "src/ModTakeda/ModTakeda.pyx":79
+        /* "src/ModTakeda/ModTakeda.pyx":81
  *                         self.Tstress = kr * dStrain2
  *                     else:
  *                         self.Tstress = self.Cstress + ku * dStrain             # <<<<<<<<<<<<<<
@@ -3695,19 +3812,19 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
         /*else*/ {
           __pyx_v_self->Tstress = (__pyx_v_self->Cstress + (__pyx_v_ku * __pyx_v_dStrain));
         }
-        __pyx_L6:;
+        __pyx_L7:;
 
         /* "src/ModTakeda/ModTakeda.pyx":67
  *                 u_flag = max(self.uy, self.Cdm_pos - self.beta * (self.Cdm_pos - self.uy))
  *                 F_flag = max(self.Fy, self.CFm_pos - self.beta * (self.Cdm_pos - self.uy) * self.r * self.k0)
  *                 if self.Cstress < 0:             # <<<<<<<<<<<<<<
  *                     ku = self.k0 * abs(self.uy / self.Cdm_pos) ** self.alpha  #
- *                     if self.Cstress + ku * dStrain > 0:
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):
 */
         goto __pyx_L5;
       }
 
-      /* "src/ModTakeda/ModTakeda.pyx":81
+      /* "src/ModTakeda/ModTakeda.pyx":83
  *                         self.Tstress = self.Cstress + ku * dStrain
  *                 else:
  *                     if u_flag > strain:             # <<<<<<<<<<<<<<
@@ -3718,7 +3835,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
         __pyx_t_9 = (__pyx_v_u_flag > __pyx_v_strain);
         if (__pyx_t_9) {
 
-          /* "src/ModTakeda/ModTakeda.pyx":82
+          /* "src/ModTakeda/ModTakeda.pyx":84
  *                 else:
  *                     if u_flag > strain:
  *                         kr = (F_flag - self.Cstress) / (u_flag - self.Cstrain)  #             # <<<<<<<<<<<<<<
@@ -3729,11 +3846,11 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
           __pyx_t_10 = (__pyx_v_u_flag - __pyx_v_self->Cstrain);
           if (unlikely(__pyx_t_10 == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 82, __pyx_L1_error)
+            __PYX_ERR(0, 84, __pyx_L1_error)
           }
           __pyx_v_kr = (__pyx_t_11 / __pyx_t_10);
 
-          /* "src/ModTakeda/ModTakeda.pyx":83
+          /* "src/ModTakeda/ModTakeda.pyx":85
  *                     if u_flag > strain:
  *                         kr = (F_flag - self.Cstress) / (u_flag - self.Cstrain)  #
  *                         self.Tstress = self.Cstress + kr * dStrain             # <<<<<<<<<<<<<<
@@ -3742,17 +3859,17 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
 */
           __pyx_v_self->Tstress = (__pyx_v_self->Cstress + (__pyx_v_kr * __pyx_v_dStrain));
 
-          /* "src/ModTakeda/ModTakeda.pyx":81
+          /* "src/ModTakeda/ModTakeda.pyx":83
  *                         self.Tstress = self.Cstress + ku * dStrain
  *                 else:
  *                     if u_flag > strain:             # <<<<<<<<<<<<<<
  *                         kr = (F_flag - self.Cstress) / (u_flag - self.Cstrain)  #
  *                         self.Tstress = self.Cstress + kr * dStrain
 */
-          goto __pyx_L8;
+          goto __pyx_L9;
         }
 
-        /* "src/ModTakeda/ModTakeda.pyx":85
+        /* "src/ModTakeda/ModTakeda.pyx":87
  *                         self.Tstress = self.Cstress + kr * dStrain
  *                     else:
  *                         self.Tstress = self.Cstress + dStrain * self.k0             # <<<<<<<<<<<<<<
@@ -3762,11 +3879,11 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
         /*else*/ {
           __pyx_v_self->Tstress = (__pyx_v_self->Cstress + (__pyx_v_dStrain * __pyx_v_self->k0));
         }
-        __pyx_L8:;
+        __pyx_L9:;
       }
       __pyx_L5:;
 
-      /* "src/ModTakeda/ModTakeda.pyx":86
+      /* "src/ModTakeda/ModTakeda.pyx":88
  *                     else:
  *                         self.Tstress = self.Cstress + dStrain * self.k0
  *                 if self.Tstress > self.r * self.k0 * (strain - self.uy) + self.Fy:             # <<<<<<<<<<<<<<
@@ -3776,7 +3893,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
       __pyx_t_9 = (__pyx_v_self->Tstress > (((__pyx_v_self->r * __pyx_v_self->k0) * (__pyx_v_strain - __pyx_v_self->uy)) + __pyx_v_self->Fy));
       if (__pyx_t_9) {
 
-        /* "src/ModTakeda/ModTakeda.pyx":87
+        /* "src/ModTakeda/ModTakeda.pyx":89
  *                         self.Tstress = self.Cstress + dStrain * self.k0
  *                 if self.Tstress > self.r * self.k0 * (strain - self.uy) + self.Fy:
  *                     self.Tstress = self.r * self.k0 * (strain - self.uy) + self.Fy             # <<<<<<<<<<<<<<
@@ -3785,7 +3902,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
 */
         __pyx_v_self->Tstress = (((__pyx_v_self->r * __pyx_v_self->k0) * (__pyx_v_strain - __pyx_v_self->uy)) + __pyx_v_self->Fy);
 
-        /* "src/ModTakeda/ModTakeda.pyx":86
+        /* "src/ModTakeda/ModTakeda.pyx":88
  *                     else:
  *                         self.Tstress = self.Cstress + dStrain * self.k0
  *                 if self.Tstress > self.r * self.k0 * (strain - self.uy) + self.Fy:             # <<<<<<<<<<<<<<
@@ -3804,7 +3921,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
       goto __pyx_L4;
     }
 
-    /* "src/ModTakeda/ModTakeda.pyx":89
+    /* "src/ModTakeda/ModTakeda.pyx":91
  *                     self.Tstress = self.r * self.k0 * (strain - self.uy) + self.Fy
  *             else:  # dStrain < 0
  *                 u_flag = min(-self.uy, self.Cdm_neg - self.beta * (self.Cdm_neg + self.uy))             # <<<<<<<<<<<<<<
@@ -3822,7 +3939,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
       }
       __pyx_v_u_flag = __pyx_t_8;
 
-      /* "src/ModTakeda/ModTakeda.pyx":90
+      /* "src/ModTakeda/ModTakeda.pyx":92
  *             else:  # dStrain < 0
  *                 u_flag = min(-self.uy, self.Cdm_neg - self.beta * (self.Cdm_neg + self.uy))
  *                 F_flag = min(-self.Fy, self.CFm_neg - self.beta * (self.Cdm_neg + self.uy) * self.r * self.k0)             # <<<<<<<<<<<<<<
@@ -3839,34 +3956,140 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
       }
       __pyx_v_F_flag = __pyx_t_11;
 
-      /* "src/ModTakeda/ModTakeda.pyx":91
+      /* "src/ModTakeda/ModTakeda.pyx":93
  *                 u_flag = min(-self.uy, self.Cdm_neg - self.beta * (self.Cdm_neg + self.uy))
  *                 F_flag = min(-self.Fy, self.CFm_neg - self.beta * (self.Cdm_neg + self.uy) * self.r * self.k0)
  *                 if self.Cstress > 0:             # <<<<<<<<<<<<<<
  *                     ku = self.k0 * abs(self.uy / self.Cdm_neg) ** self.alpha  #
- *                     if self.Cstress + ku * dStrain < 0:
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):
 */
       __pyx_t_9 = (__pyx_v_self->Cstress > 0.0);
       if (__pyx_t_9) {
 
-        /* "src/ModTakeda/ModTakeda.pyx":92
+        /* "src/ModTakeda/ModTakeda.pyx":94
  *                 F_flag = min(-self.Fy, self.CFm_neg - self.beta * (self.Cdm_neg + self.uy) * self.r * self.k0)
  *                 if self.Cstress > 0:
  *                     ku = self.k0 * abs(self.uy / self.Cdm_neg) ** self.alpha  #             # <<<<<<<<<<<<<<
- *                     if self.Cstress + ku * dStrain < 0:
- *                         dStrain1 = -self.Cstress / ku
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):
+ *                         ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))
 */
         if (unlikely(__pyx_v_self->Cdm_neg == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 92, __pyx_L1_error)
+          __PYX_ERR(0, 94, __pyx_L1_error)
         }
         __pyx_t_11 = fabs((__pyx_v_self->uy / __pyx_v_self->Cdm_neg)); 
-        __pyx_t_8 = __Pyx_SoftComplexToDouble(__Pyx_c_prod_double(__pyx_t_double_complex_from_parts(__pyx_v_self->k0, 0), __Pyx_c_pow_double(__pyx_t_double_complex_from_parts(__pyx_t_11, 0), __pyx_t_double_complex_from_parts(__pyx_v_self->alpha, 0))), 0); if (unlikely(__pyx_t_8 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 92, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_SoftComplexToDouble(__Pyx_c_prod_double(__pyx_t_double_complex_from_parts(__pyx_v_self->k0, 0), __Pyx_c_pow_double(__pyx_t_double_complex_from_parts(__pyx_t_11, 0), __pyx_t_double_complex_from_parts(__pyx_v_self->alpha, 0))), 0); if (unlikely(__pyx_t_8 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 94, __pyx_L1_error)
         __pyx_v_ku = __pyx_t_8;
 
-        /* "src/ModTakeda/ModTakeda.pyx":93
+        /* "src/ModTakeda/ModTakeda.pyx":95
  *                 if self.Cstress > 0:
  *                     ku = self.k0 * abs(self.uy / self.Cdm_neg) ** self.alpha  #
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):             # <<<<<<<<<<<<<<
+ *                         ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))
+ *                     if self.Cstress + ku * dStrain < 0:
+*/
+        __pyx_t_6 = PyFloat_FromDouble(__pyx_v_ku); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->Cstress); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_sys); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_float_info); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_epsilon); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_5 = PyNumber_Add(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->Cstrain); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_sys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_float_info); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_epsilon); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __pyx_t_1 = PyNumber_Add(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __pyx_t_1 = __Pyx_PyNumber_Absolute(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_t_2 = PyObject_RichCompare(__pyx_t_6, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 95, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        if (__pyx_t_9) {
+
+          /* "src/ModTakeda/ModTakeda.pyx":96
+ *                     ku = self.k0 * abs(self.uy / self.Cdm_neg) ** self.alpha  #
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):
+ *                         ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))             # <<<<<<<<<<<<<<
+ *                     if self.Cstress + ku * dStrain < 0:
+ *                         dStrain1 = -self.Cstress / ku
+*/
+          __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->Cstress); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_sys); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
+          __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_float_info); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 96, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_6);
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_epsilon); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
+          __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+          __pyx_t_6 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 96, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_6);
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->Cstrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
+          __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_sys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_float_info); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_epsilon); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __pyx_t_5 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __pyx_t_5 = __Pyx_PyNumber_Absolute(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __pyx_t_8 = __Pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 96, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __pyx_v_ku = __pyx_t_8;
+
+          /* "src/ModTakeda/ModTakeda.pyx":95
+ *                 if self.Cstress > 0:
+ *                     ku = self.k0 * abs(self.uy / self.Cdm_neg) ** self.alpha  #
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):             # <<<<<<<<<<<<<<
+ *                         ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))
+ *                     if self.Cstress + ku * dStrain < 0:
+*/
+        }
+
+        /* "src/ModTakeda/ModTakeda.pyx":97
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):
+ *                         ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))
  *                     if self.Cstress + ku * dStrain < 0:             # <<<<<<<<<<<<<<
  *                         dStrain1 = -self.Cstress / ku
  *                         dStrain2 = dStrain - dStrain1
@@ -3874,8 +4097,8 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
         __pyx_t_9 = ((__pyx_v_self->Cstress + (__pyx_v_ku * __pyx_v_dStrain)) < 0.0);
         if (__pyx_t_9) {
 
-          /* "src/ModTakeda/ModTakeda.pyx":94
- *                     ku = self.k0 * abs(self.uy / self.Cdm_neg) ** self.alpha  #
+          /* "src/ModTakeda/ModTakeda.pyx":98
+ *                         ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))
  *                     if self.Cstress + ku * dStrain < 0:
  *                         dStrain1 = -self.Cstress / ku             # <<<<<<<<<<<<<<
  *                         dStrain2 = dStrain - dStrain1
@@ -3884,11 +4107,11 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
           __pyx_t_8 = (-__pyx_v_self->Cstress);
           if (unlikely(__pyx_v_ku == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 94, __pyx_L1_error)
+            __PYX_ERR(0, 98, __pyx_L1_error)
           }
           __pyx_v_dStrain1 = (__pyx_t_8 / __pyx_v_ku);
 
-          /* "src/ModTakeda/ModTakeda.pyx":95
+          /* "src/ModTakeda/ModTakeda.pyx":99
  *                     if self.Cstress + ku * dStrain < 0:
  *                         dStrain1 = -self.Cstress / ku
  *                         dStrain2 = dStrain - dStrain1             # <<<<<<<<<<<<<<
@@ -3897,7 +4120,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
 */
           __pyx_v_dStrain2 = (__pyx_v_dStrain - __pyx_v_dStrain1);
 
-          /* "src/ModTakeda/ModTakeda.pyx":96
+          /* "src/ModTakeda/ModTakeda.pyx":100
  *                         dStrain1 = -self.Cstress / ku
  *                         dStrain2 = dStrain - dStrain1
  *                         u0 = self.Cstrain + dStrain1  # x             # <<<<<<<<<<<<<<
@@ -3906,7 +4129,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
 */
           __pyx_v_u0 = (__pyx_v_self->Cstrain + __pyx_v_dStrain1);
 
-          /* "src/ModTakeda/ModTakeda.pyx":97
+          /* "src/ModTakeda/ModTakeda.pyx":101
  *                         dStrain2 = dStrain - dStrain1
  *                         u0 = self.Cstrain + dStrain1  # x
  *                         if strain > u_flag:             # <<<<<<<<<<<<<<
@@ -3916,7 +4139,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
           __pyx_t_9 = (__pyx_v_strain > __pyx_v_u_flag);
           if (__pyx_t_9) {
 
-            /* "src/ModTakeda/ModTakeda.pyx":98
+            /* "src/ModTakeda/ModTakeda.pyx":102
  *                         u0 = self.Cstrain + dStrain1  # x
  *                         if strain > u_flag:
  *                             kr = F_flag / (u_flag - u0)  #             # <<<<<<<<<<<<<<
@@ -3926,21 +4149,21 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
             __pyx_t_8 = (__pyx_v_u_flag - __pyx_v_u0);
             if (unlikely(__pyx_t_8 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 98, __pyx_L1_error)
+              __PYX_ERR(0, 102, __pyx_L1_error)
             }
             __pyx_v_kr = (__pyx_v_F_flag / __pyx_t_8);
 
-            /* "src/ModTakeda/ModTakeda.pyx":97
+            /* "src/ModTakeda/ModTakeda.pyx":101
  *                         dStrain2 = dStrain - dStrain1
  *                         u0 = self.Cstrain + dStrain1  # x
  *                         if strain > u_flag:             # <<<<<<<<<<<<<<
  *                             kr = F_flag / (u_flag - u0)  #
  *                         else:
 */
-            goto __pyx_L12;
+            goto __pyx_L14;
           }
 
-          /* "src/ModTakeda/ModTakeda.pyx":100
+          /* "src/ModTakeda/ModTakeda.pyx":104
  *                             kr = F_flag / (u_flag - u0)  #
  *                         else:
  *                             kr = self.k0             # <<<<<<<<<<<<<<
@@ -3951,9 +4174,9 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
             __pyx_t_8 = __pyx_v_self->k0;
             __pyx_v_kr = __pyx_t_8;
           }
-          __pyx_L12:;
+          __pyx_L14:;
 
-          /* "src/ModTakeda/ModTakeda.pyx":101
+          /* "src/ModTakeda/ModTakeda.pyx":105
  *                         else:
  *                             kr = self.k0
  *                         self.Tstress = kr * dStrain2             # <<<<<<<<<<<<<<
@@ -3962,17 +4185,17 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
 */
           __pyx_v_self->Tstress = (__pyx_v_kr * __pyx_v_dStrain2);
 
-          /* "src/ModTakeda/ModTakeda.pyx":93
- *                 if self.Cstress > 0:
- *                     ku = self.k0 * abs(self.uy / self.Cdm_neg) ** self.alpha  #
+          /* "src/ModTakeda/ModTakeda.pyx":97
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):
+ *                         ku = abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon))
  *                     if self.Cstress + ku * dStrain < 0:             # <<<<<<<<<<<<<<
  *                         dStrain1 = -self.Cstress / ku
  *                         dStrain2 = dStrain - dStrain1
 */
-          goto __pyx_L11;
+          goto __pyx_L13;
         }
 
-        /* "src/ModTakeda/ModTakeda.pyx":103
+        /* "src/ModTakeda/ModTakeda.pyx":107
  *                         self.Tstress = kr * dStrain2
  *                     else:
  *                         self.Tstress = self.Cstress + ku * dStrain             # <<<<<<<<<<<<<<
@@ -3982,19 +4205,19 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
         /*else*/ {
           __pyx_v_self->Tstress = (__pyx_v_self->Cstress + (__pyx_v_ku * __pyx_v_dStrain));
         }
-        __pyx_L11:;
+        __pyx_L13:;
 
-        /* "src/ModTakeda/ModTakeda.pyx":91
+        /* "src/ModTakeda/ModTakeda.pyx":93
  *                 u_flag = min(-self.uy, self.Cdm_neg - self.beta * (self.Cdm_neg + self.uy))
  *                 F_flag = min(-self.Fy, self.CFm_neg - self.beta * (self.Cdm_neg + self.uy) * self.r * self.k0)
  *                 if self.Cstress > 0:             # <<<<<<<<<<<<<<
  *                     ku = self.k0 * abs(self.uy / self.Cdm_neg) ** self.alpha  #
- *                     if self.Cstress + ku * dStrain < 0:
+ *                     if ku < abs((self.Cstress + sys.float_info.epsilon) / (self.Cstrain + sys.float_info.epsilon)):
 */
-        goto __pyx_L10;
+        goto __pyx_L11;
       }
 
-      /* "src/ModTakeda/ModTakeda.pyx":105
+      /* "src/ModTakeda/ModTakeda.pyx":109
  *                         self.Tstress = self.Cstress + ku * dStrain
  *                 else:
  *                     if u_flag < strain:             # <<<<<<<<<<<<<<
@@ -4005,7 +4228,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
         __pyx_t_9 = (__pyx_v_u_flag < __pyx_v_strain);
         if (__pyx_t_9) {
 
-          /* "src/ModTakeda/ModTakeda.pyx":106
+          /* "src/ModTakeda/ModTakeda.pyx":110
  *                 else:
  *                     if u_flag < strain:
  *                         kr = (F_flag - self.Cstress) / (u_flag - self.Cstrain)  #             # <<<<<<<<<<<<<<
@@ -4016,11 +4239,11 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
           __pyx_t_11 = (__pyx_v_u_flag - __pyx_v_self->Cstrain);
           if (unlikely(__pyx_t_11 == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 106, __pyx_L1_error)
+            __PYX_ERR(0, 110, __pyx_L1_error)
           }
           __pyx_v_kr = (__pyx_t_8 / __pyx_t_11);
 
-          /* "src/ModTakeda/ModTakeda.pyx":107
+          /* "src/ModTakeda/ModTakeda.pyx":111
  *                     if u_flag < strain:
  *                         kr = (F_flag - self.Cstress) / (u_flag - self.Cstrain)  #
  *                         self.Tstress = self.Cstress + kr * dStrain             # <<<<<<<<<<<<<<
@@ -4029,17 +4252,17 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
 */
           __pyx_v_self->Tstress = (__pyx_v_self->Cstress + (__pyx_v_kr * __pyx_v_dStrain));
 
-          /* "src/ModTakeda/ModTakeda.pyx":105
+          /* "src/ModTakeda/ModTakeda.pyx":109
  *                         self.Tstress = self.Cstress + ku * dStrain
  *                 else:
  *                     if u_flag < strain:             # <<<<<<<<<<<<<<
  *                         kr = (F_flag - self.Cstress) / (u_flag - self.Cstrain)  #
  *                         self.Tstress = self.Cstress + kr * dStrain
 */
-          goto __pyx_L13;
+          goto __pyx_L15;
         }
 
-        /* "src/ModTakeda/ModTakeda.pyx":109
+        /* "src/ModTakeda/ModTakeda.pyx":113
  *                         self.Tstress = self.Cstress + kr * dStrain
  *                     else:
  *                         self.Tstress = self.Cstress + dStrain * self.k0             # <<<<<<<<<<<<<<
@@ -4049,11 +4272,11 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
         /*else*/ {
           __pyx_v_self->Tstress = (__pyx_v_self->Cstress + (__pyx_v_dStrain * __pyx_v_self->k0));
         }
-        __pyx_L13:;
+        __pyx_L15:;
       }
-      __pyx_L10:;
+      __pyx_L11:;
 
-      /* "src/ModTakeda/ModTakeda.pyx":110
+      /* "src/ModTakeda/ModTakeda.pyx":114
  *                     else:
  *                         self.Tstress = self.Cstress + dStrain * self.k0
  *                 if self.Tstress < self.r * self.k0 * (strain + self.uy) - self.Fy:             # <<<<<<<<<<<<<<
@@ -4063,7 +4286,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
       __pyx_t_9 = (__pyx_v_self->Tstress < (((__pyx_v_self->r * __pyx_v_self->k0) * (__pyx_v_strain + __pyx_v_self->uy)) - __pyx_v_self->Fy));
       if (__pyx_t_9) {
 
-        /* "src/ModTakeda/ModTakeda.pyx":111
+        /* "src/ModTakeda/ModTakeda.pyx":115
  *                         self.Tstress = self.Cstress + dStrain * self.k0
  *                 if self.Tstress < self.r * self.k0 * (strain + self.uy) - self.Fy:
  *                     self.Tstress = self.r * self.k0 * (strain + self.uy) - self.Fy             # <<<<<<<<<<<<<<
@@ -4072,7 +4295,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
 */
         __pyx_v_self->Tstress = (((__pyx_v_self->r * __pyx_v_self->k0) * (__pyx_v_strain + __pyx_v_self->uy)) - __pyx_v_self->Fy);
 
-        /* "src/ModTakeda/ModTakeda.pyx":110
+        /* "src/ModTakeda/ModTakeda.pyx":114
  *                     else:
  *                         self.Tstress = self.Cstress + dStrain * self.k0
  *                 if self.Tstress < self.r * self.k0 * (strain + self.uy) - self.Fy:             # <<<<<<<<<<<<<<
@@ -4083,7 +4306,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
     }
     __pyx_L4:;
 
-    /* "src/ModTakeda/ModTakeda.pyx":114
+    /* "src/ModTakeda/ModTakeda.pyx":118
  * 
  *             # Flag
  *             if dStrain > 0:             # <<<<<<<<<<<<<<
@@ -4093,7 +4316,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
     __pyx_t_9 = (__pyx_v_dStrain > 0.0);
     if (__pyx_t_9) {
 
-      /* "src/ModTakeda/ModTakeda.pyx":115
+      /* "src/ModTakeda/ModTakeda.pyx":119
  *             # Flag
  *             if dStrain > 0:
  *                 if self.Tstrain > self.Tdm_pos:             # <<<<<<<<<<<<<<
@@ -4103,7 +4326,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
       __pyx_t_9 = (__pyx_v_self->Tstrain > __pyx_v_self->Tdm_pos);
       if (__pyx_t_9) {
 
-        /* "src/ModTakeda/ModTakeda.pyx":116
+        /* "src/ModTakeda/ModTakeda.pyx":120
  *             if dStrain > 0:
  *                 if self.Tstrain > self.Tdm_pos:
  *                     self.Tdm_pos = self.Tstrain             # <<<<<<<<<<<<<<
@@ -4113,7 +4336,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
         __pyx_t_11 = __pyx_v_self->Tstrain;
         __pyx_v_self->Tdm_pos = __pyx_t_11;
 
-        /* "src/ModTakeda/ModTakeda.pyx":115
+        /* "src/ModTakeda/ModTakeda.pyx":119
  *             # Flag
  *             if dStrain > 0:
  *                 if self.Tstrain > self.Tdm_pos:             # <<<<<<<<<<<<<<
@@ -4122,7 +4345,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
 */
       }
 
-      /* "src/ModTakeda/ModTakeda.pyx":117
+      /* "src/ModTakeda/ModTakeda.pyx":121
  *                 if self.Tstrain > self.Tdm_pos:
  *                     self.Tdm_pos = self.Tstrain
  *                 if self.Tstress > self.TFm_pos:             # <<<<<<<<<<<<<<
@@ -4132,7 +4355,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
       __pyx_t_9 = (__pyx_v_self->Tstress > __pyx_v_self->TFm_pos);
       if (__pyx_t_9) {
 
-        /* "src/ModTakeda/ModTakeda.pyx":118
+        /* "src/ModTakeda/ModTakeda.pyx":122
  *                     self.Tdm_pos = self.Tstrain
  *                 if self.Tstress > self.TFm_pos:
  *                     self.TFm_pos = self.Tstress             # <<<<<<<<<<<<<<
@@ -4142,7 +4365,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
         __pyx_t_11 = __pyx_v_self->Tstress;
         __pyx_v_self->TFm_pos = __pyx_t_11;
 
-        /* "src/ModTakeda/ModTakeda.pyx":117
+        /* "src/ModTakeda/ModTakeda.pyx":121
  *                 if self.Tstrain > self.Tdm_pos:
  *                     self.Tdm_pos = self.Tstrain
  *                 if self.Tstress > self.TFm_pos:             # <<<<<<<<<<<<<<
@@ -4151,17 +4374,17 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
 */
       }
 
-      /* "src/ModTakeda/ModTakeda.pyx":114
+      /* "src/ModTakeda/ModTakeda.pyx":118
  * 
  *             # Flag
  *             if dStrain > 0:             # <<<<<<<<<<<<<<
  *                 if self.Tstrain > self.Tdm_pos:
  *                     self.Tdm_pos = self.Tstrain
 */
-      goto __pyx_L15;
+      goto __pyx_L17;
     }
 
-    /* "src/ModTakeda/ModTakeda.pyx":120
+    /* "src/ModTakeda/ModTakeda.pyx":124
  *                     self.TFm_pos = self.Tstress
  *             else:
  *                 if self.Tstrain < self.Tdm_neg:             # <<<<<<<<<<<<<<
@@ -4172,7 +4395,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
       __pyx_t_9 = (__pyx_v_self->Tstrain < __pyx_v_self->Tdm_neg);
       if (__pyx_t_9) {
 
-        /* "src/ModTakeda/ModTakeda.pyx":121
+        /* "src/ModTakeda/ModTakeda.pyx":125
  *             else:
  *                 if self.Tstrain < self.Tdm_neg:
  *                     self.Tdm_neg = self.Tstrain             # <<<<<<<<<<<<<<
@@ -4182,7 +4405,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
         __pyx_t_11 = __pyx_v_self->Tstrain;
         __pyx_v_self->Tdm_neg = __pyx_t_11;
 
-        /* "src/ModTakeda/ModTakeda.pyx":120
+        /* "src/ModTakeda/ModTakeda.pyx":124
  *                     self.TFm_pos = self.Tstress
  *             else:
  *                 if self.Tstrain < self.Tdm_neg:             # <<<<<<<<<<<<<<
@@ -4191,7 +4414,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
 */
       }
 
-      /* "src/ModTakeda/ModTakeda.pyx":122
+      /* "src/ModTakeda/ModTakeda.pyx":126
  *                 if self.Tstrain < self.Tdm_neg:
  *                     self.Tdm_neg = self.Tstrain
  *                 if self.Tstress < self.TFm_neg:             # <<<<<<<<<<<<<<
@@ -4201,7 +4424,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
       __pyx_t_9 = (__pyx_v_self->Tstress < __pyx_v_self->TFm_neg);
       if (__pyx_t_9) {
 
-        /* "src/ModTakeda/ModTakeda.pyx":123
+        /* "src/ModTakeda/ModTakeda.pyx":127
  *                     self.Tdm_neg = self.Tstrain
  *                 if self.Tstress < self.TFm_neg:
  *                     self.TFm_neg = self.Tstress             # <<<<<<<<<<<<<<
@@ -4211,7 +4434,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
         __pyx_t_11 = __pyx_v_self->Tstress;
         __pyx_v_self->TFm_neg = __pyx_t_11;
 
-        /* "src/ModTakeda/ModTakeda.pyx":122
+        /* "src/ModTakeda/ModTakeda.pyx":126
  *                 if self.Tstrain < self.Tdm_neg:
  *                     self.Tdm_neg = self.Tstrain
  *                 if self.Tstress < self.TFm_neg:             # <<<<<<<<<<<<<<
@@ -4220,9 +4443,9 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
 */
       }
     }
-    __pyx_L15:;
+    __pyx_L17:;
 
-    /* "src/ModTakeda/ModTakeda.pyx":126
+    /* "src/ModTakeda/ModTakeda.pyx":130
  * 
  *             #
  *             self.Ttangent = (self.Tstress - self.Cstress) / dStrain             # <<<<<<<<<<<<<<
@@ -4232,7 +4455,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
     __pyx_t_11 = (__pyx_v_self->Tstress - __pyx_v_self->Cstress);
     if (unlikely(__pyx_v_dStrain == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 126, __pyx_L1_error)
+      __PYX_ERR(0, 130, __pyx_L1_error)
     }
     __pyx_v_self->Ttangent = (__pyx_t_11 / __pyx_v_dStrain);
 
@@ -4246,7 +4469,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
     goto __pyx_L3;
   }
 
-  /* "src/ModTakeda/ModTakeda.pyx":128
+  /* "src/ModTakeda/ModTakeda.pyx":132
  *             self.Ttangent = (self.Tstress - self.Cstress) / dStrain
  *         else:
  *             self.Tstress = self.Cstress             # <<<<<<<<<<<<<<
@@ -4257,7 +4480,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setTrialStrain(struct 
     __pyx_t_11 = __pyx_v_self->Cstress;
     __pyx_v_self->Tstress = __pyx_t_11;
 
-    /* "src/ModTakeda/ModTakeda.pyx":129
+    /* "src/ModTakeda/ModTakeda.pyx":133
  *         else:
  *             self.Tstress = self.Cstress
  *             self.Ttangent = self.Ctangent             # <<<<<<<<<<<<<<
@@ -4424,7 +4647,7 @@ static PyObject *__pyx_pf_3src_9ModTakeda_9ModTakeda_9ModTakeda_2setTrialStrain(
   return __pyx_r;
 }
 
-/* "src/ModTakeda/ModTakeda.pyx":131
+/* "src/ModTakeda/ModTakeda.pyx":135
  *             self.Ttangent = self.Ctangent
  * 
  *     cpdef void commitState(self):             # <<<<<<<<<<<<<<
@@ -4467,7 +4690,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_commitState(struct __p
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_commitState); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_commitState); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_9ModTakeda_9ModTakeda_9ModTakeda_5commitState)) {
         __pyx_t_3 = NULL;
@@ -4490,7 +4713,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_commitState(struct __p
           __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4510,7 +4733,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_commitState(struct __p
     #endif
   }
 
-  /* "src/ModTakeda/ModTakeda.pyx":133
+  /* "src/ModTakeda/ModTakeda.pyx":137
  *     cpdef void commitState(self):
  *         """Commit the current state as converged."""
  *         self.Cstrain = self.Tstrain             # <<<<<<<<<<<<<<
@@ -4520,7 +4743,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_commitState(struct __p
   __pyx_t_6 = __pyx_v_self->Tstrain;
   __pyx_v_self->Cstrain = __pyx_t_6;
 
-  /* "src/ModTakeda/ModTakeda.pyx":134
+  /* "src/ModTakeda/ModTakeda.pyx":138
  *         """Commit the current state as converged."""
  *         self.Cstrain = self.Tstrain
  *         self.Cstress = self.Tstress             # <<<<<<<<<<<<<<
@@ -4530,7 +4753,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_commitState(struct __p
   __pyx_t_6 = __pyx_v_self->Tstress;
   __pyx_v_self->Cstress = __pyx_t_6;
 
-  /* "src/ModTakeda/ModTakeda.pyx":135
+  /* "src/ModTakeda/ModTakeda.pyx":139
  *         self.Cstrain = self.Tstrain
  *         self.Cstress = self.Tstress
  *         self.Ctangent = self.Ttangent             # <<<<<<<<<<<<<<
@@ -4540,7 +4763,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_commitState(struct __p
   __pyx_t_6 = __pyx_v_self->Ttangent;
   __pyx_v_self->Ctangent = __pyx_t_6;
 
-  /* "src/ModTakeda/ModTakeda.pyx":136
+  /* "src/ModTakeda/ModTakeda.pyx":140
  *         self.Cstress = self.Tstress
  *         self.Ctangent = self.Ttangent
  *         self.Cdm_pos = self.Tdm_pos             # <<<<<<<<<<<<<<
@@ -4550,7 +4773,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_commitState(struct __p
   __pyx_t_6 = __pyx_v_self->Tdm_pos;
   __pyx_v_self->Cdm_pos = __pyx_t_6;
 
-  /* "src/ModTakeda/ModTakeda.pyx":137
+  /* "src/ModTakeda/ModTakeda.pyx":141
  *         self.Ctangent = self.Ttangent
  *         self.Cdm_pos = self.Tdm_pos
  *         self.Cdm_neg = self.Tdm_neg             # <<<<<<<<<<<<<<
@@ -4560,7 +4783,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_commitState(struct __p
   __pyx_t_6 = __pyx_v_self->Tdm_neg;
   __pyx_v_self->Cdm_neg = __pyx_t_6;
 
-  /* "src/ModTakeda/ModTakeda.pyx":138
+  /* "src/ModTakeda/ModTakeda.pyx":142
  *         self.Cdm_pos = self.Tdm_pos
  *         self.Cdm_neg = self.Tdm_neg
  *         self.CFm_pos = self.TFm_pos             # <<<<<<<<<<<<<<
@@ -4570,7 +4793,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_commitState(struct __p
   __pyx_t_6 = __pyx_v_self->TFm_pos;
   __pyx_v_self->CFm_pos = __pyx_t_6;
 
-  /* "src/ModTakeda/ModTakeda.pyx":139
+  /* "src/ModTakeda/ModTakeda.pyx":143
  *         self.Cdm_neg = self.Tdm_neg
  *         self.CFm_pos = self.TFm_pos
  *         self.CFm_neg = self.TFm_neg             # <<<<<<<<<<<<<<
@@ -4580,7 +4803,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_commitState(struct __p
   __pyx_t_6 = __pyx_v_self->TFm_neg;
   __pyx_v_self->CFm_neg = __pyx_t_6;
 
-  /* "src/ModTakeda/ModTakeda.pyx":131
+  /* "src/ModTakeda/ModTakeda.pyx":135
  *             self.Ttangent = self.Ctangent
  * 
  *     cpdef void commitState(self):             # <<<<<<<<<<<<<<
@@ -4652,8 +4875,8 @@ static PyObject *__pyx_pf_3src_9ModTakeda_9ModTakeda_9ModTakeda_4commitState(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("commitState", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_commitState(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 131, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_commitState(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4670,7 +4893,7 @@ static PyObject *__pyx_pf_3src_9ModTakeda_9ModTakeda_9ModTakeda_4commitState(str
   return __pyx_r;
 }
 
-/* "src/ModTakeda/ModTakeda.pyx":141
+/* "src/ModTakeda/ModTakeda.pyx":145
  *         self.CFm_neg = self.TFm_neg
  * 
  *     cpdef void setStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
@@ -4721,15 +4944,15 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setStrain(struct __pyx
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_setStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_setStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_9ModTakeda_9ModTakeda_9ModTakeda_7setStrain)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
-        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_strain); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 141, __pyx_L1_error)
+        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_strain); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 145, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = PyFloat_FromDouble(__pyx_v_strainRate); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 141, __pyx_L1_error)
+        __pyx_t_6 = PyFloat_FromDouble(__pyx_v_strainRate); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 145, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_7 = 1;
         #if CYTHON_UNPACK_METHODS
@@ -4750,7 +4973,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setStrain(struct __pyx
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4770,7 +4993,7 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setStrain(struct __pyx
     #endif
   }
 
-  /* "src/ModTakeda/ModTakeda.pyx":142
+  /* "src/ModTakeda/ModTakeda.pyx":146
  * 
  *     cpdef void setStrain(self, double strain, double strainRate=0):
  *         self.setTrialStrain(strain, strainRate)             # <<<<<<<<<<<<<<
@@ -4779,18 +5002,18 @@ static void __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_setStrain(struct __pyx
 */
   __pyx_t_8.__pyx_n = 1;
   __pyx_t_8.strainRate = __pyx_v_strainRate;
-  ((struct __pyx_vtabstruct_3src_9ModTakeda_9ModTakeda_ModTakeda *)__pyx_v_self->__pyx_vtab)->setTrialStrain(__pyx_v_self, __pyx_v_strain, 0, &__pyx_t_8); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_9ModTakeda_9ModTakeda_ModTakeda *)__pyx_v_self->__pyx_vtab)->setTrialStrain(__pyx_v_self, __pyx_v_strain, 0, &__pyx_t_8); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 146, __pyx_L1_error)
 
-  /* "src/ModTakeda/ModTakeda.pyx":143
+  /* "src/ModTakeda/ModTakeda.pyx":147
  *     cpdef void setStrain(self, double strain, double strainRate=0):
  *         self.setTrialStrain(strain, strainRate)
  *         self.commitState()             # <<<<<<<<<<<<<<
  * 
  *     cpdef double getStrain(self):
 */
-  ((struct __pyx_vtabstruct_3src_9ModTakeda_9ModTakeda_ModTakeda *)__pyx_v_self->__pyx_vtab)->commitState(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 143, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_9ModTakeda_9ModTakeda_ModTakeda *)__pyx_v_self->__pyx_vtab)->commitState(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 147, __pyx_L1_error)
 
-  /* "src/ModTakeda/ModTakeda.pyx":141
+  /* "src/ModTakeda/ModTakeda.pyx":145
  *         self.CFm_neg = self.TFm_neg
  * 
  *     cpdef void setStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
@@ -4852,48 +5075,48 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_strain,&__pyx_mstate_global->__pyx_n_u_strainRate,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 141, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 145, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 141, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 145, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 141, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 145, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setStrain", 0) < (0)) __PYX_ERR(0, 141, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setStrain", 0) < (0)) __PYX_ERR(0, 145, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setStrain", 0, 1, 2, i); __PYX_ERR(0, 141, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setStrain", 0, 1, 2, i); __PYX_ERR(0, 145, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 141, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 145, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 141, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 145, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_strain = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_strain == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L3_error)
+    __pyx_v_strain = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_strain == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 145, __pyx_L3_error)
     if (values[1]) {
-      __pyx_v_strainRate = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_strainRate == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L3_error)
+      __pyx_v_strainRate = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_strainRate == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 145, __pyx_L3_error)
     } else {
       __pyx_v_strainRate = ((double)0.0);
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setStrain", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 141, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setStrain", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 145, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4926,8 +5149,8 @@ static PyObject *__pyx_pf_3src_9ModTakeda_9ModTakeda_9ModTakeda_6setStrain(struc
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1.__pyx_n = 1;
   __pyx_t_1.strainRate = __pyx_v_strainRate;
-  __pyx_vtabptr_3src_9ModTakeda_9ModTakeda_ModTakeda->setStrain(__pyx_v_self, __pyx_v_strain, 1, &__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_vtabptr_3src_9ModTakeda_9ModTakeda_ModTakeda->setStrain(__pyx_v_self, __pyx_v_strain, 1, &__pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -4944,7 +5167,7 @@ static PyObject *__pyx_pf_3src_9ModTakeda_9ModTakeda_9ModTakeda_6setStrain(struc
   return __pyx_r;
 }
 
-/* "src/ModTakeda/ModTakeda.pyx":145
+/* "src/ModTakeda/ModTakeda.pyx":149
  *         self.commitState()
  * 
  *     cpdef double getStrain(self):             # <<<<<<<<<<<<<<
@@ -4988,7 +5211,7 @@ static double __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getStrain(struct __p
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_9ModTakeda_9ModTakeda_9ModTakeda_9getStrain)) {
         __pyx_t_3 = NULL;
@@ -5011,10 +5234,10 @@ static double __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getStrain(struct __p
           __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 149, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_6;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5033,7 +5256,7 @@ static double __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getStrain(struct __p
     #endif
   }
 
-  /* "src/ModTakeda/ModTakeda.pyx":146
+  /* "src/ModTakeda/ModTakeda.pyx":150
  * 
  *     cpdef double getStrain(self):
  *         return self.Tstrain             # <<<<<<<<<<<<<<
@@ -5043,7 +5266,7 @@ static double __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getStrain(struct __p
   __pyx_r = __pyx_v_self->Tstrain;
   goto __pyx_L0;
 
-  /* "src/ModTakeda/ModTakeda.pyx":145
+  /* "src/ModTakeda/ModTakeda.pyx":149
  *         self.commitState()
  * 
  *     cpdef double getStrain(self):             # <<<<<<<<<<<<<<
@@ -5116,8 +5339,8 @@ static PyObject *__pyx_pf_3src_9ModTakeda_9ModTakeda_9ModTakeda_8getStrain(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getStrain", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getStrain(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 145, __pyx_L1_error)
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getStrain(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -5134,7 +5357,7 @@ static PyObject *__pyx_pf_3src_9ModTakeda_9ModTakeda_9ModTakeda_8getStrain(struc
   return __pyx_r;
 }
 
-/* "src/ModTakeda/ModTakeda.pyx":148
+/* "src/ModTakeda/ModTakeda.pyx":152
  *         return self.Tstrain
  * 
  *     cpdef double getStress(self):             # <<<<<<<<<<<<<<
@@ -5178,7 +5401,7 @@ static double __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getStress(struct __p
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getStress); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getStress); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_9ModTakeda_9ModTakeda_9ModTakeda_11getStress)) {
         __pyx_t_3 = NULL;
@@ -5201,10 +5424,10 @@ static double __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getStress(struct __p
           __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 148, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 152, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_6;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5223,7 +5446,7 @@ static double __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getStress(struct __p
     #endif
   }
 
-  /* "src/ModTakeda/ModTakeda.pyx":149
+  /* "src/ModTakeda/ModTakeda.pyx":153
  * 
  *     cpdef double getStress(self):
  *         return self.Tstress             # <<<<<<<<<<<<<<
@@ -5233,7 +5456,7 @@ static double __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getStress(struct __p
   __pyx_r = __pyx_v_self->Tstress;
   goto __pyx_L0;
 
-  /* "src/ModTakeda/ModTakeda.pyx":148
+  /* "src/ModTakeda/ModTakeda.pyx":152
  *         return self.Tstrain
  * 
  *     cpdef double getStress(self):             # <<<<<<<<<<<<<<
@@ -5306,8 +5529,8 @@ static PyObject *__pyx_pf_3src_9ModTakeda_9ModTakeda_9ModTakeda_10getStress(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getStress", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getStress(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 148, __pyx_L1_error)
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getStress(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 152, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -5324,7 +5547,7 @@ static PyObject *__pyx_pf_3src_9ModTakeda_9ModTakeda_9ModTakeda_10getStress(stru
   return __pyx_r;
 }
 
-/* "src/ModTakeda/ModTakeda.pyx":151
+/* "src/ModTakeda/ModTakeda.pyx":155
  *         return self.Tstress
  * 
  *     cpdef double getTangent(self):             # <<<<<<<<<<<<<<
@@ -5367,7 +5590,7 @@ static double __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getTangent(struct __
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getTangent); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getTangent); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_9ModTakeda_9ModTakeda_9ModTakeda_13getTangent)) {
         __pyx_t_3 = NULL;
@@ -5390,10 +5613,10 @@ static double __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getTangent(struct __
           __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 155, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 151, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_6;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5412,7 +5635,7 @@ static double __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getTangent(struct __
     #endif
   }
 
-  /* "src/ModTakeda/ModTakeda.pyx":152
+  /* "src/ModTakeda/ModTakeda.pyx":156
  * 
  *     cpdef double getTangent(self):
  *         return self.Ttangent             # <<<<<<<<<<<<<<
@@ -5420,7 +5643,7 @@ static double __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getTangent(struct __
   __pyx_r = __pyx_v_self->Ttangent;
   goto __pyx_L0;
 
-  /* "src/ModTakeda/ModTakeda.pyx":151
+  /* "src/ModTakeda/ModTakeda.pyx":155
  *         return self.Tstress
  * 
  *     cpdef double getTangent(self):             # <<<<<<<<<<<<<<
@@ -5492,8 +5715,8 @@ static PyObject *__pyx_pf_3src_9ModTakeda_9ModTakeda_9ModTakeda_12getTangent(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getTangent", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getTangent(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 151, __pyx_L1_error)
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_9ModTakeda_9ModTakeda_9ModTakeda_getTangent(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -8932,79 +9155,79 @@ __Pyx_RefNannySetupContext("PyInit_ModTakeda", 0);
   if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9ModTakeda_9ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_n_u_setTrialStrain, __pyx_t_2) < (0)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "src/ModTakeda/ModTakeda.pyx":131
+  /* "src/ModTakeda/ModTakeda.pyx":135
  *             self.Ttangent = self.Ctangent
  * 
  *     cpdef void commitState(self):             # <<<<<<<<<<<<<<
  *         """Commit the current state as converged."""
  *         self.Cstrain = self.Tstrain
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9ModTakeda_9ModTakeda_9ModTakeda_5commitState, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ModTakeda_commitState, NULL, __pyx_mstate_global->__pyx_n_u_src_ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9ModTakeda_9ModTakeda_9ModTakeda_5commitState, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ModTakeda_commitState, NULL, __pyx_mstate_global->__pyx_n_u_src_ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9ModTakeda_9ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_n_u_commitState, __pyx_t_2) < (0)) __PYX_ERR(0, 131, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9ModTakeda_9ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_n_u_commitState, __pyx_t_2) < (0)) __PYX_ERR(0, 135, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "src/ModTakeda/ModTakeda.pyx":141
+  /* "src/ModTakeda/ModTakeda.pyx":145
  *         self.CFm_neg = self.TFm_neg
  * 
  *     cpdef void setStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
  *         self.setTrialStrain(strain, strainRate)
  *         self.commitState()
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9ModTakeda_9ModTakeda_9ModTakeda_7setStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ModTakeda_setStrain, NULL, __pyx_mstate_global->__pyx_n_u_src_ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9ModTakeda_9ModTakeda_9ModTakeda_7setStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ModTakeda_setStrain, NULL, __pyx_mstate_global->__pyx_n_u_src_ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_mstate_global->__pyx_tuple[0]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9ModTakeda_9ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_n_u_setStrain, __pyx_t_2) < (0)) __PYX_ERR(0, 141, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9ModTakeda_9ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_n_u_setStrain, __pyx_t_2) < (0)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "src/ModTakeda/ModTakeda.pyx":145
+  /* "src/ModTakeda/ModTakeda.pyx":149
  *         self.commitState()
  * 
  *     cpdef double getStrain(self):             # <<<<<<<<<<<<<<
  *         return self.Tstrain
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9ModTakeda_9ModTakeda_9ModTakeda_9getStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ModTakeda_getStrain, NULL, __pyx_mstate_global->__pyx_n_u_src_ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9ModTakeda_9ModTakeda_9ModTakeda_9getStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ModTakeda_getStrain, NULL, __pyx_mstate_global->__pyx_n_u_src_ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9ModTakeda_9ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_n_u_getStrain, __pyx_t_2) < (0)) __PYX_ERR(0, 145, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9ModTakeda_9ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_n_u_getStrain, __pyx_t_2) < (0)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "src/ModTakeda/ModTakeda.pyx":148
+  /* "src/ModTakeda/ModTakeda.pyx":152
  *         return self.Tstrain
  * 
  *     cpdef double getStress(self):             # <<<<<<<<<<<<<<
  *         return self.Tstress
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9ModTakeda_9ModTakeda_9ModTakeda_11getStress, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ModTakeda_getStress, NULL, __pyx_mstate_global->__pyx_n_u_src_ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9ModTakeda_9ModTakeda_9ModTakeda_11getStress, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ModTakeda_getStress, NULL, __pyx_mstate_global->__pyx_n_u_src_ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9ModTakeda_9ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_n_u_getStress, __pyx_t_2) < (0)) __PYX_ERR(0, 148, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9ModTakeda_9ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_n_u_getStress, __pyx_t_2) < (0)) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "src/ModTakeda/ModTakeda.pyx":151
+  /* "src/ModTakeda/ModTakeda.pyx":155
  *         return self.Tstress
  * 
  *     cpdef double getTangent(self):             # <<<<<<<<<<<<<<
  *         return self.Ttangent
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9ModTakeda_9ModTakeda_9ModTakeda_13getTangent, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ModTakeda_getTangent, NULL, __pyx_mstate_global->__pyx_n_u_src_ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_9ModTakeda_9ModTakeda_9ModTakeda_13getTangent, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ModTakeda_getTangent, NULL, __pyx_mstate_global->__pyx_n_u_src_ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9ModTakeda_9ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_n_u_getTangent, __pyx_t_2) < (0)) __PYX_ERR(0, 151, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_9ModTakeda_9ModTakeda_ModTakeda, __pyx_mstate_global->__pyx_n_u_getTangent, __pyx_t_2) < (0)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":1
@@ -9152,33 +9375,33 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 10; } index[] = {{1},{23},{179},{8},{26},{25},{7},{6},{2},{9},{23},{22},{27},{14},{2},{9},{27},{29},{21},{19},{19},{20},{19},{24},{20},{5},{18},{4},{18},{11},{8},{5},{7},{10},{8},{9},{9},{10},{12},{13},{5},{2},{8},{10},{8},{7},{3},{14},{12},{11},{10},{24},{14},{12},{1},{10},{17},{13},{4},{9},{14},{12},{10},{12},{19},{23},{5},{6},{10},{3},{3},{8},{6},{12},{6},{65},{9},{927},{23},{303},{55},{11}};
-    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (1269 bytes) */
-const char* const cstring = "(\265/\375`\240\010]'\000ZA(\016:\360\030=\314\300\244\025I\031\344\r i\300\206\024I\0036\244H\232\370\264\300\307d\262_\256im\333\207\333t\305-[Z1\024\226-#\327J\0243\3254S\rEA\227Y\021\303\000\313\000\334\000\345N\271\215\310\227\271\034:\372\355\273\347]\353Q\363Q%y\252\365\2523\303\307TE{\352\273\014o\325\235l\222\343\366\214D\201P\306\264\247)8\262\227\243\355\344\334\244\355^\222\236\323\366Mgn\256Ir\237\360nn\235\221\247%)\206\330\316R\237h\351\267G\317s\207\210\236w\361\3447\337\267ND\275Hr~\212*\272\212\265\036\361\244s\335\352\305\263\364f\251\322\304\032*v\336\3736G\232\332\305\356G\336\304S\221<\267\370ry\231\014\345\014\211g\312\375X\246\276\213\253\311\375N9\25549)\366R<\321\233_oD\277o^\344\036\r\342N\245\3376~\232\234\350)r\232\350\273\232\023W\035\232\356\254\205\265\027\014sC\233\262\274\336\002\302\274z\223\332\216\226\325\256\275\335[\351!\024\000\010T\271^\357\312\\[\233A0\357\022\n\000\014\252brN\370]\254\357-P\301\332\260\375\231]\255g}z\010\004?\030U\347\252\271\235xWI\235\252\265\326\266U\326O\306\264\367]\343d\315\344q\235\232[\335\321\266w\342&n,u\247\252[\2757\325\316\323\234\332q#\277\215:T\247\365\023\317\355\223\233*\211\346\264N\301\365\034\367\245\356\245\356Z\217\247Z\323\032\255\371\215\232\265\0235\313\256\343\244\326\270q\323\370\270S\257\315\261s\025M\321r<\327\276k\\\346y<H\373\261\304\341\255CZ\233\273L{\367'\267\235{\326;?\003l\303o\307\220\200k\372M\265_#?\271\377^\372KI?i>2\372F\262/\033\372\253\374\222A\031$&?\\\262\215\375v\276\227\317\301\227\363\004\337\300!\214\363r\017\332\t\237\207\217\345c\221},\213m\360\n\354=`r(\323\342\233\334\222\323x &\202a&\346\225Kk\237~\256\330!\036a\033\370\345\365\277\356\372\264\027n\353\007\2039\340\226\027|%\334\215\213\031\346r\270-\255\305\304\014{9^\n\214W\345uq\301\016p\301\213\343\272\334\216\2119\346\362:\274\243k\343\276H\264\346\215\004\267\340\364}mw\305uh\265\024\255y\303e\271+\373b\037\030\346\246\362\227\374\363\361\217L\237I\351+!}$\243\242_\024\373\251\257\224=\344\036G""\3043X\005\026yI\027\"\373\025xwnH8\257\250\\\275\003Y!\376y]/I\333\302F\305\334\027\366!\234e\261\217\223c\342\0038E\374\273V#\374\255\250\032~+\237\204\214\203\237\336\375z\274#\013\177\367\333\261\022\004\363\006\353@0\307r\330\243\236\023\325@X\322\352\260.v\247\207\020\316\341,$\"\n\205\204\302\236\2360''\204\2050PJ\n\344\361@\357\301\\\016,Kpopi\t\224\311\300\240 \020\007\007\254\001kXNN\2544e\335n,\222d!!\261\214\214X\077\077,\036\026\317j\n\000\240Jj\375\253\377^\367u\374\363\243\177D\364+|3\031&\3660\322\333z\241*\330YO!\000\200\240jE\265\202\271<\255\253\025Z\3115\341_\2718-\302\274k_\355\001\313\200\360\203\305\034\261AB\200\244\250\221 \245\031\"5C\301H\322\024\322\032`D\310\252\252\0162\n-\315\020(\315\214\004\024&h\213\352\024\246}\003\370|\233\206\014\270\252\342)%@3\351\257\027\336\234\224H\332@\271F\340I\232\345$\276JF\027\371X!\266\241\227\031\325\022&\364\022\365\351\245\007\243\227\345\334\"\304\324\003^\231)L\255\362Ycn\251A\001\252\007\356\244\375'\r\320\302\216\255\371\374\030o\270O}\372\020l0\214\252\343\351F3\276\326,\310^\345_\375\030\340\250\003\246\260\321\230,\310\306\371GYz\rU\202\252\210W(\004~<\263@u5!\246\342\325\t\237\025P]\n\314\031[=\256\266k\341l\030\024\232\234\310\003\215a\204\346\246\220\247\000\353I\010E\357\373\232\235\320\333\001BV\352\365\222>\322k\371\275\320UK\025dG\267q\263\033\334g\213\244p\260\305~5\016\004\323\370\315\337\313ny\000X\367\224\020R\346}e<\000\364\031\352A\345&\203\020\rU\203\336\274r\325\366\325\224\327\250#\363\365\\m\352\303\372LWI\2537\335\342\025\035\204\253\035,\270\367\325\034\305\351x\301):\204\344\375OW\226/\372m@\210\267+\330\324+9\020\307\372\273\240\036&!\013z\253\000\241N\025";
-    PyObject *data = __Pyx_DecompressString(cstring, 1269, 3);
+    const struct { const unsigned int length: 11; } index[] = {{1},{23},{179},{8},{26},{25},{7},{6},{2},{9},{23},{22},{27},{14},{2},{9},{27},{29},{21},{19},{19},{20},{19},{24},{20},{5},{18},{4},{18},{11},{8},{5},{7},{10},{8},{9},{9},{10},{12},{13},{5},{2},{8},{10},{8},{7},{3},{14},{12},{11},{10},{24},{14},{12},{1},{10},{17},{13},{4},{9},{14},{12},{10},{12},{19},{23},{5},{6},{10},{3},{3},{8},{6},{12},{6},{65},{9},{1085},{23},{303},{55},{11}};
+    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (1334 bytes) */
+const char* const cstring = "(\265/\375`>\te)\000\nE\370\016:\360\030=\314\300\244\025I\031\344\r i\300\206\024I\0036\244H\232\370\264\300\307d\262_\256im\333\207\333<\024U\365\240\357\254\261g\272\032\273\224D%K\3240M3\025fE\316\000\333\000\347\000k\357>\345\270t\327z\347\351\271W\216\033\362\347n\247\226~\373\356y'\311\222\344%k\362\225$\333\234\031^\256\254\332W\337e|-\357d\233\\\267k\246\372\203R\256}M\321\231\375,q)\347\250m\367\323\364\334\266s<ts\3224\367\t\357\350\316)\371z\232c\010.=\311T=\375\366j\232\356\220\321\363>\246<\347\373\346\215\252\037M\316\323\221U\333\361\3063\236t\316k\375\230\236\036=Y\333xS\307\316{\337hic\373\330}\311\237\370:\232\351\036a.0\023!\034\2411]\271/\317\325\367\261E\271\337+\267\235(7\307~\216\251\232\363\355\315\350w\316\217\334\253@\034\352\364\033\307S\223TMGn\033}gwc\233C\023I?\251\210\350\023\315\376\n<i\017\272\317\021sMV\221Eb\023\206\200ko\354\275`\250\033\336\325\365\375\026\020jV\254\364v\274\255\267\375\355\337\312\017\241\000@\340\352\025{\230\006\343\336\014\202\272\227P\000`p5\243q\304\377r\375o\301*\366\212\257O\375z\275\333\363C \010\306\254:g\321\r\305;k\362X\222$I\\K\353'\345\332\373\276q\363\206\3728\271\242\233\355\331\266\207\342\250\256<y)\313k\275G\331\316\327\035\333u%\317\225<\225G\222Q|\267S\216\262\246\272#\311\024]\337q\177\222\375$;I\226){#I\365\346\267\212\336R\025=;\217\233$\251+\267\215\227{\365$Zv\316\252\253z\226i\333\367\215\323\274\217\003\221\276<e\276V\210$\321}\006\337\334\177\327FE\277\210\366iB\277\245atH\203\314\346\007l\276\263`\317\001\210\023%\337\310\242,\203\301\007\357\004\320\003\330\002\262\320~\246\3158yE\366\0361Z\244ms\216v\321\353<0\017\3110\0235\013\266\275Q\301\327\3540\227\262\215\374\022\373`\207{\336\013\330\025\214\311\034rK\034\306\022\360\306E\035\2039\340\226\327b\242\216\305\0341\305,V\211]^\262\203\\\020\313\340\027\3341Q\317\\b\207\270\204m\340\227\3277\375&\245\257\204\364\221\204\276\014\370\000\224\232{\344\207\023\366\030z1&\3523\367sL\237\351\350\267@\0300\004>\3151r(\333b$\330\005\257""\357\315\313\361vW\302U\357$\331%\2571l\303+\260\203\353\245p\325\033p\013n]\230\373\300P?\235\377\344\237\227\277t\372NK\177);\026\210{p\210X\263\254^\277\003Za\366\211_1\311\333\342N\315\340\027\367A\254i\263\257\243c\346\0039e\374\275WC\014\262\254\032\202,\240\004\255\223\243\342\035{\304#\013\277\027\354\271\022\004\365\206\353@P\317p\\\243\037\224\325\200X\362\346\270/W\347\207 \326bM\034\032\022\203\202D\036\036\021\007G\214\211\261\220\212*\364\371B\357\303\335.<\317p\357\220\211)\244\321B \240P&\013k\302\232\026\024Tk][\271\\\3134[II\255\242\242\226\217Ok\247\265\303\252\002\000\270\242j\177\353\277\347}\036\377|\377m\364\215\206~\005\260F\303\314^N\212]\261T\205[\373)\004\000\020\\\261\254X1x\347}\275A,\272F\374,X\366\"\324\275\027\366\036\270\014\010\301\330\3141\033$\270\r\301\036C\202\356\351?\335\376\315\014\200\252\250\261\234\322\n\221\032!\031I\222\202\2441`D\250\254X\007\"\022-\315\020(\315\214\004\024&h\213\352\024\246}\003\370\374\266\026\031FU\214\247\312\200k\005~/`\370<I\332\330\266DS\312\177\312\353\003O#\242)t\274\300\266\241\277\220\324%\021V\022\022\033\222\312WD\210H\017\3102\235\231\\\371\223\346\351\242M\r\3227\214\245vVd-+v_\263\026\371\203=?\306\033\316\223\307\004\313\357\342\006 \"\251\360\350\321\376\2312vTO\211\261\177\263k4\3033\366+\310\312\300\234hA\302-\002!\275\2206\005z\367\320\224T#t\325/\212\374\200\314\002\016\376\204\210\212\245\223S9V\255d\0207&\345U\272]\373O3\211W\333@\231kpF\221:\205\236\005\254\210\204.\216>\360l\205^'\010\233\251\367\244\375M\257\345w\223.\013*!;\022\215\315.\342\016'\216\330\317\026\373\352\333\010\007\2236j\247\334\336\024\000\211\207E\020\217\027\273\021\200\320\267) \225O\226\314\264\244\372U\257\311U\333KS\316Q\267\345\013x\327\224\230z\370\257\022\254\324\346\326\\\\\033\344\"\210\220\336\213s\023$ \000\216\326\305'\357\277d\205|\273\037\014zq;\n\026\365R\r\206\260B)T\207%dAc\025\240\022\254\002";
+    PyObject *data = __Pyx_DecompressString(cstring, 1334, 3);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (1485 bytes) */
-const char* const cstring = "BZh91AY&SY\263\232\355\236\000\001\031\177\377\377\377\377\377\377\277\376\375\377\357\377\236\377\377\377\367@@@@@@@@@@@@@\000@\000P\005&\365\267]\247\263\271\326\216\332\336Z\255{\302TB\247\217U?\324(\366\251\232C\324\323\321\r4yF'\250\323\021\210d\003F\001\351\021\352~\243\024\375\n`\230i=G\351\t\345=\252\tDI\222z\247\2651\211\244\314\247\242\200\3656\223\324\364\232\000\321\246\200i\246\217P\000\000\r\000\032\0004\332F\202Q\004\304D\314\220\365'\223P\311\246\200\365\000\000\003@\032\000\000\000\000\032\000\000\320\rOH\211\224=F\217P4\006\200\000\000\003@\000\000\000\000\000\000\000\000\002Q&(2j\237\220OJyG\265G\352\236\232\203&\217Q\210\r\000\000\001\240\000\000\000\000\365=@4@\200B\242-#H@l\002R\204\240\261g\225\373\\\354\214\333M\215\r:\016\324\333\257\031`,R\224\245)]\036m\rO\243\257U\336\341\260\375\341\325\026\265\255kZ\326\270\267\004@\230('f\223\325\245\334.\303\315(\3061\312\324&\203\002\177\206\332\013j\202\250\252\223\023\016\302\207\372\330\215\204Wa6\004\nUF\263\014VG\346\251Q*\250*\246sL\206F?(\224$!\014\243n\005x\213\"\201:H\224\213\003I\312\r\3204tBB\212(\016\001\311M\235\361\010\204G\006D\nI\036\273r\354\317\262\353H,s\271\320\2670vu\250\350\"F\305R\232!\302\212\313\017|\\\320\267=\300\235\022rv\333\007\010\342p\274@<\307\243\250\244q\213\320\374%B\3169\222E\262\250\215\324 \327~E\204\246\326\241!\0208\214\007]\030z\274\264@\242P\021\340\230\230Q\316\032P\361\203Z0B\023>\274\271\234\213\214\344\324\010Ux\221\221\020\020D\322\241\302\201\206\244\245\225<\304\021\364^\245\226J3\263\237\215\036M\201\222\213\321\034\003\252iK&>q%\273zY\rd\216\321\245]\270\215\251\006e[\343\302\244%\205S\030\210\2623a\003\305Xb\227\213\307\3124\306\001\372\024,\016\300\"4.[Dyj$\344\367ZpO\243%\273\315\204\037\211A\026\330\2033c\212\337\2662\005\352\262\332\005\324TEp*\271F\340\300\346\355?\231\374V\234\024F\316\201\347\230\333\027`\266\251\033\001\340J\213\020\030h\024\032*\014(`!(d?\225\253t_}\020\231F\265\372KO\013\225)\014p!P\320\0214L\330\263\177]8\022\235\374C""\215-\3429\236\267\n%U\272\353\t\320\251w(\224\301\252\333\350\241\3031\254\022!e\266\243\0072M\330Y.\255@|\370\035e\261EA\005\033\332lx<\200%\r\220~\365\270kR\234D\274\301\023'\013E]\314!\223\t\032\313E\242Y\030hQ\245\273\201\255\3124\352\347\005.\032\325U\271\006\266\022\307\317\246\360\210\373\017\t\331\227[Pj\326\373/\262Xm\027\307B\206S1M\017\240\230S4\333\244\222\001S\200\204*`\201\0135\371(YpD\027\003\356\276\267\033\nA\r\242\205\345\266\362]4:\032\312\222\225\021\343\365u\226\341\320\244uV\261\250\270%3\264d\356\212\230O\237G\0066r\323\304\311\030G\260\277NJ\221\010\212Y*P\321\245\026'\n\303]\024LG\214c\246\255\365=*/\223C\r\007\271\262b\n\212(\252\252\254\037\\e\271\214e\230\203\010\316\301\342\212\364/\312O(1\206Z\263\236\"Z\236\223*\302\n\021\206;\307\344\255\313\267\313\224R\362r\014\252\253\371\r\021\270\271y;\354\305cF.\250W\351`F\362\003.\026\353y\002\250\r\335\014# /\227\212c\360=\003\005h\3111i9@\202)\326\273\241U]\227\036\353\220[U\026\262\013vA\3129at\177\205\031\222\366\027\002\320I}\322\240\372\271\326\210\004(\03314\036`V\356\224UB\373U\350\212\262\221q\241Ha\241F \351\225\007\223PP\240\252(\350Pk\226\215\254\340ZA'2\34656?\261\231\201c-\220XZ$)\327\325\240\303\037j\345\221\035\270\330\310\210\2126\246\035Q\026\271\276\2179\220\313\264Fa\234%yD\235\371\000x\205M\272m\266\330\375\323\366\261\"\212)88\224\0059\257\351\353'\005\2027\225\353rj\201\002}\235M\313\211\307\030\020\300O\002\244\244\375Dz\2077\217\357\223\nC\311A/\363\3002Q\n\035\253RZ\003\322y\321M2\347\333\270x\217\232}&;9\344\340\\>\242\212*Y%\024Ni\001\220]\021\207\270\372\026\313fD\306\212a?8\204\3221\036\033a\261\024\357\347\220\0061H\017.\023\255h\320\r|\2438\027T\234\303\177LSbr\305\030!i\022}b}I\213\001`\211=x\215\321\257#$?\204\204\206\0006\304\246\220\245r\370\230\0053O\177L\360\034\n\003,\303l\214!\313\212\371\3541L\0053X\274a\376\231\201\353\266-\340\272T'\t\214\373]I\201\004\323\307\001\014\354\345\227\244B\031P\2379\303\0374\223xJ>O\217\232\227\371o\276\376I\207\205X\367I""\370\322\333V\221\376\222\334\222YSEUX\307\236\300\305q\224\246\357\264x\260\3330\001\210P\037\022(\021\026\026\026K\250B\302\002\010\246\215&x\224BP  \202I\037\2556B?\361w$S\205\t\0139\256\331\340";
-    PyObject *data = __Pyx_DecompressString(cstring, 1485, 2);
+    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (1564 bytes) */
+const char* const cstring = "BZh91AY&SY+\337\240\031\000\001'\177\377\377\377\377\377\377\277\376\375\377\357\377\377\377\377\377\367@@@@@@@@@@@@@\000@\000P\005g\235\266\240\3661\"S\212\205\270J(\221=\246\251\376\245\036ML\236)\261C\324\036\2204=OQ\221\241\220\000z\201\223i3SC\3056Q\3524hd\375S\364Q\352yOj\2102`\004\300\000L\001\032a\030\000\000\000&M14\030\001\030\000\000\000\001(\232& \211\342\2154zA5<\223ji\232\203 2\000\365\030#\001\001\243 4\323\004\006\231\000=@5O\322\202@\365\000\310\320\000\032i\243#\010\r\000\000\006F\206\206F\201\240h\000\000\000\022\2114\3214\323M1O(\332\217!S\324\374\251\233MI\355\006\244\323CA\2404\320\r\000\000\r\0006\240\003G\221\251\002\0029\r\325!\"\006\250*\242\240\365\337\335\313\367\233\033\300\257S\363j\353\331\267\266\307D\035\034q\307\034q\310\237\312~}J\276\373[?g\256d\027\311&8\3061\214c\030\306E\302$\013\006\262\353\373\254Y\305IHvnC\0140\355\363\223\016\352s\017_\tU\005QU\0348l\220sJ#\320B\272]\272\201\004CY\275\035\003\270\024\270\221(*\247\013JY \355\303\000J]\016\360\350\201s\306+\013\005\002\224\230N\202\261\212J\2160\214>A1E\024B\020\020\2223\275s\024\305\"\203`\216)\027n<\333\276\233\265a \365\355,L\031E^u\370\250Cg\r\313\215 to1\316\217\320\r{p\212)j%\245\255\327\007\300|\264,\036\034\177}\034\321=\223V\257\272\3243\377l\311\221t\325\021\277\202\317\372\234\213q\215\231\014\205\340\364pQ@\303\263\362B\004#\342@\025\025\002\217\2764\310\341\203Z0B\354B\361M\203G\233\205\334\252B\265]\334e\203\r[\026\017\024\014\370\216'=\227\320E.(\257\013\235\210\257\273\335\206Ys,\0359A\021\340g\020\275\346.\016\207(\321\327\327\372v\331\331h\225zM6\266\317>\355\300\210\251y\202\251\244^h\016\252\310\226\335$\314`w\245l\242\037\320\241\210\260\207\010Dx_\004H\030\344RS\246\307\254w\335>?-\202\342\322szhXS\371\217Lt\376\203{T\345d\375^8q\246\201\251\223m\200\314\212\210\257\005W\250\333\233\217o3\374\336\344\302F\331\273\261e\225\230Y[\205W\263`\006A*\025\220\032\344\n\005\312\201b\205\242\022\206\177\335\263hQD\210X\243\317E\032\337\344l\261\214hL\241\326\021:""\347R~\247\365\352\336K\373\327\017\036\275\342\215\2301L\211\201t9\205\210K\243t\254\364\277\327\264\242\207L\327\330)C\013\326\320\r\316Fp\205\005k\020AnW\350m\353\331\007\262x\260\261\300\341\340\2307\203\2236\375\350-\021,`\211\261\213[-\370\207P$\262\230\314d\367\331\350U\265\207\t\233d\340+\336\026\274fU[\342\315\031\346\336\267\001\022\025\300)v\377E\220e\321\205\220\260\255\252\324\037\032\235m\005\265B\242\201WV\211\252\252\202\244\205\034\250\362:]+\3644\272\031\306t\213\347{J\201\034k\301\\\2663`\230K,\250\2310-\361Pq\224\203>\2715\316\304\343bIv#\240I\242xdM\205K\357\305\216\0067\021K\204\306f\036\3451\014\301\224\334\314\221\321zQ\021M\202<\255\032e\253l$\037\n\353rP9\320\303\010d\202d6\n#\225\010=\246\344\025\024QUU\\C\tO\320\224\247\272\203\211R\342\002\213\0046'8\025\031\207c\263xD\307M\246\025\240\241(\353@\206\375o\323\327/\252\330\024\221u\327j\3550\215\223}\265\352\356\253\230r\360\305\207\002$\260@d\344\265>@M\000\366\221\205\005\342C\240\031\211K\262C#\005xe7\3575\362I\354Z\234\023+\253\332\316\333\330\225E\274\202\327(\372\217\255\327\344\355\250\316\365\314*+\nC\006\315\027!\032\274\254\203\010l\017\312Q\030\033\212\336\222\212\250j\262\301\021Vs3\330.\rd.\3225\312\203\343\256\227T\025E\037\272\203_\\\234\032\300k \226\231\3526\247\356Hh\t\363\261\351\327$\2443cA\206\326V\341\021\331\236\240\234\234\206\335\221\312\"\324j\243=\250\362\347\243W\346\004\275\322\2112$`9\245\002&T\343\036D\211\r~\254w\232\306\254\225\352\025\025\002\307&\346\216\232\320he-\214\031\026\200\201{\230\337,+\230(\320\212\032\200Y\226\265D\317*l\237\331\205,\270\373\n\204\357\256\320\331X={\204\373\373\374@-\226\277\002\215\r\024\036\326+\233\211\371\231\341\213\355y\3060:\346\341\373\231\006\014\025,1\n\007\236Jn\226\210\303\214\331++$\3124QJ%\347\304\302>4W\224\031b\225\263\006\302\350\243e\232&\237\004\361\204\034\007\000/\374Xri\343\024\306yb\214\020\265\022\316Sk\267\204\374\017p\254+4\024\247\337\374\232\0039\200\234\345'((9\300x'T\244\356\212Tw\302s\305<\003""\265\250\342:\271C\210\344\333)\n8\250\337>\302C\230\364\311N\341\244\3379{\246P\373v\305\322\031\t\214aa\326\307\330\350\004\373\246\256c\214\204\350\230\374c\021)\317#.\233\342\236\316\257`\351\371&\243\rd\342\235\301\363J\031\234q\223A\037y\036\037\320)t-\233TIi?\341\312\215)\337B\362\344\315\232\224\325U\316\214y\356W\272\275n\253\02136\245\204E\022e\005!h\245B\225\217\031V\244!P\200\202,'\tpJ!(\020\020A$\217\325\330\r%\277\305\334\221N\024$\n\367\350\006@";
+    PyObject *data = __Pyx_DecompressString(cstring, 1564, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (1248 bytes) */
-const char* const cstring = "x\332\355T\315s\323F\024\217-\025\002\t$\004\267\t\224\266JH\313\364\203\024\203;|\264\323bpR\030\322\2208&\231\td\226\265\264\266\025\313\222\255]%V\247tr\364QG\035u\324QG\035u\364QG\035\375'\344O\350[;\330\001\322az\357\301\373{\373\276\366\275\337{\362o+\266\324\260(\223\312D\322\r\375\246N\252\230\251\373d\315`Db5\314\244\3076\253\031\272\244RI!\232Z&&fD\263%\312LUf\304\344N\272\264\276\274~3w/'a]\221L\262GdF%j\225e\rSJ\250dT\244\262\245jL\325%f7\t]\222\236V$\333\260$\235\020Eb\206\324\004\277\223\001\254Ft\211\022\306\005\351\006\326u\203AY\206\216 \\\325\2537$E5\341\021(\224G\257`\215\222%\254(\010\374\010\326\2325|jSe\302N7(*\305e\215\020\235\237UY\245\003I\251\337:\325\335<UKM\371\307?\014\245\204\353D\301#i\251i\267\177\341l\351UjX\246L~]\261\207\306\221\027B&Q,\231 \271\3177B'M\300\004\005\002N3\312F\243\241\262Mn\035)\253\0044&V\365\367U\204\322wT%\254W\211\316F:\372a$\250J\246\212\265\201\036\241u\273\r\277\002L\037\255\2216+\222J\237qLm]V\r(\3104,\2304\241\234nY\003\tA\030\004\313\244\214\345\372\211\202\021Rx\226\001\220&U5C\257h\006f\020P1\020\252X\272\214\320\260\231a\013\243\302\373\326\0015\010\251\024\r\037W\031i\320\372-\204\032\375\232\001\r\305\322\270\027\322qc\200\344\000\241\246\321\204\003:\222kD\256S\2531\270\301+\226\306\006\362qz.\362\345\035H\226\336T\345:$\034\3624\320\3573\2768<}\313\302\332\340)s8[\364\301\224\207\n\322\346c\326*\303\001\274O;\334\217K\007I\001\322\373\005\322Q\373\037n\tl\344\322h\216C\251\357D\007\217\364\317\"\277\333\240\256\"\304-\010YM\005t\026%\303\244\373X\263\010=\314\367\306';\317\034\346f\223\223\302\252+\272\371\344T\323\273\302!xMu\230\223\215\305\345h\343\350\374\330\271\013`h%\343_\272U\257\3501?{tf\354\334d\347N\007wl7\355^w_\372\251dr\252\323vL\367R2}\315\315\273%\357SO\361\277\rn\007\245\360\263\220F\213\221\3325\343\215\027\361\213\255\2179\354\304;\257\342W\257\343\327r,\223\230\250\261\272\227L_vr\216\355\245\275\371$s\305\315@\364\214w\307\303PK\3167\203L\260\323\317\200\223\314,4p\337{\344\311""\376\214\177\017\222o$s\327\275\254W\360\317\0053A\226_\356\371\267}\320~\0019\256\370\013~>\231\373\334\275\353-x\371\344\332\2747\353\013\376\335`!\310\367\340\222\361\300\357\232\373\314\243\334\257\327\027\231\177?x\024\310\341L\230\355\301c\007n\331K%so\211y\020l\206gC3\312D\307\221'\335O(ja9\022\243\374\250\255\305~\3019\237\005w\202jX\014Y\364S7\335]\354BGs\356\204\227\353\227P\010\304\340qp\320\217]\356\316ts\335V\257\317\345\206\253x_\037\247V\302o\"!\312Ev\274^\214\213[\361\326v\362q\237\227\361\313\335x\027\307X\211\225J\\\331\213\367\352\377S\376/\224\303\356_\230~\273\352\243d\303\260\326\351\332\336\177\360\345O\\r.\034\323U\010\316\207\013a\27679\355L\2709\267\225\2000\351\026\274T,>\214R\374\253}\356f\335'^~\360\221\247\016SG\343c\237\\\354\224\234\253\340\376\247\237\361w\002\026>\210J\335\253\361\346v\274\rc\206\317\252\0317Y\314\354\330~s46\366w\352I\032\340Iz\225\303jz\213\303Vz\207\303NZ\341\240\244k\034ji\223\203\231\336\347\260\237~(\000<\024\n\034\n\302\032\2075\241\310\241(\354r\330\0250\007,\250\034T\241\301\241!0\016Lhsh\013o8\274\021\362\"@^\\\346\260,>\345\360T|\316\341\271\270\311aS,\211\2118\331\371\335\311:+\356\017@\231x\366p\277\263\355,\303\202n$\3433\316|2>\353\264z\374\3406\370\323\232\212\247\276\363\027}\354\037\004\365h\266\233\352\275\253\271t\230\352\211_\271\255X\272\025L\204?G\365x\243\230\210\227\235\373\234Q\330FH\362\227s\327\205\274\337\373Y\1775\274\010+/Nt\262\207\251D\274\341\265\3743>\376\007K\361\323\260";
-    PyObject *data = __Pyx_DecompressString(cstring, 1248, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (1311 bytes) */
+const char* const cstring = "x\332\355TMs\323F\030\216-\025\002\tMH\334&P\332\212\220\226\351\007)\006w\370\352\264\030\234\024\2064$\216IJ \210\265\264\266\025\313\222\255]\205\210)\235\034}\324QG\035u\324QG\035}\334\243\216\376\t\371\t}\327\016v\200\3140\275\364\324\203\366y\367\375\336\347\335\325oK\216\324\260\t\225\312X2L\343\212\201\253\210j\273x\305\244X\2425D\245\373\016\255\231\206\244\021I\305\272V\306\026\242Xw$B-M\241\330\342N\206\264\272\270z%w3'!C\225,\274\203\025J$b\227\025\035\021\202\211dV\244\262\255\351T3$\35241Y\220\036V$\307\264%\003cU\242\246\324\004\277\243\001\264\206\r\211`\312\005\35122\014\223B[\246!C\270fT/K\252fA\021h\224G/!\235\340\005\244\2522\370a\2447k\350\330C\2251=\336\240j\004\225u\214\r\276V\025\215\364%\265~\365Xw\353X-\261\224\237\3760\325\022\252c\025\r\245\205\246\263\367\013g\313\250\022\323\266\024\374\353\22230\016\275d\331\302\252\255`Y\351\361-\313GM\300\004\001\002\2163*f\243\241\321un\035*\253\0304\026\322\214\367U\230\220wT%dT\261A\207:\362a$\250J\226\206\364\276^\226W\235=\370\n0}y\005\357\321\"\256\364\030G\3041\024\315\204\206,\323\206Ic\302\351Vt\220d\010\203`\005\227\221R?\322\260,\253<K\037p\223h\272iTt\023Q\010\250\230\262\\\261\rE\226\007\207\031\034a\330x\317\332\247F\2265\"\017\212k\0247H\375\252,7z=\003\232\252\255s/\331@\215>\342W\262\3344\233\260\300\211\224\032V\352\304n\364wP\305\326i_>L\317E~y\373\222m45\245\016\t\007<\365\365\273\224_\034\236\276e#\275_\312\032\314V\376`\312\003\005\336\343c\326+\203\001\274O;\354\017[\007I\005\322{\r\222\341\361?\274%p#\027\206s\034H='\322/\322[\213|\357\200\272*\313\334\"\313vS\005\235M\360 \351.\322mL\366\363\335\321\361\366#\227z\331\344\250\260\354\211^>9\326\364\256\260\017^\023m\352f\231\270\030\257\035\234\0369u\006\014\255d\364+\257\352\027}\032d\017N\214\234\032o_o\243\266\343\245\275K\336\263 \225\214O\264\367\\\313;\233L^\360\362^\311\377\314W\203\357\302ka)\372<\"\361|\254u,\266\366\204=\331\370\230\303\026\333z\316\236\277d/\025\246`\2065\246\355$\223\323n\316u\374\264\1771\311\234""\3632\020=\345_\367\021\364\222\013\2540\023n\3652\240$3\343\022o\316\273\357Y~\306\177\032\224C!\274\023\355t\204N\256\343\260?!\3636\333\256\261\232\226\314~\351\255C\272y_\203\370\351\360Q\364\2723\335)\260\325\247\354\3513\366\354\005{\321+\013\351\250w\313\277\347+\301Tp\023z]Kf/\371Y\277\020\234\n\247\302,\337\334\014\256\005k<]\311?\027\314\005\371d\366\013\357\206?\347\347\223\013\027\375\231@\010n\204sa\276\013\233\214\017~\027\274G>\341~\335\236H\203[\341\275P\211\246\242l\027\212\275\362\312~*\231}\313\363\355p=:\031Yq&>\214<\352~DQ\213\312\261\030\347\207,\315\367\032\316\0054\274\036V\243bD\343\237;\351\316|\007\010\232\365\306\374\\\257\205B(\206\367\303W\275\330\305\316\024P\324\352\366F\263\346\251\3767\207\251\325\350\333X\210s\261\303V\213\254\270\30166\223\217\373\000\203\3003bHej\205Uv\330N\375\377\t\3767\023\204\227yf\362\355C\034&\033\204\265\216\327v\377\205//q\326=sHW!<\035\315E\371\356\370\244;\346\345\274V\002\302\270W\360SL\274\033\247\370?\345\261\227\365\036\370\371\376/(\265\237:\030\035\371\344\323v\311=\017\356\257\203L\260\025\322\350v\\\352\234g\353\233l\023n\r<\372&kRF\035\346\2749\030\031\371;\365 \r\360 \275\314a9\275\301a#\275\305a+\255rP\3235\016\265\264\305\301J\357r\330M\337\025\000\356\n\005\016\005a\205\303\212P\344P\024\2669l\013\210\003\0224\016\232\320\340\320\020(\007*\354q\330\023\336px#\344E\200\274\270\310aQ|\310\341\241\370\230\303cq\235\303\272X\022\023q\274\375\273\233u\227\274\037\2012\361\344\376n{\323]\204\373\276\226\214N\271\027\223\321\031\267\325\345\013\267\301/u\202M|\037\314\007(x\025\326\343\231N\252\373\256\346\354~\252+~\355\265\230t5\034\213\356\304u\266VL\304i\367\026g\024n#$\371\313\275\341A\336\037\202l\260\034}\n/H\034kg\367S\211x\331o\005'\002\364\017\300\330\036\265";
+    PyObject *data = __Pyx_DecompressString(cstring, 1311, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (2464 bytes) */
-const char* const bytes = "?Fy must be non-negativeNote that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.add_notealpha must be non-negativebeta must be non-negativedisableenablegcisenabledk0 must be non-negativer must be non-negativesrc/ModTakeda/ModTakeda.pyx<stringsource>FyModTakedaModTakeda.__reduce_cython__ModTakeda.__setstate_cython__ModTakeda.commitStateModTakeda.getStrainModTakeda.getStressModTakeda.getTangentModTakeda.setStrainModTakeda.setTrialStrain__Pyx_PyDict_NextRefalphaasyncio.coroutinesbetacline_in_tracebackcommitState__dict___dictepsilonfloat_info__func__getStraingetStressgetTangent__getstate___is_coroutineitemsk0__main____module____name____new__pop__pyx_checksum__pyx_result__pyx_state__pyx_type__pyx_unpickle_ModTakeda__pyx_vtable____qualname__r__reduce____reduce_cython____reduce_ex__selfsetStrainsetTrialStrain__set_name__setdefault__setstate____setstate_cython__src.ModTakeda.ModTakedastatestrainstrainRatesystag__test__updateuse_setstatevalues\200A\340\010\014\210K\220t\2301\330\010\014\210K\220t\2301\330\010\014\210L\230\004\230A\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\200A\330\010\017\210t\2201\320\004E\300Q\360\n\000\t\r\210K\220q\330\010\036\230g\240R\240t\2501\360\006\000\t\014\2103\210a\210y\230\002\230#\230[\250\001\330\014\017\210x\220r\230\021\330\020\034\230A\230T\240\025\240d\250)\2602\260T\270\026\270s\300$\300i\310r\320QU\320UV\330\020\034\230A\230T\240\025\240d\250)\2602\260T\270\026\270s\300$\300i\310r\320QU\320UZ\320Z\\\320\\`\320`c\320ce\320ei\320ij\330\020\023\2204\220y\240\002\240!\330\024\031\230\024\230T\240\022\2403\240a\240t\2504\250r\260\024\260Z\270s\300$\300a\330\024\027\220t\2309\240B\240c\250\022\2508\2602\260Q\330\030#\2401\240D\250\t\260\022\2601\330\030#\2408\2502\250Q\330\030\035\230T\240\031\250\"\250A\330\030\033\2307\240\"\240A\330\034!\240\027\250\003""\2507\260\"\260A\340\034!\240\024\240Q\330\030\034\230K\240s\250\"\250A\340\030\034\230K\240t\2509\260B\260c\270\022\2701\340\024\027\220w\230b\240\001\330\030\036\230g\240R\240t\250:\260S\270\007\270r\300\024\300Q\330\030\034\230K\240t\2509\260B\260c\270\022\2701\340\030\034\230K\240t\2509\260B\260h\270b\300\004\300A\330\020\023\2204\220y\240\002\240$\240c\250\022\2504\250t\2603\260g\270R\270t\3005\310\002\310$\310a\330\024\030\230\013\2404\240s\250\"\250D\260\004\260C\260w\270b\300\004\300E\310\022\3104\310q\340\020\034\230A\230Q\230d\240%\240t\2509\260B\260d\270&\300\003\3004\300y\320PR\320RV\320VW\330\020\034\230A\230Q\230d\240%\240t\2509\260B\260d\270&\300\003\3004\300y\320PR\320RV\320V[\320[]\320]a\320ad\320df\320fj\320jk\330\020\023\2204\220y\240\002\240!\330\024\031\230\024\230T\240\022\2403\240a\240t\2504\250r\260\024\260Z\270s\300$\300a\330\024\027\220t\2309\240B\240c\250\022\2508\2602\260Q\330\030#\2401\240D\250\t\260\022\2601\330\030#\2408\2502\250Q\330\030\035\230T\240\031\250\"\250A\330\030\033\2307\240\"\240A\330\034!\240\027\250\003\2507\260\"\260A\340\034!\240\024\240Q\330\030\034\230K\240s\250\"\250A\340\030\034\230K\240t\2509\260B\260c\270\022\2701\340\024\027\220w\230b\240\001\330\030\036\230g\240R\240t\250:\260S\270\007\270r\300\024\300Q\330\030\034\230K\240t\2509\260B\260c\270\022\2701\340\030\034\230K\240t\2509\260B\260h\270b\300\004\300A\330\020\023\2204\220y\240\002\240$\240c\250\022\2504\250t\2603\260g\270R\270t\3005\310\002\310$\310a\330\024\030\230\013\2404\240s\250\"\250D\260\004\260C\260w\270b\300\004\300E\310\022\3104\310q\360\006\000\r\020\210x\220r\230\021\330\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\330\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\340\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\330\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\360\006\000\r\021\220\r\230T\240\031\250\"\250D\260\n\270\"\270A\340\014\020\220\013\2304\230q\330\014""\020\220\014\230D\240\001\320\004@\300\001\330\010\014\210O\2301\230H\240A\330\010\014\210L\230\001\200\001\360\010\000\005\016\210T\220\032\2304\230z\250\024\250Z\260t\270:\300T\310\032\320SW\320Wa\320ae\320ep\320pt\320ty\320y}\360\000\000~\001H\002\360\000\000H\002L\002\360\000\000L\002V\002\360\000\000V\002Z\002\360\000\000Z\002d\002\360\000\000d\002h\002\360\000\000h\002r\002\360\000\000r\002v\002\360\000\000v\002@\003\360\000\000@\003D\003\360\000\000D\003N\003\360\000\000N\003R\003\360\000\000R\003]\003\360\000\000]\003a\003\360\000\000a\003i\003\360\000\000i\003m\003\360\000\000m\003t\003\360\000\000t\003x\003\360\000\000x\003}\003\360\000\000}\003A\004\360\000\000A\004E\004\360\000\000E\004I\004\360\000\000I\004O\004\360\000\000O\004S\004\360\000\000S\004T\004\330\004\014\210G\2201\220F\230,\240a\330\004\007\200v\210W\220E\230\024\230Q\330\010\022\220!\330\010\027\220q\340\010\027\220q\330\004\007\200q\330\010\017\320\017*\250$\250a\250w\260k\300\027\310\001\340\010\017\320\017*\250$\250a\250w\260k\300\021\200\001\340\004\037\230q\320 0\260\013\270;\300k\320QR\330\004\023\2209\230H\240A\240Q\330\004\007\200|\2207\230!\330\010+\2501\250L\270\016\300a\330\004\013\2101\200\001\330\004'\240q\250\006\250a";
+    #else /* compression: none (2622 bytes) */
+const char* const bytes = "?Fy must be non-negativeNote that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.add_notealpha must be non-negativebeta must be non-negativedisableenablegcisenabledk0 must be non-negativer must be non-negativesrc/ModTakeda/ModTakeda.pyx<stringsource>FyModTakedaModTakeda.__reduce_cython__ModTakeda.__setstate_cython__ModTakeda.commitStateModTakeda.getStrainModTakeda.getStressModTakeda.getTangentModTakeda.setStrainModTakeda.setTrialStrain__Pyx_PyDict_NextRefalphaasyncio.coroutinesbetacline_in_tracebackcommitState__dict___dictepsilonfloat_info__func__getStraingetStressgetTangent__getstate___is_coroutineitemsk0__main____module____name____new__pop__pyx_checksum__pyx_result__pyx_state__pyx_type__pyx_unpickle_ModTakeda__pyx_vtable____qualname__r__reduce____reduce_cython____reduce_ex__selfsetStrainsetTrialStrain__set_name__setdefault__setstate____setstate_cython__src.ModTakeda.ModTakedastatestrainstrainRatesystag__test__updateuse_setstatevalues\200A\340\010\014\210K\220t\2301\330\010\014\210K\220t\2301\330\010\014\210L\230\004\230A\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\200A\330\010\017\210t\2201\320\004E\300Q\360\n\000\t\r\210K\220q\330\010\036\230g\240R\240t\2501\360\006\000\t\014\2103\210a\210y\230\002\230#\230[\250\001\330\014\017\210x\220r\230\021\330\020\034\230A\230T\240\025\240d\250)\2602\260T\270\026\270s\300$\300i\310r\320QU\320UV\330\020\034\230A\230T\240\025\240d\250)\2602\260T\270\026\270s\300$\300i\310r\320QU\320UZ\320Z\\\320\\`\320`c\320ce\320ei\320ij\330\020\023\2204\220y\240\002\240!\330\024\031\230\024\230T\240\022\2403\240a\240t\2504\250r\260\024\260Z\270s\300$\300a\330\024\027\220s\230\"\230C\230r\240\024\240Y\250b\260\003\260;\270j\310\003\3104\310y\320XZ\320Z]\320]h\320hi\330\030\035\230S\240\002\240$\240i\250r\260\023\260K\270z\310\023\310D\320PY\320Y[\320[^\320^i""\320ij\330\024\027\220t\2309\240B\240c\250\022\2508\2602\260Q\330\030#\2401\240D\250\t\260\022\2601\330\030#\2408\2502\250Q\330\030\035\230T\240\031\250\"\250A\330\030\033\2307\240\"\240A\330\034!\240\027\250\003\2507\260\"\260A\340\034!\240\024\240Q\330\030\034\230K\240s\250\"\250A\340\030\034\230K\240t\2509\260B\260c\270\022\2701\340\024\027\220w\230b\240\001\330\030\036\230g\240R\240t\250:\260S\270\007\270r\300\024\300Q\330\030\034\230K\240t\2509\260B\260c\270\022\2701\340\030\034\230K\240t\2509\260B\260h\270b\300\004\300A\330\020\023\2204\220y\240\002\240$\240c\250\022\2504\250t\2603\260g\270R\270t\3005\310\002\310$\310a\330\024\030\230\013\2404\240s\250\"\250D\260\004\260C\260w\270b\300\004\300E\310\022\3104\310q\340\020\034\230A\230Q\230d\240%\240t\2509\260B\260d\270&\300\003\3004\300y\320PR\320RV\320VW\330\020\034\230A\230Q\230d\240%\240t\2509\260B\260d\270&\300\003\3004\300y\320PR\320RV\320V[\320[]\320]a\320ad\320df\320fj\320jk\330\020\023\2204\220y\240\002\240!\330\024\031\230\024\230T\240\022\2403\240a\240t\2504\250r\260\024\260Z\270s\300$\300a\330\024\027\220s\230\"\230C\230r\240\024\240Y\250b\260\003\260;\270j\310\003\3104\310y\320XZ\320Z]\320]h\320hi\330\030\035\230S\240\002\240$\240i\250r\260\023\260K\270z\310\023\310D\320PY\320Y[\320[^\320^i\320ij\330\024\027\220t\2309\240B\240c\250\022\2508\2602\260Q\330\030#\2401\240D\250\t\260\022\2601\330\030#\2408\2502\250Q\330\030\035\230T\240\031\250\"\250A\330\030\033\2307\240\"\240A\330\034!\240\027\250\003\2507\260\"\260A\340\034!\240\024\240Q\330\030\034\230K\240s\250\"\250A\340\030\034\230K\240t\2509\260B\260c\270\022\2701\340\024\027\220w\230b\240\001\330\030\036\230g\240R\240t\250:\260S\270\007\270r\300\024\300Q\330\030\034\230K\240t\2509\260B\260c\270\022\2701\340\030\034\230K\240t\2509\260B\260h\270b\300\004\300A\330\020\023\2204\220y\240\002\240$\240c\250\022\2504\250t\2603\260g\270R\270t\3005\310\002\310$\310a\330\024\030\230\013\2404\240s\250\"\250D\260\004\260C\260w\270b\300\004\300E\310\022\3104""\310q\360\006\000\r\020\210x\220r\230\021\330\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\330\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\340\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\330\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\360\006\000\r\021\220\r\230T\240\031\250\"\250D\260\n\270\"\270A\340\014\020\220\013\2304\230q\330\014\020\220\014\230D\240\001\320\004@\300\001\330\010\014\210O\2301\230H\240A\330\010\014\210L\230\001\200\001\360\010\000\005\016\210T\220\032\2304\230z\250\024\250Z\260t\270:\300T\310\032\320SW\320Wa\320ae\320ep\320pt\320ty\320y}\360\000\000~\001H\002\360\000\000H\002L\002\360\000\000L\002V\002\360\000\000V\002Z\002\360\000\000Z\002d\002\360\000\000d\002h\002\360\000\000h\002r\002\360\000\000r\002v\002\360\000\000v\002@\003\360\000\000@\003D\003\360\000\000D\003N\003\360\000\000N\003R\003\360\000\000R\003]\003\360\000\000]\003a\003\360\000\000a\003i\003\360\000\000i\003m\003\360\000\000m\003t\003\360\000\000t\003x\003\360\000\000x\003}\003\360\000\000}\003A\004\360\000\000A\004E\004\360\000\000E\004I\004\360\000\000I\004O\004\360\000\000O\004S\004\360\000\000S\004T\004\330\004\014\210G\2201\220F\230,\240a\330\004\007\200v\210W\220E\230\024\230Q\330\010\022\220!\330\010\027\220q\340\010\027\220q\330\004\007\200q\330\010\017\320\017*\250$\250a\250w\260k\300\027\310\001\340\010\017\320\017*\250$\250a\250w\260k\300\021\200\001\340\004\037\230q\320 0\260\013\270;\300k\320QR\330\004\023\2209\230H\240A\240Q\330\004\007\200|\2207\230!\330\010+\2501\250L\270\016\300a\330\004\013\2101\200\001\330\004'\240q\250\006\250a";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
@@ -9299,27 +9522,27 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_ModTakeda_ModTakeda_pyx, __pyx_mstate->__pyx_n_u_setTrialStrain, __pyx_mstate->__pyx_kp_b_iso88591_EQ_Kq_gRt1_3ay_xr_AT_d_2T_s_irQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 131};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 135};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_ModTakeda_ModTakeda_pyx, __pyx_mstate->__pyx_n_u_commitState, __pyx_mstate->__pyx_kp_b_iso88591_A_Kt1_Kt1_L_A_Kt1_Kt1_Kt1_Kt1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 141};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 145};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_strain, __pyx_mstate->__pyx_n_u_strainRate};
     __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_ModTakeda_ModTakeda_pyx, __pyx_mstate->__pyx_n_u_setStrain, __pyx_mstate->__pyx_kp_b_iso88591_O1HA_L, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 145};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 149};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_ModTakeda_ModTakeda_pyx, __pyx_mstate->__pyx_n_u_getStrain, __pyx_mstate->__pyx_kp_b_iso88591_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 148};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 152};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_ModTakeda_ModTakeda_pyx, __pyx_mstate->__pyx_n_u_getStress, __pyx_mstate->__pyx_kp_b_iso88591_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 151};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 155};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_ModTakeda_ModTakeda_pyx, __pyx_mstate->__pyx_n_u_getTangent, __pyx_mstate->__pyx_kp_b_iso88591_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
   }
@@ -10785,6 +11008,36 @@ static double __Pyx_SoftComplexToDouble(__pyx_t_double_complex value, int have_n
     }
     return __Pyx_CREAL(value);
 }
+
+/* py_abs */
+#if CYTHON_USE_PYLONG_INTERNALS
+static PyObject *__Pyx_PyLong_AbsNeg(PyObject *n) {
+#if PY_VERSION_HEX >= 0x030C00A7
+    if (likely(__Pyx_PyLong_IsCompact(n))) {
+        return PyLong_FromSize_t(__Pyx_PyLong_CompactValueUnsigned(n));
+    }
+#else
+    if (likely(Py_SIZE(n) == -1)) {
+        return PyLong_FromUnsignedLong(__Pyx_PyLong_Digits(n)[0]);
+    }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON
+    {
+        PyObject *copy = _PyLong_Copy((PyLongObject*)n);
+        if (likely(copy)) {
+            #if PY_VERSION_HEX >= 0x030C00A7
+            ((PyLongObject*)copy)->long_value.lv_tag ^= ((PyLongObject*)copy)->long_value.lv_tag & _PyLong_SIGN_MASK;
+            #else
+            __Pyx_SET_SIZE(copy, -Py_SIZE(copy));
+            #endif
+        }
+        return copy;
+    }
+#else
+    return PyNumber_Negative(n);
+#endif
+}
+#endif
 
 /* RejectKeywords */
 static void __Pyx_RejectKeywords(const char* function_name, PyObject *kwds) {

@@ -9,7 +9,7 @@ def test_opspy(
     mat_type: str,
     para: list,
 ) -> tuple[list, list]:
-    """基于openseespy的材料测试
+    """基于项目中openseespy.pyd的材料测试
 
     Args:
         strain (list[float]): 应变序列
@@ -42,7 +42,7 @@ def test_py(
     mat_cls: Type[T],
     para: list,
 ) -> tuple[list[float], list[float]]:
-    """基于Python的材料测试
+    """基于Python材料类的材料测试
 
     Args:
         strain (list[float]): 应变序列
@@ -61,7 +61,32 @@ def test_py(
         tangent.append(mat.getTangent())
     return stress, tangent
 
+def test_ext(
+    strain: list[float],
+    mat_type: str,
+    para: list,
+) -> tuple[list[float], list[float]]:
+    """导入python的c扩展进行材料测试
 
+    Args:
+        strain (list[float]): 应变序列
+        mat_type (str): 材料名称
+        para (list): 参数
+
+    Returns:
+        tuple[list[float], list[float]]: 应力、切线刚度
+    """
+    import importlib
+    module = importlib.import_module(f'ext.{mat_type}')
+    mat_cls = getattr(module, mat_type)
+    mat = mat_cls(1, *para)
+    stress = []
+    tangent = []
+    for val in strain:
+        mat.setStrain(val)
+        stress.append(mat.getStress())
+        tangent.append(mat.getTangent())
+    return stress, tangent
 
 def generate_path(disp_level: list, n: int=200, sf: float=1):
     u = []
