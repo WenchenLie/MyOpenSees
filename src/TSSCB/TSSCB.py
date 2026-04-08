@@ -3,7 +3,7 @@ from typing import Literal
 from ..UniaxialMaterial import UniaxialMaterial
 
 
-class TSSCBMaterial(UniaxialMaterial):
+class TSSCB(UniaxialMaterial):
     
     def __init__(self,
         tag: int,

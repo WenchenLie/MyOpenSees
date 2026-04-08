@@ -3,7 +3,7 @@ from libc.math cimport fabs
 from libc.float cimport DBL_EPSILON
 
 
-cdef class TSSCBMaterial:
+cdef class TSSCB:
     cdef public int tag
     # 材料参数（均用 double）
     cdef double F1, k0, ugap, F2, k1, k2, beta

@@ -1526,9 +1526,9 @@ static const char* const __pyx_f[] = {
 /* #### Code section: type_declarations ### */
 
 /*--- Type declarations ---*/
-struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial;
-struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain;
-struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel;
+struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB;
+struct __pyx_opt_args_3src_5TSSCB_5TSSCB_5TSSCB_setTrialStrain;
+struct __pyx_opt_args_3src_5TSSCB_5TSSCB_5TSSCB__frictionModel;
 
 /* "src/TSSCB/TSSCB.pyx":95
  *         self.i = 0
@@ -1537,7 +1537,7 @@ struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel;
  *         cdef double dStrain
  *         #
 */
-struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain {
+struct __pyx_opt_args_3src_5TSSCB_5TSSCB_5TSSCB_setTrialStrain {
   int __pyx_n;
   double strainRate;
 };
@@ -1549,7 +1549,7 @@ struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain {
  *         #
  *         cdef double F_, F
 */
-struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel {
+struct __pyx_opt_args_3src_5TSSCB_5TSSCB_5TSSCB__frictionModel {
   int __pyx_n;
   double half;
 };
@@ -1557,13 +1557,13 @@ struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel {
 /* "src/TSSCB/TSSCB.pyx":6
  * 
  * 
- * cdef class TSSCBMaterial:             # <<<<<<<<<<<<<<
+ * cdef class TSSCB:             # <<<<<<<<<<<<<<
  *     cdef public int tag
  *     #  double
 */
-struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial {
+struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB {
   PyObject_HEAD
-  struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_vtab;
+  struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *__pyx_vtab;
   int tag;
   double F1;
   double k0;
@@ -1616,19 +1616,19 @@ struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial {
 
 
 
-struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial {
-  void (*_check_paras)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *);
-  void (*_init_paras)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *);
-  PyObject *(*setTrialStrain)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain *__pyx_optional_args);
-  void (*_determineTrialState)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double);
-  double (*_frictionModel)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, double, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel *__pyx_optional_args);
-  double (*_SCModel)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, double, double);
-  PyObject *(*commitState)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, int __pyx_skip_dispatch);
-  double (*getStress)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, int __pyx_skip_dispatch);
-  double (*getTangent)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, int __pyx_skip_dispatch);
-  PyObject *(*setStrain)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, int __pyx_skip_dispatch);
+struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB {
+  void (*_check_paras)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *);
+  void (*_init_paras)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *);
+  PyObject *(*setTrialStrain)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, double, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_5TSSCB_setTrialStrain *__pyx_optional_args);
+  void (*_determineTrialState)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, double);
+  double (*_frictionModel)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, double, double, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_5TSSCB__frictionModel *__pyx_optional_args);
+  double (*_SCModel)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, double, double, double);
+  PyObject *(*commitState)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, int __pyx_skip_dispatch);
+  double (*getStress)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, int __pyx_skip_dispatch);
+  double (*getTangent)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, int __pyx_skip_dispatch);
+  PyObject *(*setStrain)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, double, int __pyx_skip_dispatch);
 };
-static struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_vtabptr_3src_5TSSCB_5TSSCB_TSSCBMaterial;
+static struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *__pyx_vtabptr_3src_5TSSCB_5TSSCB_TSSCB;
 /* #### Code section: utility_code_proto ### */
 
 /* --- Runtime support code (head) --- */
@@ -2378,16 +2378,16 @@ static int __Pyx_State_RemoveModule(void*);
 #define __PYX_ABI_MODULE_NAME "_cython_" CYTHON_ABI
 #define __PYX_TYPE_MODULE_PREFIX __PYX_ABI_MODULE_NAME "."
 
-static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__check_paras(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self); /* proto*/
-static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__init_paras(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self); /* proto*/
-static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain *__pyx_optional_args); /* proto*/
-static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_dStrain); /* proto*/
-static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_F0, double __pyx_v_du, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel *__pyx_optional_args); /* proto*/
-static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__SCModel(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_u0, double __pyx_v_F0, double __pyx_v_du); /* proto*/
-static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_commitState(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getStress(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getTangent(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain, int __pyx_skip_dispatch); /* proto*/
+static void __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__check_paras(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self); /* proto*/
+static void __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__init_paras(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self); /* proto*/
+static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_setTrialStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_strain, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_5TSSCB_setTrialStrain *__pyx_optional_args); /* proto*/
+static void __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_dStrain); /* proto*/
+static double __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_F0, double __pyx_v_du, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_5TSSCB__frictionModel *__pyx_optional_args); /* proto*/
+static double __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_u0, double __pyx_v_F0, double __pyx_v_du); /* proto*/
+static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_commitState(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static double __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_getStress(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static double __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_getTangent(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_setStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_strain, int __pyx_skip_dispatch); /* proto*/
 
 /* Module declarations from "libc.math" */
 
@@ -2404,17 +2404,17 @@ int __pyx_module_is_main_src__TSSCB__TSSCB = 0;
 /* #### Code section: global_var ### */
 /* #### Code section: string_decls ### */
 /* #### Code section: decls ### */
-static int __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial___cinit__(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, int __pyx_v_tag, double __pyx_v_F1, double __pyx_v_k0, double __pyx_v_ugap, double __pyx_v_F2, double __pyx_v_k1, double __pyx_v_k2, double __pyx_v_beta, PyObject *__pyx_v_hardening, double __pyx_v_uh, double __pyx_v_r1, double __pyx_v_r2, double __pyx_v_r3, PyObject *__pyx_v_minmax, double __pyx_v_uf, PyObject *__pyx_v__configType, int __pyx_v_configType, PyObject *__pyx_v__up, double __pyx_v_up); /* proto */
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_2setTrialStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain, double __pyx_v_strainRate); /* proto */
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_4commitState(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_6getStress(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_8getTangent(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_10setStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain); /* proto */
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag___get__(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self); /* proto */
-static int __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag_2__set__(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_12__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_14__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_3src_5TSSCB_5TSSCB_TSSCBMaterial(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static int __pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB___cinit__(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, int __pyx_v_tag, double __pyx_v_F1, double __pyx_v_k0, double __pyx_v_ugap, double __pyx_v_F2, double __pyx_v_k1, double __pyx_v_k2, double __pyx_v_beta, PyObject *__pyx_v_hardening, double __pyx_v_uh, double __pyx_v_r1, double __pyx_v_r2, double __pyx_v_r3, PyObject *__pyx_v_minmax, double __pyx_v_uf, PyObject *__pyx_v__configType, int __pyx_v_configType, PyObject *__pyx_v__up, double __pyx_v_up); /* proto */
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_2setTrialStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_strain, double __pyx_v_strainRate); /* proto */
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_4commitState(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_6getStress(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_8getTangent(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_10setStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_strain); /* proto */
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_3tag___get__(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self); /* proto */
+static int __pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_3tag_2__set__(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_12__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_14__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_3src_5TSSCB_5TSSCB_TSSCB(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 /* SmallCodeConfig */
@@ -2435,8 +2435,8 @@ typedef struct {
   PyObject *__pyx_empty_tuple;
   PyObject *__pyx_empty_bytes;
   PyObject *__pyx_empty_unicode;
-  PyObject *__pyx_type_3src_5TSSCB_5TSSCB_TSSCBMaterial;
-  PyTypeObject *__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial;
+  PyObject *__pyx_type_3src_5TSSCB_5TSSCB_TSSCB;
+  PyTypeObject *__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_items;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
@@ -2506,14 +2506,14 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_F1 __pyx_string_tab[19]
 #define __pyx_n_u_F2 __pyx_string_tab[20]
 #define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[21]
-#define __pyx_n_u_TSSCBMaterial __pyx_string_tab[22]
-#define __pyx_n_u_TSSCBMaterial___reduce_cython __pyx_string_tab[23]
-#define __pyx_n_u_TSSCBMaterial___setstate_cython __pyx_string_tab[24]
-#define __pyx_n_u_TSSCBMaterial_commitState __pyx_string_tab[25]
-#define __pyx_n_u_TSSCBMaterial_getStress __pyx_string_tab[26]
-#define __pyx_n_u_TSSCBMaterial_getTangent __pyx_string_tab[27]
-#define __pyx_n_u_TSSCBMaterial_setStrain __pyx_string_tab[28]
-#define __pyx_n_u_TSSCBMaterial_setTrialStrain __pyx_string_tab[29]
+#define __pyx_n_u_TSSCB __pyx_string_tab[22]
+#define __pyx_n_u_TSSCB___reduce_cython __pyx_string_tab[23]
+#define __pyx_n_u_TSSCB___setstate_cython __pyx_string_tab[24]
+#define __pyx_n_u_TSSCB_commitState __pyx_string_tab[25]
+#define __pyx_n_u_TSSCB_getStress __pyx_string_tab[26]
+#define __pyx_n_u_TSSCB_getTangent __pyx_string_tab[27]
+#define __pyx_n_u_TSSCB_setStrain __pyx_string_tab[28]
+#define __pyx_n_u_TSSCB_setTrialStrain __pyx_string_tab[29]
 #define __pyx_n_u_asyncio_coroutines __pyx_string_tab[30]
 #define __pyx_n_u_beta __pyx_string_tab[31]
 #define __pyx_n_u_cline_in_traceback __pyx_string_tab[32]
@@ -2586,8 +2586,8 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   __Pyx_State_RemoveModule(NULL);
   #endif
-  Py_CLEAR(clear_module_state->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial);
-  Py_CLEAR(clear_module_state->__pyx_type_3src_5TSSCB_5TSSCB_TSSCBMaterial);
+  Py_CLEAR(clear_module_state->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB);
+  Py_CLEAR(clear_module_state->__pyx_type_3src_5TSSCB_5TSSCB_TSSCB);
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<7; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
   for (int i=0; i<87; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
@@ -2614,8 +2614,8 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_tuple);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_bytes);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_unicode);
-  Py_VISIT(traverse_module_state->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial);
-  Py_VISIT(traverse_module_state->__pyx_type_3src_5TSSCB_5TSSCB_TSSCBMaterial);
+  Py_VISIT(traverse_module_state->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB);
+  Py_VISIT(traverse_module_state->__pyx_type_3src_5TSSCB_5TSSCB_TSSCB);
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<7; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
   for (int i=0; i<87; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
@@ -2642,8 +2642,8 @@ return 0;
 */
 
 /* Python wrapper */
-static int __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_tag;
   double __pyx_v_F1;
   double __pyx_v_k0;
@@ -2964,11 +2964,11 @@ static int __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_1__cinit__(PyObject *__py
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial___cinit__(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self), __pyx_v_tag, __pyx_v_F1, __pyx_v_k0, __pyx_v_ugap, __pyx_v_F2, __pyx_v_k1, __pyx_v_k2, __pyx_v_beta, __pyx_v_hardening, __pyx_v_uh, __pyx_v_r1, __pyx_v_r2, __pyx_v_r3, __pyx_v_minmax, __pyx_v_uf, __pyx_v__configType, __pyx_v_configType, __pyx_v__up, __pyx_v_up);
+  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB___cinit__(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self), __pyx_v_tag, __pyx_v_F1, __pyx_v_k0, __pyx_v_ugap, __pyx_v_F2, __pyx_v_k1, __pyx_v_k2, __pyx_v_beta, __pyx_v_hardening, __pyx_v_uh, __pyx_v_r1, __pyx_v_r2, __pyx_v_r3, __pyx_v_minmax, __pyx_v_uf, __pyx_v__configType, __pyx_v_configType, __pyx_v__up, __pyx_v_up);
 
   /* "src/TSSCB/TSSCB.pyx":27
  *     cdef int i
@@ -2986,7 +2986,7 @@ static int __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_1__cinit__(PyObject *__py
   return __pyx_r;
 }
 
-static int __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial___cinit__(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, int __pyx_v_tag, double __pyx_v_F1, double __pyx_v_k0, double __pyx_v_ugap, double __pyx_v_F2, double __pyx_v_k1, double __pyx_v_k2, double __pyx_v_beta, PyObject *__pyx_v_hardening, double __pyx_v_uh, double __pyx_v_r1, double __pyx_v_r2, double __pyx_v_r3, PyObject *__pyx_v_minmax, double __pyx_v_uf, PyObject *__pyx_v__configType, int __pyx_v_configType, PyObject *__pyx_v__up, double __pyx_v_up) {
+static int __pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB___cinit__(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, int __pyx_v_tag, double __pyx_v_F1, double __pyx_v_k0, double __pyx_v_ugap, double __pyx_v_F2, double __pyx_v_k1, double __pyx_v_k2, double __pyx_v_beta, PyObject *__pyx_v_hardening, double __pyx_v_uh, double __pyx_v_r1, double __pyx_v_r2, double __pyx_v_r3, PyObject *__pyx_v_minmax, double __pyx_v_uf, PyObject *__pyx_v__configType, int __pyx_v_configType, PyObject *__pyx_v__up, double __pyx_v_up) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -3396,7 +3396,7 @@ static int __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial___cinit__(struct __pyx_ob
  *         self._init_paras()
  * 
 */
-  ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->_check_paras(__pyx_v_self); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 61, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_check_paras(__pyx_v_self); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 61, __pyx_L1_error)
 
   /* "src/TSSCB/TSSCB.pyx":62
  *         #
@@ -3405,7 +3405,7 @@ static int __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial___cinit__(struct __pyx_ob
  * 
  *     cdef void _check_paras(self):
 */
-  ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->_init_paras(__pyx_v_self); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_init_paras(__pyx_v_self); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L1_error)
 
   /* "src/TSSCB/TSSCB.pyx":27
  *     cdef int i
@@ -3421,7 +3421,7 @@ static int __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial___cinit__(struct __pyx_ob
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -3436,7 +3436,7 @@ static int __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial___cinit__(struct __pyx_ob
  *                 self.F2 > 0 and self.k1 > 0 and self.k2 > 0 and
 */
 
-static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__check_paras(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self) {
+static void __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__check_paras(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self) {
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   int __pyx_t_2;
@@ -3618,7 +3618,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__check_paras(struct __pyx
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial._check_paras", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB._check_paras", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
 }
@@ -3631,7 +3631,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__check_paras(struct __pyx
  *         self.Cstage = 1; self.Tstage = 1
 */
 
-static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__init_paras(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self) {
+static void __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__init_paras(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self) {
   int __pyx_t_1;
   double __pyx_t_2;
 
@@ -3862,14 +3862,14 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__init_paras(struct __pyx_
  *         #
 */
 
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrialStrain(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_3setTrialStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain *__pyx_optional_args) {
+static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_setTrialStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_strain, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_5TSSCB_setTrialStrain *__pyx_optional_args) {
   double __pyx_v_strainRate = ((double)0.0);
   double __pyx_v_dStrain;
   PyObject *__pyx_r = NULL;
@@ -3899,7 +3899,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain(struc
   /* Check if overridden in Python */
   else if (
   #if !CYTHON_USE_TYPE_SLOTS
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial &&
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB &&
   __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
   #else
   unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
@@ -3912,7 +3912,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain(struc
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_setTrialStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrialStrain)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_3setTrialStrain)) {
         __Pyx_XDECREF(__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
@@ -4309,7 +4309,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain(struc
  *             #
  *             if dStrain > 0:
 */
-    ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->_determineTrialState(__pyx_v_self, __pyx_v_dStrain); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 130, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_determineTrialState(__pyx_v_self, __pyx_v_dStrain); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 130, __pyx_L1_error)
 
     /* "src/TSSCB/TSSCB.pyx":132
  *             self._determineTrialState(dStrain)
@@ -4558,7 +4558,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain(struc
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.setTrialStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.setTrialStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4567,15 +4567,15 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain(struc
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrialStrain(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_3setTrialStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrialStrain = {"setTrialStrain", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrialStrain, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrialStrain(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_5TSSCB_3setTrialStrain = {"setTrialStrain", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_3setTrialStrain, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_3setTrialStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4654,11 +4654,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.setTrialStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.setTrialStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_2setTrialStrain(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self), __pyx_v_strain, __pyx_v_strainRate);
+  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_2setTrialStrain(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self), __pyx_v_strain, __pyx_v_strainRate);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -4668,11 +4668,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_2setTrialStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain, double __pyx_v_strainRate) {
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_2setTrialStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_strain, double __pyx_v_strainRate) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain __pyx_t_2;
+  struct __pyx_opt_args_3src_5TSSCB_5TSSCB_5TSSCB_setTrialStrain __pyx_t_2;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4680,7 +4680,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_2setTrialStrain(str
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2.strainRate = __pyx_v_strainRate;
-  __pyx_t_1 = __pyx_vtabptr_3src_5TSSCB_5TSSCB_TSSCBMaterial->setTrialStrain(__pyx_v_self, __pyx_v_strain, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_t_1 = __pyx_vtabptr_3src_5TSSCB_5TSSCB_TSSCB->setTrialStrain(__pyx_v_self, __pyx_v_strain, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4689,7 +4689,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_2setTrialStrain(str
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.setTrialStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.setTrialStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4705,7 +4705,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_2setTrialStrain(str
  *         if -self.ugap <= self.Tstrain <= self.ugap:
 */
 
-static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_dStrain) {
+static void __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_dStrain) {
   double __pyx_v_uy;
   double __pyx_v_du1;
   double __pyx_v_du2;
@@ -4719,7 +4719,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(stru
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   double __pyx_t_2;
-  struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel __pyx_t_3;
+  struct __pyx_opt_args_3src_5TSSCB_5TSSCB_5TSSCB__frictionModel __pyx_t_3;
   int __pyx_t_4;
   double __pyx_t_5;
   PyObject *__pyx_t_6 = NULL;
@@ -4880,7 +4880,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(stru
       /*else*/ {
         __pyx_t_3.__pyx_n = 1;
         __pyx_t_3.half = 0.5;
-        __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress4, __pyx_v_dStrain, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress4, __pyx_v_dStrain, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 166, __pyx_L1_error)
         __pyx_v_self->Tstress4 = __pyx_t_2;
 
         /* "src/TSSCB/TSSCB.pyx":167
@@ -4989,7 +4989,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(stru
  *         #
 */
     /*else*/ {
-      __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress4, __pyx_v_dStrain, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 172, __pyx_L1_error)
+      __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress4, __pyx_v_dStrain, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 172, __pyx_L1_error)
       __pyx_v_self->Tstress4 = __pyx_t_2;
     }
     __pyx_L6:;
@@ -5105,7 +5105,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(stru
  *             self.Tstress2 = self.Tstress1
  *             self.Tstress3 = self.Tstress1
 */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress3, __pyx_v_dStrain, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress3, __pyx_v_dStrain, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 184, __pyx_L1_error)
     __pyx_v_self->Tstress1 = __pyx_t_2;
 
     /* "src/TSSCB/TSSCB.pyx":185
@@ -5273,7 +5273,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(stru
  *             F2_ = self._SCModel(usc0, F1_, du2)
  *             self.Tstress1 = F2_
 */
-    __pyx_t_5 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress1, __pyx_v_du1, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 199, __pyx_L1_error)
+    __pyx_t_5 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress1, __pyx_v_du1, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 199, __pyx_L1_error)
     __pyx_v_F1_ = __pyx_t_5;
 
     /* "src/TSSCB/TSSCB.pyx":200
@@ -5283,7 +5283,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(stru
  *             self.Tstress1 = F2_
  *             self.Tstress2 = self.Tstress1
 */
-    __pyx_t_5 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->_SCModel(__pyx_v_self, __pyx_v_usc0, __pyx_v_F1_, __pyx_v_du2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 200, __pyx_L1_error)
+    __pyx_t_5 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_SCModel(__pyx_v_self, __pyx_v_usc0, __pyx_v_F1_, __pyx_v_du2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 200, __pyx_L1_error)
     __pyx_v_F2_ = __pyx_t_5;
 
     /* "src/TSSCB/TSSCB.pyx":201
@@ -5586,7 +5586,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(stru
  *             self.Tstress2 = self.Tstress1
  *             Fd = (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
 */
-    __pyx_t_5 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->_SCModel(__pyx_v_self, __pyx_v_usc0, __pyx_v_self->Cstress1, __pyx_v_dStrain); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L1_error)
+    __pyx_t_5 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_SCModel(__pyx_v_self, __pyx_v_usc0, __pyx_v_self->Cstress1, __pyx_v_dStrain); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L1_error)
     __pyx_v_self->Tstress1 = __pyx_t_5;
 
     /* "src/TSSCB/TSSCB.pyx":222
@@ -6041,7 +6041,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(stru
  *             elif self.configType == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Thardening and self.Tstress2 > self.F1:
  *                 self.Tstress3 = self._frictionModel(self.Cstress3, dStrain)
 */
-      __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress3, __pyx_v_dStrain, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 246, __pyx_L1_error)
+      __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress3, __pyx_v_dStrain, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 246, __pyx_L1_error)
       __pyx_v_self->Tstress3 = __pyx_t_2;
 
       /* "src/TSSCB/TSSCB.pyx":245
@@ -6096,7 +6096,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(stru
  *         elif self.Cstage == 2 and self.Tstage == 1:
  *             # 2->1
 */
-      __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress3, __pyx_v_dStrain, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 248, __pyx_L1_error)
+      __pyx_t_2 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress3, __pyx_v_dStrain, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 248, __pyx_L1_error)
       __pyx_v_self->Tstress3 = __pyx_t_2;
 
       /* "src/TSSCB/TSSCB.pyx":247
@@ -6254,7 +6254,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(stru
  *             F1_ideal1 = F1_
  *             if self.Thardening and self.Tstrain > 0:
 */
-    __pyx_t_5 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->_SCModel(__pyx_v_self, __pyx_v_usc0, __pyx_v_self->Cstress1, __pyx_v_du1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 261, __pyx_L1_error)
+    __pyx_t_5 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_SCModel(__pyx_v_self, __pyx_v_usc0, __pyx_v_self->Cstress1, __pyx_v_du1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 261, __pyx_L1_error)
     __pyx_v_F1_ = __pyx_t_5;
 
     /* "src/TSSCB/TSSCB.pyx":262
@@ -6593,7 +6593,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(stru
  *             self.Tstress1 = F2_
  *             self.Tstress2 = self.Tstress1
 */
-    __pyx_t_5 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_F1_, __pyx_v_du2, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 280, __pyx_L1_error)
+    __pyx_t_5 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_F1_, __pyx_v_du2, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 280, __pyx_L1_error)
     __pyx_v_F2_ = __pyx_t_5;
 
     /* "src/TSSCB/TSSCB.pyx":281
@@ -6796,7 +6796,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(stru
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_11);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial._determineTrialState", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB._determineTrialState", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
 }
@@ -6809,7 +6809,7 @@ static void __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState(stru
  *         cdef double F_, F
 */
 
-static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_F0, double __pyx_v_du, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel *__pyx_optional_args) {
+static double __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_F0, double __pyx_v_du, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_5TSSCB__frictionModel *__pyx_optional_args) {
   double __pyx_v_half = ((double)1.0);
   double __pyx_v_F_;
   double __pyx_v_F;
@@ -6960,7 +6960,7 @@ static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel(struct _
  *         cdef double u, uy, F_, F
 */
 
-static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__SCModel(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_u0, double __pyx_v_F0, double __pyx_v_du) {
+static double __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_u0, double __pyx_v_F0, double __pyx_v_du) {
   double __pyx_v_u;
   double __pyx_v_uy;
   double __pyx_v_F_;
@@ -7432,7 +7432,7 @@ static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__SCModel(struct __pyx_o
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial._SCModel", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB._SCModel", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   return __pyx_r;
@@ -7446,14 +7446,14 @@ static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__SCModel(struct __pyx_o
  *         self.Cstrain = self.Tstrain
 */
 
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_5commitState(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_5commitState(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_commitState(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_commitState(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, int __pyx_skip_dispatch) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7473,7 +7473,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_commitState(struct _
   /* Check if overridden in Python */
   else if (
   #if !CYTHON_USE_TYPE_SLOTS
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial &&
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB &&
   __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
   #else
   unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
@@ -7486,7 +7486,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_commitState(struct _
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_commitState); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_5commitState)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_5commitState)) {
         __Pyx_XDECREF(__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
@@ -7704,7 +7704,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_commitState(struct _
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.commitState", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.commitState", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -7713,15 +7713,15 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_commitState(struct _
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_5commitState(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_5commitState(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_5commitState = {"commitState", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_5commitState, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_5commitState(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_5TSSCB_5commitState = {"commitState", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_5commitState, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_5commitState(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -7747,14 +7747,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("commitState", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_4commitState(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_4commitState(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_4commitState(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_4commitState(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7763,7 +7763,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_4commitState(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("commitState", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_commitState(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_commitState(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -7772,7 +7772,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_4commitState(struct
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.commitState", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.commitState", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -7788,14 +7788,14 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_4commitState(struct
  * 
 */
 
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_7getStress(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_7getStress(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getStress(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, int __pyx_skip_dispatch) {
+static double __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_getStress(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7813,7 +7813,7 @@ static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getStress(struct __pyx_
   /* Check if overridden in Python */
   else if (
   #if !CYTHON_USE_TYPE_SLOTS
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial &&
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB &&
   __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
   #else
   unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
@@ -7826,7 +7826,7 @@ static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getStress(struct __pyx_
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getStress); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_7getStress)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_7getStress)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
@@ -7893,7 +7893,7 @@ static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getStress(struct __pyx_
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.getStress", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.getStress", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -7901,15 +7901,15 @@ static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getStress(struct __pyx_
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_7getStress(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_7getStress(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_7getStress = {"getStress", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_7getStress, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_7getStress(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_5TSSCB_7getStress = {"getStress", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_7getStress, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_7getStress(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -7935,14 +7935,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("getStress", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_6getStress(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_6getStress(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_6getStress(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_6getStress(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -7952,7 +7952,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_6getStress(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getStress", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getStress(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 363, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_getStress(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 363, __pyx_L1_error)
   __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 363, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -7962,7 +7962,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_6getStress(struct _
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.getStress", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.getStress", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -7978,14 +7978,14 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_6getStress(struct _
  * 
 */
 
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_9getTangent(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_9getTangent(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getTangent(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, int __pyx_skip_dispatch) {
+static double __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_getTangent(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8003,7 +8003,7 @@ static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getTangent(struct __pyx
   /* Check if overridden in Python */
   else if (
   #if !CYTHON_USE_TYPE_SLOTS
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial &&
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB &&
   __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
   #else
   unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
@@ -8016,7 +8016,7 @@ static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getTangent(struct __pyx
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getTangent); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 366, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_9getTangent)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_9getTangent)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
@@ -8083,7 +8083,7 @@ static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getTangent(struct __pyx
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.getTangent", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.getTangent", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -8091,15 +8091,15 @@ static double __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getTangent(struct __pyx
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_9getTangent(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_9getTangent(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_9getTangent = {"getTangent", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_9getTangent, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_9getTangent(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_5TSSCB_9getTangent = {"getTangent", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_9getTangent, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_9getTangent(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -8125,14 +8125,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("getTangent", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_8getTangent(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_8getTangent(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_8getTangent(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_8getTangent(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -8142,7 +8142,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_8getTangent(struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getTangent", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getTangent(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 366, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_getTangent(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 366, __pyx_L1_error)
   __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 366, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -8152,7 +8152,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_8getTangent(struct 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.getTangent", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.getTangent", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -8168,14 +8168,14 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_8getTangent(struct 
  *         self.commitState()
 */
 
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_11setStrain(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_11setStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain, int __pyx_skip_dispatch) {
+static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_setStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_strain, int __pyx_skip_dispatch) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8193,7 +8193,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setStrain(struct __p
   /* Check if overridden in Python */
   else if (
   #if !CYTHON_USE_TYPE_SLOTS
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial &&
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB &&
   __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
   #else
   unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
@@ -8206,7 +8206,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setStrain(struct __p
       #endif
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_setStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_11setStrain)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_11setStrain)) {
         __Pyx_XDECREF(__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
@@ -8258,7 +8258,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setStrain(struct __p
  *         self.setTrialStrain(strain)             # <<<<<<<<<<<<<<
  *         self.commitState()
 */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->setTrialStrain(__pyx_v_self, __pyx_v_strain, 0, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 370, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->setTrialStrain(__pyx_v_self, __pyx_v_strain, 0, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 370, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
@@ -8267,7 +8267,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setStrain(struct __p
  *         self.setTrialStrain(strain)
  *         self.commitState()             # <<<<<<<<<<<<<<
 */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self->__pyx_vtab)->commitState(__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->commitState(__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
@@ -8288,7 +8288,7 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setStrain(struct __p
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.setStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.setStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -8297,15 +8297,15 @@ static PyObject *__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setStrain(struct __p
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_11setStrain(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_11setStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_11setStrain = {"setStrain", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_11setStrain, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_11setStrain(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_5TSSCB_11setStrain = {"setStrain", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_11setStrain, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_11setStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -8367,11 +8367,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.setStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.setStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_10setStrain(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self), __pyx_v_strain);
+  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_10setStrain(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self), __pyx_v_strain);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -8381,7 +8381,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_10setStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, double __pyx_v_strain) {
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_10setStrain(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_strain) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8390,7 +8390,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_10setStrain(struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("setStrain", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setStrain(__pyx_v_self, __pyx_v_strain, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_setStrain(__pyx_v_self, __pyx_v_strain, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -8399,7 +8399,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_10setStrain(struct 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.setStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.setStrain", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -8409,28 +8409,28 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_10setStrain(struct 
 
 /* "src/TSSCB/TSSCB.pyx":7
  * 
- * cdef class TSSCBMaterial:
+ * cdef class TSSCB:
  *     cdef public int tag             # <<<<<<<<<<<<<<
  *     #  double
  *     cdef double F1, k0, ugap, F2, k1, k2, beta
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_3tag_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_3tag_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag___get__(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_3tag___get__(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag___get__(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_3tag___get__(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8448,7 +8448,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag___get__(struct
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.tag.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.tag.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -8457,21 +8457,21 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag___get__(struct
 }
 
 /* Python wrapper */
-static int __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_3tag_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_3tag_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag_2__set__(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_3tag_2__set__(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag_2__set__(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_3tag_2__set__(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   int __pyx_t_1;
   int __pyx_lineno = 0;
@@ -8484,7 +8484,7 @@ static int __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag_2__set__(struct __py
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.tag.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.tag.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   return __pyx_r;
@@ -8497,15 +8497,15 @@ static int __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag_2__set__(struct __py
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_13__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_13__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_13__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_13__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_13__reduce_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_5TSSCB_13__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_13__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_13__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -8531,14 +8531,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__reduce_cython__", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_12__reduce_cython__(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_12__reduce_cython__(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_12__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_12__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -8563,7 +8563,7 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_12__reduce_cython__
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -8578,15 +8578,15 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_12__reduce_cython__
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_15__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_15__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_15__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_15__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_15__setstate_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_3src_5TSSCB_5TSSCB_5TSSCB_15__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_15__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_15__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -8648,11 +8648,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_14__setstate_cython__(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_14__setstate_cython__(((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -8662,7 +8662,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_14__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_5TSSCB_14__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -8687,33 +8687,33 @@ static PyObject *__pyx_pf_3src_5TSSCB_5TSSCB_13TSSCBMaterial_14__setstate_cython
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCBMaterial.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.TSSCB.TSSCB.TSSCB.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 /* #### Code section: module_exttypes ### */
-static struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCBMaterial __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial;
+static struct __pyx_vtabstruct_3src_5TSSCB_5TSSCB_TSSCB __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCB;
 
-static PyObject *__pyx_tp_new_3src_5TSSCB_5TSSCB_TSSCBMaterial(PyTypeObject *t, PyObject *a, PyObject *k) {
-  struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *p;
+static PyObject *__pyx_tp_new_3src_5TSSCB_5TSSCB_TSSCB(PyTypeObject *t, PyObject *a, PyObject *k) {
+  struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *p;
   PyObject *o;
   o = __Pyx_AllocateExtensionType(t, 0);
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *)o);
-  p->__pyx_vtab = __pyx_vtabptr_3src_5TSSCB_5TSSCB_TSSCBMaterial;
-  if (unlikely(__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_1__cinit__(o, a, k) < 0)) goto bad;
+  p = ((struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *)o);
+  p->__pyx_vtab = __pyx_vtabptr_3src_5TSSCB_5TSSCB_TSSCB;
+  if (unlikely(__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_3src_5TSSCB_5TSSCB_TSSCBMaterial(PyObject *o) {
+static void __pyx_tp_dealloc_3src_5TSSCB_5TSSCB_TSSCB(PyObject *o) {
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(__Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && (!PyType_IS_GC(Py_TYPE(o)) || !__Pyx_PyObject_GC_IsFinalized(o))) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_3src_5TSSCB_5TSSCB_TSSCBMaterial) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_3src_5TSSCB_5TSSCB_TSSCB) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -8732,13 +8732,13 @@ static void __pyx_tp_dealloc_3src_5TSSCB_5TSSCB_TSSCBMaterial(PyObject *o) {
   #endif
 }
 
-static PyObject *__pyx_getprop_3src_5TSSCB_5TSSCB_13TSSCBMaterial_tag(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag_1__get__(o);
+static PyObject *__pyx_getprop_3src_5TSSCB_5TSSCB_5TSSCB_tag(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_3tag_1__get__(o);
 }
 
-static int __pyx_setprop_3src_5TSSCB_5TSSCB_13TSSCBMaterial_tag(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_3src_5TSSCB_5TSSCB_5TSSCB_tag(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3tag_3__set__(o, v);
+    return __pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_3tag_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -8746,39 +8746,39 @@ static int __pyx_setprop_3src_5TSSCB_5TSSCB_13TSSCBMaterial_tag(PyObject *o, PyO
   }
 }
 
-static PyMethodDef __pyx_methods_3src_5TSSCB_5TSSCB_TSSCBMaterial[] = {
-  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_13__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_13TSSCBMaterial_15__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+static PyMethodDef __pyx_methods_3src_5TSSCB_5TSSCB_TSSCB[] = {
+  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_13__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3src_5TSSCB_5TSSCB_5TSSCB_15__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_3src_5TSSCB_5TSSCB_TSSCBMaterial[] = {
-  {"tag", __pyx_getprop_3src_5TSSCB_5TSSCB_13TSSCBMaterial_tag, __pyx_setprop_3src_5TSSCB_5TSSCB_13TSSCBMaterial_tag, 0, 0},
+static struct PyGetSetDef __pyx_getsets_3src_5TSSCB_5TSSCB_TSSCB[] = {
+  {"tag", __pyx_getprop_3src_5TSSCB_5TSSCB_5TSSCB_tag, __pyx_setprop_3src_5TSSCB_5TSSCB_5TSSCB_tag, 0, 0},
   {0, 0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_3src_5TSSCB_5TSSCB_TSSCBMaterial_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_3src_5TSSCB_5TSSCB_TSSCBMaterial},
-  {Py_tp_methods, (void *)__pyx_methods_3src_5TSSCB_5TSSCB_TSSCBMaterial},
-  {Py_tp_getset, (void *)__pyx_getsets_3src_5TSSCB_5TSSCB_TSSCBMaterial},
-  {Py_tp_new, (void *)__pyx_tp_new_3src_5TSSCB_5TSSCB_TSSCBMaterial},
+static PyType_Slot __pyx_type_3src_5TSSCB_5TSSCB_TSSCB_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_3src_5TSSCB_5TSSCB_TSSCB},
+  {Py_tp_methods, (void *)__pyx_methods_3src_5TSSCB_5TSSCB_TSSCB},
+  {Py_tp_getset, (void *)__pyx_getsets_3src_5TSSCB_5TSSCB_TSSCB},
+  {Py_tp_new, (void *)__pyx_tp_new_3src_5TSSCB_5TSSCB_TSSCB},
   {0, 0},
 };
-static PyType_Spec __pyx_type_3src_5TSSCB_5TSSCB_TSSCBMaterial_spec = {
-  "src.TSSCB.TSSCB.TSSCBMaterial",
-  sizeof(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial),
+static PyType_Spec __pyx_type_3src_5TSSCB_5TSSCB_TSSCB_spec = {
+  "src.TSSCB.TSSCB.TSSCB",
+  sizeof(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE,
-  __pyx_type_3src_5TSSCB_5TSSCB_TSSCBMaterial_slots,
+  __pyx_type_3src_5TSSCB_5TSSCB_TSSCB_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_3src_5TSSCB_5TSSCB_TSSCBMaterial = {
+static PyTypeObject __pyx_type_3src_5TSSCB_5TSSCB_TSSCB = {
   PyVarObject_HEAD_INIT(0, 0)
-  "src.TSSCB.TSSCB.""TSSCBMaterial", /*tp_name*/
-  sizeof(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial), /*tp_basicsize*/
+  "src.TSSCB.TSSCB.""TSSCB", /*tp_name*/
+  sizeof(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_3src_5TSSCB_5TSSCB_TSSCBMaterial, /*tp_dealloc*/
+  __pyx_tp_dealloc_3src_5TSSCB_5TSSCB_TSSCB, /*tp_dealloc*/
   0, /*tp_vectorcall_offset*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -8801,9 +8801,9 @@ static PyTypeObject __pyx_type_3src_5TSSCB_5TSSCB_TSSCBMaterial = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_3src_5TSSCB_5TSSCB_TSSCBMaterial, /*tp_methods*/
+  __pyx_methods_3src_5TSSCB_5TSSCB_TSSCB, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_3src_5TSSCB_5TSSCB_TSSCBMaterial, /*tp_getset*/
+  __pyx_getsets_3src_5TSSCB_5TSSCB_TSSCB, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
@@ -8813,7 +8813,7 @@ static PyTypeObject __pyx_type_3src_5TSSCB_5TSSCB_TSSCBMaterial = {
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_3src_5TSSCB_5TSSCB_TSSCBMaterial, /*tp_new*/
+  __pyx_tp_new_3src_5TSSCB_5TSSCB_TSSCB, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -8899,40 +8899,40 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  __pyx_vtabptr_3src_5TSSCB_5TSSCB_TSSCBMaterial = &__pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial;
-  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial._check_paras = (void (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__check_paras;
-  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial._init_paras = (void (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__init_paras;
-  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial.setTrialStrain = (PyObject *(*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain *__pyx_optional_args))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setTrialStrain;
-  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial._determineTrialState = (void (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__determineTrialState;
-  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial._frictionModel = (double (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, double, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel *__pyx_optional_args))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__frictionModel;
-  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial._SCModel = (double (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, double, double))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial__SCModel;
-  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial.commitState = (PyObject *(*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, int __pyx_skip_dispatch))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_commitState;
-  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial.getStress = (double (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, int __pyx_skip_dispatch))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getStress;
-  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial.getTangent = (double (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, int __pyx_skip_dispatch))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_getTangent;
-  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCBMaterial.setStrain = (PyObject *(*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCBMaterial *, double, int __pyx_skip_dispatch))__pyx_f_3src_5TSSCB_5TSSCB_13TSSCBMaterial_setStrain;
+  __pyx_vtabptr_3src_5TSSCB_5TSSCB_TSSCB = &__pyx_vtable_3src_5TSSCB_5TSSCB_TSSCB;
+  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCB._check_paras = (void (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *))__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__check_paras;
+  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCB._init_paras = (void (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *))__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__init_paras;
+  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCB.setTrialStrain = (PyObject *(*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, double, int __pyx_skip_dispatch, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_5TSSCB_setTrialStrain *__pyx_optional_args))__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_setTrialStrain;
+  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCB._determineTrialState = (void (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, double))__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__determineTrialState;
+  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCB._frictionModel = (double (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, double, double, struct __pyx_opt_args_3src_5TSSCB_5TSSCB_5TSSCB__frictionModel *__pyx_optional_args))__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__frictionModel;
+  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCB._SCModel = (double (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, double, double, double))__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB__SCModel;
+  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCB.commitState = (PyObject *(*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, int __pyx_skip_dispatch))__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_commitState;
+  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCB.getStress = (double (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, int __pyx_skip_dispatch))__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_getStress;
+  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCB.getTangent = (double (*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, int __pyx_skip_dispatch))__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_getTangent;
+  __pyx_vtable_3src_5TSSCB_5TSSCB_TSSCB.setStrain = (PyObject *(*)(struct __pyx_obj_3src_5TSSCB_5TSSCB_TSSCB *, double, int __pyx_skip_dispatch))__pyx_f_3src_5TSSCB_5TSSCB_5TSSCB_setStrain;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_3src_5TSSCB_5TSSCB_TSSCBMaterial_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial)) __PYX_ERR(0, 6, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_3src_5TSSCB_5TSSCB_TSSCBMaterial_spec, __pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_3src_5TSSCB_5TSSCB_TSSCB_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB)) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_3src_5TSSCB_5TSSCB_TSSCB_spec, __pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial = &__pyx_type_3src_5TSSCB_5TSSCB_TSSCBMaterial;
+  __pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB = &__pyx_type_3src_5TSSCB_5TSSCB_TSSCB;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial);
+  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB);
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial->tp_dictoffset && __pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB->tp_dictoffset && __pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial, __pyx_vtabptr_3src_5TSSCB_5TSSCB_TSSCBMaterial) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
-  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_TSSCBMaterial, (PyObject *) __pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB, __pyx_vtabptr_3src_5TSSCB_5TSSCB_TSSCB) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_TSSCB, (PyObject *) __pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -9240,13 +9240,13 @@ __Pyx_RefNannySetupContext("PyInit_TSSCB", 0);
  *         cdef double dStrain
  *         #
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_3setTrialStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCBMaterial_setTrialStrain, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_5TSSCB_3setTrialStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB_setTrialStrain, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_mstate_global->__pyx_tuple[0]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial, __pyx_mstate_global->__pyx_n_u_setTrialStrain, __pyx_t_2) < (0)) __PYX_ERR(0, 95, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB, __pyx_mstate_global->__pyx_n_u_setTrialStrain, __pyx_t_2) < (0)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "src/TSSCB/TSSCB.pyx":344
@@ -9256,12 +9256,12 @@ __Pyx_RefNannySetupContext("PyInit_TSSCB", 0);
  *         #
  *         self.Cstrain = self.Tstrain
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_5commitState, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCBMaterial_commitState, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 344, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_5TSSCB_5commitState, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB_commitState, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 344, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial, __pyx_mstate_global->__pyx_n_u_commitState, __pyx_t_2) < (0)) __PYX_ERR(0, 344, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB, __pyx_mstate_global->__pyx_n_u_commitState, __pyx_t_2) < (0)) __PYX_ERR(0, 344, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "src/TSSCB/TSSCB.pyx":363
@@ -9271,12 +9271,12 @@ __Pyx_RefNannySetupContext("PyInit_TSSCB", 0);
  *         return self.Tstress4
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_7getStress, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCBMaterial_getStress, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 363, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_5TSSCB_7getStress, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB_getStress, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 363, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial, __pyx_mstate_global->__pyx_n_u_getStress, __pyx_t_2) < (0)) __PYX_ERR(0, 363, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB, __pyx_mstate_global->__pyx_n_u_getStress, __pyx_t_2) < (0)) __PYX_ERR(0, 363, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "src/TSSCB/TSSCB.pyx":366
@@ -9286,12 +9286,12 @@ __Pyx_RefNannySetupContext("PyInit_TSSCB", 0);
  *         return self.Ttangent
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_9getTangent, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCBMaterial_getTangent, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 366, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_5TSSCB_9getTangent, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB_getTangent, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 366, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial, __pyx_mstate_global->__pyx_n_u_getTangent, __pyx_t_2) < (0)) __PYX_ERR(0, 366, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB, __pyx_mstate_global->__pyx_n_u_getTangent, __pyx_t_2) < (0)) __PYX_ERR(0, 366, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "src/TSSCB/TSSCB.pyx":369
@@ -9301,12 +9301,12 @@ __Pyx_RefNannySetupContext("PyInit_TSSCB", 0);
  *         self.setTrialStrain(strain)
  *         self.commitState()
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_11setStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCBMaterial_setStrain, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_5TSSCB_11setStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB_setStrain, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCBMaterial, __pyx_mstate_global->__pyx_n_u_setStrain, __pyx_t_2) < (0)) __PYX_ERR(0, 369, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_3src_5TSSCB_5TSSCB_TSSCB, __pyx_mstate_global->__pyx_n_u_setStrain, __pyx_t_2) < (0)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":1
@@ -9314,7 +9314,7 @@ __Pyx_RefNannySetupContext("PyInit_TSSCB", 0);
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_13__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCBMaterial___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_5TSSCB_13__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
@@ -9328,7 +9328,7 @@ __Pyx_RefNannySetupContext("PyInit_TSSCB", 0);
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_13TSSCBMaterial_15__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCBMaterial___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3src_5TSSCB_5TSSCB_5TSSCB_15__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_src_TSSCB_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
@@ -9439,33 +9439,33 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 9; } index[] = {{1},{36},{33},{9},{11},{46},{7},{6},{2},{10},{43},{9},{7},{37},{50},{19},{14},{3},{30},{2},{2},{20},{13},{31},{33},{25},{23},{24},{23},{28},{18},{4},{18},{11},{11},{10},{8},{9},{10},{12},{9},{13},{5},{2},{2},{2},{8},{6},{10},{8},{3},{11},{14},{12},{2},{2},{2},{10},{17},{13},{4},{9},{14},{12},{10},{12},{19},{15},{6},{10},{3},{8},{2},{4},{2},{3},{2},{6},{11},{10},{145},{18},{9},{456},{9},{7},{3}};
-    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (825 bytes) */
-const char* const cstring = "(\265/\375`\204\005}\031\000\266\346\204: \221\333\000\234\002H\007\300&\001\341\026\241\3721\2030U\000B\275\354n7\t\233\366\273\205m\322\207\300C\255\347X{q{4\346T\211\311\270\216\353q\340\030M\373\237\260\035\001n\000m\000x\0003\324\263nn\376\327ms\025\377O\375m\332Un\2067\345\242\340\265`\210\3136\345]{+\207\351*\264y\267\326OE\263\345nmYov6\224\232U5\271o\207\253<?U\305\027\312\263\335\r\267\020j^|T\3174;nh\265\315\227b=\253\246:\177\324\322\225\222\t\006\0065q\330\315\214\253\256 \305T\234\234\375h\353\236\204\004\032K\203\225\301\252\355g\373\377\277\335\335\375\2636\252\252\333_\373\337FuU\345z\255\336!\016\355v_\231\242\256\245Y\337\352]\212\312\271\342\352\301h\013\202\341\246k\376\277\341J\2776\214\256\276hWey\275\331\021\327\313\345_D\242\221\210\373S\342\016\201\324\r\3570c\235=\\/\021#c\303\371_\333k\267\217\332\226\305:t\303\033\024\344\002\301\014\241\000@\240f3#\302\241\321H\rK\330h\244\030\020I2\222#\262D\241\2438D\207f\344#\336r\342\037\276\262\341#\244\t\345\022\234\005\3049\022\205\3049\\E\246qM\246\300:\0043RL\256\373\243-q\213\373W[\244\336\356\366\277\316U\377{T\277d\214\r\347\357>W\335\300\"\254\341\217\356QEuK\014E\220\336\257\337\346\302\247\340\277\210\025\342\016\235H\013\230\001G\266\211\2412%\231\207\030\252\024\225\016\010\234>R\255k\236\002\352\034/q\216\031\251w\372\250\037t\211\036\320_\n\034\223.\332O}\302C\343\351\314N\345\247\254h\240\031\371\300\310M|\203d\270X)\306Q\202J\256\227\372.\031{\302\354\324\021x\303g\203k\006\217l#\003u\026\362\343\221i1]\232JN9\322#\272A\347\200\364t\026x\0019\302F\260\203\005\036\200\201\2501\241Q\214\241\232\t\242i\222e\0140\204(eU\335\002\202\030l\220t\216TJ\r5\366g\337\032\313\317^\264t\3108\366\232\274:?L\203\273\000\214$+\323\361\301\340T\373\367\312\341C\262\344rq\331\357\352\341/i[h\224\264u\023\251\035S8\314\021\"9H\204\005B\314\026l1\264\324\013\323\236s\004yL\261\277@\207v\267\006\024\032\370\036b\257\340\0239\272\317\325\227x\227\026\354_M)\363\3469Q\324&\310\306Bh`)\200`\331g$g\"s\370""\312\237T\024\363\375\251\230\275\200\235)kR\254ds\250\237Si/\364?\345\373u\356\3639\320\320\243\020YF\226O*\312\032\214\245\303h\037dw \336\365\320\311\013\367JJp\315\257\326\246ivZ\302\202\340'\352\206\022+|\200\200\223\002\257q\256z\277\3073\354\0079\346\211\255\"\300#\004\302\320\203\270\221\254\035\205:\036\265\212\037q\346\262\322\220\230\266\333Ot2\247U\321\001\312S\304j";
-    PyObject *data = __Pyx_DecompressString(cstring, 825, 3);
+    const struct { const unsigned int length: 9; } index[] = {{1},{36},{33},{9},{11},{46},{7},{6},{2},{10},{43},{9},{7},{37},{50},{19},{14},{3},{30},{2},{2},{20},{5},{23},{25},{17},{15},{16},{15},{20},{18},{4},{18},{11},{11},{10},{8},{9},{10},{12},{9},{13},{5},{2},{2},{2},{8},{6},{10},{8},{3},{11},{14},{12},{2},{2},{2},{10},{17},{13},{4},{9},{14},{12},{10},{12},{19},{15},{6},{10},{3},{8},{2},{4},{2},{3},{2},{6},{11},{10},{145},{18},{9},{456},{9},{7},{3}};
+    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (822 bytes) */
+const char* const cstring = "(\265/\375`D\005e\031\000v&\204: \221\333\000\234\002H\007\300&\001\341\026\241\3721\2030U\000B\275\354n7\t\233\366\273\205m\322\207\300C\255\347X{q{4\346T\211\311\270\216\353q\340\030M\373\237\260\035\001m\000l\000w\000\241\236us\363\277n\233\253\370\177\352o\323\256r3\274)\027\005\257\005C\\\266)\357\332[9LW\241\315\273\265~*\232-wk\313z\263\263\241\324\254\252\311};\\\345\371\251*\276P\236\355n\270\205P\363\342\243z\246\331qC\253m\276\024\353Y5\325\371\243\226\256\224L00\250\211\303nf\\u\005)\246\342\344\354G[\367$$,\rV\006\253\266\237\355\377\377vw\367\317\332\250\252n\177\355\177\033\325U\225\353\265z\2078\264\333}e\212\272\226f}\253w)*\347\212\253\007\243-\010\206\233\256\371\377\206+\375\332\272\372\242]\225\345\365fG\\/\227\177\021\211F\"\356O\211;\004R7\274\303\214u\366p\275D\214\214\r\347\177m\257\335>j[\026\353\320\r\357\014\234\202\\ \230!\024\000\010\324lfD84\032\251a\t\033\215\024\003\"IFrD\226(t\024\207\350\320\214|\304[N\374\303W6|\2044\241\\\202\263\2008G\242\2208\207\253\3104\256\311\024X\207`F\212\311u\213[\334\277\332\"\365v\267s\325\377\036\325/\031c\303\371\273\317U7\260\010k\370\243{TQ\335\022C\021\244\367\377\277~\233\013\237\202\377\"\226\026\342\016\235H\013\230\001G\266\211\2412%\231\207\030\252\024\225\016\010\234>R\255k\236\002\352\034/q\216\031\251w\372\250\037t\211\036\320_\n\034\223.\332O}\302C\343\351\314N\345\247\254h\240\031\371\300\310M|\203d\270X)\306Q\202J\256\227\372.\031{\302\354\324\021x\303gcD2xd\033\031\250\263\220\037\217L\213\351\322Tr\312\221\036\321\r:\007\244\247\263\300\013\310\0216\202\035,\004\200\202\250Q\241Q\212\031\232\td\246I\22610\204(\247\214u2\202\230l\020\207L\304$\205\312\376\261o\232\312\317\336[Zg\237]\224\026r\301\264g\027\n!\255EL\034I0\254^y%\360!d2\210\270\344\277\032\373\313\273o7\t\024\277\311\\c\304\031~\304A\034p\361\030\321\215-4\317\320\350\n\275^\345\010\252,\266\346'\336:V\201\017 s\372\377\2005H08\376$V\234\362\357WH\205a\235\001k\224\020<n\211\260\216\n\272\307\211\350;\017\200RlNR4*Mj\253""\251M\321\026\254\372\360\225\366\344MNu\245|`R\367\215\376\032\264\223\346^\350L\303L\243\355D\300<\300\250\010|\357\306\247\037\2754\020\246\336\026\355M\256#\261<$\025\261A \203M\265l\247\"\367+\225\007\006\333{\322\235\303\267m\266\204}\"G.\243B\304G\010\2200z\206oI\250\214\240\344(P\031\304Z\345\364CC\332\331~\241\323\363\006E'}Oj\251\001";
+    PyObject *data = __Pyx_DecompressString(cstring, 822, 3);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (945 bytes) */
-const char* const cstring = "BZh91AY&SY.\311\224\337\000\000\231\377\377\365\376\374Zv\257\3747\375\377\374\000\377\357\377`@@@@@@@@@\000@@@\000@\000P\003Y<d\222\330C\tBJz\211\232\236L\217\004\247\352'\251\232\021\350&i\r\2424i\204`\322\003\365\010\306\247\352cJ\0344\000\003A\240\320\030 \006\206\232d\003CF\231\0001\003@\002SI\241&\231L\241\243\324\332\201\246\200\000\000\001\220\000\000\000\031<\247\250p\320\000\r\006\203@`\200\032\032i\220\r\r\032d\000\304\r\000\tB\231&4L\232e'\3512\233\322\215\244\323#F@\003@\006\201\240\0004h\032F\303\037\257\302?\237\335\223>y\214Jz%6\r\t\206\026\034\370\246m\244\345(\231$[0f\201m\351#rB\007\253\025LV\032\351\321\033\266j3U8H\276\311P2(\311\366^\326\376O0L\036\025\347\355\t\201\354f\005|\212\266aW\022\243\nA\215k\027\316\235&_\355)\235Nz\035\364\307\347\2113Te\025\323\365/\232\261\002\252\020+6{\201\367\337\215]l\2002H0\372\252\306\237\276T\210\206\311*\251\276\202D59\276\310'e\345\034T\204\205;\330\207)\277s\001\020\250\205\310\nj\251\022\2144\220\026\0136\214('\002\010\311\001S{\312E\002\355\021\313\217^W\004\\\"RS0\217\314\300C\321\002$\"GX\027\006\257I\326[\364W\325|\351;\"Oz\303\304\2464\304\201M\332hf\261UWj.\262\311;\274\256\010x\214\030-Z\333P\016fA\230\033A\241U\243(\260\335\211\207\314\007\n\007\367L\241\rl\251x\253e\241g\370)\250\302\270\320u\316c'3\341\005\215Tu\314\031\301\207\321l\350A\310;\235\240\256\275\2368W\014\266\034\230\226\241Y\313r\250\244\222X\241\235O\033\013/<zjY\300}7\243\010\270\230\305\365\264\225\204\3016\224\237IB7Y\262\005\355h\3311_Z\r\274\240EdH\324\242\265\360\004\025\226]e)\014\001]h\207\005$\002\3610\204\025\322\224\004\213u\210F3\360iG\030\265\341\264&o\236\324'\004\261\013\202X\207+\205\242\0100Y\022\332\270K\307J\302\334;!'64\347\030y\324\223Td\030DHd2\273$\241A\262O$_\214\207i\203\204\363\327a\301\024f]EJ\231bU\252\361\234\3437cD\262\266QS)\371ubD\244\265\024D\204i8\363 \033\002\2610\324V\323q\206\225\261i\\\316\t\360Z\017\311\2362d\334\253\005C\324\223o\357\216\375\252\311\303\002\206\243=\325?]FM\305EQ\245\001""\352\200\3245\341\246>\247\340\220\026&\033VP\316&T\013\315\276-\2011O\251\255\310\007\343\035A\032\254q\244\010Z:\264#\226\301ja\221\252\342\2570\227\004\316R\202O\217\233?\247\253\211\003\354\250\201\341\370D\227\214\340\375zC\306dF/\226\316\200\377`<\272\370PaU\n>\"\210]aQ.~\374~\247\254\3421VB\005IU\235\r\320\201D\302\\\"'\261\360\276]i$/p\016\264\366\331\245\262E\037\250\274HW-D\260\3370BBu\303\257\230i\030j\340\267S?\236X\340\261O'\013Q\243\036\336\267\266\301F \220\310\031\021K#\344\003\317c\263\231\316V\036\207\254\022U\250\344\335VD\236\022\257\374]\311\024\341B@\273&S|";
-    PyObject *data = __Pyx_DecompressString(cstring, 945, 2);
+    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (928 bytes) */
+const char* const cstring = "BZh91AY&SYxhg~\000\000\231\377\377\365\376\374Zv\257\3747\375\377\374\000\377\357\377`@@@@@@@@@\000@@@\000@\000P\003^P\350\001X`\224\212\021\246\215\030O\020\236\241\352\r\006\231\006A\240\003@h\365\000\364\200\311\206(p\320\000\r\006\203@`\200\032\032i\220\r\r\032d\000\304\r\000\rOD\324\364\250dh\000\032\000\000\000\006\200\000\000\000\000\001\303@\0004\032\r\001\202\000hi\246@44i\220\003\0204\000%4\202L\023&\247\244\304\324=&\02214\364\200\3104=@h\036\2404\r=G\352\233'\252G\235\216\237:?\337F\323\257\256C\020\226\350I\203ra\205_]\3223A\311\3152H\252@\315\021a8\031\310\240z\030\2411DZ\311M\032Y\246\315Bp\201nF\320#\301#n\345?\253\257\003\301n\205\337\220x\"\306X+\010jd\322\\*E\212\030\215Kw>[\035\177Vy\241\227o\246\037M\037`o!\237oB\327\230\305&1N\375\250\004\347=\n8\344\001\333 \344\256\273\006\364w23\035\342\224\216\206\032\003\335\257\316\303|\022-\335pd.\362\346\"\216\216G\002\002f4\243\215\020C\217\222\261V\252\344\312\303t\260\316\325\211\274\266Vh\343\372\347S\357z\224\310!\264k\313\353\032]\207\002\317\272\302\014A\235R\273t$\314\353D\207\345\236\3234\242\251<\324_MV`\024\002\311\006\"\020\221r\3771\235)+\273\302\300\213\3064\323R\342\377\242\016u \352\r\306\345CGX\253\262\346%P\033z\370\013X\345\326\334\"X\347\014}!u\346U\274\304t\305\315]\3775ji\021\322\341\304\016J\334\3661\\X\217\257\312a\207{\262\030W\257\023\212\n\361<V\224\205\004\222\272,\352W\260\270<#\317VM\217\213\315\204XH\266\212\210d$\t\262\301\362\250\243\177\253@Z\325\r\242\353h\230\332\346\021\242\004\rSU=!\022\210pq\"\340\2400\301\272n+\r\203e\n\324i-\014\213N,LyQ\2779\213\014\271\302\247\376<\025\330\030\261\244)\201\025\021[[\016\030\301gYM\204iqi\035\220\223\234\370\3125\363N\r@\310+\021\001\220\312\315\020\212\211\264\226\210\333y\030w\002\003l\340r\001\243I}\311\256\274l\331\242v`c\315\306r.FM\\\373\035\375\014\326+\313`\304\332\302F\256\350\345D-\301\352\320=/\233\177K\304,\2438KW\014\312\233\330\276\213\311#'7\367\275\263\301\2018\007 QF\215\006\300!!\224`HJ`\003\024\236\227\000Z""\006\240\317 \n\240~:C\204ml\033\017\016\356\350\331\254\355r\366\302[\304m&\224\346\325\225\347#\203\023\247\021R\226-\027*\031\215\2118$EQ$\217j\313\216\370\330@\362R [\364Do\244\346\366\324\013\317\",\276U;\303\373\001&\243\350,R\220\203\220P\203\253\024\211_\336\367a\260X!\230\203\nF\324\270\214\272\014(G\312\343E\3278\257\216\256|\362\3471\022\224Z\305\035\221\251\332\245\302y@\244\322\231\276`dd\264\315I\245\021\371x*\344fYns\016c\310}phN\255Oq\302\010Af$\022\020\"\364L+\304b\350\250\252PF(\361\n]\302\006B\352\025\"K\377\213\271\"\234(H<43\277\000";
+    PyObject *data = __Pyx_DecompressString(cstring, 928, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (804 bytes) */
-const char* const cstring = "x\332\275TKo\0231\020&(\202\226\246\"\224\036\020\010i\203\212\020\202\024\266\364\002\342\325\264jy\265\020\232\273\343\356:[\253\033\357fmW\311\255\307\034\367\350\243\217{\354\261G~B\2179\346'\360\023\030\357\346\265m\2218qX\373\3637\237\307\343\231\361~\370\314\216\261O]+\304\021n\023A\"n\265\202\310j\354\357o\326v1\254)\366\307\032.\200\260D\204\031\247\202\006\354\215\265\t\224G\336=\267\032\031\250:\001kQ\257\321\013I\023\315`\213\037\006\322w\255\003b5g5\026mY\036=&\314\245\034\037\370\20403zN\365\020G.a\224y\315)\3129\231\241\307>(\317\266\273\3256em\334m\216\246\334\27617\336\304\002\313%-,}a!\024\021W:\004!\313\225p\317\300b\001\253\212\210\036C\016\300\352PF\005B<r^\244\351\311\306\325\260\327}\313A\305<\036\310\310!\357\2532l\"\370r\347\232\365\370\314m{{\r\241\037\275.|[\324\021h\217t\305O\322\312%=\267X\235\304\346\364\304a\300\020\272h\346D\244\345\371\213\300\t\332m*\366\215\"o\360\010\260\021\341\374\022\335\300\314#L\344y\236\3121e\227\350\206\001\231\r\363\036sh\000\207F\201\024\224\021~@\004v|@\2102\004\032\207\034`\347h&\250\231f\231\"\204Z\2229\010Mb\234F\225\222\331\205\321\244\025\020\345hr&\025\244\315\217^\036\331G\220\3536D\005cZ{\230\003W\372\260\021!\006=\217P\030\2040@9F\016\r<\026\246\225\214\246#\261\237\351\";Z\213^M\333\344RQ&\004\351\232\212\370\255I\272\362\tJ\3135:\034\320\250\001g\212\210\256((\364\335j\326q\351\3103\277\351\370\023t\360\376\020\022\204\203\033\331\222\036\016\345!4\241\014\341\351J\302g\036\335\364\351\234l\014\347J\375\257\261P\366\000\3007UT\0339\360%vU\305\200=\265\242\360\325\232\t\370\024o\251\202\001\273jY\325\007\263\236'\340\273ZW\035\000\347\245\207\252\241\357\030j'^\217\r\325\337\216+'\033\231\310\036\273.\030\346v_\304\366y\361\343\257\302\357\033\327\346\027\377[\300\303\271\245\370\211Z\312B^\350\257\367;\361<,\355A\251\034/\200\271\224\006\006Nn\351Gz+)&\233\2118\265\007\345\345xOW\006\027\254\205A\371.\334T\250W\020\327\362=\265\250\353C\230n\353\316Hi\366\355\300YR\327\264\233T\222\327\247""\265S\367\254\222m\223j\023\202\310\266\231\351&\254r\206\363{O\223\345\244>,\225\317\313\217u]c\023]7\216\324\235L\327\323\327\365\212NO^\320\353\2723\216\3066LIo\014\377I\225\205\372Z\325\224\0137\204\200\277*\241\355)\213\323e\312wt\021\274B\246\026\241\320\367\223\265\244q\372\340\254v\206O\n\203\342\255\376\263\270>\372\023We\370\007\271K\201(";
-    PyObject *data = __Pyx_DecompressString(cstring, 804, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (797 bytes) */
+const char* const cstring = "x\332\275T=s\3230\030&\\\216\2176=\002t\340\340\270s88\216\203\024\\\272\224\343\253i\257|\027B\263+\252\255\270\272:\262cI\275d\353\230\321\243F\215\036;v\344't\314\230\237\300O\340\225\2258\t001Xz\336\347\375\324\373J~\363\201\035\343\220\372N\214\023\334%\202$\334\351D\211\323\332\337\337n|\301 S\034Nm\270\000\302\021\tf\234\n\032\261\027\3166P\001y\365\304iYP\367\"\326\241Ak\020\2236\232\303\016?\214d\350;\007\304i\317\3338\264\343\004\364\2300\237r|\020\022\302\314\032x\365C\234\370\204Q\026\264gh!\310\034=\215A\271u\367\353]\312\272\270\337\236l\013~Sn\352\304\"\307'\035,C\341 \224\020_z\004!\307\227p\316\310a\021\253\213\204\036C\017@\353QF\005B<\361\236\346\355\261\353Z<\350\277\344`\305\002\036\311\304#\257\3532n#\370\026\362\032y\232s\327\335]G\350\333\240\017\337\016\365\004\332#}\361\235t\362x6hQ\2137\020\207\021ChJs\"\3621\374\246\360\242n\227\212}\243\261D@@J\010\347\205\330\302, LX\231\347jLY!\266\314\244-\207\371\200y4\202\240I$\005e\204\037\020\201\275\020\020\242\014\201\215G\016\260w4\227tn\3303\204PG2\017\241\242\226Y\0259i\017\202\212Q\"\312Q\221\223\n\322\345G\317\216\334#\350U\027\252\2025\237\035\354\221/CpD\210\301\235E(\216bX\240\235\223\200\006\036\013s\025\214MO\342\320\332%n\262\236<\237\215\371\217&\027\004\351\233N\207\235\242M\213\r\312\3070I\016hr\201\346\206\203\3762(\2707k\266\333\371\312m\334|\375\016v\360~\020\022\204C\030\331\221\001\216\345!\\\"\031\303\323\223\204\317=\232\331\325?\331\032_\251\014?\245B\271#\000\237UYm-\200\217\251\257j\006\354\251\373\n\377\335\246\000\357\323\035U2\340\213ZU\315\321|\344\002|U\033\252\007\340\274rW\265\364uC\275K7RC\rw\323\332\311\2265r\247\241K\206\2716\024\251{^~\373\243\364\363\322\205\253+\377\255\340\361\225\033\351Cu\303\226\274<\334\030\366\322\253 \272\243J5]\006u%/\014\202,\351{z'+g\333\2318uG\325\325tO\327F\277iK\243\352M8\251P\317\241\256\325[jE7\307\260]\323\275\211\245\361{\007\271\244nh?\253e\233\247\215S\377\254f\335\244\332\206\"\254\233\331.\203\264\2408\277\365([\315\232""\343J\365\274\372@756\325\365\323D]\267v\003}Q\337\327y\346e\275\241{\323j\\\303T\364\326\370\237\254l\251\233\252\241|8!\024\374I\t\355\316X\234\2139\337\323e\210\n\235Z\201A\337\316\326\263\326\351\235\263\306\031>)\215\312K\303\307is\362'\255\313\370\0278Hg\260";
+    PyObject *data = __Pyx_DecompressString(cstring, 797, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (1668 bytes) */
-const char* const bytes = "?Invalid parameters for TSSCBMaterialInvalid state transition: Cstage=, Tstage=-configType`_configType` should be `-configType` if givendisableenablegc-hardening`hardening` should be `-hardening` if givenisenabled-minmax`minmax` should be `-minmax` if givenno default __reduce__ due to non-trivial __cinit__src/TSSCB/TSSCB.pyx<stringsource>-up`_up` should be `-up` if givenF1F2__Pyx_PyDict_NextRefTSSCBMaterialTSSCBMaterial.__reduce_cython__TSSCBMaterial.__setstate_cython__TSSCBMaterial.commitStateTSSCBMaterial.getStressTSSCBMaterial.getTangentTSSCBMaterial.setStrainTSSCBMaterial.setTrialStrainasyncio.coroutinesbetacline_in_tracebackcommitState_configTypeconfigType__func__getStressgetTangent__getstate__hardening_is_coroutineitemsk0k1k2__main__minmax__module____name__pop__pyx_state__pyx_vtable____qualname__r1r2r3__reduce____reduce_cython____reduce_ex__selfsetStrainsetTrialStrain__set_name__setdefault__setstate____setstate_cython__src.TSSCB.TSSCBstrainstrainRatetag__test__ufugapuh_upupvalues-configType-hardening\200A\340\010\014\210K\220t\2301\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210J\220d\230!\330\010\014\210N\230$\230a\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210H\220D\230\001\330\010\014\210M\230\024\230Q\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\330\010\014\210O\2304\230q\330\010\014\320\014\035\230T\240\021\330\010\014\210G\2204\220q\330\010\014\210F\220!\200A\330\010\014\210O\2301\230A\330\010\014\210L\230\001\200A\330\010\017\210t\2201\320\004@\300\001\360\006\000\t\r\210K\220t\2301\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210J\220d\230!\330\010\014\210N\230$\230a\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210H\220D\230\001\330\010\014\210M\230\024\230Q\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\340\010\022\220'\230\022\2304\230q\330\010\013\2104\210q\220\t""\230\022\2301\330\014\020\220\013\2301\340\014\017\210t\2201\220D\230\n\240\"\240D\250\004\250C\250t\2601\330\020\024\220N\240!\330\014\017\210t\2201\220D\230\n\240\"\240D\250\001\330\020\023\2204\220t\2303\230a\330\024\030\230\r\240Q\340\024\030\230\017\240q\330\014\017\210t\2201\330\020\024\220G\2304\230u\240B\240d\250!\2509\260B\260d\270!\330\020\023\2204\220u\230C\230q\330\024\030\230\r\240Q\330\024\030\230\007\230q\330\020\023\2204\220u\230C\230q\330\024\030\320\030)\250\024\250Q\340\014\020\320\020%\240Q\240a\340\014\017\210x\220r\230\021\330\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\330\020\023\2204\220t\2301\330\024\030\230\014\240A\340\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\330\020\023\2204\220t\2301\330\024\030\230\014\240A\330\014\017\210t\2209\230B\230d\240!\330\020\024\220K\230t\2401\330\014\017\210t\2209\230B\230a\230t\2401\330\020\024\220K\230q\240\004\240A\340\014\020\220\r\230T\240\032\2502\250T\260\033\270B\270a\200\001\330\004\n\210+\220Q-minmax-up";
+    #else /* compression: none (1604 bytes) */
+const char* const bytes = "?Invalid parameters for TSSCBMaterialInvalid state transition: Cstage=, Tstage=-configType`_configType` should be `-configType` if givendisableenablegc-hardening`hardening` should be `-hardening` if givenisenabled-minmax`minmax` should be `-minmax` if givenno default __reduce__ due to non-trivial __cinit__src/TSSCB/TSSCB.pyx<stringsource>-up`_up` should be `-up` if givenF1F2__Pyx_PyDict_NextRefTSSCBTSSCB.__reduce_cython__TSSCB.__setstate_cython__TSSCB.commitStateTSSCB.getStressTSSCB.getTangentTSSCB.setStrainTSSCB.setTrialStrainasyncio.coroutinesbetacline_in_tracebackcommitState_configTypeconfigType__func__getStressgetTangent__getstate__hardening_is_coroutineitemsk0k1k2__main__minmax__module____name__pop__pyx_state__pyx_vtable____qualname__r1r2r3__reduce____reduce_cython____reduce_ex__selfsetStrainsetTrialStrain__set_name__setdefault__setstate____setstate_cython__src.TSSCB.TSSCBstrainstrainRatetag__test__ufugapuh_upupvalues-configType-hardening\200A\340\010\014\210K\220t\2301\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210J\220d\230!\330\010\014\210N\230$\230a\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210H\220D\230\001\330\010\014\210M\230\024\230Q\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\330\010\014\210O\2304\230q\330\010\014\320\014\035\230T\240\021\330\010\014\210G\2204\220q\330\010\014\210F\220!\200A\330\010\014\210O\2301\230A\330\010\014\210L\230\001\200A\330\010\017\210t\2201\320\004@\300\001\360\006\000\t\r\210K\220t\2301\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210J\220d\230!\330\010\014\210N\230$\230a\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210H\220D\230\001\330\010\014\210M\230\024\230Q\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\340\010\022\220'\230\022\2304\230q\330\010\013\2104\210q\220\t\230\022\2301\330\014\020\220\013\2301\340\014\017\210t\2201\220D""\230\n\240\"\240D\250\004\250C\250t\2601\330\020\024\220N\240!\330\014\017\210t\2201\220D\230\n\240\"\240D\250\001\330\020\023\2204\220t\2303\230a\330\024\030\230\r\240Q\340\024\030\230\017\240q\330\014\017\210t\2201\330\020\024\220G\2304\230u\240B\240d\250!\2509\260B\260d\270!\330\020\023\2204\220u\230C\230q\330\024\030\230\r\240Q\330\024\030\230\007\230q\330\020\023\2204\220u\230C\230q\330\024\030\320\030)\250\024\250Q\340\014\020\320\020%\240Q\240a\340\014\017\210x\220r\230\021\330\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\330\020\023\2204\220t\2301\330\024\030\230\014\240A\340\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\330\020\023\2204\220t\2301\330\024\030\230\014\240A\330\014\017\210t\2209\230B\230d\240!\330\020\024\220K\230t\2401\330\014\017\210t\2209\230B\230a\230t\2401\330\020\024\220K\230q\240\004\240A\340\014\020\220\r\230T\240\032\2502\250T\260\033\270B\270a\200\001\330\004\n\210+\220Q-minmax-up";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
