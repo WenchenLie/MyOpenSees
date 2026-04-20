@@ -17,8 +17,8 @@ class UniaxialMaterial(ABC):
     @abstractmethod
     def commitState(self) -> None: ...
 
-    def setStrain(self, strain: float):
-        self.setTrialStrain(strain)
+    def setStrain(self, strain: float, strainRate: float=0):
+        self.setTrialStrain(strain, strainRate)
         self.commitState()
 
     @classmethod
