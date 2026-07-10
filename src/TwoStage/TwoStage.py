@@ -3,7 +3,7 @@ from ..UniaxialMaterial import UniaxialMaterial
 
 
 class TwoStage(UniaxialMaterial):
-    
+
     def __init__(self,
             tag: int,
             F1: float,

@@ -165,3 +165,9 @@ main_test.py
 test/
 setup.py
 compile.bat
+temp/
+bin/
+temp*/pybuilder
+Figures.pptx
+temp*.py
+
