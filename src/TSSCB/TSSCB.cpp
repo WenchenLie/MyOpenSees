@@ -279,13 +279,15 @@ int TSSCB::setTrialStrain (double strain, double strainRate)
     Tstress3 = Cstress3;
     Ttangent = Ctangent;
     Tstage = Cstage;
-    Tstage = Cstage;
     Thardening = Chardening;
     Tstress1 = Cstress1;
     Tstress2 = Cstress2;
     Tstress4 = Cstress4;
     TCDD = CCDD;
     Tfracture = Cfracture;
+    Tfracturing = Cfracturing;
+    TfractureFore = CfractureFore;
+    Trp = Crp;
     Tplate1 = Cplate1;
     Tplate2 = Cplate2;
     double dStrain = strain - Cstrain;
@@ -334,8 +336,7 @@ int TSSCB::setTrialStrain (double strain, double strainRate)
         if (Tplate2 > -ugap) {
             Tplate2 = -ugap;
         }
-        // Calculate tangent stiffness
-        Ttangent = (Tstress4 - Cstress4) / dStrain;
+        // determineTrialState calculates the derivative at the trial strain.
    }
    return 0;
 }
@@ -352,6 +353,13 @@ void TSSCB::determineTrialState (double dStrain)
     double uy;
     double F_bound;
     double Fd;
+    double tangent1 = 0.0;
+    double tangent2 = 0.0;
+    double tangent3 = 0.0;
+    double tangentF1 = 0.0;
+    double direction;
+    double dCDD;
+    double dFd;
 
     // determine working stage
     if (-ugap <= Tstrain && Tstrain <= ugap) {
@@ -369,19 +377,22 @@ void TSSCB::determineTrialState (double dStrain)
             uy = F1 / k0;
             if (Tplate2 + uy <= Tstrain && Tstrain <= Tplate1 - uy) {
                 Tstress4 = 0.0;
+                Ttangent = 0.0;
             }
             else {
-                Tstress4 = frictionModel(Cstress4, dStrain);
+                Tstress4 = frictionModel(Cstress4, dStrain, Ttangent);
                 if (dStrain < 0 && Tstrain > 0 && Tstress4 <= 0) {
                     Tstress4 = 0.0;
+                    Ttangent = 0.0;
                 }
                 else if (dStrain > 0 && Tstrain < 0 && Tstress4 >= 0) {
                     Tstress4 = 0.0;
+                    Ttangent = 0.0;
                 }
             }
         }
         else if (configType == 2) {
-            Tstress4 = frictionModel(Cstress4, dStrain);
+            Tstress4 = frictionModel(Cstress4, dStrain, Ttangent);
         }
         return;
     }
@@ -389,18 +400,21 @@ void TSSCB::determineTrialState (double dStrain)
         // SMA cable fracture starts
         if (Cstress4 >= 0) {
             Tstress4 = TfractureFore - (TfractureFore - F1) * Trp;
+            Ttangent = -(TfractureFore - F1) * (dStrain > 0 ? 1.0 : -1.0) / up;
         }
         else {
             Tstress4 = TfractureFore + (-F1 - TfractureFore) * Trp;
+            Ttangent = (-F1 - TfractureFore) * (dStrain > 0 ? 1.0 : -1.0) / up;
         }
         return;
     }
     // updata Tstress
     if (Cstage == 1 && Tstage == 1) {
         // stage-1 -> stage-1
-        Tstress1 = frictionModel(Cstress3, dStrain);
+        Tstress1 = frictionModel(Cstress3, dStrain, tangent1);
         Tstress2 = Tstress1;
         Tstress3 = Tstress1;
+        tangent3 = tangent1;
     }
     else if (Cstage == 1 && Tstage == 2) {
         // stage-1 -> stage-2
@@ -418,11 +432,19 @@ void TSSCB::determineTrialState (double dStrain)
             TCDD = CCDD + fabs(du2) / (uh - ugap);
         }
         F1_ = frictionModel(Cstress1, du1);
-        F2_ = SCModel(usc0, F1_, du2);
+        F2_ = SCModel(usc0, F1_, du2, tangent1);
         Tstress1 = F2_;
         // Apply degradation
         Tstress2 = Tstress1;
+        tangent2 = tangent1;
         Fd = (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
+        if (Thardening) {
+            direction = Tstrain > 0 ? 1.0 : -1.0;
+            dCDD = (du2 > 0 ? 1.0 : -1.0) / (uh - ugap);
+            dFd = (F2 - F1 / 2) * (dCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap))
+                - TCDD * r2 * direction / (uh - ugap));
+            tangent2 -= direction * dFd;
+        }
         if (Thardening && Tstrain > 0) {
             Tstress2 = Tstress1 - Fd;
         }
@@ -431,11 +453,14 @@ void TSSCB::determineTrialState (double dStrain)
         }
         // Apply modifiction
         Tstress3 = Tstress2;
+        tangent3 = tangent2;
         if (dStrain > 0 && Tstress2 < F1) {
             Tstress3 = F1;
+            tangent3 = 0.0;
         }
         else if (dStrain < 0 && Tstress2 > -F1) {
             Tstress3 = -F1;
+            tangent3 = 0.0;
         }
     }
     else if (Cstage == 2 && Tstage == 2) {
@@ -449,10 +474,18 @@ void TSSCB::determineTrialState (double dStrain)
         else {
             usc0 = Cstrain + ua;
         }
-        Tstress1 = SCModel(usc0, Cstress1, dStrain);
+        Tstress1 = SCModel(usc0, Cstress1, dStrain, tangent1);
         // Apply degradation
         Tstress2 = Tstress1;
+        tangent2 = tangent1;
         Fd = (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
+        if (Thardening && Tstrain != 0.0) {
+            direction = Tstrain > 0 ? 1.0 : -1.0;
+            dCDD = (dStrain > 0 ? 1.0 : -1.0) / (uh - ugap);
+            dFd = (F2 - F1 / 2) * (dCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap))
+                - TCDD * r2 * direction / (uh - ugap));
+            tangent2 -= direction * dFd;
+        }
         if (Thardening && Tstrain > 0) {
             Tstress2 = Tstress1 - Fd;
         }
@@ -467,29 +500,36 @@ void TSSCB::determineTrialState (double dStrain)
             F_bound = F1;  // All friction pads are sliding at stage-2
         }
         Tstress3 = Tstress2;
+        tangent3 = tangent2;
         if (dStrain > 0 && Tstrain > 0 && Tstress2 < F1 && ugap > 0 && Cstress3 == F1) {
             Tstress3 = F1;
+            tangent3 = 0.0;
         }
         else if (dStrain < 0 && Tstrain < 0 && Tstress2 > -F1 && ugap > 0 && Cstress3 == -F1) {
             Tstress3 = -F1;
+            tangent3 = 0.0;
         }
         else if (Tstrain > 0 && Tstress2 < -F_bound) {
             Tstress3 = -F_bound;  // Prevent positive compressive stress in SMA cables
+            tangent3 = 0.0;
         }
         else if (Tstrain < 0 && Tstress2 > F_bound) {
             Tstress3 = F_bound;  // Prevent negative compressive stress in SMA cables;
+            tangent3 = 0.0;
         }
         if (dStrain > 0 && Tstress3 <= Cstress3) {
             Tstress3 = Cstress3;
+            tangent3 = 0.0;
         }
         else if (dStrain < 0 && Tstress3 >= Cstress3) {
             Tstress3 = Cstress3;
+            tangent3 = 0.0;
         }
         if (configType == 1 && Tstrain >= 0 && dStrain > 0 && Cstress3 == 0 && Thardening && Tstress2 < F1) {
-            Tstress3 = frictionModel(Cstress3, dStrain);
+            Tstress3 = frictionModel(Cstress3, dStrain, tangent3);
         }
         else if (configType == 1 && Tstrain <= 0 && dStrain < 0 && Cstress3 == 0 && Thardening && Tstress2 > F1) {
-            Tstress3 = frictionModel(Cstress3, dStrain);
+            Tstress3 = frictionModel(Cstress3, dStrain, tangent3);
         }
     }
     else if (Cstage == 2 && Tstage == 1) {
@@ -510,11 +550,14 @@ void TSSCB::determineTrialState (double dStrain)
         F1_ = SCModel(usc0, Cstress1, du1);
         // Apply degradation
         F1_ideal1 = F1_;
+        tangentF1 = 0.0;
         if (Thardening && Tstrain > 0) {
             F1_ideal1 = F1_ - (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
+            tangentF1 = (F2 - F1 / 2) * TCDD * r2 / (uh - ugap);
         }
         else if (Thardening && Tstrain < 0) {
             F1_ideal1 = F1_ + (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
+            tangentF1 = (F2 - F1 / 2) * TCDD * r2 / (uh - ugap);
         }
         // Apply modifiction
         if (configType == 1) {
@@ -526,20 +569,25 @@ void TSSCB::determineTrialState (double dStrain)
         F1_ = F1_ideal1;
         if (dStrain > 0 && Tstrain > 0 && F1_ideal1 < F1 && ugap > 0 && Cstress3 == F1) {
             F1_ = F1;
+            tangentF1 = 0.0;
         }
         else if (dStrain < 0 && Tstrain < 0 && F1_ideal1 > -F1 && ugap > 0 && Cstress3 == -F1) {
             F1_ = -F1;
+            tangentF1 = 0.0;
         }
         else if (Tstrain > 0 && F1_ideal1 < -F_bound) {
             F1_ = -F_bound;  // Prevent positive compressive stress in SMA cables
+            tangentF1 = 0.0;
         }
         else if (Tstrain < 0 && F1_ideal1 > F_bound) {
             F1_ = F_bound;  // Prevent negative compressive stress in SMA cables
+            tangentF1 = 0.0;
         }
-        F2_ = frictionModel(F1_, du2);
+        F2_ = frictionModel(F1_, du2, tangent1, tangentF1);
         Tstress1 = F2_;
         Tstress2 = Tstress1;
         Tstress3 = Tstress1;
+        tangent3 = tangent1;
     }
     double F_hardening = fmax(fabs(Tstrain) - uh, 0) * k2 * r3;  // Strength enhancement due to hardening
     Tstress4 = Tstress3;
@@ -549,11 +597,19 @@ void TSSCB::determineTrialState (double dStrain)
     else {
         Tstress4 -= F_hardening;
     }
+    Ttangent = tangent3 + (fabs(Tstrain) > uh ? k2 * r3 : 0.0);
 }
 
 double TSSCB::frictionModel(double F0, double du)
 {
+    double tangent;
+    return frictionModel(F0, du, tangent);
+}
+
+double TSSCB::frictionModel(double F0, double du, double &tangent, double dF0)
+{
     if (du == 0.0) {
+        tangent = dF0;
         return F0;
     }
     double F_;
@@ -561,15 +617,24 @@ double TSSCB::frictionModel(double F0, double du)
     F_ = F0 + du * k0;
     if (F_ > F1) {
         F = F1;
+        tangent = 0.0;
     } else if (F_ < -F1) {
         F = -F1;
+        tangent = 0.0;
     } else {
         F = F_;
+        tangent = dF0 + k0;
     };
     return F;
 }
 
 double TSSCB::SCModel(double u0, double F0, double du)
+{
+    double tangent;
+    return SCModel(u0, F0, du, tangent);
+}
+
+double TSSCB::SCModel(double u0, double F0, double du, double &tangent)
 {
     double F;
     double u;
@@ -578,9 +643,11 @@ double TSSCB::SCModel(double u0, double F0, double du)
 
     if (du == 0) {
         F = F0;
+        tangent = 0.0;
         return F;
     };
     if (Tfracture) {
+        tangent = 0.0;
         return 0.0;
     }
     u = u0 + du;
@@ -589,32 +656,41 @@ double TSSCB::SCModel(double u0, double F0, double du)
     if (du > 0) {
         if (u < -F2 * (1 - beta) / k1 && F_ > k2 * u - F2 * (1 - beta) * (1 - k2 / k1)) {
             F = k2 * u - F2 * (1 - beta) * (1 - k2 / k1);
+            tangent = k2;
         }
         else if (-F2 * (1 - beta) / k1 <= u && u <= uy && F_ > k1 * u) {
             F = k1 * u;
+            tangent = k1;
         }
         else if (u > F2 * (1 - beta) / k1 && F_ > k2 * u + F2 - k2 * uy) {
             F = k2 * u + F2 - k2 * uy;
+            tangent = k2;
         }
         else {
             F = F_;
+            tangent = k1;
         }
     }
     else {
         if (u > F2 * (1 - beta) / k1 && F_ < k2 * u + F2 * (1 - beta) * (1 - k2 / k1)) {
             F = k2 * u + F2 * (1 - beta) * (1 - k2 / k1);
+            tangent = k2;
         }
         else if (-uy <= u && u <= F2 * (1 - beta) / k1 && F_ < k1 * u) {
             F = k1 * u;
+            tangent = k1;
         }
         else if (u < -F2 * (1 - beta) / k1 && F_ < k2 * u - (F2 - k2 * uy)) {
             F = k2 * u - (F2 - k2 * uy);
+            tangent = k2;
         }
         else {
             F = F_;
+            tangent = k1;
         }
     }
     if (Tfracturing) {
+        tangent = tangent * Trp + F * (du > 0 ? 1.0 : -1.0) / up;
         return F * Trp;
     }
     else {
@@ -676,7 +752,6 @@ int TSSCB::revertToLastCommit ()
     Tstress3 = Cstress3;
     Ttangent = Ctangent;
     Tstage = Cstage;
-    Tstage = Cstage;
     Thardening = Chardening;
     Tstress1 = Cstress1;
     Tstress2 = Cstress2;
@@ -685,6 +760,9 @@ int TSSCB::revertToLastCommit ()
     Tfracture = Cfracture;
     Tplate1 = Cplate1;
     Tplate2 = Cplate2;
+    Tfracturing = Cfracturing;
+    TfractureFore = CfractureFore;
+    Trp = Crp;
     return 0;
 }
 
@@ -722,6 +800,12 @@ int TSSCB::revertToStart ()
    Tplate1 = ugap;
    Cplate2 = -ugap;  // Position of right end plate
    Tplate2 = -ugap;
+   Cfracturing = false;
+   Tfracturing = false;
+   CfractureFore = 0.0;
+   TfractureFore = 0.0;
+   Crp = 0.0;
+   Trp = 0.0;
    return 0;
 }
 

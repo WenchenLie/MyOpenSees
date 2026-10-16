@@ -105,6 +105,9 @@ cdef class TSSCB:
         self.Tstress4 = self.Cstress4
         self.TCDD = self.CCDD
         self.Tfracture = self.Cfracture
+        self.Tfracturing = self.Cfracturing
+        self.TfractureFore = self.CfractureFore
+        self.Trp = self.Crp
         self.Tplate1 = self.Cplate1
         self.Tplate2 = self.Cplate2
         # 计算应变增量
@@ -143,12 +146,11 @@ cdef class TSSCB:
                 self.Tplate1 = self.ugap
             if self.Tplate2 > -self.ugap:
                 self.Tplate2 = -self.ugap
-            # 更新切线刚度
-            self.Ttangent = (self.Tstress4 - self.Cstress4) / dStrain
-        else:
-            pass  # 无变化则保持状态
+            # _determineTrialState 已计算试验应变处的切线刚度
 
     cdef void _determineTrialState(self, double dStrain):
+        cdef double tangent1 = 0.0, tangent2 = 0.0, tangent3 = 0.0
+        cdef double tangentF1 = 0.0, direction, dCDD, dFd
         # 根据当前试验应变确定阶段和应力
         if -self.ugap <= self.Tstrain <= self.ugap:
             self.Tstage = 1
@@ -162,28 +164,36 @@ cdef class TSSCB:
                 uy = self.F1 / self.k0
                 if (self.Tplate2 + uy <= self.Tstrain <= self.Tplate1 - uy):
                     self.Tstress4 = 0.0
+                    self.Ttangent = 0.0
                 else:
-                    self.Tstress4 = self._frictionModel(self.Cstress4, dStrain, 0.5)
+                    self.Tstress4 = self._frictionModel(self.Cstress4, dStrain, 0.5, &tangent3)
+                    self.Ttangent = tangent3
                     if dStrain < 0 and self.Tstrain > 0 and self.Tstress4 <= 0:
                         self.Tstress4 = 0.0
+                        self.Ttangent = 0.0
                     elif dStrain > 0 and self.Tstrain < 0 and self.Tstress4 >= 0:
                         self.Tstress4 = 0.0
+                        self.Ttangent = 0.0
             else:
-                self.Tstress4 = self._frictionModel(self.Cstress4, dStrain)
+                self.Tstress4 = self._frictionModel(self.Cstress4, dStrain, 1.0, &tangent3)
+                self.Ttangent = tangent3
             return
         # 如果正在断裂过程中
         if self.Tfracturing:
             if self.Cstress4 >= 0.0:
                 self.Tstress4 = self.TfractureFore - (self.TfractureFore - self.F1) * self.Trp
+                self.Ttangent = -(self.TfractureFore - self.F1) * (1.0 if dStrain > 0 else -1.0) / self.up
             else:
                 self.Tstress4 = self.TfractureFore + (-self.F1 - self.TfractureFore) * self.Trp
+                self.Ttangent = (-self.F1 - self.TfractureFore) * (1.0 if dStrain > 0 else -1.0) / self.up
             return
         # 各种状态转移逻辑
         if self.Cstage == 1 and self.Tstage == 1:
             # 1->1 级：摩擦模型
-            self.Tstress1 = self._frictionModel(self.Cstress3, dStrain)
+            self.Tstress1 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent1)
             self.Tstress2 = self.Tstress1
             self.Tstress3 = self.Tstress1
+            tangent3 = tangent1
         elif self.Cstage == 1 and self.Tstage == 2:
             # 1->2 级：进入第二阶段
             if dStrain > 0:
@@ -197,19 +207,30 @@ cdef class TSSCB:
             if self.Thardening:
                 self.TCDD = self.CCDD + fabs(du2) / (self.uh - self.ugap)
             F1_ = self._frictionModel(self.Cstress1, du1)
-            F2_ = self._SCModel(usc0, F1_, du2)
+            F2_ = self._SCModel(usc0, F1_, du2, &tangent1)
             self.Tstress1 = F2_
             self.Tstress2 = self.Tstress1
+            tangent2 = tangent1
             Fd = (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+            if self.Thardening:
+                direction = 1.0 if self.Tstrain > 0 else -1.0
+                dCDD = (1.0 if du2 > 0 else -1.0) / (self.uh - self.ugap)
+                dFd = (self.F2 - self.F1 / 2.0) * (
+                    dCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+                    - self.TCDD * self.r2 * direction / (self.uh - self.ugap))
+                tangent2 -= direction * dFd
             if self.Thardening and self.Tstrain > 0:
                 self.Tstress2 = self.Tstress1 - Fd
             elif self.Thardening and self.Tstrain < 0:
                 self.Tstress2 = self.Tstress1 + Fd
             self.Tstress3 = self.Tstress2
+            tangent3 = tangent2
             if dStrain > 0 and self.Tstress2 < self.F1:
                 self.Tstress3 = self.F1
+                tangent3 = 0.0
             elif dStrain < 0 and self.Tstress2 > -self.F1:
                 self.Tstress3 = -self.F1
+                tangent3 = 0.0
         elif self.Cstage == 2 and self.Tstage == 2:
             # 2->2 级：双阶自复位
             if self.Thardening:
@@ -218,9 +239,17 @@ cdef class TSSCB:
                 usc0 = self.Cstrain - self.ua
             else:
                 usc0 = self.Cstrain + self.ua
-            self.Tstress1 = self._SCModel(usc0, self.Cstress1, dStrain)
+            self.Tstress1 = self._SCModel(usc0, self.Cstress1, dStrain, &tangent1)
             self.Tstress2 = self.Tstress1
+            tangent2 = tangent1
             Fd = (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+            if self.Thardening and self.Tstrain != 0.0:
+                direction = 1.0 if self.Tstrain > 0 else -1.0
+                dCDD = (1.0 if dStrain > 0 else -1.0) / (self.uh - self.ugap)
+                dFd = (self.F2 - self.F1 / 2.0) * (
+                    dCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+                    - self.TCDD * self.r2 * direction / (self.uh - self.ugap))
+                tangent2 -= direction * dFd
             if self.Thardening and self.Tstrain > 0:
                 self.Tstress2 = self.Tstress1 - Fd
             elif self.Thardening and self.Tstrain < 0:
@@ -230,22 +259,29 @@ cdef class TSSCB:
             else:
                 F_bound = self.F1
             self.Tstress3 = self.Tstress2
+            tangent3 = tangent2
             if dStrain > 0 and self.Tstrain > 0 and self.Tstress2 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:
                 self.Tstress3 = self.F1
+                tangent3 = 0.0
             elif dStrain < 0 and self.Tstrain < 0 and self.Tstress2 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:
                 self.Tstress3 = -self.F1
+                tangent3 = 0.0
             elif self.Tstrain > 0 and self.Tstress2 < -F_bound:
                 self.Tstress3 = -F_bound
+                tangent3 = 0.0
             elif self.Tstrain < 0 and self.Tstress2 > F_bound:
                 self.Tstress3 = F_bound
+                tangent3 = 0.0
             if dStrain > 0 and self.Tstress3 <= self.Cstress3:
                 self.Tstress3 = self.Cstress4
+                tangent3 = 0.0
             elif dStrain < 0 and self.Tstress3 >= self.Cstress3:
                 self.Tstress3 = self.Cstress4
+                tangent3 = 0.0
             if self.configType == 1 and self.Tstrain >= 0 and dStrain > 0 and self.Thardening and self.Tstress2 < self.F1:
-                self.Tstress3 = self._frictionModel(self.Cstress3, dStrain)
+                self.Tstress3 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent3)
             elif self.configType == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Thardening and self.Tstress2 > self.F1:
-                self.Tstress3 = self._frictionModel(self.Cstress3, dStrain)
+                self.Tstress3 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent3)
         elif self.Cstage == 2 and self.Tstage == 1:
             # 2->1 级：从第二阶段返回第一阶段
             if dStrain < 0:
@@ -260,10 +296,13 @@ cdef class TSSCB:
                 self.TCDD = self.CCDD + fabs(du1) / (self.uh - self.ugap)
             F1_ = self._SCModel(usc0, self.Cstress1, du1)
             F1_ideal1 = F1_
+            tangentF1 = 0.0
             if self.Thardening and self.Tstrain > 0:
                 F1_ideal1 = F1_ - (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+                tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)
             elif self.Thardening and self.Tstrain < 0:
                 F1_ideal1 = F1_ + (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+                tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)
             if self.configType == 1:
                 F_bound = 0.0
             else:
@@ -271,16 +310,21 @@ cdef class TSSCB:
             F1_ = F1_ideal1
             if dStrain > 0 and self.Tstrain > 0 and F1_ideal1 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:
                 F1_ = self.F1
+                tangentF1 = 0.0
             elif dStrain < 0 and self.Tstrain < 0 and F1_ideal1 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:
                 F1_ = -self.F1
+                tangentF1 = 0.0
             elif self.Tstrain > 0 and F1_ideal1 < -F_bound:
                 F1_ = -F_bound
+                tangentF1 = 0.0
             elif self.Tstrain < 0 and F1_ideal1 > F_bound:
                 F1_ = F_bound
-            F2_ = self._frictionModel(F1_, du2)
+                tangentF1 = 0.0
+            F2_ = self._frictionModel(F1_, du2, 1.0, &tangent1, tangentF1)
             self.Tstress1 = F2_
             self.Tstress2 = self.Tstress1
             self.Tstress3 = self.Tstress1
+            tangent3 = tangent1
         else:
             raise AssertionError(f"Invalid state transition: Cstage={self.Cstage}, Tstage={self.Tstage}")
         # 硬化部分力学修正
@@ -293,27 +337,42 @@ cdef class TSSCB:
             self.Tstress4 = self.Tstress3 + F_hardening
         else:
             self.Tstress4 = self.Tstress3 - F_hardening
+        self.Ttangent = tangent3 + (self.k2 * self.r3 if fabs(self.Tstrain) > self.uh else 0.0)
 
-    cdef double _frictionModel(self, double F0, double du, double half=1.0):
+    cdef double _frictionModel(self, double F0, double du, double half=1.0,
+                               double* tangent=NULL, double dF0=0.0):
         # 滑动摩擦力模型
         cdef double F_, F
         if du == 0.0:
+            if tangent != NULL:
+                tangent[0] = dF0
             return F0
         F_ = F0 + du * self.k0
         if F_ > self.F1 * half:
             F = self.F1 * half
+            if tangent != NULL:
+                tangent[0] = 0.0
         elif F_ < -self.F1 * half:
             F = -self.F1 * half
+            if tangent != NULL:
+                tangent[0] = 0.0
         else:
             F = F_
+            if tangent != NULL:
+                tangent[0] = dF0 + self.k0
         return F
 
-    cdef double _SCModel(self, double u0, double F0, double du):
+    cdef double _SCModel(self, double u0, double F0, double du,
+                         double* tangent=NULL):
         # 双阶自复位模型
-        cdef double u, uy, F_, F
+        cdef double u, uy, F_, F, slope
         if du == 0.0:
+            if tangent != NULL:
+                tangent[0] = 0.0
             return F0
         if self.Tfracture:
+            if tangent != NULL:
+                tangent[0] = 0.0
             return 0.0
         u = u0 + du
         uy = self.F2 / self.k1
@@ -321,24 +380,36 @@ cdef class TSSCB:
         if du > 0:
             if u < -self.F2 * (1 - self.beta) / self.k1 and F_ > self.k2 * u - self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1):
                 F = self.k2 * u - self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1)
+                slope = self.k2
             elif -self.F2 * (1 - self.beta) / self.k1 <= u <= uy and F_ > self.k1 * u:
                 F = self.k1 * u
+                slope = self.k1
             elif u > self.F2 * (1 - self.beta) / self.k1 and F_ > self.k2 * u + self.F2 - self.k2 * uy:
                 F = self.k2 * u + self.F2 - self.k2 * uy
+                slope = self.k2
             else:
                 F = F_
+                slope = self.k1
         else:
             if u > self.F2 * (1 - self.beta) / self.k1 and F_ < self.k2 * u + self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1):
                 F = self.k2 * u + self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1)
+                slope = self.k2
             elif -uy <= u <= self.F2 * (1 - self.beta) / self.k1 and F_ < self.k1 * u:
                 F = self.k1 * u
+                slope = self.k1
             elif u < -self.F2 * (1 - self.beta) / self.k1 and F_ < self.k2 * u - (self.F2 - self.k2 * uy):
                 F = self.k2 * u - (self.F2 - self.k2 * uy)
+                slope = self.k2
             else:
                 F = F_
+                slope = self.k1
         if self.Tfracturing:
+            if tangent != NULL:
+                tangent[0] = slope * self.Trp + F * (1.0 if du > 0 else -1.0) / self.up
             return F * self.Trp
         else:
+            if tangent != NULL:
+                tangent[0] = slope
             return F
 
     cpdef commitState(self):

@@ -164,10 +164,11 @@ data/
 main_test.py
 test/
 setup.py
+!setup.py
 compile.bat
 temp/
 bin/
 temp*/pybuilder
 Figures.pptx
 temp*.py
-
+tests/
