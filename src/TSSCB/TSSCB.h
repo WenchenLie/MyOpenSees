@@ -123,6 +123,7 @@ class TSSCB : public UniaxialMaterial
     double Crp;
 
     void determineTrialState(double dStrain);
+    double damageIncrement(double distance);
     double frictionModel(double F0, double du);
     double frictionModel(double F0, double du, double &tangent, double dF0 = 0.0);
     double SCModel(double u0, double F0, double du);

@@ -20,7 +20,7 @@
                                                                         
 // Written: Wenchen Lie (666@e.gzhu.edu.cn)
 // Created: July 26, 2024
-// Last update: May 23, 2025
+// Last update: Nov 2, 2026
 //
 // Description: This file contains the implementation of the
 // TSSCB class.
@@ -360,6 +360,10 @@ void TSSCB::determineTrialState (double dStrain)
     double direction;
     double dCDD;
     double dFd;
+    double Fd_committed;
+    double predictor;
+    double predictor_tangent;
+    bool friction_reloading;
 
     // determine working stage
     if (-ugap <= Tstrain && Tstrain <= ugap) {
@@ -429,7 +433,7 @@ void TSSCB::determineTrialState (double dStrain)
             usc0 = ua - ugap;
         }
         if (Thardening) {
-            TCDD = CCDD + fabs(du2) / (uh - ugap);
+            TCDD = CCDD + damageIncrement(du2);
         }
         F1_ = frictionModel(Cstress1, du1);
         F2_ = SCModel(usc0, F1_, du2, tangent1);
@@ -466,7 +470,7 @@ void TSSCB::determineTrialState (double dStrain)
     else if (Cstage == 2 && Tstage == 2) {
         // stage-2 -> stage-2
         if (Thardening) {
-            TCDD = CCDD + fabs(dStrain) / (uh - ugap);
+            TCDD = CCDD + damageIncrement(dStrain);
         }
         if (Tstrain >= 0) {
             usc0 = Cstrain - ua;
@@ -479,6 +483,7 @@ void TSSCB::determineTrialState (double dStrain)
         Tstress2 = Tstress1;
         tangent2 = tangent1;
         Fd = (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
+        dFd = 0.0;
         if (Thardening && Tstrain != 0.0) {
             direction = Tstrain > 0 ? 1.0 : -1.0;
             dCDD = (dStrain > 0 ? 1.0 : -1.0) / (uh - ugap);
@@ -525,11 +530,42 @@ void TSSCB::determineTrialState (double dStrain)
             Tstress3 = Cstress3;
             tangent3 = 0.0;
         }
-        if (configType == 1 && Tstrain >= 0 && dStrain > 0 && Cstress3 == 0 && Thardening && Tstress2 < F1) {
+        friction_reloading = false;
+        if (configType == 1 && Tstrain >= 0 && dStrain > 0 && Thardening && Tstress2 < F1) {
             Tstress3 = frictionModel(Cstress3, dStrain, tangent3);
+            friction_reloading = true;
         }
-        else if (configType == 1 && Tstrain <= 0 && dStrain < 0 && Cstress3 == 0 && Thardening && Tstress2 > F1) {
+        else if (configType == 1 && Tstrain <= 0 && dStrain < 0 && Thardening && Tstress2 > -F1) {
             Tstress3 = frictionModel(Cstress3, dStrain, tangent3);
+            friction_reloading = true;
+        }
+        // Return from the actual committed force along the original elastic
+        // branch, rather than jumping to a clipped SC/friction envelope.
+        if (friction_reloading) {
+            predictor = Cstress3 + k0 * dStrain;
+            predictor_tangent = k0;
+        }
+        else {
+            Fd_committed = (F2 - F1 / 2) * CCDD *
+                (r1 - r2 * (fabs(Cstrain) - ugap) / (uh - ugap));
+            direction = Tstrain >= 0 ? 1.0 : -1.0;
+            predictor = Cstress3 + k1 * dStrain - direction * (Fd - Fd_committed);
+            predictor_tangent = k1 - direction * dFd;
+        }
+        if ((dStrain > 0 && predictor < Cstress3) ||
+            (dStrain < 0 && predictor > Cstress3)) {
+            predictor = Cstress3;
+            predictor_tangent = 0.0;
+        }
+        if ((dStrain > 0 && Tstress3 < Cstress3) ||
+            (dStrain < 0 && Tstress3 > Cstress3)) {
+            Tstress3 = Cstress3;
+            tangent3 = 0.0;
+        }
+        else if ((dStrain > 0 && Tstress3 > predictor) ||
+                 (dStrain < 0 && Tstress3 < predictor)) {
+            Tstress3 = predictor;
+            tangent3 = predictor_tangent;
         }
     }
     else if (Cstage == 2 && Tstage == 1) {
@@ -598,6 +634,17 @@ void TSSCB::determineTrialState (double dStrain)
         Tstress4 -= F_hardening;
     }
     Ttangent = tangent3 + (fabs(Tstrain) > uh ? k2 * r3 : 0.0);
+}
+
+double TSSCB::damageIncrement(double distance)
+{
+    if (Chardening) {
+        distance = fabs(distance);
+    }
+    else {
+        distance = fmax(fabs(Tstrain) - uh, 0.0);
+    }
+    return distance / (uh - ugap);
 }
 
 double TSSCB::frictionModel(double F0, double du)

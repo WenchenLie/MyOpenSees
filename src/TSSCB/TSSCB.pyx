@@ -151,6 +151,8 @@ cdef class TSSCB:
     cdef void _determineTrialState(self, double dStrain):
         cdef double tangent1 = 0.0, tangent2 = 0.0, tangent3 = 0.0
         cdef double tangentF1 = 0.0, direction, dCDD, dFd
+        cdef double Fd_committed, predictor, predictor_tangent
+        cdef bint friction_reloading
         # 根据当前试验应变确定阶段和应力
         if -self.ugap <= self.Tstrain <= self.ugap:
             self.Tstage = 1
@@ -205,7 +207,7 @@ cdef class TSSCB:
                 du2 = dStrain - du1
                 usc0 = self.ua - self.ugap
             if self.Thardening:
-                self.TCDD = self.CCDD + fabs(du2) / (self.uh - self.ugap)
+                self.TCDD = self.CCDD + self._damageIncrement(du2)
             F1_ = self._frictionModel(self.Cstress1, du1)
             F2_ = self._SCModel(usc0, F1_, du2, &tangent1)
             self.Tstress1 = F2_
@@ -234,7 +236,7 @@ cdef class TSSCB:
         elif self.Cstage == 2 and self.Tstage == 2:
             # 2->2 级：双阶自复位
             if self.Thardening:
-                self.TCDD = self.CCDD + fabs(dStrain) / (self.uh - self.ugap)
+                self.TCDD = self.CCDD + self._damageIncrement(dStrain)
             if self.Tstrain >= 0:
                 usc0 = self.Cstrain - self.ua
             else:
@@ -243,6 +245,7 @@ cdef class TSSCB:
             self.Tstress2 = self.Tstress1
             tangent2 = tangent1
             Fd = (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+            dFd = 0.0
             if self.Thardening and self.Tstrain != 0.0:
                 direction = 1.0 if self.Tstrain > 0 else -1.0
                 dCDD = (1.0 if dStrain > 0 else -1.0) / (self.uh - self.ugap)
@@ -273,15 +276,41 @@ cdef class TSSCB:
                 self.Tstress3 = F_bound
                 tangent3 = 0.0
             if dStrain > 0 and self.Tstress3 <= self.Cstress3:
-                self.Tstress3 = self.Cstress4
+                self.Tstress3 = self.Cstress3
                 tangent3 = 0.0
             elif dStrain < 0 and self.Tstress3 >= self.Cstress3:
-                self.Tstress3 = self.Cstress4
+                self.Tstress3 = self.Cstress3
                 tangent3 = 0.0
+            friction_reloading = False
             if self.configType == 1 and self.Tstrain >= 0 and dStrain > 0 and self.Thardening and self.Tstress2 < self.F1:
                 self.Tstress3 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent3)
-            elif self.configType == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Thardening and self.Tstress2 > self.F1:
+                friction_reloading = True
+            elif self.configType == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Thardening and self.Tstress2 > -self.F1:
                 self.Tstress3 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent3)
+                friction_reloading = True
+            # Return from the actual committed force along the original
+            # elastic branch before reaching the clipped SC/friction envelope.
+            if friction_reloading:
+                predictor = self.Cstress3 + self.k0 * dStrain
+                predictor_tangent = self.k0
+            else:
+                Fd_committed = (self.F2 - self.F1 / 2.0) * self.CCDD * (
+                    self.r1 - self.r2 * (fabs(self.Cstrain) - self.ugap) / (self.uh - self.ugap))
+                direction = 1.0 if self.Tstrain >= 0 else -1.0
+                predictor = self.Cstress3 + self.k1 * dStrain - direction * (Fd - Fd_committed)
+                predictor_tangent = self.k1 - direction * dFd
+            if ((dStrain > 0 and predictor < self.Cstress3)
+                    or (dStrain < 0 and predictor > self.Cstress3)):
+                predictor = self.Cstress3
+                predictor_tangent = 0.0
+            if ((dStrain > 0 and self.Tstress3 < self.Cstress3)
+                    or (dStrain < 0 and self.Tstress3 > self.Cstress3)):
+                self.Tstress3 = self.Cstress3
+                tangent3 = 0.0
+            elif ((dStrain > 0 and self.Tstress3 > predictor)
+                    or (dStrain < 0 and self.Tstress3 < predictor)):
+                self.Tstress3 = predictor
+                tangent3 = predictor_tangent
         elif self.Cstage == 2 and self.Tstage == 1:
             # 2->1 级：从第二阶段返回第一阶段
             if dStrain < 0:
@@ -338,6 +367,13 @@ cdef class TSSCB:
         else:
             self.Tstress4 = self.Tstress3 - F_hardening
         self.Ttangent = tangent3 + (self.k2 * self.r3 if fabs(self.Tstrain) > self.uh else 0.0)
+
+    cdef double _damageIncrement(self, double distance):
+        if self.Chardening:
+            distance = fabs(distance)
+        else:
+            distance = max(fabs(self.Tstrain) - self.uh, 0.0)
+        return distance / (self.uh - self.ugap)
 
     cdef double _frictionModel(self, double F0, double du, double half=1.0,
                                double* tangent=NULL, double dF0=0.0):

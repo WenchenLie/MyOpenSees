@@ -279,7 +279,7 @@ class TSSCB(UniaxialMaterial):
                 du2 = dStrain - du1  # Strain increment in stage-2
                 usc0 = self.ua - self.ugap
             if self.Thardening:
-                self.TCDD = self.CCDD + abs(du2) / (self.uh - self.ugap)
+                self.TCDD = self.CCDD + self._damageIncrement(du2)
             F1_ = self._frictionModel(self.Cstress1, du1)
             self.Tstress1, tangent1 = self._SCResponse(usc0, F1_, du2)
             # Apply degradation
@@ -310,7 +310,7 @@ class TSSCB(UniaxialMaterial):
         elif self.Cstage == 2 and self.Tstage == 2:
             # NOTE: stage-2 -> stage-2
             if self.Thardening:
-                self.TCDD = self.CCDD + abs(dStrain) / (self.uh - self.ugap)
+                self.TCDD = self.CCDD + self._damageIncrement(dStrain)
             if self.Tstrain >= 0:
                 usc0 = self.Cstrain - self.ua
             else:
@@ -320,6 +320,7 @@ class TSSCB(UniaxialMaterial):
             self.Tstress2 = self.Tstress1
             tangent2 = tangent1
             Fd = (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+            dFd = 0.0
             if self.Thardening and self.Tstrain != 0:
                 direction = 1 if self.Tstrain > 0 else -1
                 dCDD = (1 if dStrain > 0 else -1) / (self.uh - self.ugap)
@@ -352,15 +353,43 @@ class TSSCB(UniaxialMaterial):
                 self.Tstress3 = F_bound  # Prevent negative compressive stress in SMA cables
                 tangent3 = 0
             if dStrain > 0 and self.Tstress3 <= self.Cstress3:
-                self.Tstress3 = self.Cstress4
+                self.Tstress3 = self.Cstress3
                 tangent3 = 0
             elif dStrain < 0 and self.Tstress3 >= self.Cstress3:
-                self.Tstress3 = self.Cstress4
+                self.Tstress3 = self.Cstress3
                 tangent3 = 0
+            friction_reloading = False
             if self.configType == 1 and self.Tstrain >= 0 and dStrain > 0 and self.Thardening and self.Tstress2 < self.F1:
                 self.Tstress3, tangent3 = self._frictionResponse(self.Cstress3, dStrain)
-            elif self.configType == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Thardening and self.Tstress2 > self.F1:
+                friction_reloading = True
+            elif self.configType == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Thardening and self.Tstress2 > -self.F1:
                 self.Tstress3, tangent3 = self._frictionResponse(self.Cstress3, dStrain)
+                friction_reloading = True
+
+            # The ideal SC force (stress1) can differ from the actual force
+            # (stress3) after contact/friction clipping. On reversal, return
+            # from the actual committed force along the existing elastic
+            # branch, rather than jumping directly to the clipped envelope.
+            if friction_reloading:
+                predictor = self.Cstress3 + self.k0 * dStrain
+                predictor_tangent = self.k0
+            else:
+                Fd_committed = (self.F2 - self.F1 / 2) * self.CCDD * (
+                    self.r1 - self.r2 * (abs(self.Cstrain) - self.ugap) / (self.uh - self.ugap))
+                direction = 1 if self.Tstrain >= 0 else -1
+                predictor = self.Cstress3 + self.k1 * dStrain - direction * (Fd - Fd_committed)
+                predictor_tangent = self.k1 - direction * dFd
+            # Retain the original monotonicity rule for the pre-hardening
+            # component, and add the hardening force exactly once below.
+            if ((dStrain > 0 and predictor < self.Cstress3)
+                    or (dStrain < 0 and predictor > self.Cstress3)):
+                predictor, predictor_tangent = self.Cstress3, 0.0
+            if ((dStrain > 0 and self.Tstress3 < self.Cstress3)
+                    or (dStrain < 0 and self.Tstress3 > self.Cstress3)):
+                self.Tstress3, tangent3 = self.Cstress3, 0.0
+            elif ((dStrain > 0 and self.Tstress3 > predictor)
+                    or (dStrain < 0 and self.Tstress3 < predictor)):
+                self.Tstress3, tangent3 = predictor, predictor_tangent
         elif self.Cstage == 2 and self.Tstage == 1:
             # NOTE: stage-2 -> stage-1
             if dStrain < 0:
@@ -415,6 +444,18 @@ class TSSCB(UniaxialMaterial):
         else:
             self.Tstress4 -= F_hardening
         self.Ttangent = tangent3 + (self.k2 * self.r3 if abs(self.Tstrain) > self.uh else 0)
+
+    def _damageIncrement(self, distance):
+        """Integrate damage only after the first crossing of uh.
+
+        Subsequent increments retain the original cumulative path length.
+        This makes the first hardening event independent of trial overshoot.
+        """
+        if self.Chardening:
+            distance = abs(distance)
+        else:
+            distance = max(abs(self.Tstrain) - self.uh, 0.0)
+        return distance / (self.uh - self.ugap)
 
     def _frictionModel(self,
             F0: float,
