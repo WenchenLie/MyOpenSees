@@ -20,7 +20,7 @@
                                                                         
 // Written: Wenchen Lie (666@e.gzhu.edu.cn)
 // Created: July 26, 2024
-// Last update: Nov 2, 2026
+// Last update: Nov 8, 2026
 //
 // Description: This file contains the implementation of the
 // TSSCB class.
@@ -356,13 +356,15 @@ void TSSCB::determineTrialState (double dStrain)
     double tangent1 = 0.0;
     double tangent2 = 0.0;
     double tangent3 = 0.0;
-    double tangentF1 = 0.0;
     double direction;
     double dCDD;
     double dFd;
     double Fd_committed;
     double predictor;
     double predictor_tangent;
+    double boundary_force;
+    double boundary_strain;
+    double Fd_boundary;
     bool friction_reloading;
 
     // determine working stage
@@ -378,13 +380,13 @@ void TSSCB::determineTrialState (double dStrain)
     if (Tfracture) {
         // SMA cable fracture completed
         if (configType == 1) {
-            uy = F1 / k0;
+            uy = 0.5 * F1 / k0;
             if (Tplate2 + uy <= Tstrain && Tstrain <= Tplate1 - uy) {
                 Tstress4 = 0.0;
                 Ttangent = 0.0;
             }
             else {
-                Tstress4 = frictionModel(Cstress4, dStrain, Ttangent);
+                Tstress4 = frictionModel(Cstress4, dStrain, Ttangent, 0.0, 0.5);
                 if (dStrain < 0 && Tstrain > 0 && Tstress4 <= 0) {
                     Tstress4 = 0.0;
                     Ttangent = 0.0;
@@ -402,13 +404,14 @@ void TSSCB::determineTrialState (double dStrain)
     }
     if (Tfracturing) {
         // SMA cable fracture starts
+        F_bound = (configType == 1 ? 0.5 : 1.0) * F1;
         if (Cstress4 >= 0) {
-            Tstress4 = TfractureFore - (TfractureFore - F1) * Trp;
-            Ttangent = -(TfractureFore - F1) * (dStrain > 0 ? 1.0 : -1.0) / up;
+            Tstress4 = TfractureFore - (TfractureFore - F_bound) * Trp;
+            Ttangent = -(TfractureFore - F_bound) * (dStrain > 0 ? 1.0 : -1.0) / up;
         }
         else {
-            Tstress4 = TfractureFore + (-F1 - TfractureFore) * Trp;
-            Ttangent = (-F1 - TfractureFore) * (dStrain > 0 ? 1.0 : -1.0) / up;
+            Tstress4 = TfractureFore + (-F_bound - TfractureFore) * Trp;
+            Ttangent = (-F_bound - TfractureFore) * (dStrain > 0 ? 1.0 : -1.0) / up;
         }
         return;
     }
@@ -442,6 +445,7 @@ void TSSCB::determineTrialState (double dStrain)
         Tstress2 = Tstress1;
         tangent2 = tangent1;
         Fd = (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
+        dFd = 0.0;
         if (Thardening) {
             direction = Tstrain > 0 ? 1.0 : -1.0;
             dCDD = (du2 > 0 ? 1.0 : -1.0) / (uh - ugap);
@@ -465,6 +469,40 @@ void TSSCB::determineTrialState (double dStrain)
         else if (dStrain < 0 && Tstress2 > -F1) {
             Tstress3 = -F1;
             tangent3 = 0.0;
+        }
+        // The friction force need not have reached +/-F1 when the gap closes
+        // again after unloading. Reconnect from its actual boundary force;
+        // the nominal SC/friction envelope must not introduce a force jump.
+        boundary_force = frictionModel(Cstress3, du1);
+        if (configType == 1 && Thardening &&
+            ((dStrain > 0 && Tstress2 < F1) ||
+             (dStrain < 0 && Tstress2 > -F1))) {
+            predictor = frictionModel(boundary_force, du2, predictor_tangent);
+        }
+        else {
+            direction = Tstrain > 0 ? 1.0 : -1.0;
+            Fd_boundary = (F2 - F1 / 2) * CCDD * r1;
+            predictor = boundary_force + k1 * du2;
+            predictor_tangent = k1;
+            if (Thardening) {
+                predictor -= direction * (Fd - Fd_boundary);
+                predictor_tangent -= direction * dFd;
+            }
+        }
+        if ((du2 > 0 && predictor < boundary_force) ||
+            (du2 < 0 && predictor > boundary_force)) {
+            predictor = boundary_force;
+            predictor_tangent = 0.0;
+        }
+        if ((du2 > 0 && Tstress3 < boundary_force) ||
+            (du2 < 0 && Tstress3 > boundary_force)) {
+            Tstress3 = boundary_force;
+            tangent3 = 0.0;
+        }
+        else if ((du2 > 0 && Tstress3 > predictor) ||
+                 (du2 < 0 && Tstress3 < predictor)) {
+            Tstress3 = predictor;
+            tangent3 = predictor_tangent;
         }
     }
     else if (Cstage == 2 && Tstage == 2) {
@@ -570,31 +608,19 @@ void TSSCB::determineTrialState (double dStrain)
     }
     else if (Cstage == 2 && Tstage == 1) {
         // stage-2 -> stage-1
-        if (dStrain < 0) {
-            du1 = -(Cstrain - ugap);
-            du2 = -(ugap - Tstrain);
-            usc0 = Cstrain - ua;
-        }
-        else {
-            du1 = -ugap - Cstrain;
-            du2 = Tstrain + ugap;
-            usc0 = Cstrain + ua;
-        }
+        direction = Cstrain > 0 ? 1.0 : -1.0;
+        boundary_strain = direction * ugap;
+        du1 = boundary_strain - Cstrain;
+        du2 = Tstrain - boundary_strain;
+        usc0 = Cstrain - direction * ua;
         if (Thardening) {
             TCDD = CCDD + fabs(du1) / (uh - ugap);
         }
         F1_ = SCModel(usc0, Cstress1, du1);
-        // Apply degradation
-        F1_ideal1 = F1_;
-        tangentF1 = 0.0;
-        if (Thardening && Tstrain > 0) {
-            F1_ideal1 = F1_ - (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
-            tangentF1 = (F2 - F1 / 2) * TCDD * r2 / (uh - ugap);
-        }
-        else if (Thardening && Tstrain < 0) {
-            F1_ideal1 = F1_ + (F2 - F1 / 2) * TCDD * (r1 - r2 * (fabs(Tstrain) - ugap) / (uh - ugap));
-            tangentF1 = (F2 - F1 / 2) * TCDD * r2 / (uh - ugap);
-        }
+        // Evaluate degradation at the boundary, not at the target inside the
+        // gap (which can even lie on the opposite side of zero).
+        Fd_boundary = (F2 - F1 / 2) * TCDD * r1;
+        F1_ideal1 = F1_ - (Thardening ? direction * Fd_boundary : 0.0);
         // Apply modifiction
         if (configType == 1) {
             F_bound = 0;  // Only half of the friction pads are sliding at stage-2
@@ -603,23 +629,36 @@ void TSSCB::determineTrialState (double dStrain)
             F_bound = F1; // All friction pads are sliding at stage-2
         }
         F1_ = F1_ideal1;
-        if (dStrain > 0 && Tstrain > 0 && F1_ideal1 < F1 && ugap > 0 && Cstress3 == F1) {
-            F1_ = F1;
-            tangentF1 = 0.0;
-        }
-        else if (dStrain < 0 && Tstrain < 0 && F1_ideal1 > -F1 && ugap > 0 && Cstress3 == -F1) {
-            F1_ = -F1;
-            tangentF1 = 0.0;
-        }
-        else if (Tstrain > 0 && F1_ideal1 < -F_bound) {
+        if (direction > 0 && F1_ideal1 < -F_bound) {
             F1_ = -F_bound;  // Prevent positive compressive stress in SMA cables
-            tangentF1 = 0.0;
         }
-        else if (Tstrain < 0 && F1_ideal1 > F_bound) {
+        else if (direction < 0 && F1_ideal1 > F_bound) {
             F1_ = F_bound;  // Prevent negative compressive stress in SMA cables
-            tangentF1 = 0.0;
         }
-        F2_ = frictionModel(F1_, du2, tangent1, tangentF1);
+        // Use the same continuous return branch as a stage-2 step ending at
+        // the boundary. The remaining first-stage increment then starts from
+        // that force, independent of where the target lies within the gap.
+        predictor = Cstress3 + k1 * du1;
+        if (Thardening) {
+            Fd_committed = (F2 - F1 / 2) * CCDD *
+                (r1 - r2 * (fabs(Cstrain) - ugap) / (uh - ugap));
+            predictor -= direction * (Fd_boundary - Fd_committed);
+        }
+        if ((du1 > 0 && predictor < Cstress3) ||
+            (du1 < 0 && predictor > Cstress3)) {
+            predictor = Cstress3;
+        }
+        if ((du1 > 0 && F1_ < Cstress3) ||
+            (du1 < 0 && F1_ > Cstress3)) {
+            F1_ = Cstress3;
+        }
+        else if ((du1 > 0 && F1_ > predictor) ||
+                 (du1 < 0 && F1_ < predictor)) {
+            F1_ = predictor;
+        }
+        // Boundary force is constant with respect to a trial target inside
+        // the gap; only the friction increment contributes to its tangent.
+        F2_ = frictionModel(F1_, du2, tangent1);
         Tstress1 = F2_;
         Tstress2 = Tstress1;
         Tstress3 = Tstress1;
@@ -653,7 +692,7 @@ double TSSCB::frictionModel(double F0, double du)
     return frictionModel(F0, du, tangent);
 }
 
-double TSSCB::frictionModel(double F0, double du, double &tangent, double dF0)
+double TSSCB::frictionModel(double F0, double du, double &tangent, double dF0, double fraction)
 {
     if (du == 0.0) {
         tangent = dF0;
@@ -662,11 +701,11 @@ double TSSCB::frictionModel(double F0, double du, double &tangent, double dF0)
     double F_;
     double F;
     F_ = F0 + du * k0;
-    if (F_ > F1) {
-        F = F1;
+    if (F_ > F1 * fraction) {
+        F = F1 * fraction;
         tangent = 0.0;
-    } else if (F_ < -F1) {
-        F = -F1;
+    } else if (F_ < -F1 * fraction) {
+        F = -F1 * fraction;
         tangent = 0.0;
     } else {
         F = F_;

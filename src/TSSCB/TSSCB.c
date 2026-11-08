@@ -15,7 +15,7 @@
         ],
         "name": "TSSCB",
         "sources": [
-            "F:\\Projects\\MyOpenSees\\src\\TSSCB\\TSSCB.pyx"
+            "F:/Projects/MyOpenSees/src/TSSCB/TSSCB.pyx"
         ]
     },
     "module_name": "TSSCB"
@@ -1357,7 +1357,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "src/TSSCB/TSSCB.pyx",
+  "TSSCB.pyx",
   "<stringsource>",
 };
 /* #### Code section: utility_code_proto_before_types ### */
@@ -1542,7 +1542,7 @@ struct __pyx_opt_args_5TSSCB_5TSSCB__SCModel;
 
 /* "TSSCB.pyx":95
  *         self.i = 0
- *
+ * 
  *     cpdef setTrialStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
  *         cdef double dStrain
  *         #
@@ -1552,9 +1552,9 @@ struct __pyx_opt_args_5TSSCB_5TSSCB_setTrialStrain {
   double strainRate;
 };
 
-/* "TSSCB.pyx":378
+/* "TSSCB.pyx":404
  *         return distance / (self.uh - self.ugap)
- *
+ * 
  *     cdef double _frictionModel(self, double F0, double du, double half=1.0,             # <<<<<<<<<<<<<<
  *                                double* tangent=NULL, double dF0=0.0):
  *         #
@@ -1566,9 +1566,9 @@ struct __pyx_opt_args_5TSSCB_5TSSCB__frictionModel {
   double dF0;
 };
 
-/* "TSSCB.pyx":401
+/* "TSSCB.pyx":427
  *         return F
- *
+ * 
  *     cdef double _SCModel(self, double u0, double F0, double du,             # <<<<<<<<<<<<<<
  *                          double* tangent=NULL):
  *         #
@@ -1579,8 +1579,8 @@ struct __pyx_opt_args_5TSSCB_5TSSCB__SCModel {
 };
 
 /* "TSSCB.pyx":6
- *
- *
+ * 
+ * 
  * cdef class TSSCB:             # <<<<<<<<<<<<<<
  *     cdef public int tag
  *     #  double
@@ -2513,19 +2513,19 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u_ __pyx_string_tab[0]
 #define __pyx_kp_u_Invalid_parameters_for_TSSCBMate __pyx_string_tab[1]
 #define __pyx_kp_u_Invalid_state_transition_Cstage __pyx_string_tab[2]
-#define __pyx_kp_u_Tstage __pyx_string_tab[3]
-#define __pyx_kp_u_configType_3 __pyx_string_tab[4]
-#define __pyx_kp_u_configType_should_be_configTyp __pyx_string_tab[5]
-#define __pyx_kp_u_disable __pyx_string_tab[6]
-#define __pyx_kp_u_enable __pyx_string_tab[7]
-#define __pyx_kp_u_gc __pyx_string_tab[8]
-#define __pyx_kp_u_hardening_2 __pyx_string_tab[9]
-#define __pyx_kp_u_hardening_should_be_hardening_i __pyx_string_tab[10]
-#define __pyx_kp_u_isenabled __pyx_string_tab[11]
-#define __pyx_kp_u_minmax_2 __pyx_string_tab[12]
-#define __pyx_kp_u_minmax_should_be_minmax_if_give __pyx_string_tab[13]
-#define __pyx_kp_u_no_default___reduce___due_to_non __pyx_string_tab[14]
-#define __pyx_kp_u_src_TSSCB_TSSCB_pyx __pyx_string_tab[15]
+#define __pyx_kp_u_TSSCB_pyx __pyx_string_tab[3]
+#define __pyx_kp_u_Tstage __pyx_string_tab[4]
+#define __pyx_kp_u_configType_3 __pyx_string_tab[5]
+#define __pyx_kp_u_configType_should_be_configTyp __pyx_string_tab[6]
+#define __pyx_kp_u_disable __pyx_string_tab[7]
+#define __pyx_kp_u_enable __pyx_string_tab[8]
+#define __pyx_kp_u_gc __pyx_string_tab[9]
+#define __pyx_kp_u_hardening_2 __pyx_string_tab[10]
+#define __pyx_kp_u_hardening_should_be_hardening_i __pyx_string_tab[11]
+#define __pyx_kp_u_isenabled __pyx_string_tab[12]
+#define __pyx_kp_u_minmax_2 __pyx_string_tab[13]
+#define __pyx_kp_u_minmax_should_be_minmax_if_give __pyx_string_tab[14]
+#define __pyx_kp_u_no_default___reduce___due_to_non __pyx_string_tab[15]
 #define __pyx_kp_u_stringsource __pyx_string_tab[16]
 #define __pyx_kp_u_up_3 __pyx_string_tab[17]
 #define __pyx_kp_u_up_should_be_up_if_given __pyx_string_tab[18]
@@ -2660,7 +2660,7 @@ return 0;
 
 /* "TSSCB.pyx":27
  *     cdef int i
- *
+ * 
  *     def __cinit__(self,             # <<<<<<<<<<<<<<
  *                   int tag,
  *                   double F1, double k0, double ugap, double F2, double k1, double k2, double beta,
@@ -2997,7 +2997,7 @@ static int __pyx_pw_5TSSCB_5TSSCB_1__cinit__(PyObject *__pyx_v_self, PyObject *_
 
   /* "TSSCB.pyx":27
  *     cdef int i
- *
+ * 
  *     def __cinit__(self,             # <<<<<<<<<<<<<<
  *                   int tag,
  *                   double F1, double k0, double ugap, double F2, double k1, double k2, double beta,
@@ -3419,7 +3419,7 @@ static int __pyx_pf_5TSSCB_5TSSCB___cinit__(struct __pyx_obj_5TSSCB_TSSCB *__pyx
  *         #
  *         self._check_paras()             # <<<<<<<<<<<<<<
  *         self._init_paras()
- *
+ * 
 */
   ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_check_paras(__pyx_v_self); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 61, __pyx_L1_error)
 
@@ -3427,14 +3427,14 @@ static int __pyx_pf_5TSSCB_5TSSCB___cinit__(struct __pyx_obj_5TSSCB_TSSCB *__pyx
  *         #
  *         self._check_paras()
  *         self._init_paras()             # <<<<<<<<<<<<<<
- *
+ * 
  *     cdef void _check_paras(self):
 */
   ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_init_paras(__pyx_v_self); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L1_error)
 
   /* "TSSCB.pyx":27
  *     cdef int i
- *
+ * 
  *     def __cinit__(self,             # <<<<<<<<<<<<<<
  *                   int tag,
  *                   double F1, double k0, double ugap, double F2, double k1, double k2, double beta,
@@ -3455,7 +3455,7 @@ static int __pyx_pf_5TSSCB_5TSSCB___cinit__(struct __pyx_obj_5TSSCB_TSSCB *__pyx
 
 /* "TSSCB.pyx":64
  *         self._init_paras()
- *
+ * 
  *     cdef void _check_paras(self):             # <<<<<<<<<<<<<<
  *         if not (self.F1 >= 0 and self.k0 > 0 and self.ugap >= 0 and
  *                 self.F2 > 0 and self.k1 > 0 and self.k2 > 0 and
@@ -3474,7 +3474,7 @@ static void __pyx_f_5TSSCB_5TSSCB__check_paras(struct __pyx_obj_5TSSCB_TSSCB *__
   __Pyx_RefNannySetupContext("_check_paras", 0);
 
   /* "TSSCB.pyx":65
- *
+ * 
  *     cdef void _check_paras(self):
  *         if not (self.F1 >= 0 and self.k0 > 0 and self.ugap >= 0 and             # <<<<<<<<<<<<<<
  *                 self.F2 > 0 and self.k1 > 0 and self.k2 > 0 and
@@ -3579,7 +3579,7 @@ static void __pyx_f_5TSSCB_5TSSCB__check_paras(struct __pyx_obj_5TSSCB_TSSCB *__
  *                 self.r1 >= 0 and self.r2 >= 0 and self.r3 >= 0 and
  *                 self.uf > 0 and self.up >= 0):             # <<<<<<<<<<<<<<
  *             raise ValueError("Invalid parameters for TSSCBMaterial")
- *
+ * 
 */
   __pyx_t_2 = (__pyx_v_self->uf > 0.0);
   if (__pyx_t_2) {
@@ -3592,7 +3592,7 @@ static void __pyx_f_5TSSCB_5TSSCB__check_paras(struct __pyx_obj_5TSSCB_TSSCB *__
   __pyx_L4_bool_binop_done:;
 
   /* "TSSCB.pyx":65
- *
+ * 
  *     cdef void _check_paras(self):
  *         if not (self.F1 >= 0 and self.k0 > 0 and self.ugap >= 0 and             # <<<<<<<<<<<<<<
  *                 self.F2 > 0 and self.k1 > 0 and self.k2 > 0 and
@@ -3605,7 +3605,7 @@ static void __pyx_f_5TSSCB_5TSSCB__check_paras(struct __pyx_obj_5TSSCB_TSSCB *__
  *                 self.r1 >= 0 and self.r2 >= 0 and self.r3 >= 0 and
  *                 self.uf > 0 and self.up >= 0):
  *             raise ValueError("Invalid parameters for TSSCBMaterial")             # <<<<<<<<<<<<<<
- *
+ * 
  *     cdef void _init_paras(self):
 */
     __pyx_t_4 = NULL;
@@ -3622,7 +3622,7 @@ static void __pyx_f_5TSSCB_5TSSCB__check_paras(struct __pyx_obj_5TSSCB_TSSCB *__
     __PYX_ERR(0, 70, __pyx_L1_error)
 
     /* "TSSCB.pyx":65
- *
+ * 
  *     cdef void _check_paras(self):
  *         if not (self.F1 >= 0 and self.k0 > 0 and self.ugap >= 0 and             # <<<<<<<<<<<<<<
  *                 self.F2 > 0 and self.k1 > 0 and self.k2 > 0 and
@@ -3632,7 +3632,7 @@ static void __pyx_f_5TSSCB_5TSSCB__check_paras(struct __pyx_obj_5TSSCB_TSSCB *__
 
   /* "TSSCB.pyx":64
  *         self._init_paras()
- *
+ * 
  *     cdef void _check_paras(self):             # <<<<<<<<<<<<<<
  *         if not (self.F1 >= 0 and self.k0 > 0 and self.ugap >= 0 and
  *                 self.F2 > 0 and self.k1 > 0 and self.k2 > 0 and
@@ -3650,7 +3650,7 @@ static void __pyx_f_5TSSCB_5TSSCB__check_paras(struct __pyx_obj_5TSSCB_TSSCB *__
 
 /* "TSSCB.pyx":72
  *             raise ValueError("Invalid parameters for TSSCBMaterial")
- *
+ * 
  *     cdef void _init_paras(self):             # <<<<<<<<<<<<<<
  *         #
  *         self.Cstage = 1; self.Tstage = 1
@@ -3854,7 +3854,7 @@ static void __pyx_f_5TSSCB_5TSSCB__init_paras(struct __pyx_obj_5TSSCB_TSSCB *__p
  *         self.CfractureFore = 0.0; self.TfractureFore = 0.0
  *         self.Crp = 0.0; self.Trp = 0.0             # <<<<<<<<<<<<<<
  *         self.i = 0
- *
+ * 
 */
   __pyx_v_self->Crp = 0.0;
   __pyx_v_self->Trp = 0.0;
@@ -3863,14 +3863,14 @@ static void __pyx_f_5TSSCB_5TSSCB__init_paras(struct __pyx_obj_5TSSCB_TSSCB *__p
  *         self.CfractureFore = 0.0; self.TfractureFore = 0.0
  *         self.Crp = 0.0; self.Trp = 0.0
  *         self.i = 0             # <<<<<<<<<<<<<<
- *
+ * 
  *     cpdef setTrialStrain(self, double strain, double strainRate=0):
 */
   __pyx_v_self->i = 0;
 
   /* "TSSCB.pyx":72
  *             raise ValueError("Invalid parameters for TSSCBMaterial")
- *
+ * 
  *     cdef void _init_paras(self):             # <<<<<<<<<<<<<<
  *         #
  *         self.Cstage = 1; self.Tstage = 1
@@ -3881,13 +3881,13 @@ static void __pyx_f_5TSSCB_5TSSCB__init_paras(struct __pyx_obj_5TSSCB_TSSCB *__p
 
 /* "TSSCB.pyx":95
  *         self.i = 0
- *
+ * 
  *     cpdef setTrialStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
  *         cdef double dStrain
  *         #
 */
 
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_3setTrialStrain(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_3setTrialStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3941,7 +3941,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_setTrialStrain(struct __pyx_obj_5TSSCB_TS
         __Pyx_XDECREF(__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_4 = __pyx_t_1;
+        __pyx_t_4 = __pyx_t_1; 
         __pyx_t_5 = PyFloat_FromDouble(__pyx_v_strain); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_6 = PyFloat_FromDouble(__pyx_v_strainRate); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 95, __pyx_L1_error)
@@ -4547,7 +4547,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_setTrialStrain(struct __pyx_obj_5TSSCB_TS
  *             if self.Tplate2 > -self.ugap:
  *                 self.Tplate2 = -self.ugap             # <<<<<<<<<<<<<<
  *             # _determineTrialState
- *
+ * 
 */
       __pyx_v_self->Tplate2 = (-__pyx_v_self->ugap);
 
@@ -4571,7 +4571,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_setTrialStrain(struct __pyx_obj_5TSSCB_TS
 
   /* "TSSCB.pyx":95
  *         self.i = 0
- *
+ * 
  *     cpdef setTrialStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
  *         cdef double dStrain
  *         #
@@ -4596,7 +4596,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_setTrialStrain(struct __pyx_obj_5TSSCB_TS
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_3setTrialStrain(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_3setTrialStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4604,7 +4604,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
 static PyMethodDef __pyx_mdef_5TSSCB_5TSSCB_3setTrialStrain = {"setTrialStrain", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_5TSSCB_5TSSCB_3setTrialStrain, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_3setTrialStrain(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_3setTrialStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4728,23 +4728,26 @@ static PyObject *__pyx_pf_5TSSCB_5TSSCB_2setTrialStrain(struct __pyx_obj_5TSSCB_
 
 /* "TSSCB.pyx":151
  *             # _determineTrialState
- *
+ * 
  *     cdef void _determineTrialState(self, double dStrain):             # <<<<<<<<<<<<<<
  *         cdef double tangent1 = 0.0, tangent2 = 0.0, tangent3 = 0.0
- *         cdef double tangentF1 = 0.0, direction, dCDD, dFd
+ *         cdef double direction, dCDD, dFd
 */
 
 static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_dStrain) {
   double __pyx_v_tangent1;
   double __pyx_v_tangent2;
   double __pyx_v_tangent3;
-  double __pyx_v_tangentF1;
   double __pyx_v_direction;
   double __pyx_v_dCDD;
   double __pyx_v_dFd;
   double __pyx_v_Fd_committed;
   double __pyx_v_predictor;
   double __pyx_v_predictor_tangent;
+  double __pyx_v_boundary_force;
+  double __pyx_v_boundary_strain;
+  double __pyx_v_Fd_boundary;
+  double __pyx_v_residual_force;
   int __pyx_v_friction_reloading;
   double __pyx_v_uy;
   double __pyx_v_du1;
@@ -4778,26 +4781,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
   __Pyx_RefNannySetupContext("_determineTrialState", 0);
 
   /* "TSSCB.pyx":152
- *
+ * 
  *     cdef void _determineTrialState(self, double dStrain):
  *         cdef double tangent1 = 0.0, tangent2 = 0.0, tangent3 = 0.0             # <<<<<<<<<<<<<<
- *         cdef double tangentF1 = 0.0, direction, dCDD, dFd
+ *         cdef double direction, dCDD, dFd
  *         cdef double Fd_committed, predictor, predictor_tangent
 */
   __pyx_v_tangent1 = 0.0;
   __pyx_v_tangent2 = 0.0;
   __pyx_v_tangent3 = 0.0;
 
-  /* "TSSCB.pyx":153
- *     cdef void _determineTrialState(self, double dStrain):
- *         cdef double tangent1 = 0.0, tangent2 = 0.0, tangent3 = 0.0
- *         cdef double tangentF1 = 0.0, direction, dCDD, dFd             # <<<<<<<<<<<<<<
- *         cdef double Fd_committed, predictor, predictor_tangent
- *         cdef bint friction_reloading
-*/
-  __pyx_v_tangentF1 = 0.0;
-
-  /* "TSSCB.pyx":157
+  /* "TSSCB.pyx":159
  *         cdef bint friction_reloading
  *         #
  *         if -self.ugap <= self.Tstrain <= self.ugap:             # <<<<<<<<<<<<<<
@@ -4810,7 +4804,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
   }
   if (__pyx_t_1) {
 
-    /* "TSSCB.pyx":158
+    /* "TSSCB.pyx":160
  *         #
  *         if -self.ugap <= self.Tstrain <= self.ugap:
  *             self.Tstage = 1             # <<<<<<<<<<<<<<
@@ -4819,7 +4813,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_v_self->Tstage = 1;
 
-    /* "TSSCB.pyx":157
+    /* "TSSCB.pyx":159
  *         cdef bint friction_reloading
  *         #
  *         if -self.ugap <= self.Tstrain <= self.ugap:             # <<<<<<<<<<<<<<
@@ -4829,7 +4823,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     goto __pyx_L3;
   }
 
-  /* "TSSCB.pyx":160
+  /* "TSSCB.pyx":162
  *             self.Tstage = 1
  *         else:
  *             self.Tstage = 2             # <<<<<<<<<<<<<<
@@ -4841,7 +4835,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
   }
   __pyx_L3:;
 
-  /* "TSSCB.pyx":161
+  /* "TSSCB.pyx":163
  *         else:
  *             self.Tstage = 2
  *         if self.ugap == 0.0:             # <<<<<<<<<<<<<<
@@ -4851,7 +4845,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
   __pyx_t_1 = (__pyx_v_self->ugap == 0.0);
   if (__pyx_t_1) {
 
-    /* "TSSCB.pyx":162
+    /* "TSSCB.pyx":164
  *             self.Tstage = 2
  *         if self.ugap == 0.0:
  *             self.Tstage = 2             # <<<<<<<<<<<<<<
@@ -4860,7 +4854,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_v_self->Tstage = 2;
 
-    /* "TSSCB.pyx":161
+    /* "TSSCB.pyx":163
  *         else:
  *             self.Tstage = 2
  *         if self.ugap == 0.0:             # <<<<<<<<<<<<<<
@@ -4869,41 +4863,42 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
   }
 
-  /* "TSSCB.pyx":164
+  /* "TSSCB.pyx":166
  *             self.Tstage = 2
  *         #
  *         if self.Tfracture:             # <<<<<<<<<<<<<<
  *             if self.configType == 1:
- *                 uy = self.F1 / self.k0
+ *                 uy = 0.5 * self.F1 / self.k0
 */
   if (__pyx_v_self->Tfracture) {
 
-    /* "TSSCB.pyx":165
+    /* "TSSCB.pyx":167
  *         #
  *         if self.Tfracture:
  *             if self.configType == 1:             # <<<<<<<<<<<<<<
- *                 uy = self.F1 / self.k0
+ *                 uy = 0.5 * self.F1 / self.k0
  *                 if (self.Tplate2 + uy <= self.Tstrain <= self.Tplate1 - uy):
 */
     __pyx_t_1 = (__pyx_v_self->configType == 1);
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":166
+      /* "TSSCB.pyx":168
  *         if self.Tfracture:
  *             if self.configType == 1:
- *                 uy = self.F1 / self.k0             # <<<<<<<<<<<<<<
+ *                 uy = 0.5 * self.F1 / self.k0             # <<<<<<<<<<<<<<
  *                 if (self.Tplate2 + uy <= self.Tstrain <= self.Tplate1 - uy):
  *                     self.Tstress4 = 0.0
 */
+      __pyx_t_2 = (0.5 * __pyx_v_self->F1);
       if (unlikely(__pyx_v_self->k0 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 166, __pyx_L1_error)
+        __PYX_ERR(0, 168, __pyx_L1_error)
       }
-      __pyx_v_uy = (__pyx_v_self->F1 / __pyx_v_self->k0);
+      __pyx_v_uy = (__pyx_t_2 / __pyx_v_self->k0);
 
-      /* "TSSCB.pyx":167
+      /* "TSSCB.pyx":169
  *             if self.configType == 1:
- *                 uy = self.F1 / self.k0
+ *                 uy = 0.5 * self.F1 / self.k0
  *                 if (self.Tplate2 + uy <= self.Tstrain <= self.Tplate1 - uy):             # <<<<<<<<<<<<<<
  *                     self.Tstress4 = 0.0
  *                     self.Ttangent = 0.0
@@ -4914,8 +4909,8 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       }
       if (__pyx_t_1) {
 
-        /* "TSSCB.pyx":168
- *                 uy = self.F1 / self.k0
+        /* "TSSCB.pyx":170
+ *                 uy = 0.5 * self.F1 / self.k0
  *                 if (self.Tplate2 + uy <= self.Tstrain <= self.Tplate1 - uy):
  *                     self.Tstress4 = 0.0             # <<<<<<<<<<<<<<
  *                     self.Ttangent = 0.0
@@ -4923,7 +4918,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
         __pyx_v_self->Tstress4 = 0.0;
 
-        /* "TSSCB.pyx":169
+        /* "TSSCB.pyx":171
  *                 if (self.Tplate2 + uy <= self.Tstrain <= self.Tplate1 - uy):
  *                     self.Tstress4 = 0.0
  *                     self.Ttangent = 0.0             # <<<<<<<<<<<<<<
@@ -4932,9 +4927,9 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
         __pyx_v_self->Ttangent = 0.0;
 
-        /* "TSSCB.pyx":167
+        /* "TSSCB.pyx":169
  *             if self.configType == 1:
- *                 uy = self.F1 / self.k0
+ *                 uy = 0.5 * self.F1 / self.k0
  *                 if (self.Tplate2 + uy <= self.Tstrain <= self.Tplate1 - uy):             # <<<<<<<<<<<<<<
  *                     self.Tstress4 = 0.0
  *                     self.Ttangent = 0.0
@@ -4942,7 +4937,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
         goto __pyx_L7;
       }
 
-      /* "TSSCB.pyx":171
+      /* "TSSCB.pyx":173
  *                     self.Ttangent = 0.0
  *                 else:
  *                     self.Tstress4 = self._frictionModel(self.Cstress4, dStrain, 0.5, &tangent3)             # <<<<<<<<<<<<<<
@@ -4953,10 +4948,10 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
         __pyx_t_3.__pyx_n = 2;
         __pyx_t_3.half = 0.5;
         __pyx_t_3.tangent = (&__pyx_v_tangent3);
-        __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress4, __pyx_v_dStrain, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 171, __pyx_L1_error)
+        __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress4, __pyx_v_dStrain, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 173, __pyx_L1_error)
         __pyx_v_self->Tstress4 = __pyx_t_2;
 
-        /* "TSSCB.pyx":172
+        /* "TSSCB.pyx":174
  *                 else:
  *                     self.Tstress4 = self._frictionModel(self.Cstress4, dStrain, 0.5, &tangent3)
  *                     self.Ttangent = tangent3             # <<<<<<<<<<<<<<
@@ -4965,7 +4960,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
         __pyx_v_self->Ttangent = __pyx_v_tangent3;
 
-        /* "TSSCB.pyx":173
+        /* "TSSCB.pyx":175
  *                     self.Tstress4 = self._frictionModel(self.Cstress4, dStrain, 0.5, &tangent3)
  *                     self.Ttangent = tangent3
  *                     if dStrain < 0 and self.Tstrain > 0 and self.Tstress4 <= 0:             # <<<<<<<<<<<<<<
@@ -4989,7 +4984,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
         __pyx_L9_bool_binop_done:;
         if (__pyx_t_1) {
 
-          /* "TSSCB.pyx":174
+          /* "TSSCB.pyx":176
  *                     self.Ttangent = tangent3
  *                     if dStrain < 0 and self.Tstrain > 0 and self.Tstress4 <= 0:
  *                         self.Tstress4 = 0.0             # <<<<<<<<<<<<<<
@@ -4998,7 +4993,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
           __pyx_v_self->Tstress4 = 0.0;
 
-          /* "TSSCB.pyx":175
+          /* "TSSCB.pyx":177
  *                     if dStrain < 0 and self.Tstrain > 0 and self.Tstress4 <= 0:
  *                         self.Tstress4 = 0.0
  *                         self.Ttangent = 0.0             # <<<<<<<<<<<<<<
@@ -5007,7 +5002,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
           __pyx_v_self->Ttangent = 0.0;
 
-          /* "TSSCB.pyx":173
+          /* "TSSCB.pyx":175
  *                     self.Tstress4 = self._frictionModel(self.Cstress4, dStrain, 0.5, &tangent3)
  *                     self.Ttangent = tangent3
  *                     if dStrain < 0 and self.Tstrain > 0 and self.Tstress4 <= 0:             # <<<<<<<<<<<<<<
@@ -5017,7 +5012,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
           goto __pyx_L8;
         }
 
-        /* "TSSCB.pyx":176
+        /* "TSSCB.pyx":178
  *                         self.Tstress4 = 0.0
  *                         self.Ttangent = 0.0
  *                     elif dStrain > 0 and self.Tstrain < 0 and self.Tstress4 >= 0:             # <<<<<<<<<<<<<<
@@ -5041,7 +5036,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
         __pyx_L12_bool_binop_done:;
         if (__pyx_t_1) {
 
-          /* "TSSCB.pyx":177
+          /* "TSSCB.pyx":179
  *                         self.Ttangent = 0.0
  *                     elif dStrain > 0 and self.Tstrain < 0 and self.Tstress4 >= 0:
  *                         self.Tstress4 = 0.0             # <<<<<<<<<<<<<<
@@ -5050,7 +5045,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
           __pyx_v_self->Tstress4 = 0.0;
 
-          /* "TSSCB.pyx":178
+          /* "TSSCB.pyx":180
  *                     elif dStrain > 0 and self.Tstrain < 0 and self.Tstress4 >= 0:
  *                         self.Tstress4 = 0.0
  *                         self.Ttangent = 0.0             # <<<<<<<<<<<<<<
@@ -5059,7 +5054,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
           __pyx_v_self->Ttangent = 0.0;
 
-          /* "TSSCB.pyx":176
+          /* "TSSCB.pyx":178
  *                         self.Tstress4 = 0.0
  *                         self.Ttangent = 0.0
  *                     elif dStrain > 0 and self.Tstrain < 0 and self.Tstress4 >= 0:             # <<<<<<<<<<<<<<
@@ -5071,17 +5066,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       }
       __pyx_L7:;
 
-      /* "TSSCB.pyx":165
+      /* "TSSCB.pyx":167
  *         #
  *         if self.Tfracture:
  *             if self.configType == 1:             # <<<<<<<<<<<<<<
- *                 uy = self.F1 / self.k0
+ *                 uy = 0.5 * self.F1 / self.k0
  *                 if (self.Tplate2 + uy <= self.Tstrain <= self.Tplate1 - uy):
 */
       goto __pyx_L6;
     }
 
-    /* "TSSCB.pyx":180
+    /* "TSSCB.pyx":182
  *                         self.Ttangent = 0.0
  *             else:
  *                 self.Tstress4 = self._frictionModel(self.Cstress4, dStrain, 1.0, &tangent3)             # <<<<<<<<<<<<<<
@@ -5092,10 +5087,10 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_3.__pyx_n = 2;
       __pyx_t_3.half = 1.0;
       __pyx_t_3.tangent = (&__pyx_v_tangent3);
-      __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress4, __pyx_v_dStrain, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 180, __pyx_L1_error)
+      __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress4, __pyx_v_dStrain, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
       __pyx_v_self->Tstress4 = __pyx_t_2;
 
-      /* "TSSCB.pyx":181
+      /* "TSSCB.pyx":183
  *             else:
  *                 self.Tstress4 = self._frictionModel(self.Cstress4, dStrain, 1.0, &tangent3)
  *                 self.Ttangent = tangent3             # <<<<<<<<<<<<<<
@@ -5106,7 +5101,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     }
     __pyx_L6:;
 
-    /* "TSSCB.pyx":182
+    /* "TSSCB.pyx":184
  *                 self.Tstress4 = self._frictionModel(self.Cstress4, dStrain, 1.0, &tangent3)
  *                 self.Ttangent = tangent3
  *             return             # <<<<<<<<<<<<<<
@@ -5115,49 +5110,64 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     goto __pyx_L0;
 
-    /* "TSSCB.pyx":164
+    /* "TSSCB.pyx":166
  *             self.Tstage = 2
  *         #
  *         if self.Tfracture:             # <<<<<<<<<<<<<<
  *             if self.configType == 1:
- *                 uy = self.F1 / self.k0
+ *                 uy = 0.5 * self.F1 / self.k0
 */
   }
 
-  /* "TSSCB.pyx":184
+  /* "TSSCB.pyx":186
  *             return
  *         #
  *         if self.Tfracturing:             # <<<<<<<<<<<<<<
+ *             residual_force = (0.5 if self.configType == 1 else 1.0) * self.F1
  *             if self.Cstress4 >= 0.0:
- *                 self.Tstress4 = self.TfractureFore - (self.TfractureFore - self.F1) * self.Trp
 */
   if (__pyx_v_self->Tfracturing) {
 
-    /* "TSSCB.pyx":185
+    /* "TSSCB.pyx":187
  *         #
  *         if self.Tfracturing:
+ *             residual_force = (0.5 if self.configType == 1 else 1.0) * self.F1             # <<<<<<<<<<<<<<
+ *             if self.Cstress4 >= 0.0:
+ *                 self.Tstress4 = self.TfractureFore - (self.TfractureFore - residual_force) * self.Trp
+*/
+    __pyx_t_1 = (__pyx_v_self->configType == 1);
+    if (__pyx_t_1) {
+      __pyx_t_2 = 0.5;
+    } else {
+      __pyx_t_2 = 1.0;
+    }
+    __pyx_v_residual_force = (__pyx_t_2 * __pyx_v_self->F1);
+
+    /* "TSSCB.pyx":188
+ *         if self.Tfracturing:
+ *             residual_force = (0.5 if self.configType == 1 else 1.0) * self.F1
  *             if self.Cstress4 >= 0.0:             # <<<<<<<<<<<<<<
- *                 self.Tstress4 = self.TfractureFore - (self.TfractureFore - self.F1) * self.Trp
- *                 self.Ttangent = -(self.TfractureFore - self.F1) * (1.0 if dStrain > 0 else -1.0) / self.up
+ *                 self.Tstress4 = self.TfractureFore - (self.TfractureFore - residual_force) * self.Trp
+ *                 self.Ttangent = -(self.TfractureFore - residual_force) * (1.0 if dStrain > 0 else -1.0) / self.up
 */
     __pyx_t_1 = (__pyx_v_self->Cstress4 >= 0.0);
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":186
- *         if self.Tfracturing:
+      /* "TSSCB.pyx":189
+ *             residual_force = (0.5 if self.configType == 1 else 1.0) * self.F1
  *             if self.Cstress4 >= 0.0:
- *                 self.Tstress4 = self.TfractureFore - (self.TfractureFore - self.F1) * self.Trp             # <<<<<<<<<<<<<<
- *                 self.Ttangent = -(self.TfractureFore - self.F1) * (1.0 if dStrain > 0 else -1.0) / self.up
+ *                 self.Tstress4 = self.TfractureFore - (self.TfractureFore - residual_force) * self.Trp             # <<<<<<<<<<<<<<
+ *                 self.Ttangent = -(self.TfractureFore - residual_force) * (1.0 if dStrain > 0 else -1.0) / self.up
  *             else:
 */
-      __pyx_v_self->Tstress4 = (__pyx_v_self->TfractureFore - ((__pyx_v_self->TfractureFore - __pyx_v_self->F1) * __pyx_v_self->Trp));
+      __pyx_v_self->Tstress4 = (__pyx_v_self->TfractureFore - ((__pyx_v_self->TfractureFore - __pyx_v_residual_force) * __pyx_v_self->Trp));
 
-      /* "TSSCB.pyx":187
+      /* "TSSCB.pyx":190
  *             if self.Cstress4 >= 0.0:
- *                 self.Tstress4 = self.TfractureFore - (self.TfractureFore - self.F1) * self.Trp
- *                 self.Ttangent = -(self.TfractureFore - self.F1) * (1.0 if dStrain > 0 else -1.0) / self.up             # <<<<<<<<<<<<<<
+ *                 self.Tstress4 = self.TfractureFore - (self.TfractureFore - residual_force) * self.Trp
+ *                 self.Ttangent = -(self.TfractureFore - residual_force) * (1.0 if dStrain > 0 else -1.0) / self.up             # <<<<<<<<<<<<<<
  *             else:
- *                 self.Tstress4 = self.TfractureFore + (-self.F1 - self.TfractureFore) * self.Trp
+ *                 self.Tstress4 = self.TfractureFore + (-residual_force - self.TfractureFore) * self.Trp
 */
       __pyx_t_1 = (__pyx_v_dStrain > 0.0);
       if (__pyx_t_1) {
@@ -5165,37 +5175,37 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       } else {
         __pyx_t_2 = -1.0;
       }
-      __pyx_t_5 = ((-(__pyx_v_self->TfractureFore - __pyx_v_self->F1)) * __pyx_t_2);
+      __pyx_t_5 = ((-(__pyx_v_self->TfractureFore - __pyx_v_residual_force)) * __pyx_t_2);
       if (unlikely(__pyx_v_self->up == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 187, __pyx_L1_error)
+        __PYX_ERR(0, 190, __pyx_L1_error)
       }
       __pyx_v_self->Ttangent = (__pyx_t_5 / __pyx_v_self->up);
 
-      /* "TSSCB.pyx":185
- *         #
+      /* "TSSCB.pyx":188
  *         if self.Tfracturing:
+ *             residual_force = (0.5 if self.configType == 1 else 1.0) * self.F1
  *             if self.Cstress4 >= 0.0:             # <<<<<<<<<<<<<<
- *                 self.Tstress4 = self.TfractureFore - (self.TfractureFore - self.F1) * self.Trp
- *                 self.Ttangent = -(self.TfractureFore - self.F1) * (1.0 if dStrain > 0 else -1.0) / self.up
+ *                 self.Tstress4 = self.TfractureFore - (self.TfractureFore - residual_force) * self.Trp
+ *                 self.Ttangent = -(self.TfractureFore - residual_force) * (1.0 if dStrain > 0 else -1.0) / self.up
 */
       goto __pyx_L16;
     }
 
-    /* "TSSCB.pyx":189
- *                 self.Ttangent = -(self.TfractureFore - self.F1) * (1.0 if dStrain > 0 else -1.0) / self.up
+    /* "TSSCB.pyx":192
+ *                 self.Ttangent = -(self.TfractureFore - residual_force) * (1.0 if dStrain > 0 else -1.0) / self.up
  *             else:
- *                 self.Tstress4 = self.TfractureFore + (-self.F1 - self.TfractureFore) * self.Trp             # <<<<<<<<<<<<<<
- *                 self.Ttangent = (-self.F1 - self.TfractureFore) * (1.0 if dStrain > 0 else -1.0) / self.up
+ *                 self.Tstress4 = self.TfractureFore + (-residual_force - self.TfractureFore) * self.Trp             # <<<<<<<<<<<<<<
+ *                 self.Ttangent = (-residual_force - self.TfractureFore) * (1.0 if dStrain > 0 else -1.0) / self.up
  *             return
 */
     /*else*/ {
-      __pyx_v_self->Tstress4 = (__pyx_v_self->TfractureFore + (((-__pyx_v_self->F1) - __pyx_v_self->TfractureFore) * __pyx_v_self->Trp));
+      __pyx_v_self->Tstress4 = (__pyx_v_self->TfractureFore + (((-__pyx_v_residual_force) - __pyx_v_self->TfractureFore) * __pyx_v_self->Trp));
 
-      /* "TSSCB.pyx":190
+      /* "TSSCB.pyx":193
  *             else:
- *                 self.Tstress4 = self.TfractureFore + (-self.F1 - self.TfractureFore) * self.Trp
- *                 self.Ttangent = (-self.F1 - self.TfractureFore) * (1.0 if dStrain > 0 else -1.0) / self.up             # <<<<<<<<<<<<<<
+ *                 self.Tstress4 = self.TfractureFore + (-residual_force - self.TfractureFore) * self.Trp
+ *                 self.Ttangent = (-residual_force - self.TfractureFore) * (1.0 if dStrain > 0 else -1.0) / self.up             # <<<<<<<<<<<<<<
  *             return
  *         #
 */
@@ -5205,34 +5215,34 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       } else {
         __pyx_t_5 = -1.0;
       }
-      __pyx_t_2 = (((-__pyx_v_self->F1) - __pyx_v_self->TfractureFore) * __pyx_t_5);
+      __pyx_t_2 = (((-__pyx_v_residual_force) - __pyx_v_self->TfractureFore) * __pyx_t_5);
       if (unlikely(__pyx_v_self->up == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 190, __pyx_L1_error)
+        __PYX_ERR(0, 193, __pyx_L1_error)
       }
       __pyx_v_self->Ttangent = (__pyx_t_2 / __pyx_v_self->up);
     }
     __pyx_L16:;
 
-    /* "TSSCB.pyx":191
- *                 self.Tstress4 = self.TfractureFore + (-self.F1 - self.TfractureFore) * self.Trp
- *                 self.Ttangent = (-self.F1 - self.TfractureFore) * (1.0 if dStrain > 0 else -1.0) / self.up
+    /* "TSSCB.pyx":194
+ *                 self.Tstress4 = self.TfractureFore + (-residual_force - self.TfractureFore) * self.Trp
+ *                 self.Ttangent = (-residual_force - self.TfractureFore) * (1.0 if dStrain > 0 else -1.0) / self.up
  *             return             # <<<<<<<<<<<<<<
  *         #
  *         if self.Cstage == 1 and self.Tstage == 1:
 */
     goto __pyx_L0;
 
-    /* "TSSCB.pyx":184
+    /* "TSSCB.pyx":186
  *             return
  *         #
  *         if self.Tfracturing:             # <<<<<<<<<<<<<<
+ *             residual_force = (0.5 if self.configType == 1 else 1.0) * self.F1
  *             if self.Cstress4 >= 0.0:
- *                 self.Tstress4 = self.TfractureFore - (self.TfractureFore - self.F1) * self.Trp
 */
   }
 
-  /* "TSSCB.pyx":193
+  /* "TSSCB.pyx":196
  *             return
  *         #
  *         if self.Cstage == 1 and self.Tstage == 1:             # <<<<<<<<<<<<<<
@@ -5250,7 +5260,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
   __pyx_L18_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "TSSCB.pyx":195
+    /* "TSSCB.pyx":198
  *         if self.Cstage == 1 and self.Tstage == 1:
  *             # 1->1
  *             self.Tstress1 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent1)             # <<<<<<<<<<<<<<
@@ -5260,10 +5270,10 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_t_3.__pyx_n = 2;
     __pyx_t_3.half = 1.0;
     __pyx_t_3.tangent = (&__pyx_v_tangent1);
-    __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress3, __pyx_v_dStrain, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L1_error)
+    __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress3, __pyx_v_dStrain, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 198, __pyx_L1_error)
     __pyx_v_self->Tstress1 = __pyx_t_2;
 
-    /* "TSSCB.pyx":196
+    /* "TSSCB.pyx":199
  *             # 1->1
  *             self.Tstress1 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent1)
  *             self.Tstress2 = self.Tstress1             # <<<<<<<<<<<<<<
@@ -5273,7 +5283,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_t_2 = __pyx_v_self->Tstress1;
     __pyx_v_self->Tstress2 = __pyx_t_2;
 
-    /* "TSSCB.pyx":197
+    /* "TSSCB.pyx":200
  *             self.Tstress1 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent1)
  *             self.Tstress2 = self.Tstress1
  *             self.Tstress3 = self.Tstress1             # <<<<<<<<<<<<<<
@@ -5283,7 +5293,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_t_2 = __pyx_v_self->Tstress1;
     __pyx_v_self->Tstress3 = __pyx_t_2;
 
-    /* "TSSCB.pyx":198
+    /* "TSSCB.pyx":201
  *             self.Tstress2 = self.Tstress1
  *             self.Tstress3 = self.Tstress1
  *             tangent3 = tangent1             # <<<<<<<<<<<<<<
@@ -5292,7 +5302,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_v_tangent3 = __pyx_v_tangent1;
 
-    /* "TSSCB.pyx":193
+    /* "TSSCB.pyx":196
  *             return
  *         #
  *         if self.Cstage == 1 and self.Tstage == 1:             # <<<<<<<<<<<<<<
@@ -5302,7 +5312,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     goto __pyx_L17;
   }
 
-  /* "TSSCB.pyx":199
+  /* "TSSCB.pyx":202
  *             self.Tstress3 = self.Tstress1
  *             tangent3 = tangent1
  *         elif self.Cstage == 1 and self.Tstage == 2:             # <<<<<<<<<<<<<<
@@ -5320,7 +5330,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
   __pyx_L20_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "TSSCB.pyx":201
+    /* "TSSCB.pyx":204
  *         elif self.Cstage == 1 and self.Tstage == 2:
  *             # 1->2
  *             if dStrain > 0:             # <<<<<<<<<<<<<<
@@ -5330,7 +5340,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_t_1 = (__pyx_v_dStrain > 0.0);
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":202
+      /* "TSSCB.pyx":205
  *             # 1->2
  *             if dStrain > 0:
  *                 du1 = self.ugap - self.Cstrain             # <<<<<<<<<<<<<<
@@ -5339,7 +5349,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_du1 = (__pyx_v_self->ugap - __pyx_v_self->Cstrain);
 
-      /* "TSSCB.pyx":203
+      /* "TSSCB.pyx":206
  *             if dStrain > 0:
  *                 du1 = self.ugap - self.Cstrain
  *                 du2 = dStrain - du1             # <<<<<<<<<<<<<<
@@ -5348,7 +5358,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_du2 = (__pyx_v_dStrain - __pyx_v_du1);
 
-      /* "TSSCB.pyx":204
+      /* "TSSCB.pyx":207
  *                 du1 = self.ugap - self.Cstrain
  *                 du2 = dStrain - du1
  *                 usc0 = self.ugap - self.ua             # <<<<<<<<<<<<<<
@@ -5357,7 +5367,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_usc0 = (__pyx_v_self->ugap - __pyx_v_self->ua);
 
-      /* "TSSCB.pyx":201
+      /* "TSSCB.pyx":204
  *         elif self.Cstage == 1 and self.Tstage == 2:
  *             # 1->2
  *             if dStrain > 0:             # <<<<<<<<<<<<<<
@@ -5367,7 +5377,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       goto __pyx_L22;
     }
 
-    /* "TSSCB.pyx":206
+    /* "TSSCB.pyx":209
  *                 usc0 = self.ugap - self.ua
  *             else:
  *                 du1 = -self.ugap - self.Cstrain             # <<<<<<<<<<<<<<
@@ -5377,7 +5387,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     /*else*/ {
       __pyx_v_du1 = ((-__pyx_v_self->ugap) - __pyx_v_self->Cstrain);
 
-      /* "TSSCB.pyx":207
+      /* "TSSCB.pyx":210
  *             else:
  *                 du1 = -self.ugap - self.Cstrain
  *                 du2 = dStrain - du1             # <<<<<<<<<<<<<<
@@ -5386,7 +5396,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_du2 = (__pyx_v_dStrain - __pyx_v_du1);
 
-      /* "TSSCB.pyx":208
+      /* "TSSCB.pyx":211
  *                 du1 = -self.ugap - self.Cstrain
  *                 du2 = dStrain - du1
  *                 usc0 = self.ua - self.ugap             # <<<<<<<<<<<<<<
@@ -5397,7 +5407,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     }
     __pyx_L22:;
 
-    /* "TSSCB.pyx":209
+    /* "TSSCB.pyx":212
  *                 du2 = dStrain - du1
  *                 usc0 = self.ua - self.ugap
  *             if self.Thardening:             # <<<<<<<<<<<<<<
@@ -5406,17 +5416,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     if (__pyx_v_self->Thardening) {
 
-      /* "TSSCB.pyx":210
+      /* "TSSCB.pyx":213
  *                 usc0 = self.ua - self.ugap
  *             if self.Thardening:
  *                 self.TCDD = self.CCDD + self._damageIncrement(du2)             # <<<<<<<<<<<<<<
  *             F1_ = self._frictionModel(self.Cstress1, du1)
  *             F2_ = self._SCModel(usc0, F1_, du2, &tangent1)
 */
-      __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_damageIncrement(__pyx_v_self, __pyx_v_du2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 210, __pyx_L1_error)
+      __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_damageIncrement(__pyx_v_self, __pyx_v_du2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L1_error)
       __pyx_v_self->TCDD = (__pyx_v_self->CCDD + __pyx_t_2);
 
-      /* "TSSCB.pyx":209
+      /* "TSSCB.pyx":212
  *                 du2 = dStrain - du1
  *                 usc0 = self.ua - self.ugap
  *             if self.Thardening:             # <<<<<<<<<<<<<<
@@ -5425,17 +5435,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     }
 
-    /* "TSSCB.pyx":211
+    /* "TSSCB.pyx":214
  *             if self.Thardening:
  *                 self.TCDD = self.CCDD + self._damageIncrement(du2)
  *             F1_ = self._frictionModel(self.Cstress1, du1)             # <<<<<<<<<<<<<<
  *             F2_ = self._SCModel(usc0, F1_, du2, &tangent1)
  *             self.Tstress1 = F2_
 */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress1, __pyx_v_du1, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L1_error)
+    __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress1, __pyx_v_du1, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 214, __pyx_L1_error)
     __pyx_v_F1_ = __pyx_t_2;
 
-    /* "TSSCB.pyx":212
+    /* "TSSCB.pyx":215
  *                 self.TCDD = self.CCDD + self._damageIncrement(du2)
  *             F1_ = self._frictionModel(self.Cstress1, du1)
  *             F2_ = self._SCModel(usc0, F1_, du2, &tangent1)             # <<<<<<<<<<<<<<
@@ -5444,10 +5454,10 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_t_6.__pyx_n = 1;
     __pyx_t_6.tangent = (&__pyx_v_tangent1);
-    __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_SCModel(__pyx_v_self, __pyx_v_usc0, __pyx_v_F1_, __pyx_v_du2, &__pyx_t_6); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 212, __pyx_L1_error)
+    __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_SCModel(__pyx_v_self, __pyx_v_usc0, __pyx_v_F1_, __pyx_v_du2, &__pyx_t_6); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 215, __pyx_L1_error)
     __pyx_v_F2_ = __pyx_t_2;
 
-    /* "TSSCB.pyx":213
+    /* "TSSCB.pyx":216
  *             F1_ = self._frictionModel(self.Cstress1, du1)
  *             F2_ = self._SCModel(usc0, F1_, du2, &tangent1)
  *             self.Tstress1 = F2_             # <<<<<<<<<<<<<<
@@ -5456,7 +5466,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_v_self->Tstress1 = __pyx_v_F2_;
 
-    /* "TSSCB.pyx":214
+    /* "TSSCB.pyx":217
  *             F2_ = self._SCModel(usc0, F1_, du2, &tangent1)
  *             self.Tstress1 = F2_
  *             self.Tstress2 = self.Tstress1             # <<<<<<<<<<<<<<
@@ -5466,41 +5476,50 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_t_2 = __pyx_v_self->Tstress1;
     __pyx_v_self->Tstress2 = __pyx_t_2;
 
-    /* "TSSCB.pyx":215
+    /* "TSSCB.pyx":218
  *             self.Tstress1 = F2_
  *             self.Tstress2 = self.Tstress1
  *             tangent2 = tangent1             # <<<<<<<<<<<<<<
  *             Fd = (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
- *             if self.Thardening:
+ *             dFd = 0.0
 */
     __pyx_v_tangent2 = __pyx_v_tangent1;
 
-    /* "TSSCB.pyx":216
+    /* "TSSCB.pyx":219
  *             self.Tstress2 = self.Tstress1
  *             tangent2 = tangent1
  *             Fd = (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))             # <<<<<<<<<<<<<<
+ *             dFd = 0.0
  *             if self.Thardening:
- *                 direction = 1.0 if self.Tstrain > 0 else -1.0
 */
     __pyx_t_2 = (__pyx_v_self->r2 * (fabs(__pyx_v_self->Tstrain) - __pyx_v_self->ugap));
     __pyx_t_5 = (__pyx_v_self->uh - __pyx_v_self->ugap);
     if (unlikely(__pyx_t_5 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 216, __pyx_L1_error)
+      __PYX_ERR(0, 219, __pyx_L1_error)
     }
     __pyx_v_Fd = (((__pyx_v_self->F2 - (__pyx_v_self->F1 / 2.0)) * __pyx_v_self->TCDD) * (__pyx_v_self->r1 - (__pyx_t_2 / __pyx_t_5)));
 
-    /* "TSSCB.pyx":217
+    /* "TSSCB.pyx":220
  *             tangent2 = tangent1
  *             Fd = (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+ *             dFd = 0.0             # <<<<<<<<<<<<<<
+ *             if self.Thardening:
+ *                 direction = 1.0 if self.Tstrain > 0 else -1.0
+*/
+    __pyx_v_dFd = 0.0;
+
+    /* "TSSCB.pyx":221
+ *             Fd = (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+ *             dFd = 0.0
  *             if self.Thardening:             # <<<<<<<<<<<<<<
  *                 direction = 1.0 if self.Tstrain > 0 else -1.0
  *                 dCDD = (1.0 if du2 > 0 else -1.0) / (self.uh - self.ugap)
 */
     if (__pyx_v_self->Thardening) {
 
-      /* "TSSCB.pyx":218
- *             Fd = (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+      /* "TSSCB.pyx":222
+ *             dFd = 0.0
  *             if self.Thardening:
  *                 direction = 1.0 if self.Tstrain > 0 else -1.0             # <<<<<<<<<<<<<<
  *                 dCDD = (1.0 if du2 > 0 else -1.0) / (self.uh - self.ugap)
@@ -5514,7 +5533,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       }
       __pyx_v_direction = __pyx_t_5;
 
-      /* "TSSCB.pyx":219
+      /* "TSSCB.pyx":223
  *             if self.Thardening:
  *                 direction = 1.0 if self.Tstrain > 0 else -1.0
  *                 dCDD = (1.0 if du2 > 0 else -1.0) / (self.uh - self.ugap)             # <<<<<<<<<<<<<<
@@ -5530,11 +5549,11 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_2 = (__pyx_v_self->uh - __pyx_v_self->ugap);
       if (unlikely(__pyx_t_2 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 219, __pyx_L1_error)
+        __PYX_ERR(0, 223, __pyx_L1_error)
       }
       __pyx_v_dCDD = (__pyx_t_5 / __pyx_t_2);
 
-      /* "TSSCB.pyx":221
+      /* "TSSCB.pyx":225
  *                 dCDD = (1.0 if du2 > 0 else -1.0) / (self.uh - self.ugap)
  *                 dFd = (self.F2 - self.F1 / 2.0) * (
  *                     dCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))             # <<<<<<<<<<<<<<
@@ -5545,10 +5564,10 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_5 = (__pyx_v_self->uh - __pyx_v_self->ugap);
       if (unlikely(__pyx_t_5 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 221, __pyx_L1_error)
+        __PYX_ERR(0, 225, __pyx_L1_error)
       }
 
-      /* "TSSCB.pyx":222
+      /* "TSSCB.pyx":226
  *                 dFd = (self.F2 - self.F1 / 2.0) * (
  *                     dCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
  *                     - self.TCDD * self.r2 * direction / (self.uh - self.ugap))             # <<<<<<<<<<<<<<
@@ -5559,10 +5578,10 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_8 = (__pyx_v_self->uh - __pyx_v_self->ugap);
       if (unlikely(__pyx_t_8 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 222, __pyx_L1_error)
+        __PYX_ERR(0, 226, __pyx_L1_error)
       }
 
-      /* "TSSCB.pyx":220
+      /* "TSSCB.pyx":224
  *                 direction = 1.0 if self.Tstrain > 0 else -1.0
  *                 dCDD = (1.0 if du2 > 0 else -1.0) / (self.uh - self.ugap)
  *                 dFd = (self.F2 - self.F1 / 2.0) * (             # <<<<<<<<<<<<<<
@@ -5571,7 +5590,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_dFd = ((__pyx_v_self->F2 - (__pyx_v_self->F1 / 2.0)) * ((__pyx_v_dCDD * (__pyx_v_self->r1 - (__pyx_t_2 / __pyx_t_5))) - (__pyx_t_7 / __pyx_t_8)));
 
-      /* "TSSCB.pyx":223
+      /* "TSSCB.pyx":227
  *                     dCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
  *                     - self.TCDD * self.r2 * direction / (self.uh - self.ugap))
  *                 tangent2 -= direction * dFd             # <<<<<<<<<<<<<<
@@ -5580,16 +5599,16 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_tangent2 = (__pyx_v_tangent2 - (__pyx_v_direction * __pyx_v_dFd));
 
-      /* "TSSCB.pyx":217
- *             tangent2 = tangent1
+      /* "TSSCB.pyx":221
  *             Fd = (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+ *             dFd = 0.0
  *             if self.Thardening:             # <<<<<<<<<<<<<<
  *                 direction = 1.0 if self.Tstrain > 0 else -1.0
  *                 dCDD = (1.0 if du2 > 0 else -1.0) / (self.uh - self.ugap)
 */
     }
 
-    /* "TSSCB.pyx":224
+    /* "TSSCB.pyx":228
  *                     - self.TCDD * self.r2 * direction / (self.uh - self.ugap))
  *                 tangent2 -= direction * dFd
  *             if self.Thardening and self.Tstrain > 0:             # <<<<<<<<<<<<<<
@@ -5606,7 +5625,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_L26_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":225
+      /* "TSSCB.pyx":229
  *                 tangent2 -= direction * dFd
  *             if self.Thardening and self.Tstrain > 0:
  *                 self.Tstress2 = self.Tstress1 - Fd             # <<<<<<<<<<<<<<
@@ -5615,7 +5634,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_self->Tstress2 = (__pyx_v_self->Tstress1 - __pyx_v_Fd);
 
-      /* "TSSCB.pyx":224
+      /* "TSSCB.pyx":228
  *                     - self.TCDD * self.r2 * direction / (self.uh - self.ugap))
  *                 tangent2 -= direction * dFd
  *             if self.Thardening and self.Tstrain > 0:             # <<<<<<<<<<<<<<
@@ -5625,7 +5644,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       goto __pyx_L25;
     }
 
-    /* "TSSCB.pyx":226
+    /* "TSSCB.pyx":230
  *             if self.Thardening and self.Tstrain > 0:
  *                 self.Tstress2 = self.Tstress1 - Fd
  *             elif self.Thardening and self.Tstrain < 0:             # <<<<<<<<<<<<<<
@@ -5642,7 +5661,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_L28_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":227
+      /* "TSSCB.pyx":231
  *                 self.Tstress2 = self.Tstress1 - Fd
  *             elif self.Thardening and self.Tstrain < 0:
  *                 self.Tstress2 = self.Tstress1 + Fd             # <<<<<<<<<<<<<<
@@ -5651,7 +5670,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_self->Tstress2 = (__pyx_v_self->Tstress1 + __pyx_v_Fd);
 
-      /* "TSSCB.pyx":226
+      /* "TSSCB.pyx":230
  *             if self.Thardening and self.Tstrain > 0:
  *                 self.Tstress2 = self.Tstress1 - Fd
  *             elif self.Thardening and self.Tstrain < 0:             # <<<<<<<<<<<<<<
@@ -5661,7 +5680,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     }
     __pyx_L25:;
 
-    /* "TSSCB.pyx":228
+    /* "TSSCB.pyx":232
  *             elif self.Thardening and self.Tstrain < 0:
  *                 self.Tstress2 = self.Tstress1 + Fd
  *             self.Tstress3 = self.Tstress2             # <<<<<<<<<<<<<<
@@ -5671,7 +5690,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_t_8 = __pyx_v_self->Tstress2;
     __pyx_v_self->Tstress3 = __pyx_t_8;
 
-    /* "TSSCB.pyx":229
+    /* "TSSCB.pyx":233
  *                 self.Tstress2 = self.Tstress1 + Fd
  *             self.Tstress3 = self.Tstress2
  *             tangent3 = tangent2             # <<<<<<<<<<<<<<
@@ -5680,7 +5699,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_v_tangent3 = __pyx_v_tangent2;
 
-    /* "TSSCB.pyx":230
+    /* "TSSCB.pyx":234
  *             self.Tstress3 = self.Tstress2
  *             tangent3 = tangent2
  *             if dStrain > 0 and self.Tstress2 < self.F1:             # <<<<<<<<<<<<<<
@@ -5698,7 +5717,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_L31_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":231
+      /* "TSSCB.pyx":235
  *             tangent3 = tangent2
  *             if dStrain > 0 and self.Tstress2 < self.F1:
  *                 self.Tstress3 = self.F1             # <<<<<<<<<<<<<<
@@ -5708,7 +5727,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_8 = __pyx_v_self->F1;
       __pyx_v_self->Tstress3 = __pyx_t_8;
 
-      /* "TSSCB.pyx":232
+      /* "TSSCB.pyx":236
  *             if dStrain > 0 and self.Tstress2 < self.F1:
  *                 self.Tstress3 = self.F1
  *                 tangent3 = 0.0             # <<<<<<<<<<<<<<
@@ -5717,7 +5736,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_tangent3 = 0.0;
 
-      /* "TSSCB.pyx":230
+      /* "TSSCB.pyx":234
  *             self.Tstress3 = self.Tstress2
  *             tangent3 = tangent2
  *             if dStrain > 0 and self.Tstress2 < self.F1:             # <<<<<<<<<<<<<<
@@ -5727,7 +5746,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       goto __pyx_L30;
     }
 
-    /* "TSSCB.pyx":233
+    /* "TSSCB.pyx":237
  *                 self.Tstress3 = self.F1
  *                 tangent3 = 0.0
  *             elif dStrain < 0 and self.Tstress2 > -self.F1:             # <<<<<<<<<<<<<<
@@ -5745,25 +5764,25 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_L33_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":234
+      /* "TSSCB.pyx":238
  *                 tangent3 = 0.0
  *             elif dStrain < 0 and self.Tstress2 > -self.F1:
  *                 self.Tstress3 = -self.F1             # <<<<<<<<<<<<<<
  *                 tangent3 = 0.0
- *         elif self.Cstage == 2 and self.Tstage == 2:
+ *             boundary_force = self._frictionModel(self.Cstress3, du1)
 */
       __pyx_v_self->Tstress3 = (-__pyx_v_self->F1);
 
-      /* "TSSCB.pyx":235
+      /* "TSSCB.pyx":239
  *             elif dStrain < 0 and self.Tstress2 > -self.F1:
  *                 self.Tstress3 = -self.F1
  *                 tangent3 = 0.0             # <<<<<<<<<<<<<<
- *         elif self.Cstage == 2 and self.Tstage == 2:
- *             # 2->2
+ *             boundary_force = self._frictionModel(self.Cstress3, du1)
+ *             if (self.configType == 1 and self.Thardening and
 */
       __pyx_v_tangent3 = 0.0;
 
-      /* "TSSCB.pyx":233
+      /* "TSSCB.pyx":237
  *                 self.Tstress3 = self.F1
  *                 tangent3 = 0.0
  *             elif dStrain < 0 and self.Tstress2 > -self.F1:             # <<<<<<<<<<<<<<
@@ -5773,7 +5792,408 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     }
     __pyx_L30:;
 
-    /* "TSSCB.pyx":199
+    /* "TSSCB.pyx":240
+ *                 self.Tstress3 = -self.F1
+ *                 tangent3 = 0.0
+ *             boundary_force = self._frictionModel(self.Cstress3, du1)             # <<<<<<<<<<<<<<
+ *             if (self.configType == 1 and self.Thardening and
+ *                     ((dStrain > 0 and self.Tstress2 < self.F1) or
+*/
+    __pyx_t_8 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress3, __pyx_v_du1, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L1_error)
+    __pyx_v_boundary_force = __pyx_t_8;
+
+    /* "TSSCB.pyx":241
+ *                 tangent3 = 0.0
+ *             boundary_force = self._frictionModel(self.Cstress3, du1)
+ *             if (self.configType == 1 and self.Thardening and             # <<<<<<<<<<<<<<
+ *                     ((dStrain > 0 and self.Tstress2 < self.F1) or
+ *                      (dStrain < 0 and self.Tstress2 > -self.F1))):
+*/
+    __pyx_t_4 = (__pyx_v_self->configType == 1);
+    if (__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L36_bool_binop_done;
+    }
+    if (__pyx_v_self->Thardening) {
+    } else {
+      __pyx_t_1 = __pyx_v_self->Thardening;
+      goto __pyx_L36_bool_binop_done;
+    }
+
+    /* "TSSCB.pyx":242
+ *             boundary_force = self._frictionModel(self.Cstress3, du1)
+ *             if (self.configType == 1 and self.Thardening and
+ *                     ((dStrain > 0 and self.Tstress2 < self.F1) or             # <<<<<<<<<<<<<<
+ *                      (dStrain < 0 and self.Tstress2 > -self.F1))):
+ *                 predictor = self._frictionModel(boundary_force, du2, 1.0, &predictor_tangent)
+*/
+    __pyx_t_4 = (__pyx_v_dStrain > 0.0);
+    if (!__pyx_t_4) {
+      goto __pyx_L39_next_or;
+    } else {
+    }
+    __pyx_t_4 = (__pyx_v_self->Tstress2 < __pyx_v_self->F1);
+    if (!__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L36_bool_binop_done;
+    }
+    __pyx_L39_next_or:;
+
+    /* "TSSCB.pyx":243
+ *             if (self.configType == 1 and self.Thardening and
+ *                     ((dStrain > 0 and self.Tstress2 < self.F1) or
+ *                      (dStrain < 0 and self.Tstress2 > -self.F1))):             # <<<<<<<<<<<<<<
+ *                 predictor = self._frictionModel(boundary_force, du2, 1.0, &predictor_tangent)
+ *             else:
+*/
+    __pyx_t_4 = (__pyx_v_dStrain < 0.0);
+    if (__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L36_bool_binop_done;
+    }
+    __pyx_t_4 = (__pyx_v_self->Tstress2 > (-__pyx_v_self->F1));
+    __pyx_t_1 = __pyx_t_4;
+    __pyx_L36_bool_binop_done:;
+
+    /* "TSSCB.pyx":241
+ *                 tangent3 = 0.0
+ *             boundary_force = self._frictionModel(self.Cstress3, du1)
+ *             if (self.configType == 1 and self.Thardening and             # <<<<<<<<<<<<<<
+ *                     ((dStrain > 0 and self.Tstress2 < self.F1) or
+ *                      (dStrain < 0 and self.Tstress2 > -self.F1))):
+*/
+    if (__pyx_t_1) {
+
+      /* "TSSCB.pyx":244
+ *                     ((dStrain > 0 and self.Tstress2 < self.F1) or
+ *                      (dStrain < 0 and self.Tstress2 > -self.F1))):
+ *                 predictor = self._frictionModel(boundary_force, du2, 1.0, &predictor_tangent)             # <<<<<<<<<<<<<<
+ *             else:
+ *                 direction = 1.0 if self.Tstrain > 0 else -1.0
+*/
+      __pyx_t_3.__pyx_n = 2;
+      __pyx_t_3.half = 1.0;
+      __pyx_t_3.tangent = (&__pyx_v_predictor_tangent);
+      __pyx_t_8 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_boundary_force, __pyx_v_du2, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 244, __pyx_L1_error)
+      __pyx_v_predictor = __pyx_t_8;
+
+      /* "TSSCB.pyx":241
+ *                 tangent3 = 0.0
+ *             boundary_force = self._frictionModel(self.Cstress3, du1)
+ *             if (self.configType == 1 and self.Thardening and             # <<<<<<<<<<<<<<
+ *                     ((dStrain > 0 and self.Tstress2 < self.F1) or
+ *                      (dStrain < 0 and self.Tstress2 > -self.F1))):
+*/
+      goto __pyx_L35;
+    }
+
+    /* "TSSCB.pyx":246
+ *                 predictor = self._frictionModel(boundary_force, du2, 1.0, &predictor_tangent)
+ *             else:
+ *                 direction = 1.0 if self.Tstrain > 0 else -1.0             # <<<<<<<<<<<<<<
+ *                 Fd_boundary = (self.F2 - self.F1 / 2.0) * self.CCDD * self.r1
+ *                 predictor = boundary_force + self.k1 * du2
+*/
+    /*else*/ {
+      __pyx_t_1 = (__pyx_v_self->Tstrain > 0.0);
+      if (__pyx_t_1) {
+        __pyx_t_8 = 1.0;
+      } else {
+        __pyx_t_8 = -1.0;
+      }
+      __pyx_v_direction = __pyx_t_8;
+
+      /* "TSSCB.pyx":247
+ *             else:
+ *                 direction = 1.0 if self.Tstrain > 0 else -1.0
+ *                 Fd_boundary = (self.F2 - self.F1 / 2.0) * self.CCDD * self.r1             # <<<<<<<<<<<<<<
+ *                 predictor = boundary_force + self.k1 * du2
+ *                 predictor_tangent = self.k1
+*/
+      __pyx_v_Fd_boundary = (((__pyx_v_self->F2 - (__pyx_v_self->F1 / 2.0)) * __pyx_v_self->CCDD) * __pyx_v_self->r1);
+
+      /* "TSSCB.pyx":248
+ *                 direction = 1.0 if self.Tstrain > 0 else -1.0
+ *                 Fd_boundary = (self.F2 - self.F1 / 2.0) * self.CCDD * self.r1
+ *                 predictor = boundary_force + self.k1 * du2             # <<<<<<<<<<<<<<
+ *                 predictor_tangent = self.k1
+ *                 if self.Thardening:
+*/
+      __pyx_v_predictor = (__pyx_v_boundary_force + (__pyx_v_self->k1 * __pyx_v_du2));
+
+      /* "TSSCB.pyx":249
+ *                 Fd_boundary = (self.F2 - self.F1 / 2.0) * self.CCDD * self.r1
+ *                 predictor = boundary_force + self.k1 * du2
+ *                 predictor_tangent = self.k1             # <<<<<<<<<<<<<<
+ *                 if self.Thardening:
+ *                     predictor -= direction * (Fd - Fd_boundary)
+*/
+      __pyx_t_8 = __pyx_v_self->k1;
+      __pyx_v_predictor_tangent = __pyx_t_8;
+
+      /* "TSSCB.pyx":250
+ *                 predictor = boundary_force + self.k1 * du2
+ *                 predictor_tangent = self.k1
+ *                 if self.Thardening:             # <<<<<<<<<<<<<<
+ *                     predictor -= direction * (Fd - Fd_boundary)
+ *                     predictor_tangent -= direction * dFd
+*/
+      if (__pyx_v_self->Thardening) {
+
+        /* "TSSCB.pyx":251
+ *                 predictor_tangent = self.k1
+ *                 if self.Thardening:
+ *                     predictor -= direction * (Fd - Fd_boundary)             # <<<<<<<<<<<<<<
+ *                     predictor_tangent -= direction * dFd
+ *             if ((du2 > 0 and predictor < boundary_force) or
+*/
+        __pyx_v_predictor = (__pyx_v_predictor - (__pyx_v_direction * (__pyx_v_Fd - __pyx_v_Fd_boundary)));
+
+        /* "TSSCB.pyx":252
+ *                 if self.Thardening:
+ *                     predictor -= direction * (Fd - Fd_boundary)
+ *                     predictor_tangent -= direction * dFd             # <<<<<<<<<<<<<<
+ *             if ((du2 > 0 and predictor < boundary_force) or
+ *                     (du2 < 0 and predictor > boundary_force)):
+*/
+        __pyx_v_predictor_tangent = (__pyx_v_predictor_tangent - (__pyx_v_direction * __pyx_v_dFd));
+
+        /* "TSSCB.pyx":250
+ *                 predictor = boundary_force + self.k1 * du2
+ *                 predictor_tangent = self.k1
+ *                 if self.Thardening:             # <<<<<<<<<<<<<<
+ *                     predictor -= direction * (Fd - Fd_boundary)
+ *                     predictor_tangent -= direction * dFd
+*/
+      }
+    }
+    __pyx_L35:;
+
+    /* "TSSCB.pyx":253
+ *                     predictor -= direction * (Fd - Fd_boundary)
+ *                     predictor_tangent -= direction * dFd
+ *             if ((du2 > 0 and predictor < boundary_force) or             # <<<<<<<<<<<<<<
+ *                     (du2 < 0 and predictor > boundary_force)):
+ *                 predictor = boundary_force
+*/
+    __pyx_t_4 = (__pyx_v_du2 > 0.0);
+    if (!__pyx_t_4) {
+      goto __pyx_L45_next_or;
+    } else {
+    }
+    __pyx_t_4 = (__pyx_v_predictor < __pyx_v_boundary_force);
+    if (!__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L44_bool_binop_done;
+    }
+    __pyx_L45_next_or:;
+
+    /* "TSSCB.pyx":254
+ *                     predictor_tangent -= direction * dFd
+ *             if ((du2 > 0 and predictor < boundary_force) or
+ *                     (du2 < 0 and predictor > boundary_force)):             # <<<<<<<<<<<<<<
+ *                 predictor = boundary_force
+ *                 predictor_tangent = 0.0
+*/
+    __pyx_t_4 = (__pyx_v_du2 < 0.0);
+    if (__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L44_bool_binop_done;
+    }
+    __pyx_t_4 = (__pyx_v_predictor > __pyx_v_boundary_force);
+    __pyx_t_1 = __pyx_t_4;
+    __pyx_L44_bool_binop_done:;
+
+    /* "TSSCB.pyx":253
+ *                     predictor -= direction * (Fd - Fd_boundary)
+ *                     predictor_tangent -= direction * dFd
+ *             if ((du2 > 0 and predictor < boundary_force) or             # <<<<<<<<<<<<<<
+ *                     (du2 < 0 and predictor > boundary_force)):
+ *                 predictor = boundary_force
+*/
+    if (__pyx_t_1) {
+
+      /* "TSSCB.pyx":255
+ *             if ((du2 > 0 and predictor < boundary_force) or
+ *                     (du2 < 0 and predictor > boundary_force)):
+ *                 predictor = boundary_force             # <<<<<<<<<<<<<<
+ *                 predictor_tangent = 0.0
+ *             if ((du2 > 0 and self.Tstress3 < boundary_force) or
+*/
+      __pyx_v_predictor = __pyx_v_boundary_force;
+
+      /* "TSSCB.pyx":256
+ *                     (du2 < 0 and predictor > boundary_force)):
+ *                 predictor = boundary_force
+ *                 predictor_tangent = 0.0             # <<<<<<<<<<<<<<
+ *             if ((du2 > 0 and self.Tstress3 < boundary_force) or
+ *                     (du2 < 0 and self.Tstress3 > boundary_force)):
+*/
+      __pyx_v_predictor_tangent = 0.0;
+
+      /* "TSSCB.pyx":253
+ *                     predictor -= direction * (Fd - Fd_boundary)
+ *                     predictor_tangent -= direction * dFd
+ *             if ((du2 > 0 and predictor < boundary_force) or             # <<<<<<<<<<<<<<
+ *                     (du2 < 0 and predictor > boundary_force)):
+ *                 predictor = boundary_force
+*/
+    }
+
+    /* "TSSCB.pyx":257
+ *                 predictor = boundary_force
+ *                 predictor_tangent = 0.0
+ *             if ((du2 > 0 and self.Tstress3 < boundary_force) or             # <<<<<<<<<<<<<<
+ *                     (du2 < 0 and self.Tstress3 > boundary_force)):
+ *                 self.Tstress3 = boundary_force
+*/
+    __pyx_t_4 = (__pyx_v_du2 > 0.0);
+    if (!__pyx_t_4) {
+      goto __pyx_L50_next_or;
+    } else {
+    }
+    __pyx_t_4 = (__pyx_v_self->Tstress3 < __pyx_v_boundary_force);
+    if (!__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L49_bool_binop_done;
+    }
+    __pyx_L50_next_or:;
+
+    /* "TSSCB.pyx":258
+ *                 predictor_tangent = 0.0
+ *             if ((du2 > 0 and self.Tstress3 < boundary_force) or
+ *                     (du2 < 0 and self.Tstress3 > boundary_force)):             # <<<<<<<<<<<<<<
+ *                 self.Tstress3 = boundary_force
+ *                 tangent3 = 0.0
+*/
+    __pyx_t_4 = (__pyx_v_du2 < 0.0);
+    if (__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L49_bool_binop_done;
+    }
+    __pyx_t_4 = (__pyx_v_self->Tstress3 > __pyx_v_boundary_force);
+    __pyx_t_1 = __pyx_t_4;
+    __pyx_L49_bool_binop_done:;
+
+    /* "TSSCB.pyx":257
+ *                 predictor = boundary_force
+ *                 predictor_tangent = 0.0
+ *             if ((du2 > 0 and self.Tstress3 < boundary_force) or             # <<<<<<<<<<<<<<
+ *                     (du2 < 0 and self.Tstress3 > boundary_force)):
+ *                 self.Tstress3 = boundary_force
+*/
+    if (__pyx_t_1) {
+
+      /* "TSSCB.pyx":259
+ *             if ((du2 > 0 and self.Tstress3 < boundary_force) or
+ *                     (du2 < 0 and self.Tstress3 > boundary_force)):
+ *                 self.Tstress3 = boundary_force             # <<<<<<<<<<<<<<
+ *                 tangent3 = 0.0
+ *             elif ((du2 > 0 and self.Tstress3 > predictor) or
+*/
+      __pyx_v_self->Tstress3 = __pyx_v_boundary_force;
+
+      /* "TSSCB.pyx":260
+ *                     (du2 < 0 and self.Tstress3 > boundary_force)):
+ *                 self.Tstress3 = boundary_force
+ *                 tangent3 = 0.0             # <<<<<<<<<<<<<<
+ *             elif ((du2 > 0 and self.Tstress3 > predictor) or
+ *                     (du2 < 0 and self.Tstress3 < predictor)):
+*/
+      __pyx_v_tangent3 = 0.0;
+
+      /* "TSSCB.pyx":257
+ *                 predictor = boundary_force
+ *                 predictor_tangent = 0.0
+ *             if ((du2 > 0 and self.Tstress3 < boundary_force) or             # <<<<<<<<<<<<<<
+ *                     (du2 < 0 and self.Tstress3 > boundary_force)):
+ *                 self.Tstress3 = boundary_force
+*/
+      goto __pyx_L48;
+    }
+
+    /* "TSSCB.pyx":261
+ *                 self.Tstress3 = boundary_force
+ *                 tangent3 = 0.0
+ *             elif ((du2 > 0 and self.Tstress3 > predictor) or             # <<<<<<<<<<<<<<
+ *                     (du2 < 0 and self.Tstress3 < predictor)):
+ *                 self.Tstress3 = predictor
+*/
+    __pyx_t_4 = (__pyx_v_du2 > 0.0);
+    if (!__pyx_t_4) {
+      goto __pyx_L54_next_or;
+    } else {
+    }
+    __pyx_t_4 = (__pyx_v_self->Tstress3 > __pyx_v_predictor);
+    if (!__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L53_bool_binop_done;
+    }
+    __pyx_L54_next_or:;
+
+    /* "TSSCB.pyx":262
+ *                 tangent3 = 0.0
+ *             elif ((du2 > 0 and self.Tstress3 > predictor) or
+ *                     (du2 < 0 and self.Tstress3 < predictor)):             # <<<<<<<<<<<<<<
+ *                 self.Tstress3 = predictor
+ *                 tangent3 = predictor_tangent
+*/
+    __pyx_t_4 = (__pyx_v_du2 < 0.0);
+    if (__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L53_bool_binop_done;
+    }
+    __pyx_t_4 = (__pyx_v_self->Tstress3 < __pyx_v_predictor);
+    __pyx_t_1 = __pyx_t_4;
+    __pyx_L53_bool_binop_done:;
+
+    /* "TSSCB.pyx":261
+ *                 self.Tstress3 = boundary_force
+ *                 tangent3 = 0.0
+ *             elif ((du2 > 0 and self.Tstress3 > predictor) or             # <<<<<<<<<<<<<<
+ *                     (du2 < 0 and self.Tstress3 < predictor)):
+ *                 self.Tstress3 = predictor
+*/
+    if (__pyx_t_1) {
+
+      /* "TSSCB.pyx":263
+ *             elif ((du2 > 0 and self.Tstress3 > predictor) or
+ *                     (du2 < 0 and self.Tstress3 < predictor)):
+ *                 self.Tstress3 = predictor             # <<<<<<<<<<<<<<
+ *                 tangent3 = predictor_tangent
+ *         elif self.Cstage == 2 and self.Tstage == 2:
+*/
+      __pyx_v_self->Tstress3 = __pyx_v_predictor;
+
+      /* "TSSCB.pyx":264
+ *                     (du2 < 0 and self.Tstress3 < predictor)):
+ *                 self.Tstress3 = predictor
+ *                 tangent3 = predictor_tangent             # <<<<<<<<<<<<<<
+ *         elif self.Cstage == 2 and self.Tstage == 2:
+ *             # 2->2
+*/
+      __pyx_v_tangent3 = __pyx_v_predictor_tangent;
+
+      /* "TSSCB.pyx":261
+ *                 self.Tstress3 = boundary_force
+ *                 tangent3 = 0.0
+ *             elif ((du2 > 0 and self.Tstress3 > predictor) or             # <<<<<<<<<<<<<<
+ *                     (du2 < 0 and self.Tstress3 < predictor)):
+ *                 self.Tstress3 = predictor
+*/
+    }
+    __pyx_L48:;
+
+    /* "TSSCB.pyx":202
  *             self.Tstress3 = self.Tstress1
  *             tangent3 = tangent1
  *         elif self.Cstage == 1 and self.Tstage == 2:             # <<<<<<<<<<<<<<
@@ -5783,9 +6203,9 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     goto __pyx_L17;
   }
 
-  /* "TSSCB.pyx":236
- *                 self.Tstress3 = -self.F1
- *                 tangent3 = 0.0
+  /* "TSSCB.pyx":265
+ *                 self.Tstress3 = predictor
+ *                 tangent3 = predictor_tangent
  *         elif self.Cstage == 2 and self.Tstage == 2:             # <<<<<<<<<<<<<<
  *             # 2->2
  *             if self.Thardening:
@@ -5794,14 +6214,14 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
   if (__pyx_t_4) {
   } else {
     __pyx_t_1 = __pyx_t_4;
-    goto __pyx_L35_bool_binop_done;
+    goto __pyx_L57_bool_binop_done;
   }
   __pyx_t_4 = (__pyx_v_self->Tstage == 2);
   __pyx_t_1 = __pyx_t_4;
-  __pyx_L35_bool_binop_done:;
+  __pyx_L57_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "TSSCB.pyx":238
+    /* "TSSCB.pyx":267
  *         elif self.Cstage == 2 and self.Tstage == 2:
  *             # 2->2
  *             if self.Thardening:             # <<<<<<<<<<<<<<
@@ -5810,17 +6230,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     if (__pyx_v_self->Thardening) {
 
-      /* "TSSCB.pyx":239
+      /* "TSSCB.pyx":268
  *             # 2->2
  *             if self.Thardening:
  *                 self.TCDD = self.CCDD + self._damageIncrement(dStrain)             # <<<<<<<<<<<<<<
  *             if self.Tstrain >= 0:
  *                 usc0 = self.Cstrain - self.ua
 */
-      __pyx_t_8 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_damageIncrement(__pyx_v_self, __pyx_v_dStrain); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 239, __pyx_L1_error)
+      __pyx_t_8 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_damageIncrement(__pyx_v_self, __pyx_v_dStrain); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 268, __pyx_L1_error)
       __pyx_v_self->TCDD = (__pyx_v_self->CCDD + __pyx_t_8);
 
-      /* "TSSCB.pyx":238
+      /* "TSSCB.pyx":267
  *         elif self.Cstage == 2 and self.Tstage == 2:
  *             # 2->2
  *             if self.Thardening:             # <<<<<<<<<<<<<<
@@ -5829,7 +6249,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     }
 
-    /* "TSSCB.pyx":240
+    /* "TSSCB.pyx":269
  *             if self.Thardening:
  *                 self.TCDD = self.CCDD + self._damageIncrement(dStrain)
  *             if self.Tstrain >= 0:             # <<<<<<<<<<<<<<
@@ -5839,7 +6259,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_t_1 = (__pyx_v_self->Tstrain >= 0.0);
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":241
+      /* "TSSCB.pyx":270
  *                 self.TCDD = self.CCDD + self._damageIncrement(dStrain)
  *             if self.Tstrain >= 0:
  *                 usc0 = self.Cstrain - self.ua             # <<<<<<<<<<<<<<
@@ -5848,17 +6268,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_usc0 = (__pyx_v_self->Cstrain - __pyx_v_self->ua);
 
-      /* "TSSCB.pyx":240
+      /* "TSSCB.pyx":269
  *             if self.Thardening:
  *                 self.TCDD = self.CCDD + self._damageIncrement(dStrain)
  *             if self.Tstrain >= 0:             # <<<<<<<<<<<<<<
  *                 usc0 = self.Cstrain - self.ua
  *             else:
 */
-      goto __pyx_L38;
+      goto __pyx_L60;
     }
 
-    /* "TSSCB.pyx":243
+    /* "TSSCB.pyx":272
  *                 usc0 = self.Cstrain - self.ua
  *             else:
  *                 usc0 = self.Cstrain + self.ua             # <<<<<<<<<<<<<<
@@ -5868,9 +6288,9 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     /*else*/ {
       __pyx_v_usc0 = (__pyx_v_self->Cstrain + __pyx_v_self->ua);
     }
-    __pyx_L38:;
+    __pyx_L60:;
 
-    /* "TSSCB.pyx":244
+    /* "TSSCB.pyx":273
  *             else:
  *                 usc0 = self.Cstrain + self.ua
  *             self.Tstress1 = self._SCModel(usc0, self.Cstress1, dStrain, &tangent1)             # <<<<<<<<<<<<<<
@@ -5879,10 +6299,10 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_t_6.__pyx_n = 1;
     __pyx_t_6.tangent = (&__pyx_v_tangent1);
-    __pyx_t_8 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_SCModel(__pyx_v_self, __pyx_v_usc0, __pyx_v_self->Cstress1, __pyx_v_dStrain, &__pyx_t_6); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 244, __pyx_L1_error)
+    __pyx_t_8 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_SCModel(__pyx_v_self, __pyx_v_usc0, __pyx_v_self->Cstress1, __pyx_v_dStrain, &__pyx_t_6); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 273, __pyx_L1_error)
     __pyx_v_self->Tstress1 = __pyx_t_8;
 
-    /* "TSSCB.pyx":245
+    /* "TSSCB.pyx":274
  *                 usc0 = self.Cstrain + self.ua
  *             self.Tstress1 = self._SCModel(usc0, self.Cstress1, dStrain, &tangent1)
  *             self.Tstress2 = self.Tstress1             # <<<<<<<<<<<<<<
@@ -5892,7 +6312,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_t_8 = __pyx_v_self->Tstress1;
     __pyx_v_self->Tstress2 = __pyx_t_8;
 
-    /* "TSSCB.pyx":246
+    /* "TSSCB.pyx":275
  *             self.Tstress1 = self._SCModel(usc0, self.Cstress1, dStrain, &tangent1)
  *             self.Tstress2 = self.Tstress1
  *             tangent2 = tangent1             # <<<<<<<<<<<<<<
@@ -5901,7 +6321,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_v_tangent2 = __pyx_v_tangent1;
 
-    /* "TSSCB.pyx":247
+    /* "TSSCB.pyx":276
  *             self.Tstress2 = self.Tstress1
  *             tangent2 = tangent1
  *             Fd = (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))             # <<<<<<<<<<<<<<
@@ -5912,11 +6332,11 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_t_7 = (__pyx_v_self->uh - __pyx_v_self->ugap);
     if (unlikely(__pyx_t_7 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 247, __pyx_L1_error)
+      __PYX_ERR(0, 276, __pyx_L1_error)
     }
     __pyx_v_Fd = (((__pyx_v_self->F2 - (__pyx_v_self->F1 / 2.0)) * __pyx_v_self->TCDD) * (__pyx_v_self->r1 - (__pyx_t_8 / __pyx_t_7)));
 
-    /* "TSSCB.pyx":248
+    /* "TSSCB.pyx":277
  *             tangent2 = tangent1
  *             Fd = (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
  *             dFd = 0.0             # <<<<<<<<<<<<<<
@@ -5925,7 +6345,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_v_dFd = 0.0;
 
-    /* "TSSCB.pyx":249
+    /* "TSSCB.pyx":278
  *             Fd = (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
  *             dFd = 0.0
  *             if self.Thardening and self.Tstrain != 0.0:             # <<<<<<<<<<<<<<
@@ -5935,14 +6355,14 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     if (__pyx_v_self->Thardening) {
     } else {
       __pyx_t_1 = __pyx_v_self->Thardening;
-      goto __pyx_L40_bool_binop_done;
+      goto __pyx_L62_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstrain != 0.0);
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L40_bool_binop_done:;
+    __pyx_L62_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":250
+      /* "TSSCB.pyx":279
  *             dFd = 0.0
  *             if self.Thardening and self.Tstrain != 0.0:
  *                 direction = 1.0 if self.Tstrain > 0 else -1.0             # <<<<<<<<<<<<<<
@@ -5957,7 +6377,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       }
       __pyx_v_direction = __pyx_t_7;
 
-      /* "TSSCB.pyx":251
+      /* "TSSCB.pyx":280
  *             if self.Thardening and self.Tstrain != 0.0:
  *                 direction = 1.0 if self.Tstrain > 0 else -1.0
  *                 dCDD = (1.0 if dStrain > 0 else -1.0) / (self.uh - self.ugap)             # <<<<<<<<<<<<<<
@@ -5973,11 +6393,11 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_8 = (__pyx_v_self->uh - __pyx_v_self->ugap);
       if (unlikely(__pyx_t_8 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 251, __pyx_L1_error)
+        __PYX_ERR(0, 280, __pyx_L1_error)
       }
       __pyx_v_dCDD = (__pyx_t_7 / __pyx_t_8);
 
-      /* "TSSCB.pyx":253
+      /* "TSSCB.pyx":282
  *                 dCDD = (1.0 if dStrain > 0 else -1.0) / (self.uh - self.ugap)
  *                 dFd = (self.F2 - self.F1 / 2.0) * (
  *                     dCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))             # <<<<<<<<<<<<<<
@@ -5988,10 +6408,10 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_7 = (__pyx_v_self->uh - __pyx_v_self->ugap);
       if (unlikely(__pyx_t_7 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 253, __pyx_L1_error)
+        __PYX_ERR(0, 282, __pyx_L1_error)
       }
 
-      /* "TSSCB.pyx":254
+      /* "TSSCB.pyx":283
  *                 dFd = (self.F2 - self.F1 / 2.0) * (
  *                     dCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
  *                     - self.TCDD * self.r2 * direction / (self.uh - self.ugap))             # <<<<<<<<<<<<<<
@@ -6002,10 +6422,10 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_2 = (__pyx_v_self->uh - __pyx_v_self->ugap);
       if (unlikely(__pyx_t_2 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 254, __pyx_L1_error)
+        __PYX_ERR(0, 283, __pyx_L1_error)
       }
 
-      /* "TSSCB.pyx":252
+      /* "TSSCB.pyx":281
  *                 direction = 1.0 if self.Tstrain > 0 else -1.0
  *                 dCDD = (1.0 if dStrain > 0 else -1.0) / (self.uh - self.ugap)
  *                 dFd = (self.F2 - self.F1 / 2.0) * (             # <<<<<<<<<<<<<<
@@ -6014,7 +6434,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_dFd = ((__pyx_v_self->F2 - (__pyx_v_self->F1 / 2.0)) * ((__pyx_v_dCDD * (__pyx_v_self->r1 - (__pyx_t_8 / __pyx_t_7))) - (__pyx_t_5 / __pyx_t_2)));
 
-      /* "TSSCB.pyx":255
+      /* "TSSCB.pyx":284
  *                     dCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
  *                     - self.TCDD * self.r2 * direction / (self.uh - self.ugap))
  *                 tangent2 -= direction * dFd             # <<<<<<<<<<<<<<
@@ -6023,7 +6443,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_tangent2 = (__pyx_v_tangent2 - (__pyx_v_direction * __pyx_v_dFd));
 
-      /* "TSSCB.pyx":249
+      /* "TSSCB.pyx":278
  *             Fd = (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
  *             dFd = 0.0
  *             if self.Thardening and self.Tstrain != 0.0:             # <<<<<<<<<<<<<<
@@ -6032,7 +6452,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     }
 
-    /* "TSSCB.pyx":256
+    /* "TSSCB.pyx":285
  *                     - self.TCDD * self.r2 * direction / (self.uh - self.ugap))
  *                 tangent2 -= direction * dFd
  *             if self.Thardening and self.Tstrain > 0:             # <<<<<<<<<<<<<<
@@ -6042,14 +6462,14 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     if (__pyx_v_self->Thardening) {
     } else {
       __pyx_t_1 = __pyx_v_self->Thardening;
-      goto __pyx_L43_bool_binop_done;
+      goto __pyx_L65_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstrain > 0.0);
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L43_bool_binop_done:;
+    __pyx_L65_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":257
+      /* "TSSCB.pyx":286
  *                 tangent2 -= direction * dFd
  *             if self.Thardening and self.Tstrain > 0:
  *                 self.Tstress2 = self.Tstress1 - Fd             # <<<<<<<<<<<<<<
@@ -6058,17 +6478,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_self->Tstress2 = (__pyx_v_self->Tstress1 - __pyx_v_Fd);
 
-      /* "TSSCB.pyx":256
+      /* "TSSCB.pyx":285
  *                     - self.TCDD * self.r2 * direction / (self.uh - self.ugap))
  *                 tangent2 -= direction * dFd
  *             if self.Thardening and self.Tstrain > 0:             # <<<<<<<<<<<<<<
  *                 self.Tstress2 = self.Tstress1 - Fd
  *             elif self.Thardening and self.Tstrain < 0:
 */
-      goto __pyx_L42;
+      goto __pyx_L64;
     }
 
-    /* "TSSCB.pyx":258
+    /* "TSSCB.pyx":287
  *             if self.Thardening and self.Tstrain > 0:
  *                 self.Tstress2 = self.Tstress1 - Fd
  *             elif self.Thardening and self.Tstrain < 0:             # <<<<<<<<<<<<<<
@@ -6078,14 +6498,14 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     if (__pyx_v_self->Thardening) {
     } else {
       __pyx_t_1 = __pyx_v_self->Thardening;
-      goto __pyx_L45_bool_binop_done;
+      goto __pyx_L67_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstrain < 0.0);
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L45_bool_binop_done:;
+    __pyx_L67_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":259
+      /* "TSSCB.pyx":288
  *                 self.Tstress2 = self.Tstress1 - Fd
  *             elif self.Thardening and self.Tstrain < 0:
  *                 self.Tstress2 = self.Tstress1 + Fd             # <<<<<<<<<<<<<<
@@ -6094,7 +6514,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_self->Tstress2 = (__pyx_v_self->Tstress1 + __pyx_v_Fd);
 
-      /* "TSSCB.pyx":258
+      /* "TSSCB.pyx":287
  *             if self.Thardening and self.Tstrain > 0:
  *                 self.Tstress2 = self.Tstress1 - Fd
  *             elif self.Thardening and self.Tstrain < 0:             # <<<<<<<<<<<<<<
@@ -6102,9 +6522,9 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
  *             if self.configType == 1:
 */
     }
-    __pyx_L42:;
+    __pyx_L64:;
 
-    /* "TSSCB.pyx":260
+    /* "TSSCB.pyx":289
  *             elif self.Thardening and self.Tstrain < 0:
  *                 self.Tstress2 = self.Tstress1 + Fd
  *             if self.configType == 1:             # <<<<<<<<<<<<<<
@@ -6114,7 +6534,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_t_1 = (__pyx_v_self->configType == 1);
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":261
+      /* "TSSCB.pyx":290
  *                 self.Tstress2 = self.Tstress1 + Fd
  *             if self.configType == 1:
  *                 F_bound = 0.0             # <<<<<<<<<<<<<<
@@ -6123,17 +6543,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_F_bound = 0.0;
 
-      /* "TSSCB.pyx":260
+      /* "TSSCB.pyx":289
  *             elif self.Thardening and self.Tstrain < 0:
  *                 self.Tstress2 = self.Tstress1 + Fd
  *             if self.configType == 1:             # <<<<<<<<<<<<<<
  *                 F_bound = 0.0
  *             else:
 */
-      goto __pyx_L47;
+      goto __pyx_L69;
     }
 
-    /* "TSSCB.pyx":263
+    /* "TSSCB.pyx":292
  *                 F_bound = 0.0
  *             else:
  *                 F_bound = self.F1             # <<<<<<<<<<<<<<
@@ -6144,9 +6564,9 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_2 = __pyx_v_self->F1;
       __pyx_v_F_bound = __pyx_t_2;
     }
-    __pyx_L47:;
+    __pyx_L69:;
 
-    /* "TSSCB.pyx":264
+    /* "TSSCB.pyx":293
  *             else:
  *                 F_bound = self.F1
  *             self.Tstress3 = self.Tstress2             # <<<<<<<<<<<<<<
@@ -6156,7 +6576,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_t_2 = __pyx_v_self->Tstress2;
     __pyx_v_self->Tstress3 = __pyx_t_2;
 
-    /* "TSSCB.pyx":265
+    /* "TSSCB.pyx":294
  *                 F_bound = self.F1
  *             self.Tstress3 = self.Tstress2
  *             tangent3 = tangent2             # <<<<<<<<<<<<<<
@@ -6165,7 +6585,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_v_tangent3 = __pyx_v_tangent2;
 
-    /* "TSSCB.pyx":266
+    /* "TSSCB.pyx":295
  *             self.Tstress3 = self.Tstress2
  *             tangent3 = tangent2
  *             if dStrain > 0 and self.Tstrain > 0 and self.Tstress2 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:             # <<<<<<<<<<<<<<
@@ -6176,32 +6596,32 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L49_bool_binop_done;
+      goto __pyx_L71_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstrain > 0.0);
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L49_bool_binop_done;
+      goto __pyx_L71_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstress2 < __pyx_v_self->F1);
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L49_bool_binop_done;
+      goto __pyx_L71_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->ugap > 0.0);
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L49_bool_binop_done;
+      goto __pyx_L71_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Cstress3 == __pyx_v_self->F1);
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L49_bool_binop_done:;
+    __pyx_L71_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":267
+      /* "TSSCB.pyx":296
  *             tangent3 = tangent2
  *             if dStrain > 0 and self.Tstrain > 0 and self.Tstress2 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:
  *                 self.Tstress3 = self.F1             # <<<<<<<<<<<<<<
@@ -6211,7 +6631,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_2 = __pyx_v_self->F1;
       __pyx_v_self->Tstress3 = __pyx_t_2;
 
-      /* "TSSCB.pyx":268
+      /* "TSSCB.pyx":297
  *             if dStrain > 0 and self.Tstrain > 0 and self.Tstress2 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:
  *                 self.Tstress3 = self.F1
  *                 tangent3 = 0.0             # <<<<<<<<<<<<<<
@@ -6220,17 +6640,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_tangent3 = 0.0;
 
-      /* "TSSCB.pyx":266
+      /* "TSSCB.pyx":295
  *             self.Tstress3 = self.Tstress2
  *             tangent3 = tangent2
  *             if dStrain > 0 and self.Tstrain > 0 and self.Tstress2 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:             # <<<<<<<<<<<<<<
  *                 self.Tstress3 = self.F1
  *                 tangent3 = 0.0
 */
-      goto __pyx_L48;
+      goto __pyx_L70;
     }
 
-    /* "TSSCB.pyx":269
+    /* "TSSCB.pyx":298
  *                 self.Tstress3 = self.F1
  *                 tangent3 = 0.0
  *             elif dStrain < 0 and self.Tstrain < 0 and self.Tstress2 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:             # <<<<<<<<<<<<<<
@@ -6241,32 +6661,32 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L54_bool_binop_done;
+      goto __pyx_L76_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstrain < 0.0);
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L54_bool_binop_done;
+      goto __pyx_L76_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstress2 > (-__pyx_v_self->F1));
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L54_bool_binop_done;
+      goto __pyx_L76_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->ugap > 0.0);
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L54_bool_binop_done;
+      goto __pyx_L76_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Cstress3 == (-__pyx_v_self->F1));
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L54_bool_binop_done:;
+    __pyx_L76_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":270
+      /* "TSSCB.pyx":299
  *                 tangent3 = 0.0
  *             elif dStrain < 0 and self.Tstrain < 0 and self.Tstress2 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:
  *                 self.Tstress3 = -self.F1             # <<<<<<<<<<<<<<
@@ -6275,7 +6695,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_self->Tstress3 = (-__pyx_v_self->F1);
 
-      /* "TSSCB.pyx":271
+      /* "TSSCB.pyx":300
  *             elif dStrain < 0 and self.Tstrain < 0 and self.Tstress2 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:
  *                 self.Tstress3 = -self.F1
  *                 tangent3 = 0.0             # <<<<<<<<<<<<<<
@@ -6284,17 +6704,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_tangent3 = 0.0;
 
-      /* "TSSCB.pyx":269
+      /* "TSSCB.pyx":298
  *                 self.Tstress3 = self.F1
  *                 tangent3 = 0.0
  *             elif dStrain < 0 and self.Tstrain < 0 and self.Tstress2 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:             # <<<<<<<<<<<<<<
  *                 self.Tstress3 = -self.F1
  *                 tangent3 = 0.0
 */
-      goto __pyx_L48;
+      goto __pyx_L70;
     }
 
-    /* "TSSCB.pyx":272
+    /* "TSSCB.pyx":301
  *                 self.Tstress3 = -self.F1
  *                 tangent3 = 0.0
  *             elif self.Tstrain > 0 and self.Tstress2 < -F_bound:             # <<<<<<<<<<<<<<
@@ -6305,14 +6725,14 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L59_bool_binop_done;
+      goto __pyx_L81_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstress2 < (-__pyx_v_F_bound));
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L59_bool_binop_done:;
+    __pyx_L81_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":273
+      /* "TSSCB.pyx":302
  *                 tangent3 = 0.0
  *             elif self.Tstrain > 0 and self.Tstress2 < -F_bound:
  *                 self.Tstress3 = -F_bound             # <<<<<<<<<<<<<<
@@ -6321,7 +6741,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_self->Tstress3 = (-__pyx_v_F_bound);
 
-      /* "TSSCB.pyx":274
+      /* "TSSCB.pyx":303
  *             elif self.Tstrain > 0 and self.Tstress2 < -F_bound:
  *                 self.Tstress3 = -F_bound
  *                 tangent3 = 0.0             # <<<<<<<<<<<<<<
@@ -6330,17 +6750,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_tangent3 = 0.0;
 
-      /* "TSSCB.pyx":272
+      /* "TSSCB.pyx":301
  *                 self.Tstress3 = -self.F1
  *                 tangent3 = 0.0
  *             elif self.Tstrain > 0 and self.Tstress2 < -F_bound:             # <<<<<<<<<<<<<<
  *                 self.Tstress3 = -F_bound
  *                 tangent3 = 0.0
 */
-      goto __pyx_L48;
+      goto __pyx_L70;
     }
 
-    /* "TSSCB.pyx":275
+    /* "TSSCB.pyx":304
  *                 self.Tstress3 = -F_bound
  *                 tangent3 = 0.0
  *             elif self.Tstrain < 0 and self.Tstress2 > F_bound:             # <<<<<<<<<<<<<<
@@ -6351,14 +6771,14 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L61_bool_binop_done;
+      goto __pyx_L83_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstress2 > __pyx_v_F_bound);
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L61_bool_binop_done:;
+    __pyx_L83_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":276
+      /* "TSSCB.pyx":305
  *                 tangent3 = 0.0
  *             elif self.Tstrain < 0 and self.Tstress2 > F_bound:
  *                 self.Tstress3 = F_bound             # <<<<<<<<<<<<<<
@@ -6367,7 +6787,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_self->Tstress3 = __pyx_v_F_bound;
 
-      /* "TSSCB.pyx":277
+      /* "TSSCB.pyx":306
  *             elif self.Tstrain < 0 and self.Tstress2 > F_bound:
  *                 self.Tstress3 = F_bound
  *                 tangent3 = 0.0             # <<<<<<<<<<<<<<
@@ -6376,7 +6796,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_tangent3 = 0.0;
 
-      /* "TSSCB.pyx":275
+      /* "TSSCB.pyx":304
  *                 self.Tstress3 = -F_bound
  *                 tangent3 = 0.0
  *             elif self.Tstrain < 0 and self.Tstress2 > F_bound:             # <<<<<<<<<<<<<<
@@ -6384,9 +6804,9 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
  *                 tangent3 = 0.0
 */
     }
-    __pyx_L48:;
+    __pyx_L70:;
 
-    /* "TSSCB.pyx":278
+    /* "TSSCB.pyx":307
  *                 self.Tstress3 = F_bound
  *                 tangent3 = 0.0
  *             if dStrain > 0 and self.Tstress3 <= self.Cstress3:             # <<<<<<<<<<<<<<
@@ -6397,14 +6817,14 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L64_bool_binop_done;
+      goto __pyx_L86_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstress3 <= __pyx_v_self->Cstress3);
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L64_bool_binop_done:;
+    __pyx_L86_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":279
+      /* "TSSCB.pyx":308
  *                 tangent3 = 0.0
  *             if dStrain > 0 and self.Tstress3 <= self.Cstress3:
  *                 self.Tstress3 = self.Cstress3             # <<<<<<<<<<<<<<
@@ -6414,7 +6834,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_2 = __pyx_v_self->Cstress3;
       __pyx_v_self->Tstress3 = __pyx_t_2;
 
-      /* "TSSCB.pyx":280
+      /* "TSSCB.pyx":309
  *             if dStrain > 0 and self.Tstress3 <= self.Cstress3:
  *                 self.Tstress3 = self.Cstress3
  *                 tangent3 = 0.0             # <<<<<<<<<<<<<<
@@ -6423,17 +6843,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_tangent3 = 0.0;
 
-      /* "TSSCB.pyx":278
+      /* "TSSCB.pyx":307
  *                 self.Tstress3 = F_bound
  *                 tangent3 = 0.0
  *             if dStrain > 0 and self.Tstress3 <= self.Cstress3:             # <<<<<<<<<<<<<<
  *                 self.Tstress3 = self.Cstress3
  *                 tangent3 = 0.0
 */
-      goto __pyx_L63;
+      goto __pyx_L85;
     }
 
-    /* "TSSCB.pyx":281
+    /* "TSSCB.pyx":310
  *                 self.Tstress3 = self.Cstress3
  *                 tangent3 = 0.0
  *             elif dStrain < 0 and self.Tstress3 >= self.Cstress3:             # <<<<<<<<<<<<<<
@@ -6444,14 +6864,14 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L66_bool_binop_done;
+      goto __pyx_L88_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstress3 >= __pyx_v_self->Cstress3);
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L66_bool_binop_done:;
+    __pyx_L88_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":282
+      /* "TSSCB.pyx":311
  *                 tangent3 = 0.0
  *             elif dStrain < 0 and self.Tstress3 >= self.Cstress3:
  *                 self.Tstress3 = self.Cstress3             # <<<<<<<<<<<<<<
@@ -6461,7 +6881,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_2 = __pyx_v_self->Cstress3;
       __pyx_v_self->Tstress3 = __pyx_t_2;
 
-      /* "TSSCB.pyx":283
+      /* "TSSCB.pyx":312
  *             elif dStrain < 0 and self.Tstress3 >= self.Cstress3:
  *                 self.Tstress3 = self.Cstress3
  *                 tangent3 = 0.0             # <<<<<<<<<<<<<<
@@ -6470,7 +6890,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_tangent3 = 0.0;
 
-      /* "TSSCB.pyx":281
+      /* "TSSCB.pyx":310
  *                 self.Tstress3 = self.Cstress3
  *                 tangent3 = 0.0
  *             elif dStrain < 0 and self.Tstress3 >= self.Cstress3:             # <<<<<<<<<<<<<<
@@ -6478,9 +6898,9 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
  *                 tangent3 = 0.0
 */
     }
-    __pyx_L63:;
+    __pyx_L85:;
 
-    /* "TSSCB.pyx":284
+    /* "TSSCB.pyx":313
  *                 self.Tstress3 = self.Cstress3
  *                 tangent3 = 0.0
  *             friction_reloading = False             # <<<<<<<<<<<<<<
@@ -6489,7 +6909,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_v_friction_reloading = 0;
 
-    /* "TSSCB.pyx":285
+    /* "TSSCB.pyx":314
  *                 tangent3 = 0.0
  *             friction_reloading = False
  *             if self.configType == 1 and self.Tstrain >= 0 and dStrain > 0 and self.Thardening and self.Tstress2 < self.F1:             # <<<<<<<<<<<<<<
@@ -6500,31 +6920,31 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L69_bool_binop_done;
+      goto __pyx_L91_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstrain >= 0.0);
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L69_bool_binop_done;
+      goto __pyx_L91_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_dStrain > 0.0);
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L69_bool_binop_done;
+      goto __pyx_L91_bool_binop_done;
     }
     if (__pyx_v_self->Thardening) {
     } else {
       __pyx_t_1 = __pyx_v_self->Thardening;
-      goto __pyx_L69_bool_binop_done;
+      goto __pyx_L91_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstress2 < __pyx_v_self->F1);
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L69_bool_binop_done:;
+    __pyx_L91_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":286
+      /* "TSSCB.pyx":315
  *             friction_reloading = False
  *             if self.configType == 1 and self.Tstrain >= 0 and dStrain > 0 and self.Thardening and self.Tstress2 < self.F1:
  *                 self.Tstress3 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent3)             # <<<<<<<<<<<<<<
@@ -6534,10 +6954,10 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_3.__pyx_n = 2;
       __pyx_t_3.half = 1.0;
       __pyx_t_3.tangent = (&__pyx_v_tangent3);
-      __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress3, __pyx_v_dStrain, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 286, __pyx_L1_error)
+      __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress3, __pyx_v_dStrain, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 315, __pyx_L1_error)
       __pyx_v_self->Tstress3 = __pyx_t_2;
 
-      /* "TSSCB.pyx":287
+      /* "TSSCB.pyx":316
  *             if self.configType == 1 and self.Tstrain >= 0 and dStrain > 0 and self.Thardening and self.Tstress2 < self.F1:
  *                 self.Tstress3 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent3)
  *                 friction_reloading = True             # <<<<<<<<<<<<<<
@@ -6546,17 +6966,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_friction_reloading = 1;
 
-      /* "TSSCB.pyx":285
+      /* "TSSCB.pyx":314
  *                 tangent3 = 0.0
  *             friction_reloading = False
  *             if self.configType == 1 and self.Tstrain >= 0 and dStrain > 0 and self.Thardening and self.Tstress2 < self.F1:             # <<<<<<<<<<<<<<
  *                 self.Tstress3 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent3)
  *                 friction_reloading = True
 */
-      goto __pyx_L68;
+      goto __pyx_L90;
     }
 
-    /* "TSSCB.pyx":288
+    /* "TSSCB.pyx":317
  *                 self.Tstress3 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent3)
  *                 friction_reloading = True
  *             elif self.configType == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Thardening and self.Tstress2 > -self.F1:             # <<<<<<<<<<<<<<
@@ -6567,31 +6987,31 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L74_bool_binop_done;
+      goto __pyx_L96_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstrain <= 0.0);
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L74_bool_binop_done;
+      goto __pyx_L96_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_dStrain < 0.0);
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L74_bool_binop_done;
+      goto __pyx_L96_bool_binop_done;
     }
     if (__pyx_v_self->Thardening) {
     } else {
       __pyx_t_1 = __pyx_v_self->Thardening;
-      goto __pyx_L74_bool_binop_done;
+      goto __pyx_L96_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstress2 > (-__pyx_v_self->F1));
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L74_bool_binop_done:;
+    __pyx_L96_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":289
+      /* "TSSCB.pyx":318
  *                 friction_reloading = True
  *             elif self.configType == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Thardening and self.Tstress2 > -self.F1:
  *                 self.Tstress3 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent3)             # <<<<<<<<<<<<<<
@@ -6601,10 +7021,10 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_3.__pyx_n = 2;
       __pyx_t_3.half = 1.0;
       __pyx_t_3.tangent = (&__pyx_v_tangent3);
-      __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress3, __pyx_v_dStrain, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 289, __pyx_L1_error)
+      __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_self->Cstress3, __pyx_v_dStrain, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 318, __pyx_L1_error)
       __pyx_v_self->Tstress3 = __pyx_t_2;
 
-      /* "TSSCB.pyx":290
+      /* "TSSCB.pyx":319
  *             elif self.configType == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Thardening and self.Tstress2 > -self.F1:
  *                 self.Tstress3 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent3)
  *                 friction_reloading = True             # <<<<<<<<<<<<<<
@@ -6613,7 +7033,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_friction_reloading = 1;
 
-      /* "TSSCB.pyx":288
+      /* "TSSCB.pyx":317
  *                 self.Tstress3 = self._frictionModel(self.Cstress3, dStrain, 1.0, &tangent3)
  *                 friction_reloading = True
  *             elif self.configType == 1 and self.Tstrain <= 0 and dStrain < 0 and self.Thardening and self.Tstress2 > -self.F1:             # <<<<<<<<<<<<<<
@@ -6621,9 +7041,9 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
  *                 friction_reloading = True
 */
     }
-    __pyx_L68:;
+    __pyx_L90:;
 
-    /* "TSSCB.pyx":293
+    /* "TSSCB.pyx":322
  *             # Return from the actual committed force along the original
  *             # elastic branch before reaching the clipped SC/friction envelope.
  *             if friction_reloading:             # <<<<<<<<<<<<<<
@@ -6632,7 +7052,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     if (__pyx_v_friction_reloading) {
 
-      /* "TSSCB.pyx":294
+      /* "TSSCB.pyx":323
  *             # elastic branch before reaching the clipped SC/friction envelope.
  *             if friction_reloading:
  *                 predictor = self.Cstress3 + self.k0 * dStrain             # <<<<<<<<<<<<<<
@@ -6641,7 +7061,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_predictor = (__pyx_v_self->Cstress3 + (__pyx_v_self->k0 * __pyx_v_dStrain));
 
-      /* "TSSCB.pyx":295
+      /* "TSSCB.pyx":324
  *             if friction_reloading:
  *                 predictor = self.Cstress3 + self.k0 * dStrain
  *                 predictor_tangent = self.k0             # <<<<<<<<<<<<<<
@@ -6651,17 +7071,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_2 = __pyx_v_self->k0;
       __pyx_v_predictor_tangent = __pyx_t_2;
 
-      /* "TSSCB.pyx":293
+      /* "TSSCB.pyx":322
  *             # Return from the actual committed force along the original
  *             # elastic branch before reaching the clipped SC/friction envelope.
  *             if friction_reloading:             # <<<<<<<<<<<<<<
  *                 predictor = self.Cstress3 + self.k0 * dStrain
  *                 predictor_tangent = self.k0
 */
-      goto __pyx_L79;
+      goto __pyx_L101;
     }
 
-    /* "TSSCB.pyx":297
+    /* "TSSCB.pyx":326
  *                 predictor_tangent = self.k0
  *             else:
  *                 Fd_committed = (self.F2 - self.F1 / 2.0) * self.CCDD * (             # <<<<<<<<<<<<<<
@@ -6670,7 +7090,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     /*else*/ {
 
-      /* "TSSCB.pyx":298
+      /* "TSSCB.pyx":327
  *             else:
  *                 Fd_committed = (self.F2 - self.F1 / 2.0) * self.CCDD * (
  *                     self.r1 - self.r2 * (fabs(self.Cstrain) - self.ugap) / (self.uh - self.ugap))             # <<<<<<<<<<<<<<
@@ -6681,10 +7101,10 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_5 = (__pyx_v_self->uh - __pyx_v_self->ugap);
       if (unlikely(__pyx_t_5 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 298, __pyx_L1_error)
+        __PYX_ERR(0, 327, __pyx_L1_error)
       }
 
-      /* "TSSCB.pyx":297
+      /* "TSSCB.pyx":326
  *                 predictor_tangent = self.k0
  *             else:
  *                 Fd_committed = (self.F2 - self.F1 / 2.0) * self.CCDD * (             # <<<<<<<<<<<<<<
@@ -6693,7 +7113,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_Fd_committed = (((__pyx_v_self->F2 - (__pyx_v_self->F1 / 2.0)) * __pyx_v_self->CCDD) * (__pyx_v_self->r1 - (__pyx_t_2 / __pyx_t_5)));
 
-      /* "TSSCB.pyx":299
+      /* "TSSCB.pyx":328
  *                 Fd_committed = (self.F2 - self.F1 / 2.0) * self.CCDD * (
  *                     self.r1 - self.r2 * (fabs(self.Cstrain) - self.ugap) / (self.uh - self.ugap))
  *                 direction = 1.0 if self.Tstrain >= 0 else -1.0             # <<<<<<<<<<<<<<
@@ -6708,7 +7128,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       }
       __pyx_v_direction = __pyx_t_5;
 
-      /* "TSSCB.pyx":300
+      /* "TSSCB.pyx":329
  *                     self.r1 - self.r2 * (fabs(self.Cstrain) - self.ugap) / (self.uh - self.ugap))
  *                 direction = 1.0 if self.Tstrain >= 0 else -1.0
  *                 predictor = self.Cstress3 + self.k1 * dStrain - direction * (Fd - Fd_committed)             # <<<<<<<<<<<<<<
@@ -6717,7 +7137,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_predictor = ((__pyx_v_self->Cstress3 + (__pyx_v_self->k1 * __pyx_v_dStrain)) - (__pyx_v_direction * (__pyx_v_Fd - __pyx_v_Fd_committed)));
 
-      /* "TSSCB.pyx":301
+      /* "TSSCB.pyx":330
  *                 direction = 1.0 if self.Tstrain >= 0 else -1.0
  *                 predictor = self.Cstress3 + self.k1 * dStrain - direction * (Fd - Fd_committed)
  *                 predictor_tangent = self.k1 - direction * dFd             # <<<<<<<<<<<<<<
@@ -6726,9 +7146,9 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_predictor_tangent = (__pyx_v_self->k1 - (__pyx_v_direction * __pyx_v_dFd));
     }
-    __pyx_L79:;
+    __pyx_L101:;
 
-    /* "TSSCB.pyx":302
+    /* "TSSCB.pyx":331
  *                 predictor = self.Cstress3 + self.k1 * dStrain - direction * (Fd - Fd_committed)
  *                 predictor_tangent = self.k1 - direction * dFd
  *             if ((dStrain > 0 and predictor < self.Cstress3)             # <<<<<<<<<<<<<<
@@ -6737,18 +7157,18 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_t_4 = (__pyx_v_dStrain > 0.0);
     if (!__pyx_t_4) {
-      goto __pyx_L82_next_or;
+      goto __pyx_L104_next_or;
     } else {
     }
     __pyx_t_4 = (__pyx_v_predictor < __pyx_v_self->Cstress3);
     if (!__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L81_bool_binop_done;
+      goto __pyx_L103_bool_binop_done;
     }
-    __pyx_L82_next_or:;
+    __pyx_L104_next_or:;
 
-    /* "TSSCB.pyx":303
+    /* "TSSCB.pyx":332
  *                 predictor_tangent = self.k1 - direction * dFd
  *             if ((dStrain > 0 and predictor < self.Cstress3)
  *                     or (dStrain < 0 and predictor > self.Cstress3)):             # <<<<<<<<<<<<<<
@@ -6759,13 +7179,13 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L81_bool_binop_done;
+      goto __pyx_L103_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_predictor > __pyx_v_self->Cstress3);
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L81_bool_binop_done:;
+    __pyx_L103_bool_binop_done:;
 
-    /* "TSSCB.pyx":302
+    /* "TSSCB.pyx":331
  *                 predictor = self.Cstress3 + self.k1 * dStrain - direction * (Fd - Fd_committed)
  *                 predictor_tangent = self.k1 - direction * dFd
  *             if ((dStrain > 0 and predictor < self.Cstress3)             # <<<<<<<<<<<<<<
@@ -6774,7 +7194,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":304
+      /* "TSSCB.pyx":333
  *             if ((dStrain > 0 and predictor < self.Cstress3)
  *                     or (dStrain < 0 and predictor > self.Cstress3)):
  *                 predictor = self.Cstress3             # <<<<<<<<<<<<<<
@@ -6784,7 +7204,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_5 = __pyx_v_self->Cstress3;
       __pyx_v_predictor = __pyx_t_5;
 
-      /* "TSSCB.pyx":305
+      /* "TSSCB.pyx":334
  *                     or (dStrain < 0 and predictor > self.Cstress3)):
  *                 predictor = self.Cstress3
  *                 predictor_tangent = 0.0             # <<<<<<<<<<<<<<
@@ -6793,7 +7213,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_predictor_tangent = 0.0;
 
-      /* "TSSCB.pyx":302
+      /* "TSSCB.pyx":331
  *                 predictor = self.Cstress3 + self.k1 * dStrain - direction * (Fd - Fd_committed)
  *                 predictor_tangent = self.k1 - direction * dFd
  *             if ((dStrain > 0 and predictor < self.Cstress3)             # <<<<<<<<<<<<<<
@@ -6802,7 +7222,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     }
 
-    /* "TSSCB.pyx":306
+    /* "TSSCB.pyx":335
  *                 predictor = self.Cstress3
  *                 predictor_tangent = 0.0
  *             if ((dStrain > 0 and self.Tstress3 < self.Cstress3)             # <<<<<<<<<<<<<<
@@ -6811,18 +7231,18 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_t_4 = (__pyx_v_dStrain > 0.0);
     if (!__pyx_t_4) {
-      goto __pyx_L87_next_or;
+      goto __pyx_L109_next_or;
     } else {
     }
     __pyx_t_4 = (__pyx_v_self->Tstress3 < __pyx_v_self->Cstress3);
     if (!__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L86_bool_binop_done;
+      goto __pyx_L108_bool_binop_done;
     }
-    __pyx_L87_next_or:;
+    __pyx_L109_next_or:;
 
-    /* "TSSCB.pyx":307
+    /* "TSSCB.pyx":336
  *                 predictor_tangent = 0.0
  *             if ((dStrain > 0 and self.Tstress3 < self.Cstress3)
  *                     or (dStrain < 0 and self.Tstress3 > self.Cstress3)):             # <<<<<<<<<<<<<<
@@ -6833,13 +7253,13 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L86_bool_binop_done;
+      goto __pyx_L108_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstress3 > __pyx_v_self->Cstress3);
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L86_bool_binop_done:;
+    __pyx_L108_bool_binop_done:;
 
-    /* "TSSCB.pyx":306
+    /* "TSSCB.pyx":335
  *                 predictor = self.Cstress3
  *                 predictor_tangent = 0.0
  *             if ((dStrain > 0 and self.Tstress3 < self.Cstress3)             # <<<<<<<<<<<<<<
@@ -6848,7 +7268,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":308
+      /* "TSSCB.pyx":337
  *             if ((dStrain > 0 and self.Tstress3 < self.Cstress3)
  *                     or (dStrain < 0 and self.Tstress3 > self.Cstress3)):
  *                 self.Tstress3 = self.Cstress3             # <<<<<<<<<<<<<<
@@ -6858,7 +7278,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_5 = __pyx_v_self->Cstress3;
       __pyx_v_self->Tstress3 = __pyx_t_5;
 
-      /* "TSSCB.pyx":309
+      /* "TSSCB.pyx":338
  *                     or (dStrain < 0 and self.Tstress3 > self.Cstress3)):
  *                 self.Tstress3 = self.Cstress3
  *                 tangent3 = 0.0             # <<<<<<<<<<<<<<
@@ -6867,17 +7287,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_tangent3 = 0.0;
 
-      /* "TSSCB.pyx":306
+      /* "TSSCB.pyx":335
  *                 predictor = self.Cstress3
  *                 predictor_tangent = 0.0
  *             if ((dStrain > 0 and self.Tstress3 < self.Cstress3)             # <<<<<<<<<<<<<<
  *                     or (dStrain < 0 and self.Tstress3 > self.Cstress3)):
  *                 self.Tstress3 = self.Cstress3
 */
-      goto __pyx_L85;
+      goto __pyx_L107;
     }
 
-    /* "TSSCB.pyx":310
+    /* "TSSCB.pyx":339
  *                 self.Tstress3 = self.Cstress3
  *                 tangent3 = 0.0
  *             elif ((dStrain > 0 and self.Tstress3 > predictor)             # <<<<<<<<<<<<<<
@@ -6886,18 +7306,18 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_t_4 = (__pyx_v_dStrain > 0.0);
     if (!__pyx_t_4) {
-      goto __pyx_L91_next_or;
+      goto __pyx_L113_next_or;
     } else {
     }
     __pyx_t_4 = (__pyx_v_self->Tstress3 > __pyx_v_predictor);
     if (!__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L90_bool_binop_done;
+      goto __pyx_L112_bool_binop_done;
     }
-    __pyx_L91_next_or:;
+    __pyx_L113_next_or:;
 
-    /* "TSSCB.pyx":311
+    /* "TSSCB.pyx":340
  *                 tangent3 = 0.0
  *             elif ((dStrain > 0 and self.Tstress3 > predictor)
  *                     or (dStrain < 0 and self.Tstress3 < predictor)):             # <<<<<<<<<<<<<<
@@ -6908,13 +7328,13 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L90_bool_binop_done;
+      goto __pyx_L112_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_self->Tstress3 < __pyx_v_predictor);
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L90_bool_binop_done:;
+    __pyx_L112_bool_binop_done:;
 
-    /* "TSSCB.pyx":310
+    /* "TSSCB.pyx":339
  *                 self.Tstress3 = self.Cstress3
  *                 tangent3 = 0.0
  *             elif ((dStrain > 0 and self.Tstress3 > predictor)             # <<<<<<<<<<<<<<
@@ -6923,7 +7343,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":312
+      /* "TSSCB.pyx":341
  *             elif ((dStrain > 0 and self.Tstress3 > predictor)
  *                     or (dStrain < 0 and self.Tstress3 < predictor)):
  *                 self.Tstress3 = predictor             # <<<<<<<<<<<<<<
@@ -6932,7 +7352,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_self->Tstress3 = __pyx_v_predictor;
 
-      /* "TSSCB.pyx":313
+      /* "TSSCB.pyx":342
  *                     or (dStrain < 0 and self.Tstress3 < predictor)):
  *                 self.Tstress3 = predictor
  *                 tangent3 = predictor_tangent             # <<<<<<<<<<<<<<
@@ -6941,7 +7361,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_tangent3 = __pyx_v_predictor_tangent;
 
-      /* "TSSCB.pyx":310
+      /* "TSSCB.pyx":339
  *                 self.Tstress3 = self.Cstress3
  *                 tangent3 = 0.0
  *             elif ((dStrain > 0 and self.Tstress3 > predictor)             # <<<<<<<<<<<<<<
@@ -6949,11 +7369,11 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
  *                 self.Tstress3 = predictor
 */
     }
-    __pyx_L85:;
+    __pyx_L107:;
 
-    /* "TSSCB.pyx":236
- *                 self.Tstress3 = -self.F1
- *                 tangent3 = 0.0
+    /* "TSSCB.pyx":265
+ *                 self.Tstress3 = predictor
+ *                 tangent3 = predictor_tangent
  *         elif self.Cstage == 2 and self.Tstage == 2:             # <<<<<<<<<<<<<<
  *             # 2->2
  *             if self.Thardening:
@@ -6961,279 +7381,144 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     goto __pyx_L17;
   }
 
-  /* "TSSCB.pyx":314
+  /* "TSSCB.pyx":343
  *                 self.Tstress3 = predictor
  *                 tangent3 = predictor_tangent
  *         elif self.Cstage == 2 and self.Tstage == 1:             # <<<<<<<<<<<<<<
  *             # 2->1
- *             if dStrain < 0:
+ *             direction = 1.0 if self.Cstrain > 0 else -1.0
 */
   __pyx_t_4 = (__pyx_v_self->Cstage == 2);
   if (__pyx_t_4) {
   } else {
     __pyx_t_1 = __pyx_t_4;
-    goto __pyx_L94_bool_binop_done;
+    goto __pyx_L116_bool_binop_done;
   }
   __pyx_t_4 = (__pyx_v_self->Tstage == 1);
   __pyx_t_1 = __pyx_t_4;
-  __pyx_L94_bool_binop_done:;
+  __pyx_L116_bool_binop_done:;
   if (likely(__pyx_t_1)) {
 
-    /* "TSSCB.pyx":316
+    /* "TSSCB.pyx":345
  *         elif self.Cstage == 2 and self.Tstage == 1:
  *             # 2->1
- *             if dStrain < 0:             # <<<<<<<<<<<<<<
- *                 du1 = -(self.Cstrain - self.ugap)
- *                 du2 = -(self.ugap - self.Tstrain)
+ *             direction = 1.0 if self.Cstrain > 0 else -1.0             # <<<<<<<<<<<<<<
+ *             boundary_strain = direction * self.ugap
+ *             du1 = boundary_strain - self.Cstrain
 */
-    __pyx_t_1 = (__pyx_v_dStrain < 0.0);
+    __pyx_t_1 = (__pyx_v_self->Cstrain > 0.0);
     if (__pyx_t_1) {
-
-      /* "TSSCB.pyx":317
- *             # 2->1
- *             if dStrain < 0:
- *                 du1 = -(self.Cstrain - self.ugap)             # <<<<<<<<<<<<<<
- *                 du2 = -(self.ugap - self.Tstrain)
- *                 usc0 = self.Cstrain - self.ua
-*/
-      __pyx_v_du1 = (-(__pyx_v_self->Cstrain - __pyx_v_self->ugap));
-
-      /* "TSSCB.pyx":318
- *             if dStrain < 0:
- *                 du1 = -(self.Cstrain - self.ugap)
- *                 du2 = -(self.ugap - self.Tstrain)             # <<<<<<<<<<<<<<
- *                 usc0 = self.Cstrain - self.ua
- *             else:
-*/
-      __pyx_v_du2 = (-(__pyx_v_self->ugap - __pyx_v_self->Tstrain));
-
-      /* "TSSCB.pyx":319
- *                 du1 = -(self.Cstrain - self.ugap)
- *                 du2 = -(self.ugap - self.Tstrain)
- *                 usc0 = self.Cstrain - self.ua             # <<<<<<<<<<<<<<
- *             else:
- *                 du1 = -self.ugap - self.Cstrain
-*/
-      __pyx_v_usc0 = (__pyx_v_self->Cstrain - __pyx_v_self->ua);
-
-      /* "TSSCB.pyx":316
- *         elif self.Cstage == 2 and self.Tstage == 1:
- *             # 2->1
- *             if dStrain < 0:             # <<<<<<<<<<<<<<
- *                 du1 = -(self.Cstrain - self.ugap)
- *                 du2 = -(self.ugap - self.Tstrain)
-*/
-      goto __pyx_L96;
+      __pyx_t_5 = 1.0;
+    } else {
+      __pyx_t_5 = -1.0;
     }
+    __pyx_v_direction = __pyx_t_5;
 
-    /* "TSSCB.pyx":321
- *                 usc0 = self.Cstrain - self.ua
- *             else:
- *                 du1 = -self.ugap - self.Cstrain             # <<<<<<<<<<<<<<
- *                 du2 = self.Tstrain + self.ugap
- *                 usc0 = self.Cstrain + self.ua
+    /* "TSSCB.pyx":346
+ *             # 2->1
+ *             direction = 1.0 if self.Cstrain > 0 else -1.0
+ *             boundary_strain = direction * self.ugap             # <<<<<<<<<<<<<<
+ *             du1 = boundary_strain - self.Cstrain
+ *             du2 = self.Tstrain - boundary_strain
 */
-    /*else*/ {
-      __pyx_v_du1 = ((-__pyx_v_self->ugap) - __pyx_v_self->Cstrain);
+    __pyx_v_boundary_strain = (__pyx_v_direction * __pyx_v_self->ugap);
 
-      /* "TSSCB.pyx":322
- *             else:
- *                 du1 = -self.ugap - self.Cstrain
- *                 du2 = self.Tstrain + self.ugap             # <<<<<<<<<<<<<<
- *                 usc0 = self.Cstrain + self.ua
+    /* "TSSCB.pyx":347
+ *             direction = 1.0 if self.Cstrain > 0 else -1.0
+ *             boundary_strain = direction * self.ugap
+ *             du1 = boundary_strain - self.Cstrain             # <<<<<<<<<<<<<<
+ *             du2 = self.Tstrain - boundary_strain
+ *             usc0 = self.Cstrain - direction * self.ua
+*/
+    __pyx_v_du1 = (__pyx_v_boundary_strain - __pyx_v_self->Cstrain);
+
+    /* "TSSCB.pyx":348
+ *             boundary_strain = direction * self.ugap
+ *             du1 = boundary_strain - self.Cstrain
+ *             du2 = self.Tstrain - boundary_strain             # <<<<<<<<<<<<<<
+ *             usc0 = self.Cstrain - direction * self.ua
  *             if self.Thardening:
 */
-      __pyx_v_du2 = (__pyx_v_self->Tstrain + __pyx_v_self->ugap);
+    __pyx_v_du2 = (__pyx_v_self->Tstrain - __pyx_v_boundary_strain);
 
-      /* "TSSCB.pyx":323
- *                 du1 = -self.ugap - self.Cstrain
- *                 du2 = self.Tstrain + self.ugap
- *                 usc0 = self.Cstrain + self.ua             # <<<<<<<<<<<<<<
+    /* "TSSCB.pyx":349
+ *             du1 = boundary_strain - self.Cstrain
+ *             du2 = self.Tstrain - boundary_strain
+ *             usc0 = self.Cstrain - direction * self.ua             # <<<<<<<<<<<<<<
  *             if self.Thardening:
  *                 self.TCDD = self.CCDD + fabs(du1) / (self.uh - self.ugap)
 */
-      __pyx_v_usc0 = (__pyx_v_self->Cstrain + __pyx_v_self->ua);
-    }
-    __pyx_L96:;
+    __pyx_v_usc0 = (__pyx_v_self->Cstrain - (__pyx_v_direction * __pyx_v_self->ua));
 
-    /* "TSSCB.pyx":324
- *                 du2 = self.Tstrain + self.ugap
- *                 usc0 = self.Cstrain + self.ua
+    /* "TSSCB.pyx":350
+ *             du2 = self.Tstrain - boundary_strain
+ *             usc0 = self.Cstrain - direction * self.ua
  *             if self.Thardening:             # <<<<<<<<<<<<<<
  *                 self.TCDD = self.CCDD + fabs(du1) / (self.uh - self.ugap)
  *             F1_ = self._SCModel(usc0, self.Cstress1, du1)
 */
     if (__pyx_v_self->Thardening) {
 
-      /* "TSSCB.pyx":325
- *                 usc0 = self.Cstrain + self.ua
+      /* "TSSCB.pyx":351
+ *             usc0 = self.Cstrain - direction * self.ua
  *             if self.Thardening:
  *                 self.TCDD = self.CCDD + fabs(du1) / (self.uh - self.ugap)             # <<<<<<<<<<<<<<
  *             F1_ = self._SCModel(usc0, self.Cstress1, du1)
- *             F1_ideal1 = F1_
+ *             Fd_boundary = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r1
 */
       __pyx_t_5 = fabs(__pyx_v_du1);
       __pyx_t_2 = (__pyx_v_self->uh - __pyx_v_self->ugap);
       if (unlikely(__pyx_t_2 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 325, __pyx_L1_error)
+        __PYX_ERR(0, 351, __pyx_L1_error)
       }
       __pyx_v_self->TCDD = (__pyx_v_self->CCDD + (__pyx_t_5 / __pyx_t_2));
 
-      /* "TSSCB.pyx":324
- *                 du2 = self.Tstrain + self.ugap
- *                 usc0 = self.Cstrain + self.ua
+      /* "TSSCB.pyx":350
+ *             du2 = self.Tstrain - boundary_strain
+ *             usc0 = self.Cstrain - direction * self.ua
  *             if self.Thardening:             # <<<<<<<<<<<<<<
  *                 self.TCDD = self.CCDD + fabs(du1) / (self.uh - self.ugap)
  *             F1_ = self._SCModel(usc0, self.Cstress1, du1)
 */
     }
 
-    /* "TSSCB.pyx":326
+    /* "TSSCB.pyx":352
  *             if self.Thardening:
  *                 self.TCDD = self.CCDD + fabs(du1) / (self.uh - self.ugap)
  *             F1_ = self._SCModel(usc0, self.Cstress1, du1)             # <<<<<<<<<<<<<<
- *             F1_ideal1 = F1_
- *             tangentF1 = 0.0
+ *             Fd_boundary = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r1
+ *             F1_ideal1 = F1_ - (direction * Fd_boundary if self.Thardening else 0.0)
 */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_SCModel(__pyx_v_self, __pyx_v_usc0, __pyx_v_self->Cstress1, __pyx_v_du1, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 326, __pyx_L1_error)
+    __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_SCModel(__pyx_v_self, __pyx_v_usc0, __pyx_v_self->Cstress1, __pyx_v_du1, NULL); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 352, __pyx_L1_error)
     __pyx_v_F1_ = __pyx_t_2;
 
-    /* "TSSCB.pyx":327
+    /* "TSSCB.pyx":353
  *                 self.TCDD = self.CCDD + fabs(du1) / (self.uh - self.ugap)
  *             F1_ = self._SCModel(usc0, self.Cstress1, du1)
- *             F1_ideal1 = F1_             # <<<<<<<<<<<<<<
- *             tangentF1 = 0.0
- *             if self.Thardening and self.Tstrain > 0:
-*/
-    __pyx_v_F1_ideal1 = __pyx_v_F1_;
-
-    /* "TSSCB.pyx":328
- *             F1_ = self._SCModel(usc0, self.Cstress1, du1)
- *             F1_ideal1 = F1_
- *             tangentF1 = 0.0             # <<<<<<<<<<<<<<
- *             if self.Thardening and self.Tstrain > 0:
- *                 F1_ideal1 = F1_ - (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
-*/
-    __pyx_v_tangentF1 = 0.0;
-
-    /* "TSSCB.pyx":329
- *             F1_ideal1 = F1_
- *             tangentF1 = 0.0
- *             if self.Thardening and self.Tstrain > 0:             # <<<<<<<<<<<<<<
- *                 F1_ideal1 = F1_ - (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
- *                 tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)
-*/
-    if (__pyx_v_self->Thardening) {
-    } else {
-      __pyx_t_1 = __pyx_v_self->Thardening;
-      goto __pyx_L99_bool_binop_done;
-    }
-    __pyx_t_4 = (__pyx_v_self->Tstrain > 0.0);
-    __pyx_t_1 = __pyx_t_4;
-    __pyx_L99_bool_binop_done:;
-    if (__pyx_t_1) {
-
-      /* "TSSCB.pyx":330
- *             tangentF1 = 0.0
- *             if self.Thardening and self.Tstrain > 0:
- *                 F1_ideal1 = F1_ - (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))             # <<<<<<<<<<<<<<
- *                 tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)
- *             elif self.Thardening and self.Tstrain < 0:
-*/
-      __pyx_t_2 = (__pyx_v_self->r2 * (fabs(__pyx_v_self->Tstrain) - __pyx_v_self->ugap));
-      __pyx_t_5 = (__pyx_v_self->uh - __pyx_v_self->ugap);
-      if (unlikely(__pyx_t_5 == 0)) {
-        PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 330, __pyx_L1_error)
-      }
-      __pyx_v_F1_ideal1 = (__pyx_v_F1_ - (((__pyx_v_self->F2 - (__pyx_v_self->F1 / 2.0)) * __pyx_v_self->TCDD) * (__pyx_v_self->r1 - (__pyx_t_2 / __pyx_t_5))));
-
-      /* "TSSCB.pyx":331
- *             if self.Thardening and self.Tstrain > 0:
- *                 F1_ideal1 = F1_ - (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
- *                 tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)             # <<<<<<<<<<<<<<
- *             elif self.Thardening and self.Tstrain < 0:
- *                 F1_ideal1 = F1_ + (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
-*/
-      __pyx_t_5 = (((__pyx_v_self->F2 - (__pyx_v_self->F1 / 2.0)) * __pyx_v_self->TCDD) * __pyx_v_self->r2);
-      __pyx_t_2 = (__pyx_v_self->uh - __pyx_v_self->ugap);
-      if (unlikely(__pyx_t_2 == 0)) {
-        PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 331, __pyx_L1_error)
-      }
-      __pyx_v_tangentF1 = (__pyx_t_5 / __pyx_t_2);
-
-      /* "TSSCB.pyx":329
- *             F1_ideal1 = F1_
- *             tangentF1 = 0.0
- *             if self.Thardening and self.Tstrain > 0:             # <<<<<<<<<<<<<<
- *                 F1_ideal1 = F1_ - (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
- *                 tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)
-*/
-      goto __pyx_L98;
-    }
-
-    /* "TSSCB.pyx":332
- *                 F1_ideal1 = F1_ - (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
- *                 tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)
- *             elif self.Thardening and self.Tstrain < 0:             # <<<<<<<<<<<<<<
- *                 F1_ideal1 = F1_ + (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
- *                 tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)
-*/
-    if (__pyx_v_self->Thardening) {
-    } else {
-      __pyx_t_1 = __pyx_v_self->Thardening;
-      goto __pyx_L101_bool_binop_done;
-    }
-    __pyx_t_4 = (__pyx_v_self->Tstrain < 0.0);
-    __pyx_t_1 = __pyx_t_4;
-    __pyx_L101_bool_binop_done:;
-    if (__pyx_t_1) {
-
-      /* "TSSCB.pyx":333
- *                 tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)
- *             elif self.Thardening and self.Tstrain < 0:
- *                 F1_ideal1 = F1_ + (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))             # <<<<<<<<<<<<<<
- *                 tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)
+ *             Fd_boundary = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r1             # <<<<<<<<<<<<<<
+ *             F1_ideal1 = F1_ - (direction * Fd_boundary if self.Thardening else 0.0)
  *             if self.configType == 1:
 */
-      __pyx_t_2 = (__pyx_v_self->r2 * (fabs(__pyx_v_self->Tstrain) - __pyx_v_self->ugap));
-      __pyx_t_5 = (__pyx_v_self->uh - __pyx_v_self->ugap);
-      if (unlikely(__pyx_t_5 == 0)) {
-        PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 333, __pyx_L1_error)
-      }
-      __pyx_v_F1_ideal1 = (__pyx_v_F1_ + (((__pyx_v_self->F2 - (__pyx_v_self->F1 / 2.0)) * __pyx_v_self->TCDD) * (__pyx_v_self->r1 - (__pyx_t_2 / __pyx_t_5))));
+    __pyx_v_Fd_boundary = (((__pyx_v_self->F2 - (__pyx_v_self->F1 / 2.0)) * __pyx_v_self->TCDD) * __pyx_v_self->r1);
 
-      /* "TSSCB.pyx":334
- *             elif self.Thardening and self.Tstrain < 0:
- *                 F1_ideal1 = F1_ + (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
- *                 tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)             # <<<<<<<<<<<<<<
+    /* "TSSCB.pyx":354
+ *             F1_ = self._SCModel(usc0, self.Cstress1, du1)
+ *             Fd_boundary = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r1
+ *             F1_ideal1 = F1_ - (direction * Fd_boundary if self.Thardening else 0.0)             # <<<<<<<<<<<<<<
  *             if self.configType == 1:
  *                 F_bound = 0.0
 */
-      __pyx_t_5 = (((__pyx_v_self->F2 - (__pyx_v_self->F1 / 2.0)) * __pyx_v_self->TCDD) * __pyx_v_self->r2);
-      __pyx_t_2 = (__pyx_v_self->uh - __pyx_v_self->ugap);
-      if (unlikely(__pyx_t_2 == 0)) {
-        PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 334, __pyx_L1_error)
-      }
-      __pyx_v_tangentF1 = (__pyx_t_5 / __pyx_t_2);
-
-      /* "TSSCB.pyx":332
- *                 F1_ideal1 = F1_ - (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
- *                 tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)
- *             elif self.Thardening and self.Tstrain < 0:             # <<<<<<<<<<<<<<
- *                 F1_ideal1 = F1_ + (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
- *                 tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)
-*/
+    if (__pyx_v_self->Thardening) {
+      __pyx_t_2 = (__pyx_v_direction * __pyx_v_Fd_boundary);
+    } else {
+      __pyx_t_2 = 0.0;
     }
-    __pyx_L98:;
+    __pyx_v_F1_ideal1 = (__pyx_v_F1_ - __pyx_t_2);
 
-    /* "TSSCB.pyx":335
- *                 F1_ideal1 = F1_ + (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
- *                 tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)
+    /* "TSSCB.pyx":355
+ *             Fd_boundary = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r1
+ *             F1_ideal1 = F1_ - (direction * Fd_boundary if self.Thardening else 0.0)
  *             if self.configType == 1:             # <<<<<<<<<<<<<<
  *                 F_bound = 0.0
  *             else:
@@ -7241,8 +7526,8 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
     __pyx_t_1 = (__pyx_v_self->configType == 1);
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":336
- *                 tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)
+      /* "TSSCB.pyx":356
+ *             F1_ideal1 = F1_ - (direction * Fd_boundary if self.Thardening else 0.0)
  *             if self.configType == 1:
  *                 F_bound = 0.0             # <<<<<<<<<<<<<<
  *             else:
@@ -7250,303 +7535,410 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
       __pyx_v_F_bound = 0.0;
 
-      /* "TSSCB.pyx":335
- *                 F1_ideal1 = F1_ + (self.F2 - self.F1 / 2.0) * self.TCDD * (self.r1 - self.r2 * (fabs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
- *                 tangentF1 = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r2 / (self.uh - self.ugap)
+      /* "TSSCB.pyx":355
+ *             Fd_boundary = (self.F2 - self.F1 / 2.0) * self.TCDD * self.r1
+ *             F1_ideal1 = F1_ - (direction * Fd_boundary if self.Thardening else 0.0)
  *             if self.configType == 1:             # <<<<<<<<<<<<<<
  *                 F_bound = 0.0
  *             else:
 */
-      goto __pyx_L103;
+      goto __pyx_L119;
     }
 
-    /* "TSSCB.pyx":338
+    /* "TSSCB.pyx":358
  *                 F_bound = 0.0
  *             else:
  *                 F_bound = self.F1             # <<<<<<<<<<<<<<
  *             F1_ = F1_ideal1
- *             if dStrain > 0 and self.Tstrain > 0 and F1_ideal1 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:
+ *             if direction > 0 and F1_ideal1 < -F_bound:
 */
     /*else*/ {
       __pyx_t_2 = __pyx_v_self->F1;
       __pyx_v_F_bound = __pyx_t_2;
     }
-    __pyx_L103:;
+    __pyx_L119:;
 
-    /* "TSSCB.pyx":339
+    /* "TSSCB.pyx":359
  *             else:
  *                 F_bound = self.F1
  *             F1_ = F1_ideal1             # <<<<<<<<<<<<<<
- *             if dStrain > 0 and self.Tstrain > 0 and F1_ideal1 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:
- *                 F1_ = self.F1
+ *             if direction > 0 and F1_ideal1 < -F_bound:
+ *                 F1_ = -F_bound
 */
     __pyx_v_F1_ = __pyx_v_F1_ideal1;
 
-    /* "TSSCB.pyx":340
+    /* "TSSCB.pyx":360
  *                 F_bound = self.F1
  *             F1_ = F1_ideal1
- *             if dStrain > 0 and self.Tstrain > 0 and F1_ideal1 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:             # <<<<<<<<<<<<<<
- *                 F1_ = self.F1
- *                 tangentF1 = 0.0
-*/
-    __pyx_t_4 = (__pyx_v_dStrain > 0.0);
-    if (__pyx_t_4) {
-    } else {
-      __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L105_bool_binop_done;
-    }
-    __pyx_t_4 = (__pyx_v_self->Tstrain > 0.0);
-    if (__pyx_t_4) {
-    } else {
-      __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L105_bool_binop_done;
-    }
-    __pyx_t_4 = (__pyx_v_F1_ideal1 < __pyx_v_self->F1);
-    if (__pyx_t_4) {
-    } else {
-      __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L105_bool_binop_done;
-    }
-    __pyx_t_4 = (__pyx_v_self->ugap > 0.0);
-    if (__pyx_t_4) {
-    } else {
-      __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L105_bool_binop_done;
-    }
-    __pyx_t_4 = (__pyx_v_self->Cstress3 == __pyx_v_self->F1);
-    __pyx_t_1 = __pyx_t_4;
-    __pyx_L105_bool_binop_done:;
-    if (__pyx_t_1) {
-
-      /* "TSSCB.pyx":341
- *             F1_ = F1_ideal1
- *             if dStrain > 0 and self.Tstrain > 0 and F1_ideal1 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:
- *                 F1_ = self.F1             # <<<<<<<<<<<<<<
- *                 tangentF1 = 0.0
- *             elif dStrain < 0 and self.Tstrain < 0 and F1_ideal1 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:
-*/
-      __pyx_t_2 = __pyx_v_self->F1;
-      __pyx_v_F1_ = __pyx_t_2;
-
-      /* "TSSCB.pyx":342
- *             if dStrain > 0 and self.Tstrain > 0 and F1_ideal1 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:
- *                 F1_ = self.F1
- *                 tangentF1 = 0.0             # <<<<<<<<<<<<<<
- *             elif dStrain < 0 and self.Tstrain < 0 and F1_ideal1 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:
- *                 F1_ = -self.F1
-*/
-      __pyx_v_tangentF1 = 0.0;
-
-      /* "TSSCB.pyx":340
- *                 F_bound = self.F1
- *             F1_ = F1_ideal1
- *             if dStrain > 0 and self.Tstrain > 0 and F1_ideal1 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:             # <<<<<<<<<<<<<<
- *                 F1_ = self.F1
- *                 tangentF1 = 0.0
-*/
-      goto __pyx_L104;
-    }
-
-    /* "TSSCB.pyx":343
- *                 F1_ = self.F1
- *                 tangentF1 = 0.0
- *             elif dStrain < 0 and self.Tstrain < 0 and F1_ideal1 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:             # <<<<<<<<<<<<<<
- *                 F1_ = -self.F1
- *                 tangentF1 = 0.0
-*/
-    __pyx_t_4 = (__pyx_v_dStrain < 0.0);
-    if (__pyx_t_4) {
-    } else {
-      __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L110_bool_binop_done;
-    }
-    __pyx_t_4 = (__pyx_v_self->Tstrain < 0.0);
-    if (__pyx_t_4) {
-    } else {
-      __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L110_bool_binop_done;
-    }
-    __pyx_t_4 = (__pyx_v_F1_ideal1 > (-__pyx_v_self->F1));
-    if (__pyx_t_4) {
-    } else {
-      __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L110_bool_binop_done;
-    }
-    __pyx_t_4 = (__pyx_v_self->ugap > 0.0);
-    if (__pyx_t_4) {
-    } else {
-      __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L110_bool_binop_done;
-    }
-    __pyx_t_4 = (__pyx_v_self->Cstress3 == (-__pyx_v_self->F1));
-    __pyx_t_1 = __pyx_t_4;
-    __pyx_L110_bool_binop_done:;
-    if (__pyx_t_1) {
-
-      /* "TSSCB.pyx":344
- *                 tangentF1 = 0.0
- *             elif dStrain < 0 and self.Tstrain < 0 and F1_ideal1 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:
- *                 F1_ = -self.F1             # <<<<<<<<<<<<<<
- *                 tangentF1 = 0.0
- *             elif self.Tstrain > 0 and F1_ideal1 < -F_bound:
-*/
-      __pyx_v_F1_ = (-__pyx_v_self->F1);
-
-      /* "TSSCB.pyx":345
- *             elif dStrain < 0 and self.Tstrain < 0 and F1_ideal1 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:
- *                 F1_ = -self.F1
- *                 tangentF1 = 0.0             # <<<<<<<<<<<<<<
- *             elif self.Tstrain > 0 and F1_ideal1 < -F_bound:
+ *             if direction > 0 and F1_ideal1 < -F_bound:             # <<<<<<<<<<<<<<
  *                 F1_ = -F_bound
+ *             elif direction < 0 and F1_ideal1 > F_bound:
 */
-      __pyx_v_tangentF1 = 0.0;
-
-      /* "TSSCB.pyx":343
- *                 F1_ = self.F1
- *                 tangentF1 = 0.0
- *             elif dStrain < 0 and self.Tstrain < 0 and F1_ideal1 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:             # <<<<<<<<<<<<<<
- *                 F1_ = -self.F1
- *                 tangentF1 = 0.0
-*/
-      goto __pyx_L104;
-    }
-
-    /* "TSSCB.pyx":346
- *                 F1_ = -self.F1
- *                 tangentF1 = 0.0
- *             elif self.Tstrain > 0 and F1_ideal1 < -F_bound:             # <<<<<<<<<<<<<<
- *                 F1_ = -F_bound
- *                 tangentF1 = 0.0
-*/
-    __pyx_t_4 = (__pyx_v_self->Tstrain > 0.0);
+    __pyx_t_4 = (__pyx_v_direction > 0.0);
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L115_bool_binop_done;
+      goto __pyx_L121_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_F1_ideal1 < (-__pyx_v_F_bound));
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L115_bool_binop_done:;
+    __pyx_L121_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":347
- *                 tangentF1 = 0.0
- *             elif self.Tstrain > 0 and F1_ideal1 < -F_bound:
+      /* "TSSCB.pyx":361
+ *             F1_ = F1_ideal1
+ *             if direction > 0 and F1_ideal1 < -F_bound:
  *                 F1_ = -F_bound             # <<<<<<<<<<<<<<
- *                 tangentF1 = 0.0
- *             elif self.Tstrain < 0 and F1_ideal1 > F_bound:
+ *             elif direction < 0 and F1_ideal1 > F_bound:
+ *                 F1_ = F_bound
 */
       __pyx_v_F1_ = (-__pyx_v_F_bound);
 
-      /* "TSSCB.pyx":348
- *             elif self.Tstrain > 0 and F1_ideal1 < -F_bound:
+      /* "TSSCB.pyx":360
+ *                 F_bound = self.F1
+ *             F1_ = F1_ideal1
+ *             if direction > 0 and F1_ideal1 < -F_bound:             # <<<<<<<<<<<<<<
  *                 F1_ = -F_bound
- *                 tangentF1 = 0.0             # <<<<<<<<<<<<<<
- *             elif self.Tstrain < 0 and F1_ideal1 > F_bound:
- *                 F1_ = F_bound
+ *             elif direction < 0 and F1_ideal1 > F_bound:
 */
-      __pyx_v_tangentF1 = 0.0;
-
-      /* "TSSCB.pyx":346
- *                 F1_ = -self.F1
- *                 tangentF1 = 0.0
- *             elif self.Tstrain > 0 and F1_ideal1 < -F_bound:             # <<<<<<<<<<<<<<
- *                 F1_ = -F_bound
- *                 tangentF1 = 0.0
-*/
-      goto __pyx_L104;
+      goto __pyx_L120;
     }
 
-    /* "TSSCB.pyx":349
+    /* "TSSCB.pyx":362
+ *             if direction > 0 and F1_ideal1 < -F_bound:
  *                 F1_ = -F_bound
- *                 tangentF1 = 0.0
- *             elif self.Tstrain < 0 and F1_ideal1 > F_bound:             # <<<<<<<<<<<<<<
+ *             elif direction < 0 and F1_ideal1 > F_bound:             # <<<<<<<<<<<<<<
  *                 F1_ = F_bound
- *                 tangentF1 = 0.0
+ *             predictor = self.Cstress3 + self.k1 * du1
 */
-    __pyx_t_4 = (__pyx_v_self->Tstrain < 0.0);
+    __pyx_t_4 = (__pyx_v_direction < 0.0);
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
-      goto __pyx_L117_bool_binop_done;
+      goto __pyx_L123_bool_binop_done;
     }
     __pyx_t_4 = (__pyx_v_F1_ideal1 > __pyx_v_F_bound);
     __pyx_t_1 = __pyx_t_4;
-    __pyx_L117_bool_binop_done:;
+    __pyx_L123_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":350
- *                 tangentF1 = 0.0
- *             elif self.Tstrain < 0 and F1_ideal1 > F_bound:
+      /* "TSSCB.pyx":363
+ *                 F1_ = -F_bound
+ *             elif direction < 0 and F1_ideal1 > F_bound:
  *                 F1_ = F_bound             # <<<<<<<<<<<<<<
- *                 tangentF1 = 0.0
- *             F2_ = self._frictionModel(F1_, du2, 1.0, &tangent1, tangentF1)
+ *             predictor = self.Cstress3 + self.k1 * du1
+ *             if self.Thardening:
 */
       __pyx_v_F1_ = __pyx_v_F_bound;
 
-      /* "TSSCB.pyx":351
- *             elif self.Tstrain < 0 and F1_ideal1 > F_bound:
- *                 F1_ = F_bound
- *                 tangentF1 = 0.0             # <<<<<<<<<<<<<<
- *             F2_ = self._frictionModel(F1_, du2, 1.0, &tangent1, tangentF1)
- *             self.Tstress1 = F2_
-*/
-      __pyx_v_tangentF1 = 0.0;
-
-      /* "TSSCB.pyx":349
+      /* "TSSCB.pyx":362
+ *             if direction > 0 and F1_ideal1 < -F_bound:
  *                 F1_ = -F_bound
- *                 tangentF1 = 0.0
- *             elif self.Tstrain < 0 and F1_ideal1 > F_bound:             # <<<<<<<<<<<<<<
+ *             elif direction < 0 and F1_ideal1 > F_bound:             # <<<<<<<<<<<<<<
  *                 F1_ = F_bound
- *                 tangentF1 = 0.0
+ *             predictor = self.Cstress3 + self.k1 * du1
 */
     }
-    __pyx_L104:;
+    __pyx_L120:;
 
-    /* "TSSCB.pyx":352
+    /* "TSSCB.pyx":364
+ *             elif direction < 0 and F1_ideal1 > F_bound:
  *                 F1_ = F_bound
- *                 tangentF1 = 0.0
- *             F2_ = self._frictionModel(F1_, du2, 1.0, &tangent1, tangentF1)             # <<<<<<<<<<<<<<
+ *             predictor = self.Cstress3 + self.k1 * du1             # <<<<<<<<<<<<<<
+ *             if self.Thardening:
+ *                 Fd_committed = (self.F2 - self.F1 / 2.0) * self.CCDD * (
+*/
+    __pyx_v_predictor = (__pyx_v_self->Cstress3 + (__pyx_v_self->k1 * __pyx_v_du1));
+
+    /* "TSSCB.pyx":365
+ *                 F1_ = F_bound
+ *             predictor = self.Cstress3 + self.k1 * du1
+ *             if self.Thardening:             # <<<<<<<<<<<<<<
+ *                 Fd_committed = (self.F2 - self.F1 / 2.0) * self.CCDD * (
+ *                     self.r1 - self.r2 * (fabs(self.Cstrain) - self.ugap) / (self.uh - self.ugap))
+*/
+    if (__pyx_v_self->Thardening) {
+
+      /* "TSSCB.pyx":367
+ *             if self.Thardening:
+ *                 Fd_committed = (self.F2 - self.F1 / 2.0) * self.CCDD * (
+ *                     self.r1 - self.r2 * (fabs(self.Cstrain) - self.ugap) / (self.uh - self.ugap))             # <<<<<<<<<<<<<<
+ *                 predictor -= direction * (Fd_boundary - Fd_committed)
+ *             if ((du1 > 0 and predictor < self.Cstress3) or
+*/
+      __pyx_t_2 = (__pyx_v_self->r2 * (fabs(__pyx_v_self->Cstrain) - __pyx_v_self->ugap));
+      __pyx_t_5 = (__pyx_v_self->uh - __pyx_v_self->ugap);
+      if (unlikely(__pyx_t_5 == 0)) {
+        PyErr_SetString(PyExc_ZeroDivisionError, "float division");
+        __PYX_ERR(0, 367, __pyx_L1_error)
+      }
+
+      /* "TSSCB.pyx":366
+ *             predictor = self.Cstress3 + self.k1 * du1
+ *             if self.Thardening:
+ *                 Fd_committed = (self.F2 - self.F1 / 2.0) * self.CCDD * (             # <<<<<<<<<<<<<<
+ *                     self.r1 - self.r2 * (fabs(self.Cstrain) - self.ugap) / (self.uh - self.ugap))
+ *                 predictor -= direction * (Fd_boundary - Fd_committed)
+*/
+      __pyx_v_Fd_committed = (((__pyx_v_self->F2 - (__pyx_v_self->F1 / 2.0)) * __pyx_v_self->CCDD) * (__pyx_v_self->r1 - (__pyx_t_2 / __pyx_t_5)));
+
+      /* "TSSCB.pyx":368
+ *                 Fd_committed = (self.F2 - self.F1 / 2.0) * self.CCDD * (
+ *                     self.r1 - self.r2 * (fabs(self.Cstrain) - self.ugap) / (self.uh - self.ugap))
+ *                 predictor -= direction * (Fd_boundary - Fd_committed)             # <<<<<<<<<<<<<<
+ *             if ((du1 > 0 and predictor < self.Cstress3) or
+ *                     (du1 < 0 and predictor > self.Cstress3)):
+*/
+      __pyx_v_predictor = (__pyx_v_predictor - (__pyx_v_direction * (__pyx_v_Fd_boundary - __pyx_v_Fd_committed)));
+
+      /* "TSSCB.pyx":365
+ *                 F1_ = F_bound
+ *             predictor = self.Cstress3 + self.k1 * du1
+ *             if self.Thardening:             # <<<<<<<<<<<<<<
+ *                 Fd_committed = (self.F2 - self.F1 / 2.0) * self.CCDD * (
+ *                     self.r1 - self.r2 * (fabs(self.Cstrain) - self.ugap) / (self.uh - self.ugap))
+*/
+    }
+
+    /* "TSSCB.pyx":369
+ *                     self.r1 - self.r2 * (fabs(self.Cstrain) - self.ugap) / (self.uh - self.ugap))
+ *                 predictor -= direction * (Fd_boundary - Fd_committed)
+ *             if ((du1 > 0 and predictor < self.Cstress3) or             # <<<<<<<<<<<<<<
+ *                     (du1 < 0 and predictor > self.Cstress3)):
+ *                 predictor = self.Cstress3
+*/
+    __pyx_t_4 = (__pyx_v_du1 > 0.0);
+    if (!__pyx_t_4) {
+      goto __pyx_L128_next_or;
+    } else {
+    }
+    __pyx_t_4 = (__pyx_v_predictor < __pyx_v_self->Cstress3);
+    if (!__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L127_bool_binop_done;
+    }
+    __pyx_L128_next_or:;
+
+    /* "TSSCB.pyx":370
+ *                 predictor -= direction * (Fd_boundary - Fd_committed)
+ *             if ((du1 > 0 and predictor < self.Cstress3) or
+ *                     (du1 < 0 and predictor > self.Cstress3)):             # <<<<<<<<<<<<<<
+ *                 predictor = self.Cstress3
+ *             if ((du1 > 0 and F1_ < self.Cstress3) or
+*/
+    __pyx_t_4 = (__pyx_v_du1 < 0.0);
+    if (__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L127_bool_binop_done;
+    }
+    __pyx_t_4 = (__pyx_v_predictor > __pyx_v_self->Cstress3);
+    __pyx_t_1 = __pyx_t_4;
+    __pyx_L127_bool_binop_done:;
+
+    /* "TSSCB.pyx":369
+ *                     self.r1 - self.r2 * (fabs(self.Cstrain) - self.ugap) / (self.uh - self.ugap))
+ *                 predictor -= direction * (Fd_boundary - Fd_committed)
+ *             if ((du1 > 0 and predictor < self.Cstress3) or             # <<<<<<<<<<<<<<
+ *                     (du1 < 0 and predictor > self.Cstress3)):
+ *                 predictor = self.Cstress3
+*/
+    if (__pyx_t_1) {
+
+      /* "TSSCB.pyx":371
+ *             if ((du1 > 0 and predictor < self.Cstress3) or
+ *                     (du1 < 0 and predictor > self.Cstress3)):
+ *                 predictor = self.Cstress3             # <<<<<<<<<<<<<<
+ *             if ((du1 > 0 and F1_ < self.Cstress3) or
+ *                     (du1 < 0 and F1_ > self.Cstress3)):
+*/
+      __pyx_t_5 = __pyx_v_self->Cstress3;
+      __pyx_v_predictor = __pyx_t_5;
+
+      /* "TSSCB.pyx":369
+ *                     self.r1 - self.r2 * (fabs(self.Cstrain) - self.ugap) / (self.uh - self.ugap))
+ *                 predictor -= direction * (Fd_boundary - Fd_committed)
+ *             if ((du1 > 0 and predictor < self.Cstress3) or             # <<<<<<<<<<<<<<
+ *                     (du1 < 0 and predictor > self.Cstress3)):
+ *                 predictor = self.Cstress3
+*/
+    }
+
+    /* "TSSCB.pyx":372
+ *                     (du1 < 0 and predictor > self.Cstress3)):
+ *                 predictor = self.Cstress3
+ *             if ((du1 > 0 and F1_ < self.Cstress3) or             # <<<<<<<<<<<<<<
+ *                     (du1 < 0 and F1_ > self.Cstress3)):
+ *                 F1_ = self.Cstress3
+*/
+    __pyx_t_4 = (__pyx_v_du1 > 0.0);
+    if (!__pyx_t_4) {
+      goto __pyx_L133_next_or;
+    } else {
+    }
+    __pyx_t_4 = (__pyx_v_F1_ < __pyx_v_self->Cstress3);
+    if (!__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L132_bool_binop_done;
+    }
+    __pyx_L133_next_or:;
+
+    /* "TSSCB.pyx":373
+ *                 predictor = self.Cstress3
+ *             if ((du1 > 0 and F1_ < self.Cstress3) or
+ *                     (du1 < 0 and F1_ > self.Cstress3)):             # <<<<<<<<<<<<<<
+ *                 F1_ = self.Cstress3
+ *             elif ((du1 > 0 and F1_ > predictor) or
+*/
+    __pyx_t_4 = (__pyx_v_du1 < 0.0);
+    if (__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L132_bool_binop_done;
+    }
+    __pyx_t_4 = (__pyx_v_F1_ > __pyx_v_self->Cstress3);
+    __pyx_t_1 = __pyx_t_4;
+    __pyx_L132_bool_binop_done:;
+
+    /* "TSSCB.pyx":372
+ *                     (du1 < 0 and predictor > self.Cstress3)):
+ *                 predictor = self.Cstress3
+ *             if ((du1 > 0 and F1_ < self.Cstress3) or             # <<<<<<<<<<<<<<
+ *                     (du1 < 0 and F1_ > self.Cstress3)):
+ *                 F1_ = self.Cstress3
+*/
+    if (__pyx_t_1) {
+
+      /* "TSSCB.pyx":374
+ *             if ((du1 > 0 and F1_ < self.Cstress3) or
+ *                     (du1 < 0 and F1_ > self.Cstress3)):
+ *                 F1_ = self.Cstress3             # <<<<<<<<<<<<<<
+ *             elif ((du1 > 0 and F1_ > predictor) or
+ *                     (du1 < 0 and F1_ < predictor)):
+*/
+      __pyx_t_5 = __pyx_v_self->Cstress3;
+      __pyx_v_F1_ = __pyx_t_5;
+
+      /* "TSSCB.pyx":372
+ *                     (du1 < 0 and predictor > self.Cstress3)):
+ *                 predictor = self.Cstress3
+ *             if ((du1 > 0 and F1_ < self.Cstress3) or             # <<<<<<<<<<<<<<
+ *                     (du1 < 0 and F1_ > self.Cstress3)):
+ *                 F1_ = self.Cstress3
+*/
+      goto __pyx_L131;
+    }
+
+    /* "TSSCB.pyx":375
+ *                     (du1 < 0 and F1_ > self.Cstress3)):
+ *                 F1_ = self.Cstress3
+ *             elif ((du1 > 0 and F1_ > predictor) or             # <<<<<<<<<<<<<<
+ *                     (du1 < 0 and F1_ < predictor)):
+ *                 F1_ = predictor
+*/
+    __pyx_t_4 = (__pyx_v_du1 > 0.0);
+    if (!__pyx_t_4) {
+      goto __pyx_L137_next_or;
+    } else {
+    }
+    __pyx_t_4 = (__pyx_v_F1_ > __pyx_v_predictor);
+    if (!__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L136_bool_binop_done;
+    }
+    __pyx_L137_next_or:;
+
+    /* "TSSCB.pyx":376
+ *                 F1_ = self.Cstress3
+ *             elif ((du1 > 0 and F1_ > predictor) or
+ *                     (du1 < 0 and F1_ < predictor)):             # <<<<<<<<<<<<<<
+ *                 F1_ = predictor
+ *             F2_ = self._frictionModel(F1_, du2, 1.0, &tangent1)
+*/
+    __pyx_t_4 = (__pyx_v_du1 < 0.0);
+    if (__pyx_t_4) {
+    } else {
+      __pyx_t_1 = __pyx_t_4;
+      goto __pyx_L136_bool_binop_done;
+    }
+    __pyx_t_4 = (__pyx_v_F1_ < __pyx_v_predictor);
+    __pyx_t_1 = __pyx_t_4;
+    __pyx_L136_bool_binop_done:;
+
+    /* "TSSCB.pyx":375
+ *                     (du1 < 0 and F1_ > self.Cstress3)):
+ *                 F1_ = self.Cstress3
+ *             elif ((du1 > 0 and F1_ > predictor) or             # <<<<<<<<<<<<<<
+ *                     (du1 < 0 and F1_ < predictor)):
+ *                 F1_ = predictor
+*/
+    if (__pyx_t_1) {
+
+      /* "TSSCB.pyx":377
+ *             elif ((du1 > 0 and F1_ > predictor) or
+ *                     (du1 < 0 and F1_ < predictor)):
+ *                 F1_ = predictor             # <<<<<<<<<<<<<<
+ *             F2_ = self._frictionModel(F1_, du2, 1.0, &tangent1)
+ *             self.Tstress1 = F2_
+*/
+      __pyx_v_F1_ = __pyx_v_predictor;
+
+      /* "TSSCB.pyx":375
+ *                     (du1 < 0 and F1_ > self.Cstress3)):
+ *                 F1_ = self.Cstress3
+ *             elif ((du1 > 0 and F1_ > predictor) or             # <<<<<<<<<<<<<<
+ *                     (du1 < 0 and F1_ < predictor)):
+ *                 F1_ = predictor
+*/
+    }
+    __pyx_L131:;
+
+    /* "TSSCB.pyx":378
+ *                     (du1 < 0 and F1_ < predictor)):
+ *                 F1_ = predictor
+ *             F2_ = self._frictionModel(F1_, du2, 1.0, &tangent1)             # <<<<<<<<<<<<<<
  *             self.Tstress1 = F2_
  *             self.Tstress2 = self.Tstress1
 */
-    __pyx_t_3.__pyx_n = 3;
+    __pyx_t_3.__pyx_n = 2;
     __pyx_t_3.half = 1.0;
     __pyx_t_3.tangent = (&__pyx_v_tangent1);
-    __pyx_t_3.dF0 = __pyx_v_tangentF1;
-    __pyx_t_2 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_F1_, __pyx_v_du2, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 352, __pyx_L1_error)
-    __pyx_v_F2_ = __pyx_t_2;
+    __pyx_t_5 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->_frictionModel(__pyx_v_self, __pyx_v_F1_, __pyx_v_du2, &__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 378, __pyx_L1_error)
+    __pyx_v_F2_ = __pyx_t_5;
 
-    /* "TSSCB.pyx":353
- *                 tangentF1 = 0.0
- *             F2_ = self._frictionModel(F1_, du2, 1.0, &tangent1, tangentF1)
+    /* "TSSCB.pyx":379
+ *                 F1_ = predictor
+ *             F2_ = self._frictionModel(F1_, du2, 1.0, &tangent1)
  *             self.Tstress1 = F2_             # <<<<<<<<<<<<<<
  *             self.Tstress2 = self.Tstress1
  *             self.Tstress3 = self.Tstress1
 */
     __pyx_v_self->Tstress1 = __pyx_v_F2_;
 
-    /* "TSSCB.pyx":354
- *             F2_ = self._frictionModel(F1_, du2, 1.0, &tangent1, tangentF1)
+    /* "TSSCB.pyx":380
+ *             F2_ = self._frictionModel(F1_, du2, 1.0, &tangent1)
  *             self.Tstress1 = F2_
  *             self.Tstress2 = self.Tstress1             # <<<<<<<<<<<<<<
  *             self.Tstress3 = self.Tstress1
  *             tangent3 = tangent1
 */
-    __pyx_t_2 = __pyx_v_self->Tstress1;
-    __pyx_v_self->Tstress2 = __pyx_t_2;
+    __pyx_t_5 = __pyx_v_self->Tstress1;
+    __pyx_v_self->Tstress2 = __pyx_t_5;
 
-    /* "TSSCB.pyx":355
+    /* "TSSCB.pyx":381
  *             self.Tstress1 = F2_
  *             self.Tstress2 = self.Tstress1
  *             self.Tstress3 = self.Tstress1             # <<<<<<<<<<<<<<
  *             tangent3 = tangent1
  *         else:
 */
-    __pyx_t_2 = __pyx_v_self->Tstress1;
-    __pyx_v_self->Tstress3 = __pyx_t_2;
+    __pyx_t_5 = __pyx_v_self->Tstress1;
+    __pyx_v_self->Tstress3 = __pyx_t_5;
 
-    /* "TSSCB.pyx":356
+    /* "TSSCB.pyx":382
  *             self.Tstress2 = self.Tstress1
  *             self.Tstress3 = self.Tstress1
  *             tangent3 = tangent1             # <<<<<<<<<<<<<<
@@ -7555,17 +7947,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_v_tangent3 = __pyx_v_tangent1;
 
-    /* "TSSCB.pyx":314
+    /* "TSSCB.pyx":343
  *                 self.Tstress3 = predictor
  *                 tangent3 = predictor_tangent
  *         elif self.Cstage == 2 and self.Tstage == 1:             # <<<<<<<<<<<<<<
  *             # 2->1
- *             if dStrain < 0:
+ *             direction = 1.0 if self.Cstrain > 0 else -1.0
 */
     goto __pyx_L17;
   }
 
-  /* "TSSCB.pyx":358
+  /* "TSSCB.pyx":384
  *             tangent3 = tangent1
  *         else:
  *             raise AssertionError(f"Invalid state transition: Cstage={self.Cstage}, Tstage={self.Tstage}")             # <<<<<<<<<<<<<<
@@ -7574,16 +7966,16 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
   /*else*/ {
     __pyx_t_10 = NULL;
-    __pyx_t_11 = __Pyx_PyUnicode_From_int(__pyx_v_self->Cstage, 0, ' ', 'd'); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 358, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyUnicode_From_int(__pyx_v_self->Cstage, 0, ' ', 'd'); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 384, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
-    __pyx_t_12 = __Pyx_PyUnicode_From_int(__pyx_v_self->Tstage, 0, ' ', 'd'); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 358, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyUnicode_From_int(__pyx_v_self->Tstage, 0, ' ', 'd'); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 384, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __pyx_t_13[0] = __pyx_mstate_global->__pyx_kp_u_Invalid_state_transition_Cstage;
     __pyx_t_13[1] = __pyx_t_11;
     __pyx_t_13[2] = __pyx_mstate_global->__pyx_kp_u_Tstage;
     __pyx_t_13[3] = __pyx_t_12;
     __pyx_t_14 = __Pyx_PyUnicode_Join(__pyx_t_13, 4, 33 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_11) + 9 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_12), 127);
-    if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 358, __pyx_L1_error)
+    if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 384, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
@@ -7593,16 +7985,16 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
       __pyx_t_9 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_AssertionError)), __pyx_callargs+__pyx_t_15, (2-__pyx_t_15) | (__pyx_t_15*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 358, __pyx_L1_error)
+      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 384, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
     }
     __Pyx_Raise(__pyx_t_9, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __PYX_ERR(0, 358, __pyx_L1_error)
+    __PYX_ERR(0, 384, __pyx_L1_error)
   }
   __pyx_L17:;
 
-  /* "TSSCB.pyx":360
+  /* "TSSCB.pyx":386
  *             raise AssertionError(f"Invalid state transition: Cstage={self.Cstage}, Tstage={self.Tstage}")
  *         #
  *         cdef double F_hardening = 0.0             # <<<<<<<<<<<<<<
@@ -7611,7 +8003,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
   __pyx_v_F_hardening = 0.0;
 
-  /* "TSSCB.pyx":361
+  /* "TSSCB.pyx":387
  *         #
  *         cdef double F_hardening = 0.0
  *         if self.Tstrain > self.uh:             # <<<<<<<<<<<<<<
@@ -7621,7 +8013,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
   __pyx_t_1 = (__pyx_v_self->Tstrain > __pyx_v_self->uh);
   if (__pyx_t_1) {
 
-    /* "TSSCB.pyx":362
+    /* "TSSCB.pyx":388
  *         cdef double F_hardening = 0.0
  *         if self.Tstrain > self.uh:
  *             F_hardening = (self.Tstrain - self.uh) * self.k2 * self.r3             # <<<<<<<<<<<<<<
@@ -7630,17 +8022,17 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_v_F_hardening = (((__pyx_v_self->Tstrain - __pyx_v_self->uh) * __pyx_v_self->k2) * __pyx_v_self->r3);
 
-    /* "TSSCB.pyx":361
+    /* "TSSCB.pyx":387
  *         #
  *         cdef double F_hardening = 0.0
  *         if self.Tstrain > self.uh:             # <<<<<<<<<<<<<<
  *             F_hardening = (self.Tstrain - self.uh) * self.k2 * self.r3
  *         elif -self.Tstrain > self.uh:
 */
-    goto __pyx_L119;
+    goto __pyx_L140;
   }
 
-  /* "TSSCB.pyx":363
+  /* "TSSCB.pyx":389
  *         if self.Tstrain > self.uh:
  *             F_hardening = (self.Tstrain - self.uh) * self.k2 * self.r3
  *         elif -self.Tstrain > self.uh:             # <<<<<<<<<<<<<<
@@ -7650,7 +8042,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
   __pyx_t_1 = ((-__pyx_v_self->Tstrain) > __pyx_v_self->uh);
   if (__pyx_t_1) {
 
-    /* "TSSCB.pyx":364
+    /* "TSSCB.pyx":390
  *             F_hardening = (self.Tstrain - self.uh) * self.k2 * self.r3
  *         elif -self.Tstrain > self.uh:
  *             F_hardening = ( -self.Tstrain - self.uh) * self.k2 * self.r3             # <<<<<<<<<<<<<<
@@ -7659,7 +8051,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_v_F_hardening = ((((-__pyx_v_self->Tstrain) - __pyx_v_self->uh) * __pyx_v_self->k2) * __pyx_v_self->r3);
 
-    /* "TSSCB.pyx":363
+    /* "TSSCB.pyx":389
  *         if self.Tstrain > self.uh:
  *             F_hardening = (self.Tstrain - self.uh) * self.k2 * self.r3
  *         elif -self.Tstrain > self.uh:             # <<<<<<<<<<<<<<
@@ -7667,9 +8059,9 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
  *         if self.Tstrain >= 0:
 */
   }
-  __pyx_L119:;
+  __pyx_L140:;
 
-  /* "TSSCB.pyx":365
+  /* "TSSCB.pyx":391
  *         elif -self.Tstrain > self.uh:
  *             F_hardening = ( -self.Tstrain - self.uh) * self.k2 * self.r3
  *         if self.Tstrain >= 0:             # <<<<<<<<<<<<<<
@@ -7679,7 +8071,7 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
   __pyx_t_1 = (__pyx_v_self->Tstrain >= 0.0);
   if (__pyx_t_1) {
 
-    /* "TSSCB.pyx":366
+    /* "TSSCB.pyx":392
  *             F_hardening = ( -self.Tstrain - self.uh) * self.k2 * self.r3
  *         if self.Tstrain >= 0:
  *             self.Tstress4 = self.Tstress3 + F_hardening             # <<<<<<<<<<<<<<
@@ -7688,49 +8080,49 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
 */
     __pyx_v_self->Tstress4 = (__pyx_v_self->Tstress3 + __pyx_v_F_hardening);
 
-    /* "TSSCB.pyx":365
+    /* "TSSCB.pyx":391
  *         elif -self.Tstrain > self.uh:
  *             F_hardening = ( -self.Tstrain - self.uh) * self.k2 * self.r3
  *         if self.Tstrain >= 0:             # <<<<<<<<<<<<<<
  *             self.Tstress4 = self.Tstress3 + F_hardening
  *         else:
 */
-    goto __pyx_L120;
+    goto __pyx_L141;
   }
 
-  /* "TSSCB.pyx":368
+  /* "TSSCB.pyx":394
  *             self.Tstress4 = self.Tstress3 + F_hardening
  *         else:
  *             self.Tstress4 = self.Tstress3 - F_hardening             # <<<<<<<<<<<<<<
  *         self.Ttangent = tangent3 + (self.k2 * self.r3 if fabs(self.Tstrain) > self.uh else 0.0)
- *
+ * 
 */
   /*else*/ {
     __pyx_v_self->Tstress4 = (__pyx_v_self->Tstress3 - __pyx_v_F_hardening);
   }
-  __pyx_L120:;
+  __pyx_L141:;
 
-  /* "TSSCB.pyx":369
+  /* "TSSCB.pyx":395
  *         else:
  *             self.Tstress4 = self.Tstress3 - F_hardening
  *         self.Ttangent = tangent3 + (self.k2 * self.r3 if fabs(self.Tstrain) > self.uh else 0.0)             # <<<<<<<<<<<<<<
- *
+ * 
  *     cdef double _damageIncrement(self, double distance):
 */
   __pyx_t_1 = (fabs(__pyx_v_self->Tstrain) > __pyx_v_self->uh);
   if (__pyx_t_1) {
-    __pyx_t_2 = (__pyx_v_self->k2 * __pyx_v_self->r3);
+    __pyx_t_5 = (__pyx_v_self->k2 * __pyx_v_self->r3);
   } else {
-    __pyx_t_2 = 0.0;
+    __pyx_t_5 = 0.0;
   }
-  __pyx_v_self->Ttangent = (__pyx_v_tangent3 + __pyx_t_2);
+  __pyx_v_self->Ttangent = (__pyx_v_tangent3 + __pyx_t_5);
 
   /* "TSSCB.pyx":151
  *             # _determineTrialState
- *
+ * 
  *     cdef void _determineTrialState(self, double dStrain):             # <<<<<<<<<<<<<<
  *         cdef double tangent1 = 0.0, tangent2 = 0.0, tangent3 = 0.0
- *         cdef double tangentF1 = 0.0, direction, dCDD, dFd
+ *         cdef double direction, dCDD, dFd
 */
 
   /* function exit code */
@@ -7746,9 +8138,9 @@ static void __pyx_f_5TSSCB_5TSSCB__determineTrialState(struct __pyx_obj_5TSSCB_T
   __Pyx_RefNannyFinishContext();
 }
 
-/* "TSSCB.pyx":371
+/* "TSSCB.pyx":397
  *         self.Ttangent = tangent3 + (self.k2 * self.r3 if fabs(self.Tstrain) > self.uh else 0.0)
- *
+ * 
  *     cdef double _damageIncrement(self, double distance):             # <<<<<<<<<<<<<<
  *         if self.Chardening:
  *             distance = fabs(distance)
@@ -7764,8 +8156,8 @@ static double __pyx_f_5TSSCB_5TSSCB__damageIncrement(struct __pyx_obj_5TSSCB_TSS
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "TSSCB.pyx":372
- *
+  /* "TSSCB.pyx":398
+ * 
  *     cdef double _damageIncrement(self, double distance):
  *         if self.Chardening:             # <<<<<<<<<<<<<<
  *             distance = fabs(distance)
@@ -7773,7 +8165,7 @@ static double __pyx_f_5TSSCB_5TSSCB__damageIncrement(struct __pyx_obj_5TSSCB_TSS
 */
   if (__pyx_v_self->Chardening) {
 
-    /* "TSSCB.pyx":373
+    /* "TSSCB.pyx":399
  *     cdef double _damageIncrement(self, double distance):
  *         if self.Chardening:
  *             distance = fabs(distance)             # <<<<<<<<<<<<<<
@@ -7782,8 +8174,8 @@ static double __pyx_f_5TSSCB_5TSSCB__damageIncrement(struct __pyx_obj_5TSSCB_TSS
 */
     __pyx_v_distance = fabs(__pyx_v_distance);
 
-    /* "TSSCB.pyx":372
- *
+    /* "TSSCB.pyx":398
+ * 
  *     cdef double _damageIncrement(self, double distance):
  *         if self.Chardening:             # <<<<<<<<<<<<<<
  *             distance = fabs(distance)
@@ -7792,12 +8184,12 @@ static double __pyx_f_5TSSCB_5TSSCB__damageIncrement(struct __pyx_obj_5TSSCB_TSS
     goto __pyx_L3;
   }
 
-  /* "TSSCB.pyx":375
+  /* "TSSCB.pyx":401
  *             distance = fabs(distance)
  *         else:
  *             distance = max(fabs(self.Tstrain) - self.uh, 0.0)             # <<<<<<<<<<<<<<
  *         return distance / (self.uh - self.ugap)
- *
+ * 
 */
   /*else*/ {
     __pyx_t_1 = 0.0;
@@ -7812,24 +8204,24 @@ static double __pyx_f_5TSSCB_5TSSCB__damageIncrement(struct __pyx_obj_5TSSCB_TSS
   }
   __pyx_L3:;
 
-  /* "TSSCB.pyx":376
+  /* "TSSCB.pyx":402
  *         else:
  *             distance = max(fabs(self.Tstrain) - self.uh, 0.0)
  *         return distance / (self.uh - self.ugap)             # <<<<<<<<<<<<<<
- *
+ * 
  *     cdef double _frictionModel(self, double F0, double du, double half=1.0,
 */
   __pyx_t_3 = (__pyx_v_self->uh - __pyx_v_self->ugap);
   if (unlikely(__pyx_t_3 == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 376, __pyx_L1_error)
+    __PYX_ERR(0, 402, __pyx_L1_error)
   }
   __pyx_r = (__pyx_v_distance / __pyx_t_3);
   goto __pyx_L0;
 
-  /* "TSSCB.pyx":371
+  /* "TSSCB.pyx":397
  *         self.Ttangent = tangent3 + (self.k2 * self.r3 if fabs(self.Tstrain) > self.uh else 0.0)
- *
+ * 
  *     cdef double _damageIncrement(self, double distance):             # <<<<<<<<<<<<<<
  *         if self.Chardening:
  *             distance = fabs(distance)
@@ -7843,9 +8235,9 @@ static double __pyx_f_5TSSCB_5TSSCB__damageIncrement(struct __pyx_obj_5TSSCB_TSS
   return __pyx_r;
 }
 
-/* "TSSCB.pyx":378
+/* "TSSCB.pyx":404
  *         return distance / (self.uh - self.ugap)
- *
+ * 
  *     cdef double _frictionModel(self, double F0, double du, double half=1.0,             # <<<<<<<<<<<<<<
  *                                double* tangent=NULL, double dF0=0.0):
  *         #
@@ -7854,8 +8246,8 @@ static double __pyx_f_5TSSCB_5TSSCB__damageIncrement(struct __pyx_obj_5TSSCB_TSS
 static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_F0, double __pyx_v_du, struct __pyx_opt_args_5TSSCB_5TSSCB__frictionModel *__pyx_optional_args) {
   double __pyx_v_half = ((double)1.0);
 
-  /* "TSSCB.pyx":379
- *
+  /* "TSSCB.pyx":405
+ * 
  *     cdef double _frictionModel(self, double F0, double du, double half=1.0,
  *                                double* tangent=NULL, double dF0=0.0):             # <<<<<<<<<<<<<<
  *         #
@@ -7879,7 +8271,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
     }
   }
 
-  /* "TSSCB.pyx":382
+  /* "TSSCB.pyx":408
  *         #
  *         cdef double F_, F
  *         if du == 0.0:             # <<<<<<<<<<<<<<
@@ -7889,7 +8281,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_1 = (__pyx_v_du == 0.0);
   if (__pyx_t_1) {
 
-    /* "TSSCB.pyx":383
+    /* "TSSCB.pyx":409
  *         cdef double F_, F
  *         if du == 0.0:
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -7899,7 +8291,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
     __pyx_t_1 = (__pyx_v_tangent != NULL);
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":384
+      /* "TSSCB.pyx":410
  *         if du == 0.0:
  *             if tangent != NULL:
  *                 tangent[0] = dF0             # <<<<<<<<<<<<<<
@@ -7908,7 +8300,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
 */
       (__pyx_v_tangent[0]) = __pyx_v_dF0;
 
-      /* "TSSCB.pyx":383
+      /* "TSSCB.pyx":409
  *         cdef double F_, F
  *         if du == 0.0:
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -7917,7 +8309,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
 */
     }
 
-    /* "TSSCB.pyx":385
+    /* "TSSCB.pyx":411
  *             if tangent != NULL:
  *                 tangent[0] = dF0
  *             return F0             # <<<<<<<<<<<<<<
@@ -7927,7 +8319,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
     __pyx_r = __pyx_v_F0;
     goto __pyx_L0;
 
-    /* "TSSCB.pyx":382
+    /* "TSSCB.pyx":408
  *         #
  *         cdef double F_, F
  *         if du == 0.0:             # <<<<<<<<<<<<<<
@@ -7936,7 +8328,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
 */
   }
 
-  /* "TSSCB.pyx":386
+  /* "TSSCB.pyx":412
  *                 tangent[0] = dF0
  *             return F0
  *         F_ = F0 + du * self.k0             # <<<<<<<<<<<<<<
@@ -7945,7 +8337,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
 */
   __pyx_v_F_ = (__pyx_v_F0 + (__pyx_v_du * __pyx_v_self->k0));
 
-  /* "TSSCB.pyx":387
+  /* "TSSCB.pyx":413
  *             return F0
  *         F_ = F0 + du * self.k0
  *         if F_ > self.F1 * half:             # <<<<<<<<<<<<<<
@@ -7955,7 +8347,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_1 = (__pyx_v_F_ > (__pyx_v_self->F1 * __pyx_v_half));
   if (__pyx_t_1) {
 
-    /* "TSSCB.pyx":388
+    /* "TSSCB.pyx":414
  *         F_ = F0 + du * self.k0
  *         if F_ > self.F1 * half:
  *             F = self.F1 * half             # <<<<<<<<<<<<<<
@@ -7964,7 +8356,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
 */
     __pyx_v_F = (__pyx_v_self->F1 * __pyx_v_half);
 
-    /* "TSSCB.pyx":389
+    /* "TSSCB.pyx":415
  *         if F_ > self.F1 * half:
  *             F = self.F1 * half
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -7974,7 +8366,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
     __pyx_t_1 = (__pyx_v_tangent != NULL);
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":390
+      /* "TSSCB.pyx":416
  *             F = self.F1 * half
  *             if tangent != NULL:
  *                 tangent[0] = 0.0             # <<<<<<<<<<<<<<
@@ -7983,7 +8375,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
 */
       (__pyx_v_tangent[0]) = 0.0;
 
-      /* "TSSCB.pyx":389
+      /* "TSSCB.pyx":415
  *         if F_ > self.F1 * half:
  *             F = self.F1 * half
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -7992,7 +8384,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
 */
     }
 
-    /* "TSSCB.pyx":387
+    /* "TSSCB.pyx":413
  *             return F0
  *         F_ = F0 + du * self.k0
  *         if F_ > self.F1 * half:             # <<<<<<<<<<<<<<
@@ -8002,7 +8394,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
     goto __pyx_L5;
   }
 
-  /* "TSSCB.pyx":391
+  /* "TSSCB.pyx":417
  *             if tangent != NULL:
  *                 tangent[0] = 0.0
  *         elif F_ < -self.F1 * half:             # <<<<<<<<<<<<<<
@@ -8012,7 +8404,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_1 = (__pyx_v_F_ < ((-__pyx_v_self->F1) * __pyx_v_half));
   if (__pyx_t_1) {
 
-    /* "TSSCB.pyx":392
+    /* "TSSCB.pyx":418
  *                 tangent[0] = 0.0
  *         elif F_ < -self.F1 * half:
  *             F = -self.F1 * half             # <<<<<<<<<<<<<<
@@ -8021,7 +8413,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
 */
     __pyx_v_F = ((-__pyx_v_self->F1) * __pyx_v_half);
 
-    /* "TSSCB.pyx":393
+    /* "TSSCB.pyx":419
  *         elif F_ < -self.F1 * half:
  *             F = -self.F1 * half
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -8031,7 +8423,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
     __pyx_t_1 = (__pyx_v_tangent != NULL);
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":394
+      /* "TSSCB.pyx":420
  *             F = -self.F1 * half
  *             if tangent != NULL:
  *                 tangent[0] = 0.0             # <<<<<<<<<<<<<<
@@ -8040,7 +8432,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
 */
       (__pyx_v_tangent[0]) = 0.0;
 
-      /* "TSSCB.pyx":393
+      /* "TSSCB.pyx":419
  *         elif F_ < -self.F1 * half:
  *             F = -self.F1 * half
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -8049,7 +8441,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
 */
     }
 
-    /* "TSSCB.pyx":391
+    /* "TSSCB.pyx":417
  *             if tangent != NULL:
  *                 tangent[0] = 0.0
  *         elif F_ < -self.F1 * half:             # <<<<<<<<<<<<<<
@@ -8059,7 +8451,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
     goto __pyx_L5;
   }
 
-  /* "TSSCB.pyx":396
+  /* "TSSCB.pyx":422
  *                 tangent[0] = 0.0
  *         else:
  *             F = F_             # <<<<<<<<<<<<<<
@@ -8069,7 +8461,7 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
   /*else*/ {
     __pyx_v_F = __pyx_v_F_;
 
-    /* "TSSCB.pyx":397
+    /* "TSSCB.pyx":423
  *         else:
  *             F = F_
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -8079,16 +8471,16 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
     __pyx_t_1 = (__pyx_v_tangent != NULL);
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":398
+      /* "TSSCB.pyx":424
  *             F = F_
  *             if tangent != NULL:
  *                 tangent[0] = dF0 + self.k0             # <<<<<<<<<<<<<<
  *         return F
- *
+ * 
 */
       (__pyx_v_tangent[0]) = (__pyx_v_dF0 + __pyx_v_self->k0);
 
-      /* "TSSCB.pyx":397
+      /* "TSSCB.pyx":423
  *         else:
  *             F = F_
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -8099,19 +8491,19 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
   }
   __pyx_L5:;
 
-  /* "TSSCB.pyx":399
+  /* "TSSCB.pyx":425
  *             if tangent != NULL:
  *                 tangent[0] = dF0 + self.k0
  *         return F             # <<<<<<<<<<<<<<
- *
+ * 
  *     cdef double _SCModel(self, double u0, double F0, double du,
 */
   __pyx_r = __pyx_v_F;
   goto __pyx_L0;
 
-  /* "TSSCB.pyx":378
+  /* "TSSCB.pyx":404
  *         return distance / (self.uh - self.ugap)
- *
+ * 
  *     cdef double _frictionModel(self, double F0, double du, double half=1.0,             # <<<<<<<<<<<<<<
  *                                double* tangent=NULL, double dF0=0.0):
  *         #
@@ -8122,9 +8514,9 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
   return __pyx_r;
 }
 
-/* "TSSCB.pyx":401
+/* "TSSCB.pyx":427
  *         return F
- *
+ * 
  *     cdef double _SCModel(self, double u0, double F0, double du,             # <<<<<<<<<<<<<<
  *                          double* tangent=NULL):
  *         #
@@ -8132,8 +8524,8 @@ static double __pyx_f_5TSSCB_5TSSCB__frictionModel(struct __pyx_obj_5TSSCB_TSSCB
 
 static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__pyx_v_self, double __pyx_v_u0, double __pyx_v_F0, double __pyx_v_du, struct __pyx_opt_args_5TSSCB_5TSSCB__SCModel *__pyx_optional_args) {
 
-  /* "TSSCB.pyx":402
- *
+  /* "TSSCB.pyx":428
+ * 
  *     cdef double _SCModel(self, double u0, double F0, double du,
  *                          double* tangent=NULL):             # <<<<<<<<<<<<<<
  *         #
@@ -8159,7 +8551,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     }
   }
 
-  /* "TSSCB.pyx":405
+  /* "TSSCB.pyx":431
  *         #
  *         cdef double u, uy, F_, F, slope
  *         if du == 0.0:             # <<<<<<<<<<<<<<
@@ -8169,7 +8561,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
   __pyx_t_1 = (__pyx_v_du == 0.0);
   if (__pyx_t_1) {
 
-    /* "TSSCB.pyx":406
+    /* "TSSCB.pyx":432
  *         cdef double u, uy, F_, F, slope
  *         if du == 0.0:
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -8179,7 +8571,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_t_1 = (__pyx_v_tangent != NULL);
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":407
+      /* "TSSCB.pyx":433
  *         if du == 0.0:
  *             if tangent != NULL:
  *                 tangent[0] = 0.0             # <<<<<<<<<<<<<<
@@ -8188,7 +8580,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
       (__pyx_v_tangent[0]) = 0.0;
 
-      /* "TSSCB.pyx":406
+      /* "TSSCB.pyx":432
  *         cdef double u, uy, F_, F, slope
  *         if du == 0.0:
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -8197,7 +8589,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
     }
 
-    /* "TSSCB.pyx":408
+    /* "TSSCB.pyx":434
  *             if tangent != NULL:
  *                 tangent[0] = 0.0
  *             return F0             # <<<<<<<<<<<<<<
@@ -8207,7 +8599,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_r = __pyx_v_F0;
     goto __pyx_L0;
 
-    /* "TSSCB.pyx":405
+    /* "TSSCB.pyx":431
  *         #
  *         cdef double u, uy, F_, F, slope
  *         if du == 0.0:             # <<<<<<<<<<<<<<
@@ -8216,7 +8608,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
   }
 
-  /* "TSSCB.pyx":409
+  /* "TSSCB.pyx":435
  *                 tangent[0] = 0.0
  *             return F0
  *         if self.Tfracture:             # <<<<<<<<<<<<<<
@@ -8225,7 +8617,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
   if (__pyx_v_self->Tfracture) {
 
-    /* "TSSCB.pyx":410
+    /* "TSSCB.pyx":436
  *             return F0
  *         if self.Tfracture:
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -8235,7 +8627,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_t_1 = (__pyx_v_tangent != NULL);
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":411
+      /* "TSSCB.pyx":437
  *         if self.Tfracture:
  *             if tangent != NULL:
  *                 tangent[0] = 0.0             # <<<<<<<<<<<<<<
@@ -8244,7 +8636,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
       (__pyx_v_tangent[0]) = 0.0;
 
-      /* "TSSCB.pyx":410
+      /* "TSSCB.pyx":436
  *             return F0
  *         if self.Tfracture:
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -8253,7 +8645,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
     }
 
-    /* "TSSCB.pyx":412
+    /* "TSSCB.pyx":438
  *             if tangent != NULL:
  *                 tangent[0] = 0.0
  *             return 0.0             # <<<<<<<<<<<<<<
@@ -8263,7 +8655,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_r = 0.0;
     goto __pyx_L0;
 
-    /* "TSSCB.pyx":409
+    /* "TSSCB.pyx":435
  *                 tangent[0] = 0.0
  *             return F0
  *         if self.Tfracture:             # <<<<<<<<<<<<<<
@@ -8272,7 +8664,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
   }
 
-  /* "TSSCB.pyx":413
+  /* "TSSCB.pyx":439
  *                 tangent[0] = 0.0
  *             return 0.0
  *         u = u0 + du             # <<<<<<<<<<<<<<
@@ -8281,7 +8673,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
   __pyx_v_u = (__pyx_v_u0 + __pyx_v_du);
 
-  /* "TSSCB.pyx":414
+  /* "TSSCB.pyx":440
  *             return 0.0
  *         u = u0 + du
  *         uy = self.F2 / self.k1             # <<<<<<<<<<<<<<
@@ -8290,11 +8682,11 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
   if (unlikely(__pyx_v_self->k1 == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 414, __pyx_L1_error)
+    __PYX_ERR(0, 440, __pyx_L1_error)
   }
   __pyx_v_uy = (__pyx_v_self->F2 / __pyx_v_self->k1);
 
-  /* "TSSCB.pyx":415
+  /* "TSSCB.pyx":441
  *         u = u0 + du
  *         uy = self.F2 / self.k1
  *         F_ = F0 + du * self.k1             # <<<<<<<<<<<<<<
@@ -8303,7 +8695,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
   __pyx_v_F_ = (__pyx_v_F0 + (__pyx_v_du * __pyx_v_self->k1));
 
-  /* "TSSCB.pyx":416
+  /* "TSSCB.pyx":442
  *         uy = self.F2 / self.k1
  *         F_ = F0 + du * self.k1
  *         if du > 0:             # <<<<<<<<<<<<<<
@@ -8313,7 +8705,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
   __pyx_t_1 = (__pyx_v_du > 0.0);
   if (__pyx_t_1) {
 
-    /* "TSSCB.pyx":417
+    /* "TSSCB.pyx":443
  *         F_ = F0 + du * self.k1
  *         if du > 0:
  *             if u < -self.F2 * (1 - self.beta) / self.k1 and F_ > self.k2 * u - self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1):             # <<<<<<<<<<<<<<
@@ -8323,7 +8715,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_t_2 = ((-__pyx_v_self->F2) * (1.0 - __pyx_v_self->beta));
     if (unlikely(__pyx_v_self->k1 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 417, __pyx_L1_error)
+      __PYX_ERR(0, 443, __pyx_L1_error)
     }
     __pyx_t_3 = (__pyx_v_u < (__pyx_t_2 / __pyx_v_self->k1));
     if (__pyx_t_3) {
@@ -8333,14 +8725,14 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     }
     if (unlikely(__pyx_v_self->k1 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 417, __pyx_L1_error)
+      __PYX_ERR(0, 443, __pyx_L1_error)
     }
     __pyx_t_3 = (__pyx_v_F_ > ((__pyx_v_self->k2 * __pyx_v_u) - ((__pyx_v_self->F2 * (1.0 - __pyx_v_self->beta)) * (1.0 - (__pyx_v_self->k2 / __pyx_v_self->k1)))));
     __pyx_t_1 = __pyx_t_3;
     __pyx_L9_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":418
+      /* "TSSCB.pyx":444
  *         if du > 0:
  *             if u < -self.F2 * (1 - self.beta) / self.k1 and F_ > self.k2 * u - self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1):
  *                 F = self.k2 * u - self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1)             # <<<<<<<<<<<<<<
@@ -8349,11 +8741,11 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
       if (unlikely(__pyx_v_self->k1 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 418, __pyx_L1_error)
+        __PYX_ERR(0, 444, __pyx_L1_error)
       }
       __pyx_v_F = ((__pyx_v_self->k2 * __pyx_v_u) - ((__pyx_v_self->F2 * (1.0 - __pyx_v_self->beta)) * (1.0 - (__pyx_v_self->k2 / __pyx_v_self->k1))));
 
-      /* "TSSCB.pyx":419
+      /* "TSSCB.pyx":445
  *             if u < -self.F2 * (1 - self.beta) / self.k1 and F_ > self.k2 * u - self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1):
  *                 F = self.k2 * u - self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1)
  *                 slope = self.k2             # <<<<<<<<<<<<<<
@@ -8363,7 +8755,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
       __pyx_t_2 = __pyx_v_self->k2;
       __pyx_v_slope = __pyx_t_2;
 
-      /* "TSSCB.pyx":417
+      /* "TSSCB.pyx":443
  *         F_ = F0 + du * self.k1
  *         if du > 0:
  *             if u < -self.F2 * (1 - self.beta) / self.k1 and F_ > self.k2 * u - self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1):             # <<<<<<<<<<<<<<
@@ -8373,7 +8765,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
       goto __pyx_L8;
     }
 
-    /* "TSSCB.pyx":420
+    /* "TSSCB.pyx":446
  *                 F = self.k2 * u - self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1)
  *                 slope = self.k2
  *             elif -self.F2 * (1 - self.beta) / self.k1 <= u <= uy and F_ > self.k1 * u:             # <<<<<<<<<<<<<<
@@ -8383,7 +8775,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_t_2 = ((-__pyx_v_self->F2) * (1.0 - __pyx_v_self->beta));
     if (unlikely(__pyx_v_self->k1 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 420, __pyx_L1_error)
+      __PYX_ERR(0, 446, __pyx_L1_error)
     }
     __pyx_t_3 = ((__pyx_t_2 / __pyx_v_self->k1) <= __pyx_v_u);
     if (__pyx_t_3) {
@@ -8399,7 +8791,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_L11_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":421
+      /* "TSSCB.pyx":447
  *                 slope = self.k2
  *             elif -self.F2 * (1 - self.beta) / self.k1 <= u <= uy and F_ > self.k1 * u:
  *                 F = self.k1 * u             # <<<<<<<<<<<<<<
@@ -8408,7 +8800,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
       __pyx_v_F = (__pyx_v_self->k1 * __pyx_v_u);
 
-      /* "TSSCB.pyx":422
+      /* "TSSCB.pyx":448
  *             elif -self.F2 * (1 - self.beta) / self.k1 <= u <= uy and F_ > self.k1 * u:
  *                 F = self.k1 * u
  *                 slope = self.k1             # <<<<<<<<<<<<<<
@@ -8418,7 +8810,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
       __pyx_t_2 = __pyx_v_self->k1;
       __pyx_v_slope = __pyx_t_2;
 
-      /* "TSSCB.pyx":420
+      /* "TSSCB.pyx":446
  *                 F = self.k2 * u - self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1)
  *                 slope = self.k2
  *             elif -self.F2 * (1 - self.beta) / self.k1 <= u <= uy and F_ > self.k1 * u:             # <<<<<<<<<<<<<<
@@ -8428,7 +8820,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
       goto __pyx_L8;
     }
 
-    /* "TSSCB.pyx":423
+    /* "TSSCB.pyx":449
  *                 F = self.k1 * u
  *                 slope = self.k1
  *             elif u > self.F2 * (1 - self.beta) / self.k1 and F_ > self.k2 * u + self.F2 - self.k2 * uy:             # <<<<<<<<<<<<<<
@@ -8438,7 +8830,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_t_2 = (__pyx_v_self->F2 * (1.0 - __pyx_v_self->beta));
     if (unlikely(__pyx_v_self->k1 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 423, __pyx_L1_error)
+      __PYX_ERR(0, 449, __pyx_L1_error)
     }
     __pyx_t_3 = (__pyx_v_u > (__pyx_t_2 / __pyx_v_self->k1));
     if (__pyx_t_3) {
@@ -8451,7 +8843,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_L13_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":424
+      /* "TSSCB.pyx":450
  *                 slope = self.k1
  *             elif u > self.F2 * (1 - self.beta) / self.k1 and F_ > self.k2 * u + self.F2 - self.k2 * uy:
  *                 F = self.k2 * u + self.F2 - self.k2 * uy             # <<<<<<<<<<<<<<
@@ -8460,7 +8852,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
       __pyx_v_F = (((__pyx_v_self->k2 * __pyx_v_u) + __pyx_v_self->F2) - (__pyx_v_self->k2 * __pyx_v_uy));
 
-      /* "TSSCB.pyx":425
+      /* "TSSCB.pyx":451
  *             elif u > self.F2 * (1 - self.beta) / self.k1 and F_ > self.k2 * u + self.F2 - self.k2 * uy:
  *                 F = self.k2 * u + self.F2 - self.k2 * uy
  *                 slope = self.k2             # <<<<<<<<<<<<<<
@@ -8470,7 +8862,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
       __pyx_t_2 = __pyx_v_self->k2;
       __pyx_v_slope = __pyx_t_2;
 
-      /* "TSSCB.pyx":423
+      /* "TSSCB.pyx":449
  *                 F = self.k1 * u
  *                 slope = self.k1
  *             elif u > self.F2 * (1 - self.beta) / self.k1 and F_ > self.k2 * u + self.F2 - self.k2 * uy:             # <<<<<<<<<<<<<<
@@ -8480,7 +8872,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
       goto __pyx_L8;
     }
 
-    /* "TSSCB.pyx":427
+    /* "TSSCB.pyx":453
  *                 slope = self.k2
  *             else:
  *                 F = F_             # <<<<<<<<<<<<<<
@@ -8490,7 +8882,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     /*else*/ {
       __pyx_v_F = __pyx_v_F_;
 
-      /* "TSSCB.pyx":428
+      /* "TSSCB.pyx":454
  *             else:
  *                 F = F_
  *                 slope = self.k1             # <<<<<<<<<<<<<<
@@ -8502,7 +8894,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     }
     __pyx_L8:;
 
-    /* "TSSCB.pyx":416
+    /* "TSSCB.pyx":442
  *         uy = self.F2 / self.k1
  *         F_ = F0 + du * self.k1
  *         if du > 0:             # <<<<<<<<<<<<<<
@@ -8512,7 +8904,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     goto __pyx_L7;
   }
 
-  /* "TSSCB.pyx":430
+  /* "TSSCB.pyx":456
  *                 slope = self.k1
  *         else:
  *             if u > self.F2 * (1 - self.beta) / self.k1 and F_ < self.k2 * u + self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1):             # <<<<<<<<<<<<<<
@@ -8523,7 +8915,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_t_2 = (__pyx_v_self->F2 * (1.0 - __pyx_v_self->beta));
     if (unlikely(__pyx_v_self->k1 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 430, __pyx_L1_error)
+      __PYX_ERR(0, 456, __pyx_L1_error)
     }
     __pyx_t_3 = (__pyx_v_u > (__pyx_t_2 / __pyx_v_self->k1));
     if (__pyx_t_3) {
@@ -8533,14 +8925,14 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     }
     if (unlikely(__pyx_v_self->k1 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 430, __pyx_L1_error)
+      __PYX_ERR(0, 456, __pyx_L1_error)
     }
     __pyx_t_3 = (__pyx_v_F_ < ((__pyx_v_self->k2 * __pyx_v_u) + ((__pyx_v_self->F2 * (1.0 - __pyx_v_self->beta)) * (1.0 - (__pyx_v_self->k2 / __pyx_v_self->k1)))));
     __pyx_t_1 = __pyx_t_3;
     __pyx_L16_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":431
+      /* "TSSCB.pyx":457
  *         else:
  *             if u > self.F2 * (1 - self.beta) / self.k1 and F_ < self.k2 * u + self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1):
  *                 F = self.k2 * u + self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1)             # <<<<<<<<<<<<<<
@@ -8549,11 +8941,11 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
       if (unlikely(__pyx_v_self->k1 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 431, __pyx_L1_error)
+        __PYX_ERR(0, 457, __pyx_L1_error)
       }
       __pyx_v_F = ((__pyx_v_self->k2 * __pyx_v_u) + ((__pyx_v_self->F2 * (1.0 - __pyx_v_self->beta)) * (1.0 - (__pyx_v_self->k2 / __pyx_v_self->k1))));
 
-      /* "TSSCB.pyx":432
+      /* "TSSCB.pyx":458
  *             if u > self.F2 * (1 - self.beta) / self.k1 and F_ < self.k2 * u + self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1):
  *                 F = self.k2 * u + self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1)
  *                 slope = self.k2             # <<<<<<<<<<<<<<
@@ -8563,7 +8955,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
       __pyx_t_2 = __pyx_v_self->k2;
       __pyx_v_slope = __pyx_t_2;
 
-      /* "TSSCB.pyx":430
+      /* "TSSCB.pyx":456
  *                 slope = self.k1
  *         else:
  *             if u > self.F2 * (1 - self.beta) / self.k1 and F_ < self.k2 * u + self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1):             # <<<<<<<<<<<<<<
@@ -8573,7 +8965,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
       goto __pyx_L15;
     }
 
-    /* "TSSCB.pyx":433
+    /* "TSSCB.pyx":459
  *                 F = self.k2 * u + self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1)
  *                 slope = self.k2
  *             elif -uy <= u <= self.F2 * (1 - self.beta) / self.k1 and F_ < self.k1 * u:             # <<<<<<<<<<<<<<
@@ -8585,7 +8977,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
       __pyx_t_2 = (__pyx_v_self->F2 * (1.0 - __pyx_v_self->beta));
       if (unlikely(__pyx_v_self->k1 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 433, __pyx_L1_error)
+        __PYX_ERR(0, 459, __pyx_L1_error)
       }
       __pyx_t_3 = (__pyx_v_u <= (__pyx_t_2 / __pyx_v_self->k1));
     }
@@ -8599,7 +8991,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_L18_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":434
+      /* "TSSCB.pyx":460
  *                 slope = self.k2
  *             elif -uy <= u <= self.F2 * (1 - self.beta) / self.k1 and F_ < self.k1 * u:
  *                 F = self.k1 * u             # <<<<<<<<<<<<<<
@@ -8608,7 +9000,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
       __pyx_v_F = (__pyx_v_self->k1 * __pyx_v_u);
 
-      /* "TSSCB.pyx":435
+      /* "TSSCB.pyx":461
  *             elif -uy <= u <= self.F2 * (1 - self.beta) / self.k1 and F_ < self.k1 * u:
  *                 F = self.k1 * u
  *                 slope = self.k1             # <<<<<<<<<<<<<<
@@ -8618,7 +9010,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
       __pyx_t_2 = __pyx_v_self->k1;
       __pyx_v_slope = __pyx_t_2;
 
-      /* "TSSCB.pyx":433
+      /* "TSSCB.pyx":459
  *                 F = self.k2 * u + self.F2 * (1 - self.beta) * (1 - self.k2 / self.k1)
  *                 slope = self.k2
  *             elif -uy <= u <= self.F2 * (1 - self.beta) / self.k1 and F_ < self.k1 * u:             # <<<<<<<<<<<<<<
@@ -8628,7 +9020,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
       goto __pyx_L15;
     }
 
-    /* "TSSCB.pyx":436
+    /* "TSSCB.pyx":462
  *                 F = self.k1 * u
  *                 slope = self.k1
  *             elif u < -self.F2 * (1 - self.beta) / self.k1 and F_ < self.k2 * u - (self.F2 - self.k2 * uy):             # <<<<<<<<<<<<<<
@@ -8638,7 +9030,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_t_2 = ((-__pyx_v_self->F2) * (1.0 - __pyx_v_self->beta));
     if (unlikely(__pyx_v_self->k1 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 436, __pyx_L1_error)
+      __PYX_ERR(0, 462, __pyx_L1_error)
     }
     __pyx_t_3 = (__pyx_v_u < (__pyx_t_2 / __pyx_v_self->k1));
     if (__pyx_t_3) {
@@ -8651,7 +9043,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_L20_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":437
+      /* "TSSCB.pyx":463
  *                 slope = self.k1
  *             elif u < -self.F2 * (1 - self.beta) / self.k1 and F_ < self.k2 * u - (self.F2 - self.k2 * uy):
  *                 F = self.k2 * u - (self.F2 - self.k2 * uy)             # <<<<<<<<<<<<<<
@@ -8660,7 +9052,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
       __pyx_v_F = ((__pyx_v_self->k2 * __pyx_v_u) - (__pyx_v_self->F2 - (__pyx_v_self->k2 * __pyx_v_uy)));
 
-      /* "TSSCB.pyx":438
+      /* "TSSCB.pyx":464
  *             elif u < -self.F2 * (1 - self.beta) / self.k1 and F_ < self.k2 * u - (self.F2 - self.k2 * uy):
  *                 F = self.k2 * u - (self.F2 - self.k2 * uy)
  *                 slope = self.k2             # <<<<<<<<<<<<<<
@@ -8670,7 +9062,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
       __pyx_t_2 = __pyx_v_self->k2;
       __pyx_v_slope = __pyx_t_2;
 
-      /* "TSSCB.pyx":436
+      /* "TSSCB.pyx":462
  *                 F = self.k1 * u
  *                 slope = self.k1
  *             elif u < -self.F2 * (1 - self.beta) / self.k1 and F_ < self.k2 * u - (self.F2 - self.k2 * uy):             # <<<<<<<<<<<<<<
@@ -8680,7 +9072,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
       goto __pyx_L15;
     }
 
-    /* "TSSCB.pyx":440
+    /* "TSSCB.pyx":466
  *                 slope = self.k2
  *             else:
  *                 F = F_             # <<<<<<<<<<<<<<
@@ -8690,7 +9082,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     /*else*/ {
       __pyx_v_F = __pyx_v_F_;
 
-      /* "TSSCB.pyx":441
+      /* "TSSCB.pyx":467
  *             else:
  *                 F = F_
  *                 slope = self.k1             # <<<<<<<<<<<<<<
@@ -8704,7 +9096,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
   }
   __pyx_L7:;
 
-  /* "TSSCB.pyx":442
+  /* "TSSCB.pyx":468
  *                 F = F_
  *                 slope = self.k1
  *         if self.Tfracturing:             # <<<<<<<<<<<<<<
@@ -8713,7 +9105,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
   if (__pyx_v_self->Tfracturing) {
 
-    /* "TSSCB.pyx":443
+    /* "TSSCB.pyx":469
  *                 slope = self.k1
  *         if self.Tfracturing:
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -8723,7 +9115,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_t_1 = (__pyx_v_tangent != NULL);
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":444
+      /* "TSSCB.pyx":470
  *         if self.Tfracturing:
  *             if tangent != NULL:
  *                 tangent[0] = slope * self.Trp + F * (1.0 if du > 0 else -1.0) / self.up             # <<<<<<<<<<<<<<
@@ -8739,11 +9131,11 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
       __pyx_t_4 = (__pyx_v_F * __pyx_t_2);
       if (unlikely(__pyx_v_self->up == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 444, __pyx_L1_error)
+        __PYX_ERR(0, 470, __pyx_L1_error)
       }
       (__pyx_v_tangent[0]) = ((__pyx_v_slope * __pyx_v_self->Trp) + (__pyx_t_4 / __pyx_v_self->up));
 
-      /* "TSSCB.pyx":443
+      /* "TSSCB.pyx":469
  *                 slope = self.k1
  *         if self.Tfracturing:
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -8752,7 +9144,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
     }
 
-    /* "TSSCB.pyx":445
+    /* "TSSCB.pyx":471
  *             if tangent != NULL:
  *                 tangent[0] = slope * self.Trp + F * (1.0 if du > 0 else -1.0) / self.up
  *             return F * self.Trp             # <<<<<<<<<<<<<<
@@ -8762,7 +9154,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_r = (__pyx_v_F * __pyx_v_self->Trp);
     goto __pyx_L0;
 
-    /* "TSSCB.pyx":442
+    /* "TSSCB.pyx":468
  *                 F = F_
  *                 slope = self.k1
  *         if self.Tfracturing:             # <<<<<<<<<<<<<<
@@ -8771,7 +9163,7 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
   }
 
-  /* "TSSCB.pyx":447
+  /* "TSSCB.pyx":473
  *             return F * self.Trp
  *         else:
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -8782,16 +9174,16 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
     __pyx_t_1 = (__pyx_v_tangent != NULL);
     if (__pyx_t_1) {
 
-      /* "TSSCB.pyx":448
+      /* "TSSCB.pyx":474
  *         else:
  *             if tangent != NULL:
  *                 tangent[0] = slope             # <<<<<<<<<<<<<<
  *             return F
- *
+ * 
 */
       (__pyx_v_tangent[0]) = __pyx_v_slope;
 
-      /* "TSSCB.pyx":447
+      /* "TSSCB.pyx":473
  *             return F * self.Trp
  *         else:
  *             if tangent != NULL:             # <<<<<<<<<<<<<<
@@ -8800,20 +9192,20 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
 */
     }
 
-    /* "TSSCB.pyx":449
+    /* "TSSCB.pyx":475
  *             if tangent != NULL:
  *                 tangent[0] = slope
  *             return F             # <<<<<<<<<<<<<<
- *
+ * 
  *     cpdef commitState(self):
 */
     __pyx_r = __pyx_v_F;
     goto __pyx_L0;
   }
 
-  /* "TSSCB.pyx":401
+  /* "TSSCB.pyx":427
  *         return F
- *
+ * 
  *     cdef double _SCModel(self, double u0, double F0, double du,             # <<<<<<<<<<<<<<
  *                          double* tangent=NULL):
  *         #
@@ -8827,15 +9219,15 @@ static double __pyx_f_5TSSCB_5TSSCB__SCModel(struct __pyx_obj_5TSSCB_TSSCB *__py
   return __pyx_r;
 }
 
-/* "TSSCB.pyx":451
+/* "TSSCB.pyx":477
  *             return F
- *
+ * 
  *     cpdef commitState(self):             # <<<<<<<<<<<<<<
  *         #
  *         self.Cstrain = self.Tstrain
 */
 
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_5commitState(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_5commitState(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -8873,13 +9265,13 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_commitState); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_commitState); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 477, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_5TSSCB_5TSSCB_5commitState)) {
         __Pyx_XDECREF(__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_4 = __pyx_t_1;
+        __pyx_t_4 = __pyx_t_1; 
         __pyx_t_5 = 1;
         #if CYTHON_UNPACK_METHODS
         if (unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -8897,7 +9289,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
           __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 451, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 477, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __pyx_r = __pyx_t_2;
@@ -8918,7 +9310,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
     #endif
   }
 
-  /* "TSSCB.pyx":453
+  /* "TSSCB.pyx":479
  *     cpdef commitState(self):
  *         #
  *         self.Cstrain = self.Tstrain             # <<<<<<<<<<<<<<
@@ -8928,7 +9320,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_6 = __pyx_v_self->Tstrain;
   __pyx_v_self->Cstrain = __pyx_t_6;
 
-  /* "TSSCB.pyx":454
+  /* "TSSCB.pyx":480
  *         #
  *         self.Cstrain = self.Tstrain
  *         self.Cstress3 = self.Tstress3             # <<<<<<<<<<<<<<
@@ -8938,7 +9330,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_6 = __pyx_v_self->Tstress3;
   __pyx_v_self->Cstress3 = __pyx_t_6;
 
-  /* "TSSCB.pyx":455
+  /* "TSSCB.pyx":481
  *         self.Cstrain = self.Tstrain
  *         self.Cstress3 = self.Tstress3
  *         self.Ctangent = self.Ttangent             # <<<<<<<<<<<<<<
@@ -8948,7 +9340,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_6 = __pyx_v_self->Ttangent;
   __pyx_v_self->Ctangent = __pyx_t_6;
 
-  /* "TSSCB.pyx":456
+  /* "TSSCB.pyx":482
  *         self.Cstress3 = self.Tstress3
  *         self.Ctangent = self.Ttangent
  *         self.Cstage = self.Tstage             # <<<<<<<<<<<<<<
@@ -8958,7 +9350,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_7 = __pyx_v_self->Tstage;
   __pyx_v_self->Cstage = __pyx_t_7;
 
-  /* "TSSCB.pyx":457
+  /* "TSSCB.pyx":483
  *         self.Ctangent = self.Ttangent
  *         self.Cstage = self.Tstage
  *         self.Chardening = self.Thardening             # <<<<<<<<<<<<<<
@@ -8968,7 +9360,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_8 = __pyx_v_self->Thardening;
   __pyx_v_self->Chardening = __pyx_t_8;
 
-  /* "TSSCB.pyx":458
+  /* "TSSCB.pyx":484
  *         self.Cstage = self.Tstage
  *         self.Chardening = self.Thardening
  *         self.Cstress1 = self.Tstress1             # <<<<<<<<<<<<<<
@@ -8978,7 +9370,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_6 = __pyx_v_self->Tstress1;
   __pyx_v_self->Cstress1 = __pyx_t_6;
 
-  /* "TSSCB.pyx":459
+  /* "TSSCB.pyx":485
  *         self.Chardening = self.Thardening
  *         self.Cstress1 = self.Tstress1
  *         self.Cstress2 = self.Tstress2             # <<<<<<<<<<<<<<
@@ -8988,7 +9380,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_6 = __pyx_v_self->Tstress2;
   __pyx_v_self->Cstress2 = __pyx_t_6;
 
-  /* "TSSCB.pyx":460
+  /* "TSSCB.pyx":486
  *         self.Cstress1 = self.Tstress1
  *         self.Cstress2 = self.Tstress2
  *         self.Cstress4 = self.Tstress4             # <<<<<<<<<<<<<<
@@ -8998,7 +9390,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_6 = __pyx_v_self->Tstress4;
   __pyx_v_self->Cstress4 = __pyx_t_6;
 
-  /* "TSSCB.pyx":461
+  /* "TSSCB.pyx":487
  *         self.Cstress2 = self.Tstress2
  *         self.Cstress4 = self.Tstress4
  *         self.CCDD = self.TCDD             # <<<<<<<<<<<<<<
@@ -9008,7 +9400,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_6 = __pyx_v_self->TCDD;
   __pyx_v_self->CCDD = __pyx_t_6;
 
-  /* "TSSCB.pyx":462
+  /* "TSSCB.pyx":488
  *         self.Cstress4 = self.Tstress4
  *         self.CCDD = self.TCDD
  *         self.Cfracture = self.Tfracture             # <<<<<<<<<<<<<<
@@ -9018,7 +9410,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_8 = __pyx_v_self->Tfracture;
   __pyx_v_self->Cfracture = __pyx_t_8;
 
-  /* "TSSCB.pyx":463
+  /* "TSSCB.pyx":489
  *         self.CCDD = self.TCDD
  *         self.Cfracture = self.Tfracture
  *         self.Cplate1 = self.Tplate1             # <<<<<<<<<<<<<<
@@ -9028,7 +9420,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_6 = __pyx_v_self->Tplate1;
   __pyx_v_self->Cplate1 = __pyx_t_6;
 
-  /* "TSSCB.pyx":464
+  /* "TSSCB.pyx":490
  *         self.Cfracture = self.Tfracture
  *         self.Cplate1 = self.Tplate1
  *         self.Cplate2 = self.Tplate2             # <<<<<<<<<<<<<<
@@ -9038,7 +9430,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_6 = __pyx_v_self->Tplate2;
   __pyx_v_self->Cplate2 = __pyx_t_6;
 
-  /* "TSSCB.pyx":465
+  /* "TSSCB.pyx":491
  *         self.Cplate1 = self.Tplate1
  *         self.Cplate2 = self.Tplate2
  *         self.Cfracturing = self.Tfracturing             # <<<<<<<<<<<<<<
@@ -9048,7 +9440,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_8 = __pyx_v_self->Tfracturing;
   __pyx_v_self->Cfracturing = __pyx_t_8;
 
-  /* "TSSCB.pyx":466
+  /* "TSSCB.pyx":492
  *         self.Cplate2 = self.Tplate2
  *         self.Cfracturing = self.Tfracturing
  *         self.CfractureFore = self.TfractureFore             # <<<<<<<<<<<<<<
@@ -9058,28 +9450,28 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
   __pyx_t_6 = __pyx_v_self->TfractureFore;
   __pyx_v_self->CfractureFore = __pyx_t_6;
 
-  /* "TSSCB.pyx":467
+  /* "TSSCB.pyx":493
  *         self.Cfracturing = self.Tfracturing
  *         self.CfractureFore = self.TfractureFore
  *         self.Crp = self.Trp             # <<<<<<<<<<<<<<
  *         self.i += 1
- *
+ * 
 */
   __pyx_t_6 = __pyx_v_self->Trp;
   __pyx_v_self->Crp = __pyx_t_6;
 
-  /* "TSSCB.pyx":468
+  /* "TSSCB.pyx":494
  *         self.CfractureFore = self.TfractureFore
  *         self.Crp = self.Trp
  *         self.i += 1             # <<<<<<<<<<<<<<
- *
+ * 
  *     cpdef double getStress(self):
 */
   __pyx_v_self->i = (__pyx_v_self->i + 1);
 
-  /* "TSSCB.pyx":451
+  /* "TSSCB.pyx":477
  *             return F
- *
+ * 
  *     cpdef commitState(self):             # <<<<<<<<<<<<<<
  *         #
  *         self.Cstrain = self.Tstrain
@@ -9102,7 +9494,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_commitState(struct __pyx_obj_5TSSCB_TSSCB
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_5commitState(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_5commitState(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9110,7 +9502,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
 static PyMethodDef __pyx_mdef_5TSSCB_5TSSCB_5commitState = {"commitState", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_5TSSCB_5TSSCB_5commitState, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_5commitState(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_5commitState(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9152,7 +9544,7 @@ static PyObject *__pyx_pf_5TSSCB_5TSSCB_4commitState(struct __pyx_obj_5TSSCB_TSS
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("commitState", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_5TSSCB_5TSSCB_commitState(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 451, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5TSSCB_5TSSCB_commitState(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 477, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9169,15 +9561,15 @@ static PyObject *__pyx_pf_5TSSCB_5TSSCB_4commitState(struct __pyx_obj_5TSSCB_TSS
   return __pyx_r;
 }
 
-/* "TSSCB.pyx":470
+/* "TSSCB.pyx":496
  *         self.i += 1
- *
+ * 
  *     cpdef double getStress(self):             # <<<<<<<<<<<<<<
  *         return self.Tstress4
- *
+ * 
 */
 
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_7getStress(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_7getStress(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9213,12 +9605,12 @@ static double __pyx_f_5TSSCB_5TSSCB_getStress(struct __pyx_obj_5TSSCB_TSSCB *__p
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getStress); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 470, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getStress); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 496, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_5TSSCB_5TSSCB_7getStress)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_4 = __pyx_t_1;
+        __pyx_t_4 = __pyx_t_1; 
         __pyx_t_5 = 1;
         #if CYTHON_UNPACK_METHODS
         if (unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -9236,10 +9628,10 @@ static double __pyx_f_5TSSCB_5TSSCB_getStress(struct __pyx_obj_5TSSCB_TSSCB *__p
           __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 470, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 496, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 470, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 496, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_6;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -9258,22 +9650,22 @@ static double __pyx_f_5TSSCB_5TSSCB_getStress(struct __pyx_obj_5TSSCB_TSSCB *__p
     #endif
   }
 
-  /* "TSSCB.pyx":471
- *
+  /* "TSSCB.pyx":497
+ * 
  *     cpdef double getStress(self):
  *         return self.Tstress4             # <<<<<<<<<<<<<<
- *
+ * 
  *     cpdef double getTangent(self):
 */
   __pyx_r = __pyx_v_self->Tstress4;
   goto __pyx_L0;
 
-  /* "TSSCB.pyx":470
+  /* "TSSCB.pyx":496
  *         self.i += 1
- *
+ * 
  *     cpdef double getStress(self):             # <<<<<<<<<<<<<<
  *         return self.Tstress4
- *
+ * 
 */
 
   /* function exit code */
@@ -9290,7 +9682,7 @@ static double __pyx_f_5TSSCB_5TSSCB_getStress(struct __pyx_obj_5TSSCB_TSSCB *__p
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_7getStress(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_7getStress(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9298,7 +9690,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
 static PyMethodDef __pyx_mdef_5TSSCB_5TSSCB_7getStress = {"getStress", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_5TSSCB_5TSSCB_7getStress, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_7getStress(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_7getStress(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9341,8 +9733,8 @@ static PyObject *__pyx_pf_5TSSCB_5TSSCB_6getStress(struct __pyx_obj_5TSSCB_TSSCB
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getStress", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_5TSSCB_5TSSCB_getStress(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 470, __pyx_L1_error)
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 470, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5TSSCB_5TSSCB_getStress(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 496, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 496, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -9359,15 +9751,15 @@ static PyObject *__pyx_pf_5TSSCB_5TSSCB_6getStress(struct __pyx_obj_5TSSCB_TSSCB
   return __pyx_r;
 }
 
-/* "TSSCB.pyx":473
+/* "TSSCB.pyx":499
  *         return self.Tstress4
- *
+ * 
  *     cpdef double getTangent(self):             # <<<<<<<<<<<<<<
  *         return self.Ttangent
- *
+ * 
 */
 
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_9getTangent(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_9getTangent(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9403,12 +9795,12 @@ static double __pyx_f_5TSSCB_5TSSCB_getTangent(struct __pyx_obj_5TSSCB_TSSCB *__
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getTangent); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 473, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_getTangent); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 499, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_5TSSCB_5TSSCB_9getTangent)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_4 = __pyx_t_1;
+        __pyx_t_4 = __pyx_t_1; 
         __pyx_t_5 = 1;
         #if CYTHON_UNPACK_METHODS
         if (unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -9426,10 +9818,10 @@ static double __pyx_f_5TSSCB_5TSSCB_getTangent(struct __pyx_obj_5TSSCB_TSSCB *__
           __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 473, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 499, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 473, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 499, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_6;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -9448,22 +9840,22 @@ static double __pyx_f_5TSSCB_5TSSCB_getTangent(struct __pyx_obj_5TSSCB_TSSCB *__
     #endif
   }
 
-  /* "TSSCB.pyx":474
- *
+  /* "TSSCB.pyx":500
+ * 
  *     cpdef double getTangent(self):
  *         return self.Ttangent             # <<<<<<<<<<<<<<
- *
+ * 
  *     cpdef setStrain(self, double strain):
 */
   __pyx_r = __pyx_v_self->Ttangent;
   goto __pyx_L0;
 
-  /* "TSSCB.pyx":473
+  /* "TSSCB.pyx":499
  *         return self.Tstress4
- *
+ * 
  *     cpdef double getTangent(self):             # <<<<<<<<<<<<<<
  *         return self.Ttangent
- *
+ * 
 */
 
   /* function exit code */
@@ -9480,7 +9872,7 @@ static double __pyx_f_5TSSCB_5TSSCB_getTangent(struct __pyx_obj_5TSSCB_TSSCB *__
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_9getTangent(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_9getTangent(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9488,7 +9880,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
 static PyMethodDef __pyx_mdef_5TSSCB_5TSSCB_9getTangent = {"getTangent", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_5TSSCB_5TSSCB_9getTangent, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_9getTangent(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_9getTangent(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9531,8 +9923,8 @@ static PyObject *__pyx_pf_5TSSCB_5TSSCB_8getTangent(struct __pyx_obj_5TSSCB_TSSC
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getTangent", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_5TSSCB_5TSSCB_getTangent(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 473, __pyx_L1_error)
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 473, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5TSSCB_5TSSCB_getTangent(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 499, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 499, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -9549,15 +9941,15 @@ static PyObject *__pyx_pf_5TSSCB_5TSSCB_8getTangent(struct __pyx_obj_5TSSCB_TSSC
   return __pyx_r;
 }
 
-/* "TSSCB.pyx":476
+/* "TSSCB.pyx":502
  *         return self.Ttangent
- *
+ * 
  *     cpdef setStrain(self, double strain):             # <<<<<<<<<<<<<<
  *         self.setTrialStrain(strain)
  *         self.commitState()
 */
 
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_11setStrain(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_11setStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9593,14 +9985,14 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_setStrain(struct __pyx_obj_5TSSCB_TSSCB *
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_setStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 476, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_setStrain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 502, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_5TSSCB_5TSSCB_11setStrain)) {
         __Pyx_XDECREF(__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_4 = __pyx_t_1;
-        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_strain); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 476, __pyx_L1_error)
+        __pyx_t_4 = __pyx_t_1; 
+        __pyx_t_5 = PyFloat_FromDouble(__pyx_v_strain); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 502, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_6 = 1;
         #if CYTHON_UNPACK_METHODS
@@ -9620,7 +10012,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_setStrain(struct __pyx_obj_5TSSCB_TSSCB *
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 476, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 502, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __pyx_r = __pyx_t_2;
@@ -9641,28 +10033,28 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_setStrain(struct __pyx_obj_5TSSCB_TSSCB *
     #endif
   }
 
-  /* "TSSCB.pyx":477
- *
+  /* "TSSCB.pyx":503
+ * 
  *     cpdef setStrain(self, double strain):
  *         self.setTrialStrain(strain)             # <<<<<<<<<<<<<<
  *         self.commitState()
 */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->setTrialStrain(__pyx_v_self, __pyx_v_strain, 0, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 477, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->setTrialStrain(__pyx_v_self, __pyx_v_strain, 0, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 503, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "TSSCB.pyx":478
+  /* "TSSCB.pyx":504
  *     cpdef setStrain(self, double strain):
  *         self.setTrialStrain(strain)
  *         self.commitState()             # <<<<<<<<<<<<<<
 */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->commitState(__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 478, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_5TSSCB_TSSCB *)__pyx_v_self->__pyx_vtab)->commitState(__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 504, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "TSSCB.pyx":476
+  /* "TSSCB.pyx":502
  *         return self.Ttangent
- *
+ * 
  *     cpdef setStrain(self, double strain):             # <<<<<<<<<<<<<<
  *         self.setTrialStrain(strain)
  *         self.commitState()
@@ -9686,7 +10078,7 @@ static PyObject *__pyx_f_5TSSCB_5TSSCB_setStrain(struct __pyx_obj_5TSSCB_TSSCB *
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_11setStrain(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_11setStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9694,7 +10086,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
 static PyMethodDef __pyx_mdef_5TSSCB_5TSSCB_11setStrain = {"setStrain", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_5TSSCB_5TSSCB_11setStrain, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_11setStrain(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_11setStrain(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9724,32 +10116,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_strain,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 476, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 502, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 476, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 502, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setStrain", 0) < (0)) __PYX_ERR(0, 476, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "setStrain", 0) < (0)) __PYX_ERR(0, 502, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setStrain", 1, 1, 1, i); __PYX_ERR(0, 476, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("setStrain", 1, 1, 1, i); __PYX_ERR(0, 502, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 476, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 502, __pyx_L3_error)
     }
-    __pyx_v_strain = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_strain == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 476, __pyx_L3_error)
+    __pyx_v_strain = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_strain == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 502, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setStrain", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 476, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setStrain", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 502, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -9779,7 +10171,7 @@ static PyObject *__pyx_pf_5TSSCB_5TSSCB_10setStrain(struct __pyx_obj_5TSSCB_TSSC
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("setStrain", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_5TSSCB_5TSSCB_setStrain(__pyx_v_self, __pyx_v_strain, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 476, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5TSSCB_5TSSCB_setStrain(__pyx_v_self, __pyx_v_strain, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9797,7 +10189,7 @@ static PyObject *__pyx_pf_5TSSCB_5TSSCB_10setStrain(struct __pyx_obj_5TSSCB_TSSC
 }
 
 /* "TSSCB.pyx":7
- *
+ * 
  * cdef class TSSCB:
  *     cdef public int tag             # <<<<<<<<<<<<<<
  *     #  double
@@ -9886,7 +10278,7 @@ static int __pyx_pf_5TSSCB_5TSSCB_3tag_2__set__(struct __pyx_obj_5TSSCB_TSSCB *_
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_13__reduce_cython__(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_13__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9894,7 +10286,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
 static PyMethodDef __pyx_mdef_5TSSCB_5TSSCB_13__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_5TSSCB_5TSSCB_13__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_13__reduce_cython__(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_13__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9967,7 +10359,7 @@ static PyObject *__pyx_pf_5TSSCB_5TSSCB_12__reduce_cython__(CYTHON_UNUSED struct
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_15__setstate_cython__(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_15__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9975,7 +10367,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
 static PyMethodDef __pyx_mdef_5TSSCB_5TSSCB_15__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_5TSSCB_5TSSCB_15__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5TSSCB_5TSSCB_15__setstate_cython__(PyObject *__pyx_v_self,
+static PyObject *__pyx_pw_5TSSCB_5TSSCB_15__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -10587,7 +10979,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_TSSCB(PyObject *__pyx_pyinit_modul
         Py_FatalError("failed to import 'refnanny' module");
   }
   #endif
-
+  
 __Pyx_RefNannySetupContext("PyInit_TSSCB", 0);
   __Pyx_init_runtime_version();
   if (__Pyx_check_binary_version(__PYX_LIMITED_VERSION_HEX, __Pyx_get_runtime_version(), CYTHON_COMPILING_IN_LIMITED_API) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -10625,7 +11017,7 @@ __Pyx_RefNannySetupContext("PyInit_TSSCB", 0);
 
   /* "TSSCB.pyx":95
  *         self.i = 0
- *
+ * 
  *     cpdef setTrialStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
  *         cdef double dStrain
  *         #
@@ -10639,64 +11031,64 @@ __Pyx_RefNannySetupContext("PyInit_TSSCB", 0);
   if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5TSSCB_TSSCB, __pyx_mstate_global->__pyx_n_u_setTrialStrain, __pyx_t_2) < (0)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "TSSCB.pyx":451
+  /* "TSSCB.pyx":477
  *             return F
- *
+ * 
  *     cpdef commitState(self):             # <<<<<<<<<<<<<<
  *         #
  *         self.Cstrain = self.Tstrain
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5TSSCB_5TSSCB_5commitState, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB_commitState, NULL, __pyx_mstate_global->__pyx_n_u_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 451, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5TSSCB_5TSSCB_5commitState, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB_commitState, NULL, __pyx_mstate_global->__pyx_n_u_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 477, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5TSSCB_TSSCB, __pyx_mstate_global->__pyx_n_u_commitState, __pyx_t_2) < (0)) __PYX_ERR(0, 451, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5TSSCB_TSSCB, __pyx_mstate_global->__pyx_n_u_commitState, __pyx_t_2) < (0)) __PYX_ERR(0, 477, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "TSSCB.pyx":470
+  /* "TSSCB.pyx":496
  *         self.i += 1
- *
+ * 
  *     cpdef double getStress(self):             # <<<<<<<<<<<<<<
  *         return self.Tstress4
- *
+ * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5TSSCB_5TSSCB_7getStress, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB_getStress, NULL, __pyx_mstate_global->__pyx_n_u_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 470, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5TSSCB_5TSSCB_7getStress, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB_getStress, NULL, __pyx_mstate_global->__pyx_n_u_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 496, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5TSSCB_TSSCB, __pyx_mstate_global->__pyx_n_u_getStress, __pyx_t_2) < (0)) __PYX_ERR(0, 470, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5TSSCB_TSSCB, __pyx_mstate_global->__pyx_n_u_getStress, __pyx_t_2) < (0)) __PYX_ERR(0, 496, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "TSSCB.pyx":473
+  /* "TSSCB.pyx":499
  *         return self.Tstress4
- *
+ * 
  *     cpdef double getTangent(self):             # <<<<<<<<<<<<<<
  *         return self.Ttangent
- *
+ * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5TSSCB_5TSSCB_9getTangent, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB_getTangent, NULL, __pyx_mstate_global->__pyx_n_u_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 473, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5TSSCB_5TSSCB_9getTangent, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB_getTangent, NULL, __pyx_mstate_global->__pyx_n_u_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 499, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5TSSCB_TSSCB, __pyx_mstate_global->__pyx_n_u_getTangent, __pyx_t_2) < (0)) __PYX_ERR(0, 473, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5TSSCB_TSSCB, __pyx_mstate_global->__pyx_n_u_getTangent, __pyx_t_2) < (0)) __PYX_ERR(0, 499, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "TSSCB.pyx":476
+  /* "TSSCB.pyx":502
  *         return self.Ttangent
- *
+ * 
  *     cpdef setStrain(self, double strain):             # <<<<<<<<<<<<<<
  *         self.setTrialStrain(strain)
  *         self.commitState()
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5TSSCB_5TSSCB_11setStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB_setStrain, NULL, __pyx_mstate_global->__pyx_n_u_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 476, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5TSSCB_5TSSCB_11setStrain, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_TSSCB_setStrain, NULL, __pyx_mstate_global->__pyx_n_u_TSSCB, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5TSSCB_TSSCB, __pyx_mstate_global->__pyx_n_u_setStrain, __pyx_t_2) < (0)) __PYX_ERR(0, 476, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5TSSCB_TSSCB, __pyx_mstate_global->__pyx_n_u_setStrain, __pyx_t_2) < (0)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":1
@@ -10791,7 +11183,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 
   /* "TSSCB.pyx":95
  *         self.i = 0
- *
+ * 
  *     cpdef setTrialStrain(self, double strain, double strainRate=0):             # <<<<<<<<<<<<<<
  *         cdef double dStrain
  *         #
@@ -10829,33 +11221,33 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 9; } index[] = {{1},{36},{33},{9},{11},{46},{7},{6},{2},{10},{43},{9},{7},{37},{50},{19},{14},{3},{30},{2},{2},{20},{5},{23},{25},{17},{15},{16},{15},{20},{18},{4},{18},{11},{11},{10},{8},{9},{10},{12},{9},{13},{5},{2},{2},{2},{8},{6},{10},{8},{3},{11},{14},{12},{2},{2},{2},{10},{17},{13},{4},{9},{14},{12},{10},{12},{19},{6},{10},{3},{8},{2},{4},{2},{3},{2},{6},{11},{10},{145},{18},{9},{465},{9},{7},{3}};
-    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (800 bytes) */
-const char* const cstring = "(\265/\375`>\005\265\030\000\306\245\2009@\223:\303\214\300\2409\220]\230\020\2002\312\032\014\332Rg\245\024I\366\226\233\200${\247\335\224c\"\344\377P2\200\366\016\207\213\355;\335+\277\010<Q6v\r\316\311\010i\000h\000s\000\2379\351\376[\346\336\272K\374\345\331='\303\212rM\260R0\304]\212\362*\255\317\331\251\nm^\375\377R\363R\256~\213z\262\243!\224\374\224\344\276\034\252\256t\324\213\257\223G\273\032n\241\223\254\360x\257$9jH1\275uZ,\037O|\277I\247\n\251\364\362r\2226\354\344\265\217\037\234v\212\222\243\337lU\023\220\230\372\245\356\356[\315\235\373j\233\251\337\274R\377\266\211?u\277R\234C\033\322\255\276\356<U:/\256\357\325y\272\367\355{/\230\202`\270\341\277\3565T\341\327\326\275\013v\375\212\343\215\212\270^-\356\031#\332\210\230\035%\346\320\307o6\207\327\342\333\341z\211\026\027\233\275\356\230V\272}\223\266\250\305\241\032V\031b\031\000\0025\233\231\020\016\2156bX\302F\033\301\200\306\021\326(\032I\024\366I;thXZ\244YL\372\243U6Zd,\231\032B\257\20047\236\2144G\247\3104\215G\024X\207`6\202\271\237\305,fWeqz\271\313\367\261\2737\361\343\351r\275\373\\\257a3\254f\277\231Y\251\211[b(\202\263\272\273\377\227\271\320'\350\236\261\322V\030\253\013~b\016\231F\n\230\001G\266\201\031m\316fMmc\215\002\332\234&\351\215\331hw\266h\037l\210\035\260_\n\332\216\256\271M;\302C\343\351\314L\261Ol\242\201\206\245\007X\272\2443H\206\213!\305l\304@1n\223v&a\355\204\231i#\350\206\217\206\306\014\036\331F\006\332+\343\307#\323bp\254\024\343\304D\366\3036\350\034\214\236\316\202.\030Y0\021\354`AK\214\013\0043\204\202~\250Q\231Q\214\231\232\td\246I\22610\204(eVu\342\231\226l\220\207L\344$\005\225zM{\006GE\366\266\\;o\246e]b\204\004U\030\364\345\200\013\372\235\3057C\002\311\345\342f\367\352\351\357\304\346\323\206\224\376[\212\372\307\036\202IBq\351bW\"w\262\205*\231\350\007A\264w\252\376\036i$L>\332\253\260\022]\205\257\336\2373\035\313\323\341\027\234\300;\3515\245T\275\225r\357G\254W\265Y\031\202\2228\"\262\235\001\312\025\227H\246\245\262\315\266m\252x\264yP\237^\220\235\221u""\250\201\0247D\n\276\274\277\320wonz\316\265\314tDO\334\373qM\271\340w7N}\244\335F\254\354\320l\337\275\206\010)c\251\270\020\346\344^\273\001{\245H\226\324\311\003\301\226=\325\316\341\3336\r\302\316\220#\226}!b\"\204yX~\352;\021\"F\340}\254V#b\355r\322p\231\266\260\237v\262c+\240\003\224\347\211\325";
-    PyObject *data = __Pyx_DecompressString(cstring, 800, 3);
+    const struct { const unsigned int length: 9; } index[] = {{1},{36},{33},{9},{9},{11},{46},{7},{6},{2},{10},{43},{9},{7},{37},{50},{14},{3},{30},{2},{2},{20},{5},{23},{25},{17},{15},{16},{15},{20},{18},{4},{18},{11},{11},{10},{8},{9},{10},{12},{9},{13},{5},{2},{2},{2},{8},{6},{10},{8},{3},{11},{14},{12},{2},{2},{2},{10},{17},{13},{4},{9},{14},{12},{10},{12},{19},{6},{10},{3},{8},{2},{4},{2},{3},{2},{6},{11},{10},{145},{18},{9},{465},{9},{7},{3}};
+    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (797 bytes) */
+const char* const cstring = "(\265/\375`4\005\235\030\000\266\245\2009@\223:\303\214\300\220\343$h\222#\000e\2245\030\264\245\316J)\222\354-7\001I\366N\273)\307D\310\377\241d\000\355\035\016\027{\030\344\307_I,0\362\362\006\376m\004j\000g\000t\000\356\277e\356\255\273\304_\236\335s2\254\247\326\004+\005A\334\245'\257\322\372\234\235)\320\346\325\377\0175/\345\352\263\250';\n:\311GI\356\313a\352J?\275\3502y\264\253\341\0062\311\212\226K\264\350x\217$7jH1\275uZ,\037O|\277Ig\312\210\344\342b\2226\354\344\265\217\037\234v\212\222\243\337d\325\222\217\252\013>\246~\251\273\373Vs\347\256\332&\3527\257\324\277m\342G\335\257\024\347\320\206t\253\256;M\225\316\213\353{u\232\356}\373\236\013\246 \030n\370\257{\rS\330\265u\337\202[\257\342x\243!-\027\213;\206\210&\"f?\211\031\344\361\233\315\341\265\370r\270cZ\351\366M\312\242\026\203jXe\210\345gN\006\005\000\0023\032\031\220ML\033\361+A\243\211^>\243\310j\014\215#\n\333\244\0358\261\225\016\351\225\222\366\350\024\215\016\031I\246\206\320*\037\315\215&\"\275\321(2M\343\361\344\305!\230\211^\356\347o\262\304,fOeqz\271\313\367\261\2737\361\343\331r\275\373Z\237a1\254f\277\231W\250\211Yb(\202\263\272\273\377\227\271\320'\350\216\241\322T\027\001b\006\225F\212\227\301F\246y\021\355\315^Mmc}\362\331\234\036i\215\231hsvh\037l\210\035\260]\n\332\216\255\271K;\242\023\353pf%\230\0076\321\020[\351\201\225&\351\374\211\341`F0\032\260\017\214\333\243\235GV;aV\332\010\272\301\223\2411CG\246\221}\266\312\350\351\3104\030\014#\3016\260\220\375\260\r8\007c\207\263\240\013\306\325+\364:X\320\022\343\002\301\014!|\250A\235Q\314\231\222\td\246I\22610\204(\306\214u\362\231\026l\220\207L\344$\005\225zM{\0064E\326X\332\221\344\246\201\273\316\2004Uf\350\274\200W\373\315\005n\206\000\222\315\025\rQh\344/\311\366o\340k\240\033|u\3122\200I\346pW\304\n\304\355\004\025\212\244\242?\014\242\241+}x&\320j8l\326a';M_\274\377g\375+\240#\036\014\t7\371\267\026\005\335\357\344\366\200\220\325AP\033\023C\336\021\000`\305\002\222\206\251T\263\255\233,\006\215>\256\321+\266\263\263<5\222""\342\207P\241\227\315\212\371\356\315\335l\327\214\t\202\266\022\341\353\001M\265\273{\027\276yp\330\205\030\327Y\036'\345\006\t\355AH\010\210\1772\330\275\300\234\001\232%\372\204_\213\230\013\210\304\217\223\336!\014(\215\356\023!@\303\353\352\330\353J1\302\372!\240\244\021\226U\357G\227\264\206\375\331\005\3208\351fA'+\017\206\252\001";
+    PyObject *data = __Pyx_DecompressString(cstring, 797, 3);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (914 bytes) */
-const char* const cstring = "BZh91AY&SY#\270& \000\000\233\177\377\365\376\374Bv\257\3747\375\377\374\000\377\357\377`@@@@@@@@@\000@@@\000@\000P\003=\341y\232\003\\0\224\211 4\320z\217\322i\017Q\240\017Pi\202\000\321\221\240\017P\014\200m4\312\034hd\323L\232\000\030 \r\006M\000\003&\200\000\001\223 \032\rL\020\211\250\365\032\000\r4\032\000\000\003@\001\240\000\000\0001AHoTbz\203@\310\036\240\003@\001\220\000\000\0000\207\251\240\224\"i0\t\246\215\010hF\206!\246\200\000\000\000\036\241\241\223#\032\216\337\"\257\312\025\377,\t$x!\257\262\327\202,\242HP\222k\305\313X%JE%,\210DG\212X\306\021\312\r\004 \250A\344\344PS\032$\021#V\007\024^\323@\220\352\360mop\347\014\341\277\223\207\360\031\301\3610,\013\253\276b\320\250\302\226\305\265\313\342\246v_\314\371\335O\017#\274\376\264\300\242I\303\357]+\345\252\250Z\254\332\034\020\204\007`\215\001\2021\213\252\252\304\377s\343\274\210m\214\253\360D\0345_\264C\272\362}\024\204e>\252\313\220\354\215\200\006\204H\236\206:\rE\201\226\260\n\n\\s\t\025I\0140\010\320\224ZS\342i\016\215E\000\376\003\247\022\007-\311\200%\255(G\004q\224J\224\r\355\004\273!\016Z\314\366\212\222Lt0_`N\010\0011\271\211\301\321!\002\207\312\315\030\241\231\244\300\366{\344\222U\327\376\274\030\343P\343\r\006\205\215\037\224Y\247\251\010\245\003\213\223!B\031\0230\253\202\320\301\312\024\325B\330\203\356{\030\366\376\323,\025G\334\301\254\014EE\263\221\007\020\355\010\304Qfa\001\0240.\306+T\340\230\345= \232\222S\\X\2378\205\223\25042^\314\326\264\020Rr\"\210\345\035x\210\025)sR\257S\027\035\301BJ%\325Q\034\004\322\200>7\0162Aei\001\344n\313\256\245A\030YbpTL\031\204\244&W\310P\027\227\035\250@h\243\305\010\013e8BV\336\351M8Z\2060\221\303\325\342\3212\014\026\271p\255&\250\371\030\\c\"\212\254ym\211\363nA\311\030\212\023\n8E\021g\271\317W\234DW>\212\307\273\234\016\023W+\016\013\261\225\324\251Ub_\276\363Q\305\273\234\323`Sa\025&\206\236\335\310\223\255t9\010$\344FM\221\211GQcKp\3225\374X\331\341<xB,\232\320\2257k\216\262%/6\375\231\2727\311\2025\013\303e\235\252\0207e\223\210\201""\310\000b:\007z\005\300i\332\021\000\220\301\337\310\005 \231P3\033\2726D\277>\246\306\260E\200}\004\025a\004\230\233\010\373\020\204\226\213[\014\213\307\221\274\301\035\0149J&\027-w\317\361\362\262!\346\240C\367\325\021\3535\375\365\302\022\332\"\313\2453\300.DL(^Ab\224\204|\242\204 X\244N\013Wz\212'A#h1I\232\245\2649\0001BFp\223HH\" [\256\2446\006\252J\252i\322\034\232\371\010\3518c\343\"/m\016\026\334\333\3115\010\362)b\275\226\336t\274\t'\345\024_\246\361!T\030\326\010\322!\na\342\210U{\302)\252\021\206S\202\204'\300\030c( EB\207\370\273\222)\302\204\201\035\3011\000";
-    PyObject *data = __Pyx_DecompressString(cstring, 914, 2);
+    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (913 bytes) */
+const char* const cstring = "BZh91AY&SYgtZ\031\000\000\232\177\377\365\376\374Bv\257|7\375\377\374\000\377\357\377`@@@@@@@@@\000@@@\000@\000P\003=\354\264((\302\022\211#D\031\030d\32224\001\352\003\023@\000h\320\321\241\243 0\032\207\003M4\320hhhdh\006@\032\032\003M\031\000\0000\230\200\320\340i\246\232\r\r\r\014\215\000\310\003C@i\243 \000\006\023\020\032\014PJ\033\324\214\312h\323F\200z\200\000\0004\000\000\000\032\003\324\320J\004 \t=L\236\211L\364(\364M4d\320\310\300\206\000\214@\000zOQ\372\243\267\010\257\354\207\317\347\320\232g\202\032\373\rx\"\302$\205\t\250<F\326\010\242E%8\220\210\220)\223\032\207Pi\2415Bp\\JjkD\232%\025\201\313\342\316@\306(\376\277n\345\220\262\037\223nZ\013!\n\033\001[&e\310\035\201Q\202\222\341\277\213\014|\236\205\372\215\356\326U\330\255vVIJ\205\312\353\233 \226\252\204\265c h\033m\261\251Q\020\030(1\236\0332O\363\247J\221\016\250\312\277h\203\215\217\356!\334\202\355\330\005\014<\272\021\310t\312\300\003B$\\\241n\203Q`e\234\002\202\235-\260\"\270!\206\001\030Xj\344\344\225yt\234\033\230LJ\321#\215\200\261\3755\220\204#-K\3136\234\250\375\005)\366ze9U\017s\333\313=\n\203\202\311\222J\tR\224Z{b\352\252vf{\202\032\"\272\354^Ol\003\034\352\034\341\270\334\264H\341\026\333\261BV\001\315\376\354/Cbm\025w\364\206\377\374\030]\216HFp\306\276\257\343j\315T\214\3308\301\211_\246\344-q\016\314\224I&EP$\205\335!\202\325D&9SH&\244\225\007\026'\321!T\316\r=\225mm-4\024\270\221},\036\242@\251\203\266\013\nps\346\027\245\202g\215\364\230\236\344\302(\343\233&\2665a\005\037\207\221LB\201\226I\374\342Z\033D\300-X\254\274*]zP\230\322\247\004\346.Xj\013\033\364\370\255\2704\241\254+r\026\005\276\324\0304\272\352\\\016\"+au\214\212*\261\365\351\224[\327\233\245\004P\264Q\304Q\026\354\336\026\016bY\305\372\010~\2208\234\\,8g\254\321\212\246:\004\2167\013\326\212Y\270bP\204\245\030EW&\2313\324\366\020\363\000\341S\0340Z\006\317\215\222f5m\275\301\255\240.\246\240\226\316;\023\036\304\364\026)S\177\031m\370w\213B\212\035\027yc.\232\214\237\032\242\250\325\201Ek[hl%\214\251P+\260\336""\355a\304'\n\006\323\261\273\250&\365\335\036^0\226\371\027\223U\234\322\322\335Dd\204\364\330\253\241\206F\321\273.\200\217\006<%#\027mW\241c\322\250\207\252\202\037\326Q'\325\352\370\327\013\305\264F\027\312g\220]\300F70\240\301U\014]\002\210y\260TN+W\353\024J\244\022PqRr\261\241\333\000\342\211\210\343&\027\213\030\013\014y\344\275\3265\275\n\241\247Hvc\345\341\342h\343\343\230\014;C\247\313\273r\215C\024\212Q\347\346I\316\310\211\005\te\027\351\317 *\003\215E\032DS@l\310\210\234\307\206\207V%\rH\035gA\2112\321\307\207Z\177\342\356H\247\n\022\014\356\213C ";
+    PyObject *data = __Pyx_DecompressString(cstring, 913, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (780 bytes) */
-const char* const cstring = "x\332\265T?S\023A\0247NF\005\302\020\220\202\306\231\213\203\3438\032\365\200\006\307\177\001\006T\004\r\244\337l\3566\307\016\227\275\313\355.\223t\224)\257\334r\313\224\224\226~\004\312\224\371\010~\004\337\336%\227\004\031\307\306\342v\177\357\367\376\356{\273\367\3413\273\300>u\255\020G\270E\004\211\270\325\014\"\253vz\272\273s\204A\246\330\037\333p\001\204%\"\3148\0254`o\254]\240<\362\356\205UKA\331\tX\223z\265nH\352h\n[\374,\220\276k5\210U\237\266\261h\323\362\350\005a.\345\270\341\023\302\314\3529\3453\034\271\204Q\346\325'h&\310\024=\216Ay\352\356\226[\224\265p\247>\332f\374\306\334\330\211\005\226K\232X\372\302B(\"\256t\010B\226+\341\234\201\305\002V\026\021\275\200\036\200\326\241\214\n\204x\344\274J\332\223\256/\303n\347-\007+\346\361@F\016y_\226a\035\3017\223\327\310\343\234\373\366\376\006B\337\273\035\370\366\250#\3201\351\210\023\322L\342\245A\263Z\234\2568\013\030Bc\232\023\221\214\341\206\302\tZ-*N\215&%<\002RD8\317\304\032f\036a\"\225y\242\306\224eb\315L:\3450\3572\207\006\0204\n\244\240\214\360\006\021\330\361\001!\312\020\3308\244\201\235\363\251\244S\303\236 \204\232\2229\010e\265L\252H\310\364 (\033%\242\034e9\251 -~\376\372\334>\207^\265\240*X\223\331\301\036\270\322\007G\204\030\334Y\204\302 \204\005\3329\nh\340\2050W\301\330\264%\366S\273\310\2166\242\315\311\230\377hrF\220\216\351\264\337\314\3324\333\240d\014\243\344\200F\027hj8\350\226A\3614P\262\236\200\002\036\014B\202p\360\223M\351\341P\236\301\255\221!\2745I\370\324+\231\334\365\313\312\360A\241w\030\013e\017\000|UyU\231\001_bW\225\0148V\353\n\337n\223\201O\361\236\312\031p\244VUu0\0359\003\337\324\226j\003\270.<R5\275l\250\203x+6To?.]VR#{\034:g\230\245\236\210\355\353\374\307\237\271_\367\356\314-\376\307\202\377V\336\354a\206\017V\342\247j%\265_\350m\365\332\361\034\210\366\240P\214\027@]H\212\206\004\363\372\261\336\353\347\373\273}qe\017\212\253\361\261.\rnhs\203\342CH#\324&\324\274\272\246\026uu\010\333\222n\217,\215\337\001\344\222zG\273\375R\177\373j\347\312\375QJ\335\244\332""\205\"R7\263\335\007iFq\275\366\254\277\332\257\016\013\305\353\342\023]\325\330T\327\211#\265\234\332u\365]\275\256\223\314\013zK\267\307\325\330\206)\350\312\360\237\254\322R\267\325\216r\341\204P\360\241\022\332\236\2608\021\023\276\255\363\272r\231\033\344\347{\317\343\352\350\037Z\226\341oJ\364e\265";
-    PyObject *data = __Pyx_DecompressString(cstring, 780, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (775 bytes) */
+const char* const cstring = "x\332\265T=O\0331\030n\252\250\345#\210@\031X*]*\252\252jS\365\200\205\252_\001\004m)\264\201\354\216s\347\034\026\027\337\345l\243dc\314x\243G\217\031\031;\366'0f\314O\350O\350\353\273\344\222PTu\351p\366\363>\357\247\337\327\276\017\237\331%\366\251k\2058\302-\"H\304\255f\020Y\265\263\263\275\335c\0142\305\376\330\206\013 ,\021a\306\251\240\001{c\355\001\345\221w\211\365\253\260\333yi\325R\246\354\004\254I\275Z7$u4\205-~\036H\337\265\032\304\252O\333X\264iy\364\2220\227r\334\360\taf\365\234\3629\216\\\302(\363\352\0234\023d\212\036\307\240<uw\313-\312Z\270S\037m3~cn\354\304\002\313%M,}a!\024\021W:\004!\313\225p\340\300b\001+\213\210^B3@\353PF\005Bo9P\314\343\201\214\034\362\276,\303:\202o&\211\221\307\t\016\354\203M\204\276w;\360\355SG\240\023\322\021\247\244\2314/\355`\226\330\351\212\363\200!4\2469\021I\363o)\234\240\325\242\342\314hR\302# E\204\363L\254a\346\021&R\231'jLY&\326\314|S\016\363.sh\000A\243@\n\312\010o\020\201\035\037\020\242\014\201\215C\032\330\271\230J:5\331\tB\250)\231\203PV\313\244\212\204L\017\202\262\271!\312Q\226\223\n\322\342\027\257/\354\013\350U\013\252\2025\031\024\354\201+}pD\210\301ME(\014BX\240\235\243\200\006^\n3wc\323\226\330O\355\";\332\214\266&3\375\243\311\031A:\246\323~3k\323l\203\2221\214\222\003\032\335\226\251\341\240;\006\305\323@\311z\n\nx\035\010\t\302\301O6\245\207Cy\016\267F\206\360\302$\341SObr\261\257*\303\271B\357(\026\312\036\000\370\252\362\2522\003\276\304\256*\031p\2426\024\276\333&\003\237\342}\2253\340X\255\251\352`:r\006\276\251m\325\006pSx\254jz\305P\207\361vl\250\336A\\\272\252\244F\3668t\3160\313=\021\3337\371\217?s\277\036\334\233_\372\217\005\377\255\274\331\303\014\347V\343gj5\265_\354m\367\332\361<\210\366\240P\214\027A]H\212\206\004\013\372\211\336\357\347\373{}qm\017\212k\361\211.\rnis\203\342#H#\324\026\324\274\266\256\226tu\010\333\262n\217,\215\337!\344\222zW\273\375R\177\347z\367\332\375QJ\335\244\332\203\"R7\263=\004iFq\263\376\274\277\326\257\016\013\305\233\342S]\325\330T\327\211#\265\222\332u""\365}\275\241\223\314\213z[\267\307\325\330\206)\350\312\360\237\254\322Rw\324\256r\341\204P\360\221\022\332\236\2608\021\023\276\255\363\272r\225\033\344\027z/\342\352\350\207Y\226\341o\265Kb\220";
+    PyObject *data = __Pyx_DecompressString(cstring, 775, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (1598 bytes) */
-const char* const bytes = "?Invalid parameters for TSSCBMaterialInvalid state transition: Cstage=, Tstage=-configType`_configType` should be `-configType` if givendisableenablegc-hardening`hardening` should be `-hardening` if givenisenabled-minmax`minmax` should be `-minmax` if givenno default __reduce__ due to non-trivial __cinit__src/TSSCB/TSSCB.pyx<stringsource>-up`_up` should be `-up` if givenF1F2__Pyx_PyDict_NextRefTSSCBTSSCB.__reduce_cython__TSSCB.__setstate_cython__TSSCB.commitStateTSSCB.getStressTSSCB.getTangentTSSCB.setStrainTSSCB.setTrialStrainasyncio.coroutinesbetacline_in_tracebackcommitState_configTypeconfigType__func__getStressgetTangent__getstate__hardening_is_coroutineitemsk0k1k2__main__minmax__module____name__pop__pyx_state__pyx_vtable____qualname__r1r2r3__reduce____reduce_cython____reduce_ex__selfsetStrainsetTrialStrain__set_name__setdefault__setstate____setstate_cython__strainstrainRatetag__test__ufugapuh_upupvalues-configType-hardening\200A\340\010\014\210K\220t\2301\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210J\220d\230!\330\010\014\210N\230$\230a\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210H\220D\230\001\330\010\014\210M\230\024\230Q\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\330\010\014\210O\2304\230q\330\010\014\320\014\035\230T\240\021\330\010\014\210G\2204\220q\330\010\014\210F\220!\200A\330\010\014\210O\2301\230A\330\010\014\210L\230\001\200A\330\010\017\210t\2201\320\004@\300\001\360\006\000\t\r\210K\220t\2301\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210J\220d\230!\330\010\014\210N\230$\230a\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210H\220D\230\001\330\010\014\210M\230\024\230Q\330\010\014\210O\2304\230q\330\010\014\320\014\035\230T\240\021\330\010\014\210G\2204\220q\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\340\010\022\220'\230\022\2304\230q\330\010\013\2104""\210q\220\t\230\022\2301\330\014\020\220\013\2301\340\014\017\210t\2201\220D\230\n\240\"\240D\250\004\250C\250t\2601\330\020\024\220N\240!\330\014\017\210t\2201\220D\230\n\240\"\240D\250\001\330\020\023\2204\220t\2303\230a\330\024\030\230\r\240Q\340\024\030\230\017\240q\330\014\017\210t\2201\330\020\024\220G\2304\230u\240B\240d\250!\2509\260B\260d\270!\330\020\023\2204\220u\230C\230q\330\024\030\230\r\240Q\330\024\030\230\007\230q\330\020\023\2204\220u\230C\230q\330\024\030\320\030)\250\024\250Q\340\014\020\320\020%\240Q\240a\340\014\017\210x\220r\230\021\330\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\330\020\023\2204\220t\2301\330\024\030\230\014\240A\340\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\330\020\023\2204\220t\2301\330\024\030\230\014\240A\330\014\017\210t\2209\230B\230d\240!\330\020\024\220K\230t\2401\330\014\017\210t\2209\230B\230a\230t\2401\330\020\024\220K\230q\240\004\240A\200\001\330\004\n\210+\220Q-minmax-up";
+    #else /* compression: none (1588 bytes) */
+const char* const bytes = "?Invalid parameters for TSSCBMaterialInvalid state transition: Cstage=TSSCB.pyx, Tstage=-configType`_configType` should be `-configType` if givendisableenablegc-hardening`hardening` should be `-hardening` if givenisenabled-minmax`minmax` should be `-minmax` if givenno default __reduce__ due to non-trivial __cinit__<stringsource>-up`_up` should be `-up` if givenF1F2__Pyx_PyDict_NextRefTSSCBTSSCB.__reduce_cython__TSSCB.__setstate_cython__TSSCB.commitStateTSSCB.getStressTSSCB.getTangentTSSCB.setStrainTSSCB.setTrialStrainasyncio.coroutinesbetacline_in_tracebackcommitState_configTypeconfigType__func__getStressgetTangent__getstate__hardening_is_coroutineitemsk0k1k2__main__minmax__module____name__pop__pyx_state__pyx_vtable____qualname__r1r2r3__reduce____reduce_cython____reduce_ex__selfsetStrainsetTrialStrain__set_name__setdefault__setstate____setstate_cython__strainstrainRatetag__test__ufugapuh_upupvalues-configType-hardening\200A\340\010\014\210K\220t\2301\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210J\220d\230!\330\010\014\210N\230$\230a\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210H\220D\230\001\330\010\014\210M\230\024\230Q\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\330\010\014\210O\2304\230q\330\010\014\320\014\035\230T\240\021\330\010\014\210G\2204\220q\330\010\014\210F\220!\200A\330\010\014\210O\2301\230A\330\010\014\210L\230\001\200A\330\010\017\210t\2201\320\004@\300\001\360\006\000\t\r\210K\220t\2301\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210J\220d\230!\330\010\014\210N\230$\230a\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210L\230\004\230A\330\010\014\210H\220D\230\001\330\010\014\210M\230\024\230Q\330\010\014\210O\2304\230q\330\010\014\320\014\035\230T\240\021\330\010\014\210G\2204\220q\330\010\014\210K\220t\2301\330\010\014\210K\220t\2301\340\010\022\220'\230\022\2304\230q\330\010\013\2104\210q\220""\t\230\022\2301\330\014\020\220\013\2301\340\014\017\210t\2201\220D\230\n\240\"\240D\250\004\250C\250t\2601\330\020\024\220N\240!\330\014\017\210t\2201\220D\230\n\240\"\240D\250\001\330\020\023\2204\220t\2303\230a\330\024\030\230\r\240Q\340\024\030\230\017\240q\330\014\017\210t\2201\330\020\024\220G\2304\230u\240B\240d\250!\2509\260B\260d\270!\330\020\023\2204\220u\230C\230q\330\024\030\230\r\240Q\330\024\030\230\007\230q\330\020\023\2204\220u\230C\230q\330\024\030\320\030)\250\024\250Q\340\014\020\320\020%\240Q\240a\340\014\017\210x\220r\230\021\330\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\330\020\023\2204\220t\2301\330\024\030\230\014\240A\340\020\023\2204\220y\240\002\240$\240a\330\024\030\230\013\2404\240q\330\020\023\2204\220t\2301\330\024\030\230\014\240A\330\014\017\210t\2209\230B\230d\240!\330\020\024\220K\230t\2401\330\014\017\210t\2209\230B\230a\230t\2401\330\020\024\220K\230q\240\004\240A\200\001\330\004\n\210+\220Q-minmax-up";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
@@ -10965,27 +11357,27 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 95};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_strain, __pyx_mstate->__pyx_n_u_strainRate};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_TSSCB_TSSCB_pyx, __pyx_mstate->__pyx_n_u_setTrialStrain, __pyx_mstate->__pyx_kp_b_iso88591_Kt1_L_A_L_A_Jd_N_a_L_A_L_A_L_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_TSSCB_pyx, __pyx_mstate->__pyx_n_u_setTrialStrain, __pyx_mstate->__pyx_kp_b_iso88591_Kt1_L_A_L_A_Jd_N_a_L_A_L_A_L_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 451};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 477};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_TSSCB_TSSCB_pyx, __pyx_mstate->__pyx_n_u_commitState, __pyx_mstate->__pyx_kp_b_iso88591_A_Kt1_L_A_L_A_Jd_N_a_L_A_L_A_L_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_TSSCB_pyx, __pyx_mstate->__pyx_n_u_commitState, __pyx_mstate->__pyx_kp_b_iso88591_A_Kt1_L_A_L_A_Jd_N_a_L_A_L_A_L_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 470};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 496};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_TSSCB_TSSCB_pyx, __pyx_mstate->__pyx_n_u_getStress, __pyx_mstate->__pyx_kp_b_iso88591_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_TSSCB_pyx, __pyx_mstate->__pyx_n_u_getStress, __pyx_mstate->__pyx_kp_b_iso88591_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 473};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 499};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_TSSCB_TSSCB_pyx, __pyx_mstate->__pyx_n_u_getTangent, __pyx_mstate->__pyx_kp_b_iso88591_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_TSSCB_pyx, __pyx_mstate->__pyx_n_u_getTangent, __pyx_mstate->__pyx_kp_b_iso88591_A_t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 476};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 502};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_strain};
-    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_TSSCB_TSSCB_pyx, __pyx_mstate->__pyx_n_u_setStrain, __pyx_mstate->__pyx_kp_b_iso88591_A_O1A_L, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_TSSCB_pyx, __pyx_mstate->__pyx_n_u_setStrain, __pyx_mstate->__pyx_kp_b_iso88591_A_O1A_L, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1};
@@ -11008,12 +11400,12 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitGlobals(void) {
   /* PythonCompatibility.init */
   if (likely(__Pyx_init_co_variables() == 0)); else
-
+  
   if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1, __pyx_L1_error)
 
   /* CommonTypesMetaclass.init */
   if (likely(__pyx_CommonTypesMetaclass_init(__pyx_m) == 0)); else
-
+  
   if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1, __pyx_L1_error)
 
   /* CachedMethodType.init */
@@ -11027,12 +11419,12 @@ static int __Pyx_InitGlobals(void) {
       }
   } // error handling follows
   #endif
-
+  
   if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1, __pyx_L1_error)
 
   /* CythonFunctionShared.init */
   if (likely(__pyx_CyFunction_init(__pyx_m) == 0)); else
-
+  
   if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1, __pyx_L1_error)
 
   return 0;

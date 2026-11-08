@@ -238,7 +238,7 @@ class TSSCB(UniaxialMaterial):
         if self.Tfracture:
             # SMA cable fracture completed
             if self.configType == 1:
-                uy = self.F1 / self.k0
+                uy = 0.5 * self.F1 / self.k0
                 if self.Tplate2 + uy <= self.Tstrain <= self.Tplate1 - uy:
                     self.Tstress4 = 0
                     self.Ttangent = 0
@@ -255,12 +255,13 @@ class TSSCB(UniaxialMaterial):
             return
         if self.Tfracturing:
             # SMA cable fracture starts
+            residual_force = (0.5 if self.configType == 1 else 1.0) * self.F1
             if self.Cstress4 >= 0:
-                self.Tstress4 = self.TfractureFore - (self.TfractureFore - self.F1) * self.Trp
-                self.Ttangent = -(self.TfractureFore - self.F1) * (1 if dStrain > 0 else -1) / self.up
+                self.Tstress4 = self.TfractureFore - (self.TfractureFore - residual_force) * self.Trp
+                self.Ttangent = -(self.TfractureFore - residual_force) * (1 if dStrain > 0 else -1) / self.up
             else:
-                self.Tstress4 = self.TfractureFore + (-self.F1 - self.TfractureFore) * self.Trp
-                self.Ttangent = (-self.F1 - self.TfractureFore) * (1 if dStrain > 0 else -1) / self.up
+                self.Tstress4 = self.TfractureFore + (-residual_force - self.TfractureFore) * self.Trp
+                self.Ttangent = (-residual_force - self.TfractureFore) * (1 if dStrain > 0 else -1) / self.up
             return
         if self.Cstage == 1 and self.Tstage == 1:
             # NOTE: stage-1 -> stage-1
@@ -286,6 +287,7 @@ class TSSCB(UniaxialMaterial):
             self.Tstress2 = self.Tstress1
             tangent2 = tangent1
             Fd = (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
+            dFd = 0.0
             if self.Thardening:
                 direction = 1 if self.Tstrain > 0 else -1
                 dCDD = (1 if du2 > 0 else -1) / (self.uh - self.ugap)
@@ -307,6 +309,30 @@ class TSSCB(UniaxialMaterial):
             elif dStrain < 0 and self.Tstress2 > -self.F1:
                 self.Tstress3 = -self.F1
                 tangent3 = 0
+            # Reconnect from the actual force at the gap, including a partial
+            # friction reload, rather than jumping to the nominal +/-F1 bound.
+            boundary_force = self._frictionModel(self.Cstress3, du1)
+            if (self.configType == 1 and self.Thardening and
+                    ((dStrain > 0 and self.Tstress2 < self.F1) or
+                     (dStrain < 0 and self.Tstress2 > -self.F1))):
+                predictor, predictor_tangent = self._frictionResponse(boundary_force, du2)
+            else:
+                direction = 1 if self.Tstrain > 0 else -1
+                Fd_boundary = (self.F2 - self.F1 / 2) * self.CCDD * self.r1
+                predictor = boundary_force + self.k1 * du2
+                predictor_tangent = self.k1
+                if self.Thardening:
+                    predictor -= direction * (Fd - Fd_boundary)
+                    predictor_tangent -= direction * dFd
+            if ((du2 > 0 and predictor < boundary_force) or
+                    (du2 < 0 and predictor > boundary_force)):
+                predictor, predictor_tangent = boundary_force, 0.0
+            if ((du2 > 0 and self.Tstress3 < boundary_force) or
+                    (du2 < 0 and self.Tstress3 > boundary_force)):
+                self.Tstress3, tangent3 = boundary_force, 0.0
+            elif ((du2 > 0 and self.Tstress3 > predictor) or
+                    (du2 < 0 and self.Tstress3 < predictor)):
+                self.Tstress3, tangent3 = predictor, predictor_tangent
         elif self.Cstage == 2 and self.Tstage == 2:
             # NOTE: stage-2 -> stage-2
             if self.Thardening:
@@ -392,46 +418,42 @@ class TSSCB(UniaxialMaterial):
                 self.Tstress3, tangent3 = predictor, predictor_tangent
         elif self.Cstage == 2 and self.Tstage == 1:
             # NOTE: stage-2 -> stage-1
-            if dStrain < 0:
-                du1 = -(self.Cstrain - self.ugap)
-                du2 = -(self.ugap - self.Tstrain)
-                usc0 = self.Cstrain - self.ua
-            else:
-                du1 = -self.ugap - self.Cstrain
-                du2 = self.Tstrain + self.ugap
-                usc0 = self.Cstrain + self.ua
+            direction = 1 if self.Cstrain > 0 else -1
+            boundary_strain = direction * self.ugap
+            du1 = boundary_strain - self.Cstrain
+            du2 = self.Tstrain - boundary_strain
+            usc0 = self.Cstrain - direction * self.ua
             if self.Thardening:
                 self.TCDD = self.CCDD + abs(du1) / (self.uh - self.ugap)
             F1_ = self._SCModel(usc0, self.Cstress1, du1)
-            # Apply degradation
-            F1_ideal1 = F1_
-            tangent_ideal1 = 0
-            if self.Thardening and self.Tstrain > 0:
-                F1_ideal1 = F1_ - (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
-                tangent_ideal1 = (self.F2 - self.F1 / 2) * self.TCDD * self.r2 / (self.uh - self.ugap)
-            elif self.Thardening and self.Tstrain < 0:
-                F1_ideal1 = F1_ + (self.F2 - self.F1 / 2) * self.TCDD * (self.r1 - self.r2 * (abs(self.Tstrain) - self.ugap) / (self.uh - self.ugap))
-                tangent_ideal1 = (self.F2 - self.F1 / 2) * self.TCDD * self.r2 / (self.uh - self.ugap)
+            # Boundary degradation is independent of the target inside the gap.
+            Fd_boundary = (self.F2 - self.F1 / 2) * self.TCDD * self.r1
+            F1_ideal1 = F1_ - (direction * Fd_boundary if self.Thardening else 0.0)
             # Apply modifiction
             if self.configType == 1:
                 F_bound = 0  # Only half of the friction pads are sliding at stage-2
             else:
                 F_bound = self.F1  # All friction pads are sliding at stage-2
             F1_ = F1_ideal1
-            tangent_F1 = tangent_ideal1
-            if dStrain > 0 and self.Tstrain > 0 and F1_ideal1 < self.F1 and self.ugap > 0 and self.Cstress3 == self.F1:
-                F1_ = self.F1
-                tangent_F1 = 0
-            elif dStrain < 0 and self.Tstrain < 0 and F1_ideal1 > -self.F1 and self.ugap > 0 and self.Cstress3 == -self.F1:
-                F1_ = -self.F1
-                tangent_F1 = 0
-            elif self.Tstrain > 0 and F1_ideal1 < -F_bound:
+            if direction > 0 and F1_ideal1 < -F_bound:
                 F1_ = -F_bound  # Prevent positive compressive stress in SMA cables
-                tangent_F1 = 0
-            elif self.Tstrain < 0 and F1_ideal1 > F_bound:
+            elif direction < 0 and F1_ideal1 > F_bound:
                 F1_ = F_bound  # Prevent negative compressive stress in SMA cables
-                tangent_F1 = 0
-            self.Tstress1, tangent1 = self._frictionResponse(F1_, du2, dF0=tangent_F1)
+            predictor = self.Cstress3 + self.k1 * du1
+            if self.Thardening:
+                Fd_committed = (self.F2 - self.F1 / 2) * self.CCDD * (
+                    self.r1 - self.r2 * (abs(self.Cstrain) - self.ugap) / (self.uh - self.ugap))
+                predictor -= direction * (Fd_boundary - Fd_committed)
+            if ((du1 > 0 and predictor < self.Cstress3) or
+                    (du1 < 0 and predictor > self.Cstress3)):
+                predictor = self.Cstress3
+            if ((du1 > 0 and F1_ < self.Cstress3) or
+                    (du1 < 0 and F1_ > self.Cstress3)):
+                F1_ = self.Cstress3
+            elif ((du1 > 0 and F1_ > predictor) or
+                    (du1 < 0 and F1_ < predictor)):
+                F1_ = predictor
+            self.Tstress1, tangent1 = self._frictionResponse(F1_, du2)
             self.Tstress2 = self.Tstress1
             self.Tstress3 = self.Tstress1
             tangent3 = tangent1
